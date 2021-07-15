@@ -1,0 +1,34 @@
+@import "vars.scss";
+
+// $h1-font-lh: 29px;
+// $h2-font-lh: 23px;
+// $h3-font-lh: 15px;
+// $h1-font-s: 24px;
+// $h2-font-s: 19px;
+// $h3-font-s: 12px;
+// $h-font-w: 700;
+// $b-font-s: 14px;
+
+h1 {
+	font-size: 24px;
+	line-height: 29px;
+	font-weight: 700;
+}
+h2 {
+	font-size: 19px;
+	line-height: 23px;
+	font-weight: 700;
+}
+h3 {
+	font-size: 12px;
+	line-height: 15px;
+	font-weight: 700;
+	text-transform: uppercase;
+}
+:root {
+	color: $dark;
+	font-family: Montserrat, Arial, sans-serif;
+	font-style: normal;
+	font-size: 14px;
+	line-height: 14px; //or 171%
+}
