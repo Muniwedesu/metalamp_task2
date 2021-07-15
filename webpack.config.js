@@ -2,15 +2,17 @@ const path = require("path");
 
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
+const TerserPlugin = require("terser-webpack-plugin");
 // const { node } = require("webpack");
+const sassIncludes = [ "src/" ];
 
 module.exports = {
-	entry   : "./src/app.js",
-	output  : {
+	entry        : "./src/app.js",
+	output       : {
 		filename : "bundle.js",
 		path     : path.resolve(__dirname, "dist")
 	},
-	module  : {
+	module       : {
 		rules : [
 			{
 				test : /\.pug$/i,
@@ -18,30 +20,56 @@ module.exports = {
 			},
 			{
 				test : /\.(sa|sc|c)ss$/i,
-				use  : [ MiniCssExtractPlugin.loader, "css-loader", "sass-loader" ]
+				use  : [
+					MiniCssExtractPlugin.loader,
+					"css-loader",
+					{
+						loader  : "sass-loader",
+						options : {
+							sassOptions : {
+								includePaths : sassIncludes
+							}
+						}
+					}
+				]
 			}
 		]
 	},
-	plugins : [
+	plugins      : [
 		new HtmlWebpackPlugin({
-			template : "src/templates/views/index/index.pug",
+			template : "src/views/index/index.pug",
 			minify   : false
 		}),
 		new HtmlWebpackPlugin({
 			filename : "account.html",
-			template : "src/templates/views/account/account.pug",
+			template : "src/views/account/account.pug",
 			minify   : false
 		}),
 		new HtmlWebpackPlugin({
 			filename : "details.html",
-			template : "src/templates/views/details/details.pug",
+			template : "src/views/details/details.pug",
 			minify   : false
 		}),
 		new HtmlWebpackPlugin({
 			filename : "search.html",
-			template : "src/templates/views/search/search.pug",
+			template : "src/views/search/search.pug",
 			minify   : false
 		}),
 		new MiniCssExtractPlugin()
-	]
+		//OccurrenceOrderPlugin(), //is on by default
+		//DedupePlugin(), //has been semoved in v2 or v3
+		//UglifyJsPlugin({ //is now terser-webpack-plugin
+	],
+	//devtool      : "inline-source-map",
+	devServer    : {
+		//check development guide for static files
+		contentBase : "./dist", //
+		compress    : true
+	},
+	optimization : {
+		minimize  : true,
+		minimizer : [
+			new TerserPlugin() //{terserOptions : {//https://github.com/terser/terser#minify-options}}
+		]
+	}
 };
