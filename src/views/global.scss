@@ -1,13 +1,12 @@
 @import "vars.scss";
 
-// $h1-font-lh: 29px;
-// $h2-font-lh: 23px;
-// $h3-font-lh: 15px;
-// $h1-font-s: 24px;
-// $h2-font-s: 19px;
-// $h3-font-s: 12px;
-// $h-font-w: 700;
-// $b-font-s: 14px;
+:root {
+	color: $dark;
+	font-family: Montserrat, Arial, sans-serif;
+	font-style: normal;
+	font-size: 14px;
+	line-height: 14px; //or 171%
+}
 
 h1 {
 	font-size: 24px;
@@ -25,10 +24,6 @@ h3 {
 	font-weight: 700;
 	text-transform: uppercase;
 }
-:root {
-	color: $dark;
-	font-family: Montserrat, Arial, sans-serif;
-	font-style: normal;
-	font-size: 14px;
-	line-height: 14px; //or 171%
+ul { //or is it used for all text?
+	color: $dark-50;
 }

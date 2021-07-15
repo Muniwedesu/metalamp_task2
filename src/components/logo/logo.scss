@@ -1,0 +1,10 @@
+@import "./views/vars.scss";
+
+.logo {
+	border: 2px solid transparent;
+	border-image: linear-gradient(180deg, $purple 0%, $g-blue 100%);
+	border-image-slice: 1;
+	border-radius: 50%;
+	width: 40px;
+	height: 40px;
+}
