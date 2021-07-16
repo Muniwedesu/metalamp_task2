@@ -1,0 +1,32 @@
+@import "./vars.scss";
+
+.button {
+  
+	font-family: Montserrat, Arial, sans-serif;
+  border: none;
+  border-radius: 22px;
+  text-transform: uppercase;
+  height: 34px;
+  
+  &:hover {
+    h3 {
+      color: #000;
+    }
+  }
+  &_filled {
+    padding: 10px 20px;
+    background: $grad-purple;
+    height: 34px;
+    h3 {
+      color: #fff;
+    }
+  }
+  &_outlined {
+    padding: 6px 20px;
+    border: 2px solid $purple;
+    background-color: #fff;
+    h3 {
+      color: $purple;
+    }
+  }
+}
