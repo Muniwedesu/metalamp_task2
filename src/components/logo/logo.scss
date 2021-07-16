@@ -1,10 +1,20 @@
-@import "./views/vars.scss";
+@import "./vars.scss";
 
 .logo {
-	border: 2px solid transparent;
-	border-image: linear-gradient(180deg, $purple 0%, $g-blue 100%);
-	border-image-slice: 1;
-	border-radius: 50%;
-	width: 40px;
-	height: 40px;
+	width: 140px;
+	display: grid;
+	grid-template-columns: 40px 1fr;
+	gap: 40px;
+	padding: 15px 0px;
+	&__image {
+		box-sizing: border-box;
+		border-radius: 50%;
+		width: 40px;
+		height: 40px;
+	}
+	&__text{
+		display: flex;
+		width: 60px;
+		margin: auto;
+	}
 }
