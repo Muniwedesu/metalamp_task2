@@ -5,5 +5,8 @@ $dark-25: rgba(31, 32, 65, 0.25);
 $dark-05: rgba(31, 32, 65, 0.05);
 
 $purple: #bc9cff; //primary
-$g-blue: #8ba4f9;
+$blue: #8ba4f9;
 $green: #6fcf97; //secondary
+
+$grad-purple: linear-gradient(180deg, $purple 0%, $blue 100%);
+$grad-green: linear-gradient(180deg, $green 0%, $blue 100%);

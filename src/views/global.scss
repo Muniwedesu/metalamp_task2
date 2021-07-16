@@ -5,41 +5,60 @@
 	font-family: Montserrat, Arial, sans-serif;
 	font-style: normal;
 	font-size: 14px;
-	line-height: 14px; //or 171%
+	line-height: 24px; //or 171%
 }
 body {
 	margin: 0;
 	color: $dark-50;
+	background-color: #f4f4f6;
 }
-h1 {
+p {
+	color: $dark-75;
+}
+h1,h2,h3 {
+	color: $dark-75;
+	font-weight: bold;
 	margin: 0;
+}
+
+h1{
 	font-size: 24px;
 	line-height: 29px;
-	font-weight: 700;
 }
-h2 {
-	margin: 0;
+h2{
 	font-size: 19px;
 	line-height: 23px;
-	font-weight: 700;
 }
-h3 {
-	margin: 0;
+h3{
 	font-size: 12px;
 	line-height: 15px;
-	font-weight: bold;
 	text-transform: uppercase;
 }
+
 ul { //or is it used for all text?
 	padding: 0;
+}
+
+li {
+	list-style: none;
+	margin: 20px 0px;
 }
 
 .container {
 	margin: auto;
 	max-width: 1080px;
 }
-
-
+a {
+	text-decoration: none;
+	color: inherit;
+	color: $dark-50;
+}
+a:hover {
+	text-decoration: line-through;
+}
+a:active {
+	text-decoration: line-through;
+}
 @font-face {
 	font-family: 'Montserrat';
 	src: url('../assets/fonts/Montserrat-Regular.eot');
