@@ -4,7 +4,7 @@ const HtmlWebpackPlugin = require("html-webpack-plugin");
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const TerserPlugin = require("terser-webpack-plugin");
 // const { node } = require("webpack");
-const sassIncludes = [ "src/" ];
+const sassIncludes = [ "src/views/", "src/assets/" ];
 
 module.exports = {
 	entry        : "./src/app.js",
@@ -32,6 +32,10 @@ module.exports = {
 						}
 					}
 				]
+			},
+			{
+				test: /\.(woff|woff2|eot|ttf|otf)$/i,
+				type: "asset/resource"
 			}
 		]
 	},
