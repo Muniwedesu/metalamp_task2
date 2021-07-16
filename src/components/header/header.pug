@@ -1,19 +1,36 @@
+include ../button/button.pug
+//listItem("Label", "Items inside sublist as array", ...any additional mods)
+
+mixin listItem(label, items, ...classes)
+  - var list_c = classes.map(x => `inline-list__item_${x}`)
+    li(class=["inline-list__item", ...list_c])
+      a(href="#")= label
+      if (items)
+        ul.dropdown-list
+          //review these guys
+          each item in items
+            li.dropdown-list__item
+              a= item
+
 header.header
-  //- тут нужно сделать сетку и разместить все эти элементы в строке
-  include ../logo/logo.pug
-  ul.inline-list
-    li.inline-list__item О нас
-    li.inline-list__item Услуги
-      ul.d-none
-        li 1
-        li 2
-        li 3
-    li.inline-list__item Вакансии
-    li.inline-list__item Новости
-    li.inline-list__item Соглашения
-      ul.d-none
-        li 1
-        li 2
-        li 3
-  button Войти
-  button Зарегистрироваться
+  .container
+    .header__body
+      .header__logo
+        include ../logo/logo.pug
+      //could make this a block component but it'll be overcomplicated
+      ul.inline-list
+        +listItem("О нас", [], "selected")
+        +listItem( "Услуги",  ["Красота и здоровье","Клуб","Экскурсии","Концерты"], "closed")
+        +listItem("Вакансии")
+        +listItem("Новости")
+        +listItem("Соглашения", [1,2,3], "closed")
+      //поменять кнопки 
+      .header__buttons
+        +button("Войти", "outlined")
+        +button("Зарегистрироваться", "filled")
+
+//- script. 
+//-   let list = document.querySelector(".dropdown-list_closed");
+//-   list.addEventListener("click", (e)=>{
+//-     list.classList.toggle(".dropdown-list_closed");
+//-   })
