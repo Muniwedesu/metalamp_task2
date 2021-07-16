@@ -4,7 +4,7 @@ const HtmlWebpackPlugin = require("html-webpack-plugin");
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const TerserPlugin = require("terser-webpack-plugin");
 // const { node } = require("webpack");
-const sassIncludes = [ "src/views/", "src/assets/" ];
+const sassIncludes = [ "src/views/" ];
 
 module.exports = {
 	entry        : "./src/app.js",
@@ -57,6 +57,11 @@ module.exports = {
 		new HtmlWebpackPlugin({
 			filename : "search.html",
 			template : "src/views/search/search.pug",
+			minify   : false
+		}),
+		new HtmlWebpackPlugin({
+			filename : "ui.html",
+			template : "src/views/ui.pug",
 			minify   : false
 		}),
 		new MiniCssExtractPlugin()
