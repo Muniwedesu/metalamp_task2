@@ -1,3 +1,4 @@
+
 $dark: #1f2041;
 $dark-75: rgba(31, 32, 65, 0.75);
 $dark-50: rgba(31, 32, 65, 0.5);
@@ -10,3 +11,30 @@ $green: #6fcf97; //secondary
 
 $grad-purple: linear-gradient(180deg, $purple 0%, $blue 100%);
 $grad-green: linear-gradient(180deg, $green 0%, $blue 100%);
+
+@mixin fontStyle($color, $weight) {
+	color: $color;
+	font-weight: $weight;
+}
+
+@mixin setColor($color) {
+  @if $color != 0 {
+    color: $color;
+  }
+}
+@mixin h1($color: 0) {
+	font-size: 24px;
+	line-height: 29px;
+  @include setColor($color);
+}
+@mixin h2($color: 0) {
+	font-size: 19px;
+	line-height: 23px;
+  @include setColor($color);
+}
+@mixin h3($color: 0) {
+	font-size: 12px;
+	line-height: 15px;
+	text-transform: uppercase;
+  @include setColor($color);
+}

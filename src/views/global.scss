@@ -14,10 +14,9 @@ body {
 }
 p {
 	color: $dark-75;
+	margin: 0;
 }
 h1,h2,h3 {
-	color: $dark-75;
-	font-weight: bold;
 	margin: 0;
 }
 
@@ -37,11 +36,11 @@ h3{
 
 ul { //or is it used for all text?
 	padding: 0;
+	margin: 0;
 }
 
 li {
 	list-style: none;
-	margin: 20px 0px;
 }
 
 .container {
@@ -49,9 +48,14 @@ li {
 	max-width: 1080px;
 }
 a {
+	display: block;
+	padding: 8px 0px;
+	margin: 4px 0px;
 	text-decoration: none;
 	color: inherit;
 	color: $dark-50;
+	white-space: nowrap;
+	// border: 1px dotted blue;
 }
 a:hover {
 	text-decoration: line-through;
@@ -75,3 +79,26 @@ a:active {
 	font-style: normal;
 }
 
+//used only in ui-kit
+.ui-kit-elements {
+	> * {
+	margin-top: 140px;
+	}
+	&__header-footer > * {
+		margin: 50px 0px;
+	}
+	&__cards  {
+		margin-top: 110px;
+		margin-left: 100px;
+		margin-right: 100px;
+		display: grid;
+		grid-template-columns: 380px 380px 380px;
+		gap: 40px;
+		&-col > *{
+			margin-bottom: 40px;
+		}
+	}
+	&__cards > * {
+		margin: 40px;
+	}
+}
