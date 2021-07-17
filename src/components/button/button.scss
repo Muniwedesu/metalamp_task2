@@ -1,12 +1,13 @@
 @import "./vars.scss";
 
 .button {
-  
+  display: block;
+  width: 100%;
 	font-family: Montserrat, Arial, sans-serif;
   border: none;
   border-radius: 22px;
   text-transform: uppercase;
-  height: 34px;
+  height: 44px;
   
   &:hover {
     h3 {
@@ -16,7 +17,6 @@
   &_filled {
     padding: 10px 20px;
     background: $grad-purple;
-    height: 34px;
     h3 {
       color: #fff;
     }
