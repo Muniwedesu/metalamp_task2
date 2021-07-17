@@ -1,0 +1,62 @@
+include ../button/button.pug
+
+//- .big-card
+//-   .search__content
+//-     .search-heading
+//-       h1 Найдём номера под ваши пожелания
+//-     .search-form
+//-       .search-form__date
+//-         .search-form__arrival
+//-           //mixin?
+//-           label(for="arrival") Прибытие
+//-           input(id="arrival", type="", name="arrival")
+//-         .search-form__departure
+//-           label(for="departure") Выезд
+//-           input(id="departure", type="", name="departure")
+//-       .search-form__guests
+//-         label(for="guests") Гости
+//-         input(id="guests")
+//-       .search-form__button
+//-         +button("Подобрать номер", "filled")
+
+.big-card
+  .search__content
+    .search-heading__result
+      //think of this class name
+      .search-heading__label 
+        p.search-heading__no.
+          <sub class="sub">№</sub>888 
+          
+        p.search-heading__type люкс
+      .search-heading__price
+        p.search-heading__price-tag 9 990P
+        p.search-heading__daily в сутки
+
+    .search-form
+      .search-form__date
+        .search-form__arrival
+          //mixin?
+          label(for="arrival") Прибытие
+          input(id="arrival", type="", name="arrival")
+        .search-form__departure
+          label(for="departure") Выезд
+          input(id="departure", type="", name="departure")
+      .search-form__guests
+        label(for="guests") Гости
+        input(id="guests")
+      ul.summary
+        li.summary__item
+          p.summary__key 9 990Р х 4 суток 
+          p.summary__value 39 960P
+        li.summary__item 
+          p.summary__key Сбор за услуги: скидка O
+          p.summary__value 2179Р 0Р
+        li.summary__item 
+          p.summary__key Сбор за дополнительные услуги O
+          p.summary__value 300Р
+        li.summary__total
+          p.summary__total_key Итого
+          p.summary__total_break
+          p.summary__total_value 38 081Р
+      .search-form__button
+        +button("Подобрать номер", "filled")

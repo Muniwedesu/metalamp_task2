@@ -1,0 +1,91 @@
+@import "./vars.scss";
+
+.big-card {
+  padding: min(calc(100vw - 380px), 30px);
+  padding-top: 40px;
+  padding-bottom: 30px;
+  background-color: #fff;
+  max-width: 320px;
+  min-width: 320px;
+  
+}
+.search-form {
+  &__date {
+    margin-top: 20px;
+    display: grid;
+    grid-template-columns: 150px 1fr;
+    gap: 20px;
+  }
+  &__guests {
+    margin-top: 20px;
+  }
+  &__button {
+    margin-top: 30px;
+  }
+}
+
+.search-heading {
+  &__result {
+    display: flex;
+    justify-content: space-between;
+  }
+  &__label {
+    display: flex;
+    align-items: flex-end;
+  }
+  &__price {
+    display: flex;
+    align-items: flex-end;
+  }
+  &__price-tag {
+    @include fontStyle($dark-75, bold);
+  }
+  &__no{
+    @include h2;
+    @include fontStyle($dark-75, bold);
+  }
+  &__type {
+    @include h3;
+    @include fontStyle($purple, bold);
+  }
+}
+.summary {
+  margin-top: 20px;
+  &__item {
+    display: flex;
+    justify-content: space-between;
+    margin: 10px 0;
+  }
+  &__key{
+    margin: 0;
+  }
+  &__value{
+    margin: 0;
+  }
+  &__total {
+    display: flex;
+    justify-content: space-between;
+    //think of a better way to arrange this
+    @include h2;
+    @include fontStyle($dark-75, bold)
+  }
+}
+
+label {
+	display: block;
+	color: $dark-75;
+	font-weight: bold;
+	font-size: 12px;
+	line-height: 15px;
+	text-transform: uppercase;
+}
+input {
+  width: 100%;
+	box-sizing: border-box;
+	display: block;
+	height: 44px;
+	margin-top: 5px;
+	border: 1px solid $dark-25;
+	border-radius: 4px;
+	padding: 0px;
+}
