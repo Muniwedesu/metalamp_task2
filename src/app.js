@@ -7,3 +7,4 @@ function requireAll(r) {
 
 //adds all .js files(which load styles) in components to context
 requireAll(require.context("./components", true, /\.js$/, "sync"));
+requireAll(require.context("./views", true, /\.js$/, "sync"));
