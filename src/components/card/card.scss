@@ -13,7 +13,7 @@
   &__date {
     margin-top: 20px;
     display: grid;
-    grid-template-columns: 150px 1fr;
+    grid-template-columns: repeat(2, 1fr);
     gap: 20px;
   }
   &__guests {
@@ -69,23 +69,4 @@
     @include h2;
     @include fontStyle($dark-75, bold)
   }
-}
-
-label {
-	display: block;
-	color: $dark-75;
-	font-weight: bold;
-	font-size: 12px;
-	line-height: 15px;
-	text-transform: uppercase;
-}
-input {
-  width: 100%;
-	box-sizing: border-box;
-	display: block;
-	height: 44px;
-	margin-top: 5px;
-	border: 1px solid $dark-25;
-	border-radius: 4px;
-	padding: 0px;
 }

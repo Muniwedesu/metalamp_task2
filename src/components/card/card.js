@@ -1,1 +1,1 @@
-import "./search.scss"
+import "./card.scss"
