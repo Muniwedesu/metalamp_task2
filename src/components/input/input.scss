@@ -1,0 +1,145 @@
+@import "./vars.scss";
+
+.label {
+	display: block;
+	color: $dark-75;
+	font-weight: bold;
+	font-size: 12px;
+	line-height: 15px;
+	text-transform: uppercase;
+	margin-bottom: 5px;
+}
+input.text-field{
+  width: 100%;
+	display: block;
+  box-sizing: border-box;
+  border: 1px solid $dark-25;
+	border-radius: 4px;
+	height: 44px;
+	padding: 0px;
+  color: $dark-50;
+  font-size: 14px;
+  line-height: 18px;
+  padding: 13px 15px;
+}
+
+
+input:hover, input:focus {
+  color: $dark-75;
+  border-color: $dark-50;
+}
+
+.dropdown {
+  display: flex;
+  background-color: transparent;
+  position: relative;
+  cursor: pointer;
+  &__input {
+    cursor: pointer;
+  }
+  &__icon {
+    box-sizing: border-box;
+  }
+  &:hover {
+    cursor: pointer;
+    color: $dark;
+    border-color: $dark;
+  }
+  &::after {
+    position: absolute;
+    font-family: "Material Icons";
+    content: "expand_more";
+    font-size: 24px;
+    padding: 10px;
+    box-sizing: border-box;
+    right: 0px;
+    width: 44px;
+    height: 44px;
+    pointer-events: none
+  }
+}
+
+.checkbox-group{
+  display: flex;
+  flex-direction: column;
+  &__name {
+    margin-bottom: 16px;
+    color: $dark-75;
+  }
+  &__row {
+    margin-bottom: 10px;
+    display: flex;
+    &:last-child {
+      margin-bottom: 0;
+    }
+  }
+  &__input {
+    appearance: none;
+    border: 1px solid $dark-50;
+    box-sizing: border-box;
+    flex-shrink: 0;
+    width: 20px;
+    height: 20px;  
+    display: block;
+    margin: 0;
+    margin-right: 10px;
+    border-radius: 4px;
+      
+    &::after {
+      content: "";
+    }
+    &:checked {
+      border-color: $purple;
+      & + .checkbox-group__icon {
+        display: block;
+        border: 1px solid red;
+      }
+    }
+
+    & + .checkbox-group__icon {
+      position: absolute;
+    }
+  }
+  &__label { 
+    display: block;
+    max-width: 192px;
+    font-size: 14px;
+    line-height: 18px;
+  }
+  &__icon {
+    position: absolute;
+  }
+}
+
+
+.radio-group {
+  display: flex;
+  flex-wrap: wrap;
+  
+  &__row {
+    display: flex;
+    margin-right: 20px;
+    align-items: flex-start;
+    &:last-child{
+      margin-right: 0;
+    }
+  }
+  margin-right: 20px;
+  &__input {
+    margin: 0;
+    margin-right: 10px;
+    width: 20px;
+    height: 20px;
+    //12x12
+    //margins are 10px everywhere
+  }
+  &__label {
+    font-size: 14px;
+    line-height: 18px;
+  }
+  &__name {
+    width: 100%;
+    margin-bottom: 16px;
+    color: $dark-75;
+  }
+}

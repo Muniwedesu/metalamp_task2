@@ -1,0 +1,70 @@
+mixin text(id, type, label, placeholder, classes)
+  - if (type === "sub") classes.append("")
+  div(class=classes)
+    label(for=id).label= label
+    //probably I shoud use text in any case anyway
+    input(id=id, type=type, name=id, placeholder=placeholder).text-field
+
+
+mixin dropdown(id, type, label, placeholder, ...classes)
+  div(class=[...classes])
+    label(for=id).label= label
+    //probably I shoud use text in any case anyway
+    .dropdown
+      input(id=id, type="text",  readonly="readonly", name=id, placeholder="placeholder" class="dropdown text-field")
+      div.dropdown__icon
+
+mixin checkboxGroup(name, labels, ids)
+  //-display flex col
+  .checkbox-group
+    h3.checkbox-group__name= name
+    //- idk but width should be fixed. inline blocks should be ok 
+    - for (let i = 0; i < labels.length; ++i)
+      .checkbox-group__row
+        //-need to have such name so it'll better represent element
+        input(id=ids[i] name=ids[i], type="checkbox").checkbox-group__input
+        +checkboxSvg()
+        label(for=ids[i]).checkbox-group__label= labels[i]
+
+mixin radioGroup(name, labels, ids, key)
+  //display flex or grid
+  .radio-group
+    h3.radio-group__name= name
+    - for (let i = 0; i < labels.length; ++i)
+      //- idk but width should be fixed. inline blocks should be ok 
+      .radio-group__row
+        //-this looks same as checkbox
+        input(id=ids[i] name=key type="radio").radio-group__input
+        label(for=ids[i]).radio-group__label= labels[i]
+        
+mixin toggleGroup(name, labels, ids)
+  //-display flex col
+  .toggle-group
+    h3.toggle-group__name= name
+    //- idk but width should be fixed. inline blocks should be ok 
+    - for (let i = 0; i < labels.length; ++i)
+      .toggle-group__row
+        //-need to have such name so it'll better represent element
+        input(id=ids[i] name=ids[i], type="checkbox").toggle-group__input
+        label(for=ids[i]).toggle-group__label= labels[i]
+
+mixin likes(name, amount, labels)
+  h3.label= name
+  label()= label
+  input(type="toggle")
+mixin rates(name, amount, labels)
+  .none
+
+
+
+mixin checkboxSvg()
+  svg(width="10" height="11" viewBox="0 0 10 11" fill="none" xmlns="http://www.w3.org/2000/svg").checkbox-group__icon
+          path(d="M1.46439 4.40768L5.70703 8.65032L4.29282 10.0645L0.0501771 5.82189L1.46439 4.40768Z" fill="url(#paint0_linear)")
+          path(d="M8.53546 2.99347L9.94967 4.40768L4.29282 10.0645L2.8786 8.65032L8.53546 2.99347Z" fill="url(#paint1_linear)")
+          defs
+            linearGradient(id="paint0_linear" x1="7.82835" y1="2.28636" x2="2.1715" y2="7.94321" gradientUnits="userSpaceOnUse")
+              stop(stop-color="#BC9CFF")
+              stop(offset="1" stop-color="#8BA4F9")
+            linearGradient(id="paint1_linear" x1="7.82835" y1="2.28636" x2="2.1715" y2="7.94321" gradientUnits="userSpaceOnUse")
+              stop(stop-color="#BC9CFF")
+              stop(offset="1" stop-color="#8BA4F9")
