@@ -1,0 +1,53 @@
+
+//used only in ui-kit
+.ui-kit-elements {
+	> * {
+	margin-top: 140px;
+	}
+	&__header-footer > * {
+		margin: 50px 0px;
+	}
+	&__cards  {
+		margin-top: 110px;
+		margin-left: 100px;
+		margin-right: 100px;
+		display: grid;
+		grid-template-columns: 380px 380px 380px;
+		gap: 40px;
+		&-col > *{
+			margin-bottom: 40px;
+		}
+	}
+	&__cards > * {
+		margin: 40px;
+	}
+}
+.ui-bg {
+  background-color: #fff;
+	width: 100vw;
+	height: 100vh;
+}
+.form-elements {
+  display: grid;
+	padding: 140px;
+  grid-template-columns: repeat(3, 320px);
+  gap: 126px;
+	&__column  {
+		// border: 1px dashed black;
+		// box-sizing: border-box;
+		display: flex;
+		flex-direction: column;
+		
+		& > * {
+			margin-bottom: 20px;
+		}
+	}
+	&__controls > * {
+		margin-bottom: 40px;
+	}
+	&__date-dropdowns{
+		display: grid;
+		grid-template-columns: repeat(2, 1fr);
+		gap: 20px;
+	}
+}

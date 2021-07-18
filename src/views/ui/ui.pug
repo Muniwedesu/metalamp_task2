@@ -1,0 +1,61 @@
+link(href="https://fonts.googleapis.com/icon?family=Material+Icons"
+      rel="stylesheet")
+
+.ui-kit-elements
+  //- .ui-kit-elements__header-footer
+  //-   include ../components/header/header.pug
+  //-   include ../components/footer/footer.pug
+
+include ../../components/card/card.pug
+//- .ui-kit-elements__cards
+//-   .ui-kit-elements__cards-col
+//-     +searchCard
+//-     +registrationCard
+//-   .ui-kit-elements__cards-col
+//-     +detailsCard
+//-     +loginCard
+//-   .ui-kit-elements__cards-col
+//-     +searchCard
+//-     +roomCard
+//-     +roomCard
+
+include ../../components/input/input.pug
+//- id, type, label, placeholder, ...classes
+.ui-bg
+  .form-elements
+    .form-elements__column
+      +text("","","text field", "Email")
+      +text("", "", "text field", "This is pretty awesome")
+      +dropdown("", "", "dropdown", "Сколько гостей")
+      +text("", "", "masked text field", "ДД.ММ.ГГГГ")
+      .form-elements__date-dropdowns
+        +dropdown("","","date Dropdown","ДД.ММ.ГГГГ")
+        +dropdown("","","date Dropdown","19.08.2019")
+      
+      +dropdown("","","filter date dropdown","19 авг - 23 авг")
+      +text("", "", "subscription text field", "Email")
+    div(class="form-elements__column form-elements__controls")
+      +checkboxGroup("Checkbox Buttons", 
+                    ["Можно курить", "Можно с питомцами", "Можно пригласить гостей (до 10 человек)"], 
+                    ["smoking_allowed", "pets_allowed", "guests_allowed"])
+      +radioGroup("Radio Buttons", 
+                 ["Мужчина", "Женщина"],
+                 ["male", "female"], 
+                 "gender")
+      +toggleGroup("Toggle", 
+                  ["Получать спецпредложения", "Получать спецпредложения"],
+                  ["receive_special", "not_receive_special"])
+                  
+      +likes("like button")
+      +rates("rate button")
+    .form-elements__column
+      //- +slider()
+      //- +button()
+      //- +button()
+      //- +button()
+      //- +button()
+      //- +button()
+      //- +button()
+      //- +button()
+      //- +pagination()
+      

@@ -14,7 +14,6 @@ body {
 }
 p {
 	color: $dark-75;
-	margin: 0;
 }
 h1,h2,h3 {
 	margin: 0;
@@ -32,7 +31,19 @@ h3{
 	font-size: 12px;
 	line-height: 15px;
 	text-transform: uppercase;
+	&.label {
+		color: $dark;
+	}
+	.cta {
+		&_white {
+			color: #fff;
+		}
+		
+	}
 }
+
+
+
 
 ul { //or is it used for all text?
 	padding: 0;
@@ -77,28 +88,4 @@ a:active {
 	 src: url('../assets/fonts/Montserrat-Bold.woff') format('woff'), url('../assets/fonts/Montserrat-Bold.ttf') format('truetype'), url('../assets/fonts/Montserrat-Bold.svg') format('svg');
 	font-weight: bold;
 	font-style: normal;
-}
-
-//used only in ui-kit
-.ui-kit-elements {
-	> * {
-	margin-top: 140px;
-	}
-	&__header-footer > * {
-		margin: 50px 0px;
-	}
-	&__cards  {
-		margin-top: 110px;
-		margin-left: 100px;
-		margin-right: 100px;
-		display: grid;
-		grid-template-columns: 380px 380px 380px;
-		gap: 40px;
-		&-col > *{
-			margin-bottom: 40px;
-		}
-	}
-	&__cards > * {
-		margin: 40px;
-	}
 }
