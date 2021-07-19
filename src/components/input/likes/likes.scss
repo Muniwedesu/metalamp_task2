@@ -1,0 +1,58 @@
+.likes {
+  display: block;
+  position: relative;
+  &__input {
+    //this is a common part
+    appearance: none;
+    box-sizing: border-box;
+    border: 1px solid $dark-25;
+    width: 40px;
+    height: 20px;
+    display: block;
+    margin: 0;
+    border-radius: 10px;
+    position: relative;
+    transition: 0.1s;
+    &:checked {
+      border: 1px solid $purple;
+      &::after {
+        content: "favorite";
+        background: $grad-purple;
+        background-clip: text;
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+      }
+      & + label {
+        color: $purple;
+      }
+    }
+    &::after {
+      transition: 0.08s ease-out;
+      //or 3px
+      font-family: "Material Icons";
+      content: "favorite_border";
+      position: absolute;
+      font-size: 10px;
+      top: -1px;
+      left: -1px;
+      width: 20px;
+      text-align: center;
+      height: 20px;
+      line-height: 20px;
+      background: linear-gradient($dark-25, $dark-25);
+      background-clip: text;
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+  }
+  &__label {
+    right: 0px;
+    top: 4px;
+    text-align: left;
+    width: 20px;
+    margin: auto;
+    position: absolute;
+    font-size: 10px;
+    line-height: 12px;
+  }
+}

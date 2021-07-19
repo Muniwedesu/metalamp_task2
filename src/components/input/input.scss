@@ -7,24 +7,33 @@
 @import "./likes/likes.scss";
 @import "./rates/rates.scss";
 
-
-.label {
-	display: block;
-	color: $dark-75;
-	font-weight: bold;
-	font-size: 12px;
-	line-height: 15px;
-	text-transform: uppercase;
-	margin-bottom: 5px;
-}
-input.text-field{
+.controls-label {
+  display: block;
+  color: $dark-75;
+  font-weight: bold;
+  font-size: 12px;
+  line-height: 15px;
+  text-transform: uppercase;
+  padding-bottom: 5px;
   width: 100%;
-	display: block;
+}
+.label {
+  display: block;
+  color: $dark-75;
+  font-weight: bold;
+  font-size: 12px;
+  line-height: 15px;
+  text-transform: uppercase;
+  margin-bottom: 5px;
+}
+input.text-field {
+  width: 100%;
+  display: block;
   box-sizing: border-box;
   border: 1px solid $dark-25;
-	border-radius: 4px;
-	height: 44px;
-	padding: 0px;
+  border-radius: 4px;
+  height: 44px;
+  padding: 0px;
   color: $dark-50;
   font-size: 14px;
   line-height: 18px;
@@ -35,7 +44,8 @@ input {
   appearance: none;
 }
 
-input:hover, input:focus {
+input:hover,
+input:focus {
   color: $dark-75;
   border-color: $dark-50;
 }

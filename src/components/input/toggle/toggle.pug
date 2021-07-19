@@ -1,0 +1,8 @@
+mixin toggleGroup(name, labels, ids, addName = false)
+  fieldset.toggle-group
+    if (addName)
+      legend.toggle-group__name= name
+    - for (let i = 0; i < labels.length; ++i)
+      .toggle-group__row
+        input(id=ids[i] name=ids[i], type="checkbox").toggle-group__input
+        label(for=ids[i]).toggle-group__label= labels[i]

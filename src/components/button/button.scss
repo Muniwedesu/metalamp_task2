@@ -1,32 +1,45 @@
 @import "./vars.scss";
 
 .button {
-  display: block;
+  appearance: none;
+  display: flex;
   width: 100%;
-	font-family: Montserrat, Arial, sans-serif;
   border: none;
   border-radius: 22px;
   text-transform: uppercase;
   height: 44px;
-  
+  background: $grad-purple;
+  justify-content: center;
+  align-items: center;
+  color: #fff;
+  @include setFont(#fff, 12px, 15px, bold, uppercase);
   &:hover {
-    h3 {
-      color: #000;
-    }
-  }
-  &_filled {
-    padding: 10px 20px;
-    background: $grad-purple;
-    h3 {
-      color: #fff;
-    }
+    color: #000;
   }
   &_outlined {
-    padding: 6px 20px;
-    border: 2px solid $purple;
-    background-color: #fff;
-    h3 {
-      color: $purple;
+    color: $purple;
+    background: rgba(0, 0, 0, 0);
+    border: 2px solid transparent;
+    background: linear-gradient(white, white), $grad-purple;
+    background-origin: border-box;
+    background-clip: padding-box, border-box;
+  }
+  &_text {
+    background: none;
+    color: $purple;
+    padding: 0;
+    height: 15px;
+    &:disabled {
+      color: $dark;
+      opacity: 0.5;
+    }
+  }
+  &_with-arrow {
+    position: relative;
+    &::after {
+      font-family: "Material Icons";
+      content: "arrow_forward";
+      position: absolute;
     }
   }
 }

@@ -1,4 +1,4 @@
-.checkbox-group{
+.checkbox-group {
   display: flex;
   flex-direction: column;
   &__name {
@@ -18,27 +18,26 @@
     box-sizing: border-box;
     flex-shrink: 0;
     width: 20px;
-    height: 20px;  
+    height: 20px;
     display: block;
     margin: 0;
     border-radius: 4px;
-      
-    &::after {
-      content: "";
-    }
+    position: relative;
     &:checked {
       border-color: $purple;
       & + .checkbox-group__icon {
-        display: block;
-        border: 1px solid red;
+        visibility: visible;
       }
     }
 
     & + .checkbox-group__icon {
+      visibility: hidden;
       position: absolute;
+      padding-top: 4px;
+      padding-left: 5px;
     }
   }
-  &__label { 
+  &__label {
     padding: 0 10px;
     display: block;
     max-width: 192px;

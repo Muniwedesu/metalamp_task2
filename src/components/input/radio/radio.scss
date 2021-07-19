@@ -5,7 +5,7 @@
     display: flex;
     margin-right: 20px;
     align-items: flex-start;
-    &:last-child{
+    &:last-child {
       margin-right: 0;
     }
   }
@@ -18,11 +18,10 @@
     position: relative;
     //12x12
     //margins are 10px everywhere
-    &:checked > ::after {
-      display: block;
-      background-color: black;
+    &:checked::after {
+      visibility: visible;
     }
-    &::after{
+    &::after {
       //or 3px
       top: 3px;
       left: 3px;
@@ -32,6 +31,7 @@
       height: 12px;
       background: $grad-purple;
       border-radius: 50%;
+      visibility: hidden;
     }
   }
   &__label {

@@ -7,35 +7,7 @@ include ./likes/likes.pug
 include ./rates/rates.pug
 
 
-mixin toggleGroup(name, labels, ids)
-  //-display flex col
-  fieldset.toggle-group
-    legend.toggle-group__name= name
-    //- idk but width should be fixed. inline blocks should be ok 
-    - for (let i = 0; i < labels.length; ++i)
-      .toggle-group__row
-        //-need to have such name so it'll better represent element
-        input(id=ids[i] name=ids[i], type="checkbox").toggle-group__input
-        label(for=ids[i]).toggle-group__label= labels[i]
 
-mixin likes(name, amount, labels)
-  h3.label= name
-  label()= label
-  input(type="toggle")
 
 mixin rates(name, amount, labels)
   .none
-
-
-
-mixin checkboxSvg()
-  svg(width="10" height="11" viewBox="0 0 10 11" fill="none" xmlns="http://www.w3.org/2000/svg").checkbox-group__icon
-          path(d="M1.46439 4.40768L5.70703 8.65032L4.29282 10.0645L0.0501771 5.82189L1.46439 4.40768Z" fill="url(#paint0_linear)")
-          path(d="M8.53546 2.99347L9.94967 4.40768L4.29282 10.0645L2.8786 8.65032L8.53546 2.99347Z" fill="url(#paint1_linear)")
-          defs
-            linearGradient(id="paint0_linear" x1="7.82835" y1="2.28636" x2="2.1715" y2="7.94321" gradientUnits="userSpaceOnUse")
-              stop(stop-color="#BC9CFF")
-              stop(offset="1" stop-color="#8BA4F9")
-            linearGradient(id="paint1_linear" x1="7.82835" y1="2.28636" x2="2.1715" y2="7.94321" gradientUnits="userSpaceOnUse")
-              stop(stop-color="#BC9CFF")
-              stop(offset="1" stop-color="#8BA4F9")

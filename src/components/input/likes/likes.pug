@@ -1,0 +1,5 @@
+mixin likes(name, id, addName = false, value = 0)
+  //-put base element in a separate class/mixin
+  .likes
+    input(id=id name=id, type="checkbox").likes__input
+    label(for=id).likes__label= value

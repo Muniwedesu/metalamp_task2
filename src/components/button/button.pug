@@ -1,8 +1,10 @@
 //- pass content and type in the constructor or whatever 
-mixin button(label, type)
-  if (type === "outlined")
-    button(class=["button", "button_" + type])
-      h3= label
-  else if(type ==="filled")
-    button(class=["button", "button_" + type])
-      h3= label
+mixin button(label, classes = [], state = null)
+  if (!classes)
+    button(class=["button"])
+      =label
+  else
+    - classes = []
+    - type = classes.map(x => "button_" + x)
+      button(class=["button"], class=type disabled= state ? disabled : "")
+        =label
