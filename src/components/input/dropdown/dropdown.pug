@@ -1,0 +1,7 @@
+mixin dropdown(id, type, label, placeholder, ...classes)
+  div(class=[...classes])
+    label(for=id).label= label
+    //probably I shoud use text in any case anyway
+    .dropdown
+      input(id=id, type="text",  readonly="readonly", name=id, placeholder="placeholder" class="dropdown text-field")
+      div.dropdown__icon

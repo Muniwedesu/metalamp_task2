@@ -1,0 +1,6 @@
+mixin text(id, type, label, placeholder, classes)
+  - if (type === "sub") classes.append("")
+  div(class=classes)
+    label(for=id).label= label
+    //probably I shoud use text in any case anyway
+    input(id=id, type=type, name=id, placeholder=placeholder).text-field

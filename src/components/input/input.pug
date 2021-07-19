@@ -1,46 +1,16 @@
-mixin text(id, type, label, placeholder, classes)
-  - if (type === "sub") classes.append("")
-  div(class=classes)
-    label(for=id).label= label
-    //probably I shoud use text in any case anyway
-    input(id=id, type=type, name=id, placeholder=placeholder).text-field
+include ./text/text.pug
+include ./dropdown/dropdown.pug
+include ./radio/radio.pug
+include ./checkbox/checkbox.pug
+include ./toggle/toggle.pug
+include ./likes/likes.pug
+include ./rates/rates.pug
 
 
-mixin dropdown(id, type, label, placeholder, ...classes)
-  div(class=[...classes])
-    label(for=id).label= label
-    //probably I shoud use text in any case anyway
-    .dropdown
-      input(id=id, type="text",  readonly="readonly", name=id, placeholder="placeholder" class="dropdown text-field")
-      div.dropdown__icon
-
-mixin checkboxGroup(name, labels, ids)
-  //-display flex col
-  .checkbox-group
-    h3.checkbox-group__name= name
-    //- idk but width should be fixed. inline blocks should be ok 
-    - for (let i = 0; i < labels.length; ++i)
-      .checkbox-group__row
-        //-need to have such name so it'll better represent element
-        input(id=ids[i] name=ids[i], type="checkbox").checkbox-group__input
-        +checkboxSvg()
-        label(for=ids[i]).checkbox-group__label= labels[i]
-
-mixin radioGroup(name, labels, ids, key)
-  //display flex or grid
-  .radio-group
-    h3.radio-group__name= name
-    - for (let i = 0; i < labels.length; ++i)
-      //- idk but width should be fixed. inline blocks should be ok 
-      .radio-group__row
-        //-this looks same as checkbox
-        input(id=ids[i] name=key type="radio").radio-group__input
-        label(for=ids[i]).radio-group__label= labels[i]
-        
 mixin toggleGroup(name, labels, ids)
   //-display flex col
-  .toggle-group
-    h3.toggle-group__name= name
+  fieldset.toggle-group
+    legend.toggle-group__name= name
     //- idk but width should be fixed. inline blocks should be ok 
     - for (let i = 0; i < labels.length; ++i)
       .toggle-group__row
@@ -52,6 +22,7 @@ mixin likes(name, amount, labels)
   h3.label= name
   label()= label
   input(type="toggle")
+
 mixin rates(name, amount, labels)
   .none
 

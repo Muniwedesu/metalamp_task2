@@ -1,0 +1,11 @@
+mixin checkboxGroup(name, labels, ids)
+  //-display flex col
+  fieldset.checkbox-group
+    legend.checkbox-group__name= name
+    //- idk but width should be fixed. inline blocks should be ok 
+    - for (let i = 0; i < labels.length; ++i)
+      .checkbox-group__row
+        //-need to have such name so it'll better represent element
+        input(id=ids[i] name=ids[i], type="checkbox").checkbox-group__input
+        +checkboxSvg()
+        label(for=ids[i]).checkbox-group__label= labels[i]

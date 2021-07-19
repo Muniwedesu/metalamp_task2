@@ -1,0 +1,30 @@
+
+.dropdown {
+  display: flex;
+  background-color: transparent;
+  position: relative;
+  cursor: pointer;
+  &__input {
+    cursor: pointer;
+  }
+  &__icon {
+    box-sizing: border-box;
+  }
+  &:hover {
+    cursor: pointer;
+    color: $dark;
+    border-color: $dark;
+  }
+  &::after {
+    position: absolute;
+    font-family: "Material Icons";
+    content: "expand_more";
+    font-size: 24px;
+    padding: 10px;
+    box-sizing: border-box;
+    right: 0px;
+    width: 44px;
+    height: 44px;
+    pointer-events: none
+  }
+}

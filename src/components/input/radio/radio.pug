@@ -1,0 +1,8 @@
+mixin radioGroup(name, labels, ids, key)
+  fieldset.radio-group
+    legend.radio-group__name= name
+    - for (let i = 0; i < labels.length; ++i)
+      .radio-group__row
+        input(id=ids[i] name=key type="radio").radio-group__input
+        label(for=ids[i]).radio-group__label= labels[i]
+        

@@ -1,0 +1,51 @@
+.checkbox-group{
+  display: flex;
+  flex-direction: column;
+  &__name {
+    margin-bottom: 16px;
+    color: $dark-75;
+  }
+  &__row {
+    margin-bottom: 10px;
+    display: flex;
+    &:last-child {
+      margin-bottom: 0;
+    }
+  }
+  &__input {
+    appearance: none;
+    border: 1px solid $dark-50;
+    box-sizing: border-box;
+    flex-shrink: 0;
+    width: 20px;
+    height: 20px;  
+    display: block;
+    margin: 0;
+    border-radius: 4px;
+      
+    &::after {
+      content: "";
+    }
+    &:checked {
+      border-color: $purple;
+      & + .checkbox-group__icon {
+        display: block;
+        border: 1px solid red;
+      }
+    }
+
+    & + .checkbox-group__icon {
+      position: absolute;
+    }
+  }
+  &__label { 
+    padding: 0 10px;
+    display: block;
+    max-width: 192px;
+    font-size: 14px;
+    line-height: 18px;
+  }
+  &__icon {
+    position: absolute;
+  }
+}
