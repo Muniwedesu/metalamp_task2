@@ -21,7 +21,9 @@ h2,
 h3 {
   margin: 0;
 }
-
+button {
+  appearance: none;
+}
 .button__label {
   font-family: "Montserrat";
   @include setFont(inherit, 12px, 15px, bold, uppercase);
