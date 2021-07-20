@@ -1,7 +1,16 @@
-mixin dropdown(id, type, label, placeholder, ...classes)
-  div(class=[...classes])
+mixin dropdown(id, type, label, placeholder, menuItems, state)
+  div
     label(for=id).label= label
     //probably I shoud use text in any case anyway
     .dropdown
-      input(id=id, type="text",  readonly="readonly", name=id, placeholder="placeholder" class="dropdown text-field")
+      input(id=id, type="text",  readonly="readonly", name=id, placeholder=placeholder class=`text-field dropdown ${state ? 'dropdown_' + state : ""}` )
       div.dropdown__icon
+      if (menuItems)
+        ul(class=`dropdown-menu ${state ? 'dropdown-menu_' + state: ""}`)
+          each item in menuItems
+            li.dropdown-menu__row
+              p(class="label dropdown-menu__text")= item.name
+              .dropdown-menu__controls
+                button(class="button dropdown-menu__button" disabled=item.value === 0) -
+                p(class="label dropdown-menu__text")= item.value
+                button(class="button dropdown-menu__button" ) +
