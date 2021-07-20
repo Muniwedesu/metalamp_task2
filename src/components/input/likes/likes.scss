@@ -1,6 +1,7 @@
 .likes {
   display: block;
   position: relative;
+  width: 40px;
   &__input {
     //this is a common part
     appearance: none;
@@ -20,7 +21,6 @@
         background: $grad-purple;
         background-clip: text;
         -webkit-background-clip: text;
-        -webkit-text-fill-color: transparent;
       }
       & + label {
         color: $purple;
@@ -29,19 +29,20 @@
     &::after {
       transition: 0.08s ease-out;
       //or 3px
+      // border: 1px solid black;
       font-family: "Material Icons";
       content: "favorite_border";
       position: absolute;
-      font-size: 10px;
-      top: -1px;
-      left: -1px;
-      width: 20px;
+      font-size: 10px; //this
+      line-height: 8px; //this
+      top: 30%;
+      right: 64%;
+      width: 1em;
       text-align: center;
-      height: 20px;
-      line-height: 20px;
       background: linear-gradient($dark-25, $dark-25);
       background-clip: text;
       -webkit-background-clip: text;
+      color: transparent;
       -webkit-text-fill-color: transparent;
     }
   }
