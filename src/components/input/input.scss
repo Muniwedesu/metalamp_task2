@@ -1,11 +1,4 @@
 @import "./vars.scss";
-@import "./text/text.scss";
-@import "./dropdown/dropdown.scss";
-@import "./radio/radio.scss";
-@import "./checkbox/checkbox.scss";
-@import "./toggle/toggle.scss";
-@import "./likes/likes.scss";
-@import "./rates/rates.scss";
 
 .controls-label {
   display: block;
@@ -26,7 +19,7 @@
   text-transform: uppercase;
   margin-bottom: 5px;
 }
-input.text-field {
+.text-field {
   width: 100%;
   display: block;
   box-sizing: border-box;
@@ -63,3 +56,10 @@ fieldset {
   padding: 0;
   border: none;
 }
+@import "./text/text.scss";
+@import "./dropdown/dropdown.scss";
+@import "./radio/radio.scss";
+@import "./checkbox/checkbox.scss";
+@import "./toggle/toggle.scss";
+@import "./likes/likes.scss";
+@import "./rates/rates.scss";
