@@ -1,53 +1,81 @@
-
 //used only in ui-kit
 .ui-kit-elements {
-	> * {
-	margin-top: 140px;
-	}
-	&__header-footer > * {
-		margin: 50px 0px;
-	}
-	&__cards  {
-		margin-top: 110px;
-		margin-left: 100px;
-		margin-right: 100px;
-		display: grid;
-		grid-template-columns: 380px 380px 380px;
-		gap: 40px;
-		&-col > *{
-			margin-bottom: 40px;
-		}
-	}
-	&__cards > * {
-		margin: 40px;
-	}
+  > * {
+    margin-top: 140px;
+  }
+  &__header-footer > * {
+    margin: 50px 0px;
+  }
+  &__cards {
+    margin-top: 110px;
+    margin-left: 100px;
+    margin-right: 100px;
+    display: grid;
+    grid-template-columns: 380px 380px 380px;
+    gap: 40px;
+    &-col > * {
+      margin-bottom: 40px;
+    }
+  }
+  &__cards > * {
+    margin: 40px;
+  }
 }
 .ui-bg {
   background-color: #fff;
-	width: 100vw;
-	height: 100vh;
+  width: 100vw;
+  height: 100vh;
 }
 .form-elements {
   display: grid;
-	padding: 140px;
-  grid-template-columns: repeat(3, 320px);
+  padding: 140px;
+  grid-template-columns: 320px 268px 320px;
   gap: 126px;
-	&__column  {
-		// border: 1px dashed black;
-		// box-sizing: border-box;
-		display: flex;
-		flex-direction: column;
-		
-		& > * {
-			margin-bottom: 20px;
-		}
-	}
-	&__controls > * {
-		margin-bottom: 40px;
-	}
-	&__date-dropdowns{
-		display: grid;
-		grid-template-columns: repeat(2, 1fr);
-		gap: 20px;
-	}
+  &__column {
+    // border: 1px dashed black;
+    // box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+
+    & > * {
+      margin-bottom: 40px;
+    }
+  }
+  &__fields > * {
+    margin-bottom: 20px;
+  }
+  &__controls > * {
+    margin-bottom: 40px;
+  }
+  &__date-dropdowns {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+  }
+  &__likes {
+    display: grid;
+    grid-template-columns: repeat(2, 40px);
+    gap: 10px;
+  }
+  &__buttons {
+    display: grid;
+    grid-template-columns: repeat(2, 99px);
+    grid-template-rows: repeat(3, 44px);
+    gap: 30px 20px;
+    &_top {
+      margin-bottom: 11px;
+    }
+    &_big {
+      grid-column: span 2;
+      height: 44px;
+    }
+  }
+  &__range {
+    height: 53px;
+  }
+}
+//плохой костыль
+.controls-label {
+  width: 100%;
+  grid-column: span 2;
 }
