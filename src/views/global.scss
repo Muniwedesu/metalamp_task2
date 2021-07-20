@@ -1,91 +1,99 @@
 @import "vars.scss";
 
 :root {
-	color: $dark;
-	font-family: Montserrat, Arial, sans-serif;
-	font-style: normal;
-	font-size: 14px;
-	line-height: 24px; //or 171%
+  color: $dark;
+  font-family: Montserrat, Arial, sans-serif;
+  font-style: normal;
+  font-size: 14px;
+  line-height: 24px; //or 171%
 }
 body {
-	margin: 0;
-	color: $dark-50;
-	background-color: #f4f4f6;
+  margin: 0;
+  color: $dark-50;
+  background-color: #f4f4f6;
 }
 p {
-	color: $dark-75;
+  color: $dark-75;
+  margin: 0;
 }
-h1,h2,h3 {
-	margin: 0;
-}
-
-h1{
-	font-size: 24px;
-	line-height: 29px;
-}
-h2{
-	font-size: 19px;
-	line-height: 23px;
-}
-h3{
-	font-size: 12px;
-	line-height: 15px;
-	text-transform: uppercase;
-	&.label {
-		color: $dark;
-	}
-	.cta {
-		&_white {
-			color: #fff;
-		}
-		
-	}
+h1,
+h2,
+h3 {
+  margin: 0;
 }
 
+.button__label {
+  font-family: "Montserrat";
+  @include setFont(inherit, 12px, 15px, bold, uppercase);
+}
+h1 {
+  font-size: 24px;
+  line-height: 29px;
+}
+h2 {
+  font-size: 19px;
+  line-height: 23px;
+}
+h3 {
+  font-size: 12px;
+  line-height: 15px;
+  text-transform: uppercase;
+  &.label {
+    color: $dark;
+  }
+  .cta {
+    &_white {
+      color: #fff;
+    }
+  }
+}
 
-
-
-ul { //or is it used for all text?
-	padding: 0;
-	margin: 0;
+ul {
+  //or is it used for all text?
+  padding: 0;
+  margin: 0;
 }
 
 li {
-	list-style: none;
+  list-style: none;
 }
 
 .container {
-	margin: auto;
-	max-width: 1080px;
+  margin: auto;
+  max-width: 1080px;
 }
 a {
-	display: block;
-	padding: 8px 0px;
-	margin: 4px 0px;
-	text-decoration: none;
-	color: inherit;
-	color: $dark-50;
-	white-space: nowrap;
-	// border: 1px dotted blue;
+  display: block;
+  padding: 8px 0px;
+  margin: 4px 0px;
+  text-decoration: none;
+  color: inherit;
+  color: $dark-50;
+  white-space: nowrap;
+  // border: 1px dotted blue;
 }
 a:hover {
-	text-decoration: line-through;
+  text-decoration: line-through;
 }
 a:active {
-	text-decoration: line-through;
+  text-decoration: line-through;
 }
 @font-face {
-	font-family: 'Montserrat';
-	src: url('../assets/fonts/Montserrat-Regular.eot');
-	src: url('../assets/fonts/Montserrat-Regular.woff') format('woff'), url('../assets/fonts/Montserrat-Regular.ttf') format('truetype'), url('../assets/fonts/Montserrat-Regular.svg') format('svg');
-	font-weight: normal;
-	font-style: normal;
+  font-family: "Montserrat";
+  src: url("../assets/fonts/Montserrat-Regular.eot");
+  src: url("../assets/fonts/Montserrat-Regular.woff") format("woff"),
+    url("../assets/fonts/Montserrat-Regular.ttf") format("truetype"),
+    url("../assets/fonts/Montserrat-Regular.svg") format("svg");
+  font-weight: normal;
+  font-style: normal;
 }
 
 @font-face {
-	font-family: 'Montserrat';
-	src: url('../assets/fonts/Montserrat-Bold.eot');
-	 src: url('../assets/fonts/Montserrat-Bold.woff') format('woff'), url('../assets/fonts/Montserrat-Bold.ttf') format('truetype'), url('../assets/fonts/Montserrat-Bold.svg') format('svg');
-	font-weight: bold;
-	font-style: normal;
+  font-family: "Montserrat";
+  src: url("../assets/fonts/Montserrat-Bold.eot");
+  src: url("../assets/fonts/Montserrat-Bold.woff") format("woff"),
+    url("../assets/fonts/Montserrat-Bold.ttf") format("truetype"),
+    url("../assets/fonts/Montserrat-Bold.svg") format("svg");
+  font-weight: bold;
+  font-style: normal;
 }
