@@ -9,36 +9,25 @@ html
     //-   include ../components/header/header.pug
     //-   include ../components/footer/footer.pug
 
+  include ../../components/input/input.pug
+  include ../../components/pagination/pagination.pug
   include ../../components/card/card.pug
   //- .ui-kit-elements__cards
   //-   .ui-kit-elements__cards-col
   //-     +searchCard
-  //-     +registrationCard
+  //-     //- +registrationCard
   //-   .ui-kit-elements__cards-col
-  //-     +detailsCard
-  //-     +loginCard
+  //-     //- +detailsCard
+  //-     //- +loginCard
   //-   .ui-kit-elements__cards-col
-  //-     +searchCard
-  //-     +roomCard
-  //-     +roomCard
+  //-     //- +searchCard
+  //-     //- +roomCard
+  //-     //- +roomCard
 
-  include ../../components/input/input.pug
-  include ../../components/pagination/pagination.pug
   //- id, type, label, placeholder, ...classes
   .ui-bg
     .form-elements
-      .form-elements__column
-        .form-elements__fields
-          +text("","","text field", "Email")
-          +text("", "", "text field", "This is pretty awesome")
-          +dropdown("", "", "dropdown", "Сколько гостей")
-          +text("", "", "masked text field", "ДД.ММ.ГГГГ")
-        .form-elements__date-dropdowns
-          +dropdown("","","date Dropdown","ДД.ММ.ГГГГ")
-          +dropdown("","","date Dropdown","19.08.2019")
-
-        +dropdown("","","filter date dropdown","19 авг - 23 авг")
-        +text("", "", "subscription text field", "Email")
+      include ./fields/fields.pug
 
       div(class="form-elements__column form-elements__controls")
         +checkboxGroup("Checkbox Buttons", 
@@ -58,10 +47,11 @@ html
           .controls-label like button
           +likes("like button", "like-1", false, 2)
           +likes("like button", "like-12", false, 12)
-        +rates("rate button")
+        .form-elements__rates
+          .controls-label rate button
+          +rates("rate button")
 
       .form-elements__column
-        //- +slider()
         .form-elements__range 
           .controls-label range slider
           div slider
@@ -79,4 +69,23 @@ html
         .form-elements__pagination
           .controls-label pagination
           +pagination()
-          //- div pagination
+
+      .expanded-elements
+        .expanded-elements__dropdowns
+          +dropdown("","","Dropdown", "2 спальни, 2 кровати...")
+        -  let items = [
+        -  {
+        -    name: "Спальни",
+        -    value: 2
+        -  },
+        -  {
+        -    name: "Кровати",
+        -    value: 2
+        -  },
+        -  {
+        -    name: "Ванные комнаты",
+        -    value: 0
+        -  },]
+          +dropdown("","","Dropdown", "2 спальни, 2 кровати...", items, "expanded")
+      .form-elements__column
+      .form-elements__column

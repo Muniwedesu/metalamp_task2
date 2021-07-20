@@ -1,4 +1,6 @@
 //used only in ui-kit
+@import "./fields/fields.scss";
+
 .ui-kit-elements {
   > * {
     margin-top: 140px;
@@ -26,31 +28,16 @@
   width: 100vw;
   height: 100vh;
 }
+
 .form-elements {
   display: grid;
   padding: 140px;
   grid-template-columns: 320px 268px 320px;
-  gap: 126px;
-  &__column {
-    // border: 1px dashed black;
-    // box-sizing: border-box;
-    display: flex;
-    flex-direction: column;
+  grid-template-rows: repeat(2, 1fr);
+  gap: 105px 126px;
 
-    & > * {
-      margin-bottom: 40px;
-    }
-  }
-  &__fields > * {
-    margin-bottom: 20px;
-  }
   &__controls > * {
     margin-bottom: 40px;
-  }
-  &__date-dropdowns {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 20px;
   }
   &__likes {
     display: grid;
@@ -72,6 +59,21 @@
   }
   &__range {
     height: 53px;
+  }
+  &__column {
+    display: flex;
+    flex-direction: column;
+    & > * {
+      margin-bottom: 40px;
+    }
+  }
+}
+.expanded-elements {
+  display: flex;
+  flex-direction: column;
+  width: 266px;
+  &__dropdowns > * {
+    margin-bottom: 20px;
   }
 }
 //плохой костыль
