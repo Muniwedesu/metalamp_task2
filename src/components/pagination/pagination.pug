@@ -1,0 +1,16 @@
+mixin pagination()
+  .pagination
+    .pagination__buttons
+      .pagination__element
+        +button("1")
+      .pagination__element
+        p.pagination__label 2
+      .pagination__element
+        p.pagination__label 3
+      .pagination__element
+        p.pagination__label ...
+      .pagination__element
+        p.pagination__label 15
+      .pagination__element
+        +button("",false, "with-arrow", "green")
+    p.pagination__caption 1 – 12 из 100+ вариантов аренды

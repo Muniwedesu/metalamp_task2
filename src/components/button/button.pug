@@ -1,10 +1,5 @@
 //- pass content and type in the constructor or whatever 
-mixin button(label, classes = [], state = null)
-  if (!classes)
-    button(class=["button"])
-      =label
-  else
-    - classes = []
-    - type = classes.map(x => "button_" + x)
-      button(class=["button"], class=type disabled= state ? disabled : "")
-        =label
+mixin button(label, state, ...classes)
+  - type = classes.map(x => x !== "disabled" ? "button_" + x : "")
+    button(class=["button"], class=type, disabled=state)
+      .button__label=label

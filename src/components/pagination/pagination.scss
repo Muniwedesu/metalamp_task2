@@ -1,0 +1,21 @@
+@import "./vars.scss";
+
+.pagination {
+  &__buttons {
+    display: flex;
+  }
+  &__element {
+    width: 40px;
+    height: 40px;
+  }
+  &__caption {
+    margin-top: 10px;
+    padding: 0px 6px;
+  }
+  &__label {
+    color: $dark-50;
+    margin: auto;
+    padding: 8px;
+    text-align: center;
+  }
+}

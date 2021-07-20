@@ -3,18 +3,23 @@
 .button {
   appearance: none;
   display: flex;
-  width: 100%;
-  border: none;
-  border-radius: 22px;
-  text-transform: uppercase;
-  height: 44px;
-  background: $grad-purple;
   justify-content: center;
   align-items: center;
+  height: 100%;
+  width: 100%;
+  // padding: 0 50%;
+  border: none;
+  border-radius: 22px;
+  background: $grad-purple;
   color: #fff;
-  @include setFont(#fff, 12px, 15px, bold, uppercase);
-  &:hover {
+  &:enabled:hover {
     color: #000;
+  }
+  &:disabled {
+    opacity: 0.5;
+  }
+  &_green {
+    background: $grad-green;
   }
   &_outlined {
     color: $purple;
@@ -36,10 +41,14 @@
   }
   &_with-arrow {
     position: relative;
+    //maybe it should be in relative units
     &::after {
       font-family: "Material Icons";
       content: "arrow_forward";
       position: absolute;
+      font-size: 24px;
+      line-height: 24px;
+      right: 8px;
     }
   }
 }
