@@ -61,7 +61,7 @@ module.exports = {
 		}),
 		new HtmlWebpackPlugin({
 			filename : "ui.html",
-			template : "src/views/ui.pug",
+			template : "src/views/ui/ui.pug",
 			minify   : false
 		}),
 		new MiniCssExtractPlugin()
