@@ -4,15 +4,17 @@ include ../input/input.pug
 mixin searchCard
   .big-card
     .search__content
-      .search-heading
+      .search-form__heading
         h1 Найдём номера под ваши пожелания
       .search-form
         .search-form__date
-          +input("arrival", "date", "Прибытие", "search-form__arrival")
-          +dropdown("departure", "date", "Выезд", "search-form__departure")
-        +input("guests", "", "Гости", "Сколько гостей", "search-form__guests")
+          //- id, type, label, placeholder, ...classes)
+          +dropdown("arrival", "text", "Прибытие", "ДД.ММ.ГГГГ" )
+          +dropdown("departure", "text", "Прибытие", "ДД.ММ.ГГГГ" )
+        .search-form__guests
+          +dropdown("guests", "", "Гости", "Сколько гостей")
         .search-form__button
-          +button("Подобрать номер", "filled")
+          +button("Подобрать номер", false)
 
 mixin detailsCard
   .big-card
@@ -22,7 +24,7 @@ mixin detailsCard
         .search-heading__label 
           p.search-heading__no.
             <sub class="sub">№</sub>888 
-            
+
           p.search-heading__type люкс
         .search-heading__price
           p.search-heading__price-tag 9 990P
@@ -63,7 +65,7 @@ mixin registrationCard
         .search-heading__label 
           p.search-heading__no.
             <sub class="sub">№</sub>888 
-            
+
           p.search-heading__type люкс
         .search-heading__price
           p.search-heading__price-tag 9 990P
@@ -104,7 +106,7 @@ mixin loginCard
         .search-heading__label 
           p.search-heading__no.
             <sub class="sub">№</sub>888 
-            
+
           p.search-heading__type люкс
         .search-heading__price
           p.search-heading__price-tag 9 990P
@@ -145,7 +147,7 @@ mixin loginCard
         .search-heading__label 
           p.search-heading__no.
             <sub class="sub">№</sub>888 
-            
+
           p.search-heading__type люкс
         .search-heading__price
           p.search-heading__price-tag 9 990P
@@ -186,7 +188,7 @@ mixin roomCard
         .search-heading__label 
           p.search-heading__no.
             <sub class="sub">№</sub>888 
-            
+
           p.search-heading__type люкс
         .search-heading__price
           p.search-heading__price-tag 9 990P
