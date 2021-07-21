@@ -1,10 +1,11 @@
-mixin dropdown(id, type, label, placeholder, menuItems, state)
+include ../button/button.pug
+mixin dropdown(id, type, label, placeholder, menuItems, state, clearable=true)
   div
     label(for=id).label= label
-    //probably I shoud use text in any case anyway
     .dropdown
-      input(id=id, type="text",  readonly="readonly", name=id, placeholder=placeholder class=`text-field dropdown ${state ? 'dropdown_' + state : ""}` )
-      div.dropdown__icon
+      input(id=id, type="text",  
+      readonly="readonly", name=id, placeholder=placeholder,
+      class=`text-field dropdown ${state ? 'dropdown_' + state : ""}` )
       if (menuItems)
         ul(class=`dropdown-menu ${state ? 'dropdown-menu_' + state: ""}`)
           each item in menuItems
@@ -14,3 +15,10 @@ mixin dropdown(id, type, label, placeholder, menuItems, state)
                 button(class="button dropdown-menu__button" disabled=item.value === 0) -
                 p(class="label dropdown-menu__text")= item.value
                 button(class="button dropdown-menu__button" ) +
+          //- fix this
+          if (clearable)
+            li(class=`dropdown-menu__state-controls 
+            ${clearable ? "" : "dropdown-menu__state-controls_hidden"}`)
+              - let hidden = !menuItems.some(x => x.value);
+              +button("очистить", false, "text")(class = hidden ? 'dropdown-menu__clear-button_hidden' : null)
+              +button("применить", false,"text")

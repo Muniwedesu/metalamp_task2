@@ -83,4 +83,17 @@
     padding: 6px 0;
     margin: 0;
   }
+  &__clear-button_hidden {
+    visibility: hidden;
+  }
+  &__state-controls {
+    display: flex;
+    padding-bottom: 6px;
+    height: 15px;
+    padding-top: 13px;
+    justify-content: space-between;
+    &_hidden {
+      display: none;
+    }
+  }
 }
