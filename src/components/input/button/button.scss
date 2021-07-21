@@ -6,7 +6,6 @@
   align-items: center;
   height: 100%;
   width: 100%;
-  border: none;
   border-radius: 22px;
   background: $grad-purple;
   font: inherit;
@@ -36,6 +35,7 @@
     color: $purple;
     padding: 0;
     height: 15px;
+    width: auto;
     &:disabled {
       color: $dark;
       opacity: 0.5;
@@ -52,5 +52,9 @@
       line-height: 24px;
       right: 8px;
     }
+  }
+  // idk if it will ever be used
+  &_hidden {
+    visibility: hidden;
   }
 }
