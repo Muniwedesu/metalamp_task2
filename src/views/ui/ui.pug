@@ -44,7 +44,7 @@ html
           ["receive_special", "not_receive_special"], 
           true)
         .form-elements__likes
-          .controls-label like button
+          .controls-label.form-elements__elements-label like button
           +likes("like button", "like-1", false, 2)
           +likes("like button", "like-12", false, 12)
         .form-elements__rates
@@ -71,21 +71,68 @@ html
           +pagination()
 
       .expanded-elements
-        .expanded-elements__dropdowns
-          +dropdown("","","Dropdown", "2 спальни, 2 кровати...")
-        -  let items = [
-        -  {
-        -    name: "Спальни",
-        -    value: 2
-        -  },
-        -  {
-        -    name: "Кровати",
-        -    value: 2
-        -  },
-        -  {
-        -    name: "Ванные комнаты",
-        -    value: 0
-        -  },]
-          +dropdown("","","Dropdown", "2 спальни, 2 кровати...", items, "expanded")
-      .form-elements__column
-      .form-elements__column
+        .expanded-elements__column
+          .expanded-elements__dropdowns
+            +dropdown("","","Dropdown", "2 спальни, 2 кровати...")
+            -  let items = [
+            -  {
+            -    name: "Спальни",
+            -    value: 2
+            -  },
+            -  {
+            -    name: "Кровати",
+            -    value: 2
+            -  },
+            -  {
+            -    name: "Ванные комнаты",
+            -    value: 0
+            -  },]
+            +dropdown("","","Dropdown", "2 спальни, 2 кровати...", items, "expanded", false)
+
+            - let descriptions = [
+            -  {
+            -  label: "широкий коридор", 
+            -  desc: "Ширина коридоров в номере не менее 91 см."
+            -  },
+            -  {
+            -  label: "помощник для инвалидов",
+            -  desc: "На 1 этаже вас встретит специалист  и проводит до номера."
+            -  }
+            - ]
+
+          +checkboxRich("rich checkbox buttons", descriptions, ["i", "o"], true)
+        .expanded-elements__column
+          .expanded-elements__dropdowns
+            -  let guestsEmpty = [
+            -  {
+            -    name: "Взрослые",
+            -    value: 0
+            -  },
+            -  {
+            -    name: "Дети",
+            -    value: 0
+            -  },
+            -  {
+            -    name: "Младенцы",
+            -    value: 0
+            -  },]
+            +dropdown("","","Dropdown", "2 спальни, 2 кровати...", guestsEmpty, "expanded", true)
+        .expanded-elements__column
+          .expanded-elements__dropdowns
+            -  let guests = [
+            -  {
+            -    name: "Взрослые",
+            -    value: 2
+            -  },
+            -  {
+            -    name: "Дети",
+            -    value: 1
+            -  },
+            -  {
+            -    name: "Младенцы",
+            -    value: 0
+            -  },]
+            +dropdown("","","Dropdown", "2 спальни, 2 кровати...", guests, "expanded", true)
+
+      .checkboxes-lists
+        .checkboxes-lists__column
