@@ -16,7 +16,7 @@ module.exports = {
 		rules : [
 			{
 				test : /\.pug$/i,
-				use  : [ { loader: "pug-loader", options: { pretty: true } } ]
+				use  : [ { loader: "pug-loader", options: { pretty: false } } ]
 			},
 			{
 				test : /\.(sa|sc|c)ss$/i,
@@ -35,7 +35,10 @@ module.exports = {
 			},
 			{
 				test: /\.(woff|woff2|eot|ttf|otf)$/i,
-				type: "asset/resource"
+				type: "asset/resource",
+				generator: {
+					filename: "fonts/[hash][ext][query]"
+				}
 			}
 		]
 	},
@@ -62,7 +65,7 @@ module.exports = {
 		new HtmlWebpackPlugin({
 			filename : "ui.html",
 			template : "src/views/ui/ui.pug",
-			minify   : false
+			minify   : true
 		}),
 		new MiniCssExtractPlugin()
 		//OccurrenceOrderPlugin(), //is on by default
