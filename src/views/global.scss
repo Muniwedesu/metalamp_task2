@@ -36,6 +36,10 @@ p {
   color: $dark-75;
   margin: 0;
 }
+span {
+  padding: 0;
+  margin: 0;
+}
 h1,
 h2,
 h3 {
@@ -43,6 +47,7 @@ h3 {
 }
 button {
   appearance: none;
+  border: none;
 }
 
 h1 {
