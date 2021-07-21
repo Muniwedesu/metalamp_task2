@@ -2,4 +2,4 @@
 mixin button(label, state, ...classes)
   - type = classes.map(x => x !== "disabled" ? "button_" + x : "")
     button(class=["button"], class=type, disabled=state)
-      .button__label=label
+      span.controls-label.button__label=label

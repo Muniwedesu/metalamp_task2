@@ -1,16 +1,17 @@
 @import "./vars.scss";
-
+//default styles are on top
+//more specific are imported at the eof
 .controls-label {
+  font-family: "Montserrat";
   display: block;
-  color: $dark-75;
-  font-weight: bold;
+  color: $dark;
   font-size: 12px;
   line-height: 15px;
+  font-weight: bold;
   text-transform: uppercase;
-  padding-bottom: 5px;
-  width: 100%;
 }
 .label {
+  //will be replaced with controls-label ^
   display: block;
   color: $dark-75;
   font-weight: bold;
@@ -56,6 +57,7 @@ fieldset {
   padding: 0;
   border: none;
 }
+@import "./button/button.scss";
 @import "./text/text.scss";
 @import "./dropdown/dropdown.scss";
 @import "./radio/radio.scss";
@@ -63,3 +65,4 @@ fieldset {
 @import "./toggle/toggle.scss";
 @import "./likes/likes.scss";
 @import "./rates/rates.scss";
+// @import "./button/button.scss";

@@ -9,12 +9,16 @@
   border: none;
   border-radius: 22px;
   background: $grad-purple;
+  font: inherit;
   color: #fff;
   &:enabled:hover {
     color: #000;
   }
   &:disabled {
     opacity: 0.5;
+  }
+  &__label {
+    color: inherit;
   }
   &_green {
     background: $grad-green;
