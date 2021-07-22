@@ -84,6 +84,65 @@
   }
 }
 
+// .ui {
+//   &__form-elements {
+//     display: block;
+//   }
+// }
+.elements {
+  width: 100%;
+  height: 100%;
+  border: 1px dashed blue;
+  display: flex;
+  flex-wrap: wrap;
+  &__column {
+    display: flex;
+    flex-direction: column;
+    width: 320px;
+    &:nth-child(2) {
+      margin-left: 126px;
+      margin-right: 74px;
+    }
+    &_fill {
+      width: 100%;
+      margin-right: 0;
+    }
+  }
+  &__row {
+    width: 100%;
+    border: 1px solid black;
+    display: flex;
+  }
+  &__element {
+    display: inline-block;
+    border: 1px dotted green;
+    margin-bottom: 40px;
+    &_wide {
+      width: 320px;
+    }
+    &_narrow {
+      width: 266px;
+    }
+  }
+  &__wide-block {
+    margin-left: 126px;
+    display: flex;
+    width: auto;
+    border: 1px solid red;
+  }
+}
+
+.expanded-dropdown {
+  height: 266px;
+}
+.expandable-checkbox {
+  height: 281px;
+}
+.dropdown_clearable {
+  height: 222px;
+  display: inline-block;
+  margin-right: 74px;
+}
 // //плохой костыль
 // .controls-label {
 //   width: 100%;
