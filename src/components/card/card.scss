@@ -1,4 +1,4 @@
-@import "./vars.scss";
+@use "./vars" as *;
 
 .big-card {
   padding: min(calc(100vw - 380px), 30px);

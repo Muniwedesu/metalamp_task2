@@ -1,5 +1,5 @@
 //used only in ui-kit
-@import "./fields/fields.scss";
+@use "./fields/fields.scss";
 
 .ui-kit-elements {
   > * {
@@ -79,10 +79,11 @@
   &__dropdowns > * {
     margin-bottom: 20px;
     &:last-child {
-      margin-bottom: calc(20px + 120px);
+      margin-bottom: calc(20px + 180px);
     }
   }
 }
+
 // //плохой костыль
 // .controls-label {
 //   width: 100%;

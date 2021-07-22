@@ -1,4 +1,4 @@
-@import "./vars.scss";
+@use "./vars.scss" as *;
 //default styles are on top
 //more specific are imported at the eof
 .controls-label {
@@ -36,6 +36,9 @@
 
 input {
   appearance: none;
+  box-sizing: border-box;
+  display: block;
+  margin: 0;
 }
 
 input:hover,

@@ -1,42 +1,41 @@
-
 @use "sass:math";
-@import "./vars.scss";
+@use "./vars" as *;
 .header {
-	background-color: #fff;
-	box-shadow: 0px 10px 20px $dark-05;
-	height: 70px;
-	width: 100%;
-	&__body {
-		height: 100%;
-		display: grid;
-		grid-template-columns: 0.5fr 2fr 1fr;
-		gap: 20px;
-		align-items: center;
-	}
-	&__buttons {
-		display: flex;
-		align-items: center;
-	}
+  background-color: #fff;
+  box-shadow: 0px 10px 20px $dark-05;
+  height: 70px;
+  width: 100%;
+  &__body {
+    height: 100%;
+    display: grid;
+    grid-template-columns: 0.5fr 2fr 1fr;
+    gap: 20px;
+    align-items: center;
+  }
+  &__buttons {
+    display: flex;
+    align-items: center;
+  }
 }
 .inline-list {
-	display: flex;
-	justify-content: flex-end;
-	&__item {
-		margin: auto 5px;
-		display: inline-block;
-		&_closed > ul {
-			display: none;
-		}
-		&_selected{
-			font-weight: bold;
-			color: $dark-75;
-		}
-	}
+  display: flex;
+  justify-content: flex-end;
+  &__item {
+    margin: auto 5px;
+    display: inline-block;
+    &_closed > ul {
+      display: none;
+    }
+    &_selected {
+      font-weight: bold;
+      color: $dark-75;
+    }
+  }
 }
 .dropdown-list {
-	margin: 0;
-	position: absolute;
-	&__item{
-		text-align: left;
-	}
+  margin: 0;
+  position: absolute;
+  &__item {
+    text-align: left;
+  }
 }
