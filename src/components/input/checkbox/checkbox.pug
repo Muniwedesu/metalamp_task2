@@ -1,6 +1,6 @@
 
 mixin checkboxSvg()
-  svg(width="10" height="11" viewBox="0 0 10 11" fill="none" xmlns="http://www.w3.org/2000/svg").checkbox-group__icon
+  svg(class!=attributes.class width="10" height="11" viewBox="0 0 10 11" fill="none" xmlns="http://www.w3.org/2000/svg")
     path(d="M1.46439 4.40768L5.70703 8.65032L4.29282 10.0645L0.0501771 5.82189L1.46439 4.40768Z" fill="url(#paint0_linear)")
     path(d="M8.53546 2.99347L9.94967 4.40768L4.29282 10.0645L2.8786 8.65032L8.53546 2.99347Z" fill="url(#paint1_linear)")
     defs
@@ -13,56 +13,63 @@ mixin checkboxSvg()
 
 //- rearrange params, name is definitely optional an is used only if it's a named group
 //- but anyways checkboxes won't appear w/o heading? 
+//- can make dynamic components mixins (input+label etc)
 
-
-mixin checkboxGroup(name, labels, ids, named = false, expandable = false, descriptions)
+mixin checkboxGroup(name, labels, ids, named = false, expandable = false, rich = false, closed = true)
   fieldset.checkbox-group
+    - let ulClasses = ["checkbox-group__list"]
     if (named)
-      - let classes = ["controls-label checkbox-group__name"]
-      - let ulClasses = ["checkbox-group__list"]
+      - let classes = ["controls-label", "checkbox-group__name"]
       if (expandable)
-        - classes.append("checkbox-group__name_expandable")
-        - ulClasses.append("checkbox-group__list_closed")
-      //- else if (descriptions && descriptions.length > 0)
-      //- - classes.append("checkbox-group__name_rich")
+        - classes.push("checkbox-group__name_expandable")
+        if (closed)
+          - classes.push("checkbox-group__name_closed")
+          - ulClasses.push("checkbox-group__list_closed")
       legend(class=classes)= name
-        //- idk but width should be fixed. inline blocks should be ok 
-      ul(class=ulClasses)
-        - for (let i = 0; i < labels.length; ++i)
-          li.checkbox-group__row
-            //-need to have such name so it'll better represent element
-            input(id=ids[i] name=ids[i], type="checkbox").checkbox-group__input
-            +checkboxSvg()
+      //- idk but width should be fixed. inline blocks should be ok 
+    ul(class=ulClasses)
+      - for (let i = 0; i < labels.length; ++i)
+        li.checkbox-group__row
+          //-need to have such name so it'll better represent element
+          input(id=ids[i] name=ids[i], type="checkbox").checkbox-group__input
+          +checkboxSvg().checkbox-group__icon
+          if (!rich)
             label(for=ids[i]).checkbox-group__label= labels[i]
-
-
-
-mixin expandableCheckbox(name, labels, ids)
-  +checkboxGroup(name, labels, ids, true, true, false)
-
-//descriptions will be a list of objects
-mixin richCheckbox(name, labels, ids, descriptions)
-  +checkboxGroup(name, labels, ids, true, false, true, descriptions)
-
-mixin checkboxRich(name, labels, ids, named = false)
-  fieldset.checkbox-group
-    if (named)
-      - let classes = ["controls-label checkbox-group__name"]
-      - let ulClasses = ["checkbox-group__list"]
-      if (expandable)
-        - classes.append("checkbox-group__name_expandable")
-        - ulClasses.append("checkbox-group__list_closed")
-      //- else if (descriptions && descriptions.length > 0)
-      //- - classes.append("checkbox-group__name_rich")
-      legend(class=classes)= name
-        //- idk but width should be fixed. inline blocks should be ok 
-      ul(class=ulClasses)
-        - for (let i = 0; i < labels.length; ++i)
-          li.checkbox-group__row
-            //-need to have such name so it'll better represent element
-            input(id=ids[i] name=ids[i], type="checkbox").checkbox-group__input
-            +checkboxSvg()
+          else
             div.checkbox-group__rich
               //-fix this too
               label(for=ids[i]).checkbox-group__label.checkbox-group__label_rich= labels[i].label
                 p.checkbox-group__description= labels[i].desc
+
+
+
+mixin expandableCheckbox(name, labels, ids, closed=true)
+  +checkboxGroup(name, labels, ids, true, true, false, closed)
+
+//descriptions will be a list of objects
+mixin richCheckbox(name, labels, ids)
+  +checkboxGroup(name, labels, ids, true, false, true)
+
+mixin checkboxRich(name, labels, ids, named = false)
+  +checkboxGroup(name, labels, ids, true, false, true)
+  //- fieldset.checkbox-group
+  //-   if (named)
+  //-     - let classes = ["controls-label checkbox-group__name"]
+  //-     - let ulClasses = ["checkbox-group__list"]
+  //-     if (expandable)
+  //-       - classes.append("checkbox-group__name_expandable")
+  //-       - ulClasses.append("checkbox-group__list_closed")
+  //-     //- else if (descriptions && descriptions.length > 0)
+  //-     //- - classes.append("checkbox-group__name_rich")
+  //-     legend(class=classes)= name
+  //-       //- idk but width should be fixed. inline blocks should be ok 
+  //-     ul(class=ulClasses)
+  //-       - for (let i = 0; i < labels.length; ++i)
+  //-         li.checkbox-group__row
+  //-           //-need to have such name so it'll better represent element
+  //-           input(id=ids[i] name=ids[i], type="checkbox").checkbox-group__input
+  //-           +checkboxSvg().checkbox-group__icon
+  //-           div.checkbox-group__rich
+  //-             //-fix this too
+  //-             label(for=ids[i]).checkbox-group__label.checkbox-group__label_rich= labels[i].label
+  //-               p.checkbox-group__description= labels[i].desc
