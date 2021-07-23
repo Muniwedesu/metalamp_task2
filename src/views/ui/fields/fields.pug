@@ -1,10 +1,14 @@
 .elements__column
   .elements__element.elements__element_wide
-    +text("","","text field", "Email")
-    +text("", "", "text field", "This is pretty awesome")
-    +dropdown("", "", "dropdown", "Сколько гостей")
-    +text("", "", "masked text field", "ДД.ММ.ГГГГ")
-  .elements__element.elements__element_wide
+    .elements__field
+      +text("","","text field", "Email")
+    .elements__field
+      +text("", "", "text field", "This is pretty awesome")
+    .elements__field
+      +dropdown("", "", "dropdown", "Сколько гостей")
+    .elements__field
+      +text("", "", "masked text field", "ДД.ММ.ГГГГ")
+  .elements__element.elements__element_wide.date-dropdowns
     +dropdown("","","date Dropdown","ДД.ММ.ГГГГ")
     +dropdown("","","date Dropdown","19.08.2019")
   .elements__element.elements__element_narrow

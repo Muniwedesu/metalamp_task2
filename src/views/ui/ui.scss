@@ -1,34 +1,19 @@
 //used only in ui-kit
-@use "./fields/fields.scss";
-
-.ui-kit-elements {
-  > * {
-    margin-top: 140px;
+.ui {
+  padding: 140px;
+  padding-bottom: 130px;
+  &_white-bg {
+    background-color: #fff;
   }
-  &__header-footer > * {
-    margin: 50px 0px;
+  &__form-elements {
+    display: block;
   }
-  &__cards {
-    margin-top: 110px;
-    margin-left: 100px;
-    margin-right: 100px;
-    display: grid;
-    grid-template-columns: 380px 380px 380px;
-    gap: 40px;
-    &-col > * {
-      margin-bottom: 40px;
-    }
-  }
-  &__cards > * {
-    margin: 40px;
+  &__fields {
+    margin-bottom: 65px;
   }
 }
-.ui-bg {
-  background-color: #fff;
-  width: 100%;
-  height: 100%;
-}
 
+@import "./cards/cards.scss";
 .form-elements {
   display: grid;
   padding: 140px;
@@ -84,15 +69,11 @@
   }
 }
 
-// .ui {
-//   &__form-elements {
-//     display: block;
-//   }
-// }
 .elements {
+  //change this to something else
   width: 100%;
   height: 100%;
-  border: 1px dashed blue;
+  // border: 1px dashed blue;
   display: flex;
   flex-wrap: wrap;
   &__column {
@@ -108,14 +89,17 @@
       margin-right: 0;
     }
   }
+  &__field:nth-last-child(n + 2) {
+    margin-bottom: 20px;
+  }
   &__row {
     width: 100%;
-    border: 1px solid black;
+    // border: 1px solid black;
     display: flex;
   }
   &__element {
     display: inline-block;
-    border: 1px dotted green;
+    // border: 1px dotted green;
     margin-bottom: 40px;
     &_wide {
       width: 320px;
@@ -128,29 +112,11 @@
     margin-left: 126px;
     display: flex;
     width: auto;
-    border: 1px solid red;
+    // border: 1px solid red;
   }
 }
 
-.expanded-dropdown {
-  height: 266px;
-}
-.expandable-checkbox {
-  height: 281px;
-}
-.dropdown_clearable {
-  height: 224px;
-  display: inline-block;
-  &:first-child {
-    margin-right: 72px;
-  }
-}
-.element-bullet-list {
-  margin-left: 74px;
-}
-.comment-block {
-  width: 710px;
-}
+@import "./fields/fields.scss";
 // //плохой костыль
 // .controls-label {
 //   width: 100%;

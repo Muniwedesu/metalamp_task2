@@ -1,0 +1,26 @@
+.expanded-dropdown {
+  height: 266px;
+}
+.expandable-checkbox {
+  height: 281px;
+}
+.dropdown_clearable {
+  height: 224px;
+  display: inline-block;
+  &:first-child {
+    margin-right: 72px;
+  }
+}
+.element-bullet-list {
+  margin-left: 74px;
+}
+.comment-block {
+  width: 710px;
+}
+
+.date-dropdowns {
+  display: flex;
+  > *:nth-child(2n + 1) {
+    margin-right: 20px;
+  }
+}
