@@ -1,0 +1,16 @@
+.ui {
+  // &__header-footer > * {
+  //   margin: 50px 0px;
+  // }
+  &__cards {
+    display: grid;
+    grid-template-columns: 380px 380px 380px;
+    gap: 40px;
+    &-column > * {
+      margin-bottom: 40px;
+    }
+  }
+  &__cards > * {
+    margin: 40px;
+  }
+}
