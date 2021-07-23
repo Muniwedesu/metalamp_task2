@@ -36,13 +36,12 @@ p {
   color: $dark-75;
   margin: 0;
 }
-span {
-  padding: 0;
-  margin: 0;
-}
+span,
 h1,
 h2,
-h3 {
+h3,
+ul {
+  padding: 0;
   margin: 0;
 }
 button {
@@ -72,12 +71,6 @@ h3 {
   }
 }
 
-ul {
-  //or is it used for all text?
-  padding: 0;
-  margin: 0;
-}
-
 li {
   list-style: none;
 }
@@ -101,4 +94,17 @@ a:hover {
 }
 a:active {
   text-decoration: line-through;
+}
+
+.icon {
+  font-family: "Material Icons";
+  &__comfort::before {
+    content: "insert_emoticon";
+  }
+  &__cosiness::before {
+    content: "whatshot";
+  }
+  &__convenience::before {
+    content: "location_city";
+  }
 }
