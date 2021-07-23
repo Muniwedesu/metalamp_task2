@@ -1,0 +1,32 @@
+@use "vars" as *;
+.comment {
+  color: $dark-75;
+  &__heading {
+    display: flex;
+  }
+  &__icon {
+    box-sizing: border-box;
+    width: 48px;
+    height: 48px;
+    border: 2px solid white;
+    border-radius: 50%;
+    margin-right: 10px;
+  }
+  &__author {
+    font-weight: bold;
+    color: $dark;
+  }
+  &__date {
+  }
+  &__body {
+    margin-top: 13px;
+    display: flex;
+    flex-shrink: 0;
+  }
+  &__likes {
+    margin-left: 4px;
+    margin-right: 14px;
+  }
+  &__text {
+  }
+}

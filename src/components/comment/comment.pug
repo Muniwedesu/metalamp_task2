@@ -1,0 +1,15 @@
+include ../input/likes/likes.pug
+
+mixin comment({author, date, likes, text})
+  div.comment
+    .comment__heading
+      - const str = "icons/comment-1.jpg"
+      img(src=require("icons/" + author.icon)).comment__icon
+      div
+        p.comment__author= author.name
+        p.comment__date= date
+
+    .comment__body
+      .comment__likes
+        +likes("name", "id", 12, true)
+      p.comment__text= text
