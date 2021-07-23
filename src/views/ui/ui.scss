@@ -139,9 +139,14 @@
   height: 281px;
 }
 .dropdown_clearable {
-  height: 222px;
+  height: 224px;
   display: inline-block;
-  margin-right: 74px;
+  &:first-child {
+    margin-right: 72px;
+  }
+}
+.element-bullet-list {
+  margin-left: 74px;
 }
 // //плохой костыль
 // .controls-label {
