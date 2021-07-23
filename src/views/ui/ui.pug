@@ -1,3 +1,4 @@
+include ../mixins.pug
 doctype html
 html
   head
@@ -9,10 +10,6 @@ html
     //-   include ../components/header/header.pug
     //-   include ../components/footer/footer.pug
 
-  include ../../components/input/input.pug
-  include ../../components/pagination/pagination.pug
-  include ../../components/card/card.pug
-  include ../../components/lists/lists.pug
   //- .ui-kit-elements__cards
   //-   .ui-kit-elements__cards-col
   //-     +searchCard
@@ -60,5 +57,5 @@ include ./variables.pug
         .elements__column
           .elements__element.elements__element_wide
             +tagList(tagList)
-        .elements__wide-block
-          div comment
+        .elements__wide-block.comment-block
+          +comment(commentData)
