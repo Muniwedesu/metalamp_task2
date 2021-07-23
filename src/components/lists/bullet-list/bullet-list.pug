@@ -1,0 +1,9 @@
+mixin bulletList({name, items})
+  //- not sure if I will need to use this
+  div
+    h3.controls-label.bullet-list__label= name
+    ul.bullet-list
+      each item in items
+        li.bullet-list__item
+          .bullet-list__item-marker
+          span.bullet-list__item-text= item

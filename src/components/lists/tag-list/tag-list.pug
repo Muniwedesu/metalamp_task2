@@ -1,0 +1,10 @@
+mixin tagList(items)
+  //- not sure if I will need to use this
+  div
+    ul.tag-list
+      each item in items
+        li.tag-list__item
+          div(class=`tag-list__icon icon icon__${item.icon}`)
+          .tag-list__text
+            p.tag-list__label= item.label
+            p.tag-list__description= item.description
