@@ -1,21 +1,24 @@
 
 include ../input/input.pug
 
+//-mixin dropdown(id, type, label, placeholder, menuItems, state, clearable=true)
 mixin searchCard
   .big-card
     .search__content
       .search-form__heading
         h1 Найдём номера под ваши пожелания
-      .search-form
-        .search-form__date
+      form.search-form
+        section.search-form__date
           //- id, type, label, placeholder, ...classes)
-          +dropdown("arrival", "text", "Прибытие", "ДД.ММ.ГГГГ" )
+          +dropdown("arrival", "text", "Прибытие", "ДД.ММ.ГГГГ")
           +dropdown("departure", "text", "Прибытие", "ДД.ММ.ГГГГ" )
-        .search-form__guests
+        section.search-form__guests
           +dropdown("guests", "", "Гости", "Сколько гостей")
-        .search-form__button
+        section.search-form__button
           +button("Подобрать номер", false)
 
+//-mixin dropdown(id, type, label, placeholder, menuItems, state, clearable=true)
+//-mixin button(label, state, ...buttonStyles)
 mixin detailsCard
   .big-card
     .search__content
@@ -31,14 +34,14 @@ mixin detailsCard
           p.search-heading__daily в сутки
 
       .search-form
-        .search-form__date
-          .search-form__arrival
-            +input("arrival", "date", "Прибытие")
-          .search-form__departure
-            +input("departure", "date", "Выезд")
-        .search-form__guests
-          +input("guests", "", "Гости", "3 гостя")
+        section.search-form__date
+          //- id, type, label, placeholder, ...classes)
+          +dropdown("arrival", "text", "Прибытие", "ДД.ММ.ГГГГ")
+          +dropdown("departure", "text", "Прибытие", "ДД.ММ.ГГГГ" )
+        section.search-form__guests
+          +dropdown("guests", "", "Гости", "Сколько гостей")
         //will need to be unique probably
+        //- make this a mixin
         ul.summary
           li.summary__item
             p.summary__key 9 990Р х 4 суток 
@@ -54,130 +57,50 @@ mixin detailsCard
             p.summary__total_break
             p.summary__total_value 38 081Р
         .search-form__button
-          +button("Подобрать номер", "filled")
+          +button("Подобрать номер", false)
 
 
 mixin registrationCard
   .big-card
     .search__content
-      .search-heading__result
-        //think of this class name
-        .search-heading__label 
-          p.search-heading__no.
-            <sub class="sub">№</sub>888 
-
-          p.search-heading__type люкс
-        .search-heading__price
-          p.search-heading__price-tag 9 990P
-          p.search-heading__daily в сутки
-
-      .search-form
-        .search-form__date
-          .search-form__arrival
-            +input("arrival", "date", "Прибытие")
-          .search-form__departure
-            +input("departure", "date", "Выезд")
-        .search-form__guests
-          +input("guests", "", "Гости", "3 гостя")
-        //will need to be unique probably
-        ul.summary
-          li.summary__item
-            p.summary__key 9 990Р х 4 суток 
-            p.summary__value 39 960P
-          li.summary__item 
-            p.summary__key Сбор за услуги: скидка O
-            p.summary__value 2179Р 0Р
-          li.summary__item 
-            p.summary__key Сбор за дополнительные услуги O
-            p.summary__value 300Р
-          li.summary__total
-            p.summary__total_key Итого
-            p.summary__total_break
-            p.summary__total_value 38 081Р
-        .search-form__button
-          +button("Подобрать номер", "filled")
+      .search-form__heading
+        h1 Регистрация аккаунта
+      form.search-form
+        section.search-form__name
+          +text("first-name", "text", null, "Имя")
+          +text("last-name", "text", null, "Фамилия")
+        section.search-form__gender
+          +radioGroup(null, ["Мужчина", "Женщина"], ["male", "female"], "gender", named = false)
+        section.search-form__date
+          +dropdown("date-of-birth", "text", "Дата рождения", "ДД.ММ.ГГГГ")
+        section.search-form__login-data
+          h3 данные для входа в сервис
+          +text("email", "text", null, "Email")
+          +text("password", "text", null, "Пароль")
+        section.search-form__guests
+          +toggleGroup("", ["Получать спецпредложения"], ["receive"], addName = false)
+        section.search-form__button
+          +button("Перейти к оплате")
+      div
+        div Уже есть аккаунт на Toxin? 
+        +button("Войти", false, "outlined")
 
 
+  //- id, type, label, placeholder, ...classes)
 mixin loginCard
   .big-card
     .search__content
-      .search-heading__result
-        //think of this class name
-        .search-heading__label 
-          p.search-heading__no.
-            <sub class="sub">№</sub>888 
-
-          p.search-heading__type люкс
-        .search-heading__price
-          p.search-heading__price-tag 9 990P
-          p.search-heading__daily в сутки
-
-      .search-form
-        .search-form__date
-          .search-form__arrival
-            +input("arrival", "date", "Прибытие")
-          .search-form__departure
-            +input("departure", "date", "Выезд")
-        .search-form__guests
-          +input("guests", "", "Гости", "3 гостя")
-        //will need to be unique probably
-        ul.summary
-          li.summary__item
-            p.summary__key 9 990Р х 4 суток 
-            p.summary__value 39 960P
-          li.summary__item 
-            p.summary__key Сбор за услуги: скидка O
-            p.summary__value 2179Р 0Р
-          li.summary__item 
-            p.summary__key Сбор за дополнительные услуги O
-            p.summary__value 300Р
-          li.summary__total
-            p.summary__total_key Итого
-            p.summary__total_break
-            p.summary__total_value 38 081Р
-        .search-form__button
-          +button("Подобрать номер", "filled")
-
-
-mixin loginCard
-  .big-card
-    .search__content
-      .search-heading__result
-        //think of this class name
-        .search-heading__label 
-          p.search-heading__no.
-            <sub class="sub">№</sub>888 
-
-          p.search-heading__type люкс
-        .search-heading__price
-          p.search-heading__price-tag 9 990P
-          p.search-heading__daily в сутки
-
-      .search-form
-        .search-form__date
-          .search-form__arrival
-            +input("arrival", "date", "Прибытие")
-          .search-form__departure
-            +input("departure", "date", "Выезд")
-        .search-form__guests
-          +input("guests", "", "Гости", "3 гостя")
-        //will need to be unique probably
-        ul.summary
-          li.summary__item
-            p.summary__key 9 990Р х 4 суток 
-            p.summary__value 39 960P
-          li.summary__item 
-            p.summary__key Сбор за услуги: скидка O
-            p.summary__value 2179Р 0Р
-          li.summary__item 
-            p.summary__key Сбор за дополнительные услуги O
-            p.summary__value 300Р
-          li.summary__total
-            p.summary__total_key Итого
-            p.summary__total_break
-            p.summary__total_value 38 081Р
-        .search-form__button
-          +button("Подобрать номер", "filled")
+      .search-form__heading
+        h1 Войти
+      form.search-form
+        section.search-form__login-data
+          +text("email", "text", null, "Email")
+          +text("password", "text", null, "Пароль")
+        section.search-form__button
+          +button("Войти", false)
+      div
+        div Уже есть аккаунт на Toxin? 
+        +button("Создать", false, "outlined")
 
 
 mixin roomCard
