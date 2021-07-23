@@ -4,7 +4,7 @@ const HtmlWebpackPlugin = require("html-webpack-plugin");
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const TerserPlugin = require("terser-webpack-plugin");
 // const { node } = require("webpack");
-const sassIncludes = [ "src/views/" ];
+const sassIncludes = [ "src/views/"];
 
 module.exports = {
 	entry        : "./src/app.js",
@@ -16,7 +16,7 @@ module.exports = {
 		rules : [
 			{
 				test : /\.pug$/i,
-				use  : [ { loader: "pug-loader", options: { pretty: false } } ]
+				use  : [ { loader: "pug-loader", options: { pretty: true, root: path.resolve(__dirname, "src") } } ]
 			},
 			{
 				test : /\.(sa|sc|c)ss$/i,
@@ -38,6 +38,13 @@ module.exports = {
 				type: "asset/resource",
 				generator: {
 					filename: "fonts/[hash][ext][query]"
+				}
+			},
+			{
+				test: /\.jpg$/i,
+				type: "asset/resource",
+				generator: {
+					filename: "img/[hash][ext][query]"
 				}
 			}
 		]
@@ -72,6 +79,11 @@ module.exports = {
 		//DedupePlugin(), //has been semoved in v2 or v3
 		//UglifyJsPlugin({ //is now terser-webpack-plugin
 	],
+	resolve: {
+		alias : {
+			icons: path.resolve(__dirname, "src/assets/img/icons")
+		}
+	},
 	//devtool      : "inline-source-map",
 	devServer    : {
 		//check development guide for static files
