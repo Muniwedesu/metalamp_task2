@@ -1,4 +1,4 @@
-.fields
+.elements__column
   .elements__element.elements__element_wide
     +text("","","text field", "Email")
     +text("", "", "text field", "This is pretty awesome")
@@ -11,3 +11,46 @@
     +dropdown("","","filter date dropdown","19 авг - 23 авг")
   .elements__element.elements__element_narrow
     +text("", "", "subscription text field", "Email")
+.elements__column
+  .elements__element.elements__element_wide
+    +checkboxGroup("Checkbox Buttons", 
+      ["Можно курить", "Можно с питомцами", "Можно пригласить гостей (до 10 человек)"], 
+      ["smoking_allowed", "pets_allowed", "guests_allowed"], 
+      true)
+  .elements__element.elements__element_narrow
+    +radioGroup("Radio Buttons", 
+      ["Мужчина", "Женщина"],
+      ["male", "female"], 
+      "gender", 
+        true)
+  .elements__element.elements__element_narrow
+    +toggleGroup("Toggle", 
+      ["Получать спецпредложения", "Получать спецпредложения"],
+      ["receive-special", "not-receive-special"], 
+      true)
+  .elements__element.elements__element_narrow
+    .controls-label.form-elements__elements-label like button
+    +likes("like button", "like-1", 2)
+    +likes("like button", "like-12", 12, true)
+  .elements__element.elements__element_narrow
+    .controls-label rate button
+    +rates("rate button")
+
+.elements__column
+  .elements__element
+    .controls-label range slider
+    div slider
+  .elements__element
+    div(class="controls-label form-elements__buttons_top") buttons
+    .form-elements__buttons
+      +button("CLICK ME", false)
+      +button("CLICK ME", true)
+      +button("CLICK ME", false ,"outlined")
+      +button("CLICK ME", true,"outlined")
+      +button("CLICK ME", false,"text")
+      +button("CLICK ME", true,"text")
+    .form-elements__buttons_big
+      +button("перейти к оплате", false, "with-arrow")
+  .elements__element
+    .controls-label pagination
+    +pagination()

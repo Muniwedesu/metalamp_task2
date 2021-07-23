@@ -12,6 +12,7 @@ html
   include ../../components/input/input.pug
   include ../../components/pagination/pagination.pug
   include ../../components/card/card.pug
+  include ../../components/lists/lists.pug
   //- .ui-kit-elements__cards
   //-   .ui-kit-elements__cards-col
   //-     +searchCard
@@ -29,52 +30,7 @@ html
 include ./variables.pug
   .ui
     .ui__form-elements.elements
-      .elements__column
-        include ./fields/fields.pug
-      .elements__column
-        .elements__element.elements__element_wide
-          +checkboxGroup("Checkbox Buttons", 
-            ["Можно курить", "Можно с питомцами", "Можно пригласить гостей (до 10 человек)"], 
-            ["smoking_allowed", "pets_allowed", "guests_allowed"], 
-            true)
-        .elements__element.elements__element_narrow
-          +radioGroup("Radio Buttons", 
-            ["Мужчина", "Женщина"],
-            ["male", "female"], 
-            "gender", 
-              true)
-        .elements__element.elements__element_narrow
-          +toggleGroup("Toggle", 
-            ["Получать спецпредложения", "Получать спецпредложения"],
-            ["receive_special", "not_receive_special"], 
-            true)
-        .elements__element.elements__element_narrow
-          .controls-label.form-elements__elements-label like button
-          +likes("like button", "like-1", false, 2)
-          +likes("like button", "like-12", false, 12)
-        .elements__element.elements__element_narrow
-          .controls-label rate button
-          +rates("rate button")
-
-      .elements__column
-        .elements__element
-          .controls-label range slider
-          div slider
-        .elements__element
-          div(class="controls-label form-elements__buttons_top") buttons
-          .form-elements__buttons
-            +button("CLICK ME", false)
-            +button("CLICK ME", true)
-            +button("CLICK ME", false ,"outlined")
-            +button("CLICK ME", true,"outlined")
-            +button("CLICK ME", false,"text")
-            +button("CLICK ME", true,"text")
-          .form-elements__buttons_big
-            +button("перейти к оплате", false, "with-arrow")
-        .elements__element
-          .controls-label pagination
-          +pagination()
-
+      include ./fields/fields.pug
     .ui__form-elements.elements
       .elements__row
         .elements__column
@@ -90,19 +46,19 @@ include ./variables.pug
         .elements__column
           .elements__element.elements__element_narrow.expandable-checkbox
             +expandableCheckbox("expandable checkbox list", 
-              ["Завтрак", "Письменный стол", "Стул для кормления", "Кроватка", "Телевизор", "Шампунь"],
+              expCheckboxItems,
               [12,22,32,42,52,62])
             +expandableCheckbox("expandable checkbox list", 
-              ["Завтрак", "Письменный стол", "Стул для кормления", "Кроватка", "Телевизор", "Шампунь"],
+              expCheckboxItems,
               [13,23,33,43,53,63], false)
         .elements__wide-block
-          .elements__element.elements__element_narrow
+          .elements__element.elements__element_wide
             +richCheckbox("rich checkbox buttons", descriptions, ["i", "o"], true)
-          .elements__element.elements__element_narrow
-            div bullet list
+          .elements__element.elements__element_narrow.element-bullet-list
+            +bulletList(bulletList)
       .elements__row
         .elements__column
           .elements__element.elements__element_wide
-            div tags
+            +tagList(tagList)
         .elements__wide-block
           div comment
