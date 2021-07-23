@@ -71,14 +71,15 @@
     &_rich {
       max-width: 100%;
       margin-bottom: 5px;
-      font-size: 14px;
-      line-height: 18px;
       font-weight: bold;
       color: $dark-75;
       text-transform: capitalize;
+      margin-top: 1px;
     }
   }
   &__description {
+    display: block;
+    margin-top: 5px;
     max-width: 100%;
     font-size: 12px;
     line-height: 14px;
