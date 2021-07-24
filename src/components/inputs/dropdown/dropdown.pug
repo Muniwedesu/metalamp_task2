@@ -1,0 +1,24 @@
+include ../button/button.pug
+//- actually I need a dropdown for the date too
+mixin dropdown(id, type, label, placeholder, menuItems, state, clearable=true)
+  .dropdown
+    label(for=id).controls-label= label
+    input(id=id, type="text",  
+    readonly="readonly", name=id, placeholder=placeholder,
+    class=`text-field dropdown ${state ? 'dropdown_' + state : ""}` )
+    if (menuItems)
+      ul(class=`dropdown__menu ${state ? 'dropdown__menu_' + state: ""}`)
+        each item in menuItems
+          li.dropdown__menu__row
+            p(class="label dropdown__menu__text")= item.name
+            .dropdown__menu__controls
+              button(class="button dropdown__menu__button" disabled=item.value === 0) -
+              p(class="label dropdown__menu__text")= item.value
+              button(class="button dropdown__menu__button" ) +
+        //- fix this
+        if (clearable)
+          li(class=`dropdown__menu__state-controls 
+          ${clearable ? "" : "dropdown__menu__state-controls_hidden"}`)
+            - let hidden = !menuItems.some(x => x.value);
+            +button("очистить", false, "text")(class = hidden ? 'dropdown__menu__clear-button_hidden' : null)
+            +button("применить", false,"text")

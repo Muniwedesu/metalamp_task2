@@ -1,0 +1,11 @@
+//- pass content and type in the constructor or whatever 
+mixin button(label, state, ...buttonStyles)
+  //- receive a list of classes through attributes param
+  //- and type too?
+  - style = buttonStyles.map(x => "button_" + x)
+    button(class=["button"], 
+      class=style, 
+      class!=attributes.class,
+      disabled=state,
+      type!=attributes.type) 
+      span.controls-label.button__label= label

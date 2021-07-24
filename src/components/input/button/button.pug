@@ -1,5 +1,0 @@
-//- pass content and type in the constructor or whatever 
-mixin button(label, state, ...buttonStyles)
-  - type = buttonStyles.map(x => "button_" + x)
-    button(class=["button"], class=type, disabled=state, class!=attributes.class)
-      span.controls-label.button__label=label

@@ -9,6 +9,7 @@
   line-height: 15px;
   font-weight: bold;
   text-transform: uppercase;
+  padding-bottom: 5px;
 }
 .label {
   //will be replaced with controls-label ^
@@ -28,9 +29,6 @@
   border-radius: 4px;
   height: 44px;
   padding: 0px;
-  color: $dark-50;
-  font-size: 14px;
-  line-height: 18px;
   padding: 13px 15px;
 }
 
@@ -39,11 +37,21 @@ input {
   box-sizing: border-box;
   display: block;
   margin: 0;
+  font-family: "Montserrat";
+  color: $dark-50;
+  font-size: 14px;
+  line-height: 18px;
+  &::placeholder {
+    opacity: 0.5;
+  }
+  &:hover::placeholder {
+    opacity: 0.75;
+  }
 }
 
 input:hover,
 input:focus {
-  color: $dark-75;
+  color: $dark;
   border-color: $dark-50;
 }
 

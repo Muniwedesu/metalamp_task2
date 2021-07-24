@@ -1,0 +1,90 @@
+.dropdown {
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  cursor: pointer;
+  &__input {
+    position: relative;
+  }
+  &__icon {
+    box-sizing: border-box;
+  }
+  &_expanded {
+    border-bottom-left-radius: 0;
+    border-bottom-right-radius: 0;
+    border-color: $dark-50;
+  }
+  &:hover {
+    cursor: pointer;
+  }
+  &::after {
+    position: absolute;
+    font-family: "Material Icons";
+    content: "expand_more";
+    font-size: 24px;
+    padding: 10px;
+    box-sizing: border-box;
+    right: 0px;
+    bottom: 0px;
+    width: 44px;
+    height: 44px;
+    pointer-events: none;
+  }
+
+  &__menu {
+    box-sizing: border-box;
+    display: none;
+    position: absolute;
+    top: calc(100% - 1px);
+    background: #fff;
+    width: 100%;
+    border: 1px solid $dark-50;
+    cursor: default;
+    padding: 7px;
+    padding-left: 15px;
+    border-bottom-left-radius: 4px;
+    border-bottom-right-radius: 4px;
+    &_expanded {
+      display: block;
+    }
+    &__row {
+      display: flex;
+      justify-content: space-between;
+      margin-bottom: 7px;
+      &:last-child {
+        margin-bottom: 0;
+      }
+    }
+    &__controls {
+      width: 92px;
+      display: flex;
+      justify-content: space-between;
+    }
+    &__button {
+      background: #fff;
+      border: 1px solid $dark-25;
+      color: $dark-50;
+      height: 30px;
+      width: 30px;
+      padding: 0;
+    }
+    &__text {
+      color: $dark;
+      padding: 6px 0;
+      margin: 0;
+    }
+    &__clear-button_hidden {
+      visibility: hidden;
+    }
+    &__state-controls {
+      display: flex;
+      padding-bottom: 6px;
+      height: 15px;
+      padding-top: 13px;
+      justify-content: space-between;
+      &_hidden {
+        display: none;
+      }
+    }
+  }
+}
