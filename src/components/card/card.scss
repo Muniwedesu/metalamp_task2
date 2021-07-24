@@ -1,74 +1,70 @@
 @use "./vars" as *;
 
-.big-card {
-  padding: min(calc(100vw - 380px), 30px);
+.card {
+  padding: 30px;
   padding-top: 40px;
-  padding-bottom: 30px;
   background-color: #fff;
-  max-width: 320px;
-  min-width: 320px;
-}
-.search-form {
-  &__date {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 20px;
+  width: 320px;
+  border-radius: 4px;
+  box-shadow: 0px 0px 25px rgba(0, 0, 0, 0.2);
+  &__form > *:nth-last-child(n + 2) {
     margin-bottom: 20px;
   }
-  &__guests {
-    margin-bottom: 30px;
-  }
-  &__heading {
-    margin-bottom: 20px;
-  }
-  &__button {
-    height: 44px;
-  }
-}
-
-.search-heading {
-  &__result {
+  &__form-heading_compound {
     display: flex;
     justify-content: space-between;
-  }
-  &__label {
-    display: flex;
     align-items: flex-end;
   }
-  &__price {
+  &__form-field {
+    &:nth-last-child(n + 2) {
+      margin-bottom: 10px;
+    }
+    &_separated {
+      display: flex;
+      & > *:nth-last-child(n + 2) {
+        margin-right: 20px;
+      }
+    }
+  }
+  &__form-submit {
+    height: 44px;
+    &_big-margin {
+      margin-top: 30px;
+    }
+  }
+  &__account {
+    margin-top: 30px;
     display: flex;
-    align-items: flex-end;
+    height: 44px;
+    flex-wrap: wrap;
+    align-items: center;
+    & > *:first-child {
+      flex-basis: 69%;
+    }
+    & > *:last-child {
+      flex-basis: 31%;
+      align-self: stretch;
+    }
   }
-  &__price-tag {
-    @include fontStyle($dark-75, bold);
-  }
+}
+.room-info {
   &__no {
-    @include h2;
-    @include fontStyle($dark-75, bold);
+    font-size: 14px;
+    line-height: 17px;
   }
   &__type {
-    @include h3;
-    @include fontStyle($purple, bold);
+    margin-left: 8px;
+    @include h3($purple, bold);
   }
-}
-.summary {
-  margin-top: 20px;
-  &__item {
-    display: flex;
-    justify-content: space-between;
-    margin: 10px 0;
+  &__price {
+    font-size: 14px;
+    line-height: 18px;
+    font-weight: bold;
+    color: $dark-50;
+    // @include h3($dark-25);
   }
-  &__key {
-    margin: 0;
-  }
-  &__value {
-    margin: 0;
-  }
-  &__total {
-    display: flex;
-    justify-content: space-between;
-    //think of a better way to arrange this
-    @include h2;
-    @include fontStyle($dark-75, bold);
+  &__per-day {
+    @include h3($dark-25, normal, none);
+    // font-size: 12px;
   }
 }
