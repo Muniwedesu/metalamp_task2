@@ -1,0 +1,50 @@
+@use "vars" as *;
+.summary-list {
+  &__item {
+    position: relative;
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 10px;
+    line-height: 24px;
+  }
+  &__key {
+    flex-basis: 68.75%;
+  }
+  &__icon {
+    &_visible {
+      display: block;
+    }
+    cursor: default;
+    text-align: center;
+    line-height: 20px;
+    display: none;
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    color: $dark-25;
+    border: 1px solid $dark-25;
+    box-sizing: border-box;
+    top: 0px;
+    left: calc(68.75%);
+  }
+  &__value {
+    flex-basis: 25%;
+    text-align: right;
+  }
+  &__total {
+    margin-top: 20px;
+    display: flex;
+    justify-content: space-between;
+    //think of a better way to arrange this
+    @include h2;
+    &-break {
+      width: 100%;
+      border-bottom: 1px dotted $dark-25;
+      height: 18px;
+    }
+    & > * {
+      white-space: nowrap;
+    }
+  }
+}
