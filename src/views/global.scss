@@ -21,16 +21,13 @@
 }
 
 :root {
-  color: $dark;
   font-family: Montserrat, Arial, sans-serif;
-  font-style: normal;
-  font-size: 14px;
-  line-height: 24px; //or 171%
 }
 body {
   margin: 0;
   color: $dark-50;
   background-color: #f4f4f6;
+  @include body;
 }
 p {
   color: $dark-75;
@@ -51,17 +48,13 @@ button {
 }
 
 h1 {
-  font-size: 24px;
-  line-height: 29px;
+  @include h1;
 }
 h2 {
-  font-size: 19px;
-  line-height: 23px;
+  @include h2;
 }
 h3 {
-  font-size: 12px;
-  line-height: 15px;
-  text-transform: uppercase;
+  @include h3;
   &.label {
     color: $dark;
   }
@@ -80,6 +73,7 @@ li {
   margin: auto;
   max-width: 1080px;
 }
+
 a {
   display: block;
   padding: 8px 0px;
