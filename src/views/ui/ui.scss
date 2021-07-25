@@ -11,6 +11,13 @@
   &__fields {
     margin-bottom: 65px;
   }
+  &_fill {
+    padding-left: 0;
+    padding-right: 0;
+  }
+  &__page-elements {
+    margin-bottom: 40px;
+  }
 }
 
 @import "./cards/cards.scss";

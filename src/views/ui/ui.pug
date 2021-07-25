@@ -4,12 +4,15 @@ html
     link(href="https://fonts.googleapis.com/icon?family=Material+Icons"
     rel="stylesheet")
   body
-include ../mixins.pug
+include /views/mixins.pug
 include ./variables.pug
-  //- .ui-kit-elements
-  //- .ui-kit-elements__header-footer
-  //- include ../components/header/header.pug
-  //- include ../components/footer/footer.pug
+  .ui.ui_fill
+    .ui__page-elements
+      include /components/header/header.pug
+    .ui__page-elements
+      include /components/header/header.pug
+    .ui__page-elements
+      include /components/footer/footer.pug
 
   .ui
     include ./cards/cards.pug
