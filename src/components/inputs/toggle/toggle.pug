@@ -4,5 +4,5 @@ mixin toggleGroup(name, labels, ids, addName = false)
       legend.toggle-group__name= name
     - for (let i = 0; i < labels.length; ++i)
       .toggle-group__row
-        input(id=ids[i] name=ids[i], type="checkbox").toggle-group__input
+        input(id=ids[i] name=ids[i], type="checkbox").toggle-group__input.rounded-rectangle
         label(for=ids[i]).toggle-group__label= labels[i]

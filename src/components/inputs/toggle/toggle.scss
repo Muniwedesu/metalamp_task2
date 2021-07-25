@@ -14,18 +14,8 @@
     }
   }
   &__input {
-    appearance: none;
-    box-sizing: border-box;
-    border: 1px solid $dark-25;
-    width: 40px;
-    height: 20px;
-    display: block;
-    margin: 0;
-    border-radius: 10px;
-    position: relative;
     transition: 0.1s;
     &:checked {
-      border: 1px solid $purple;
       &::after {
         left: 23px;
         background: $grad-purple;
