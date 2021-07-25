@@ -1,8 +1,8 @@
 mixin bulletList({name, items})
   //- not sure if I will need to use this
-  div
+  div.bullet-list
     h3.controls-label.bullet-list__label= name
-    ul.bullet-list
+    ul.bullet-list__list
       each item in items
         li.bullet-list__item
           .bullet-list__item-marker

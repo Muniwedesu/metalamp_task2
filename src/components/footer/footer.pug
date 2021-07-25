@@ -1,27 +1,26 @@
-mixin footerList(heading, items)
-  ul
-    li 
-      h3= heading
-    each item in items
-      li
-        a(href="#")= item
-
-
+//- mixin footerList(heading, items)
+//-   ul
+//-     li 
+//-       h3= heading
+//-     each item in items
+//-       li
+//-         a(href="#")= item
+include ../lists/links-list/links-list.pug
 footer
   .footer-top
     .container
       .footer-top__content
         .footer__logo
-            include ../logo/logo.pug
-            .footer__logo-caption
-              p. 
-                Бронирование номеров в лучшем отеле 2019 года по версии ассоциации «Отельные взгляды»
+          include ../logo/logo.pug
+          .footer__logo-caption
+            p. 
+              Бронирование номеров в лучшем отеле 2019 года по версии ассоциации «Отельные взгляды»
         .footer__text-block
-          +footerList("Навигация", ["О нас", "Новости", "Служба поддержки", "Услуги"])
+          +linksList({label: "Навигация", links: ["О нас", "Новости", "Служба поддержки", "Услуги"]})
         .footer__text-block
-          +footerList("О нас", ["О сервисе", "Наша команда", "Вакансии", "Инвесторы"])
+          +linksList({label: "О нас", links: ["О сервисе", "Наша команда", "Вакансии", "Инвесторы"]})
         .footer__text-block
-          +footerList("Навигация", ["Соглашения", "Сообщества", "Связь с нами"])
+          +linksList({label: "Навигация", links: ["Соглашения", "Сообщества", "Связь с нами"]})
         .footer__subscription
           h3 Подписка
           p.

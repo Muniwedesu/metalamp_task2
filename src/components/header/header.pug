@@ -1,33 +1,113 @@
-include ../button/button.pug
-//listItem("Label", "Items inside sublist as array", ...any additional mods)
 
-mixin listItem(label, items, ...classes)
-  - var list_c = classes.map(x => `inline-list__item_${x}`)
-    li(class=["inline-list__item", ...list_c])
-      a(href="#")= label
-      if (items)
-        ul.dropdown-list
-          //review these guys
-          each item in items
-            li.dropdown-list__item
-              a= item
+//- //listItem("Label", "Items inside sublist as array", ...any additional mods)
+include ../inputs/button/button.pug
+//- //- mixin listItem(label, items, ...classes)
+//- //-   - var list_c = classes.map(x => `inline-list__item_${x}`)
+//- //-     li(class=["inline-list__item", ...list_c])
+//- //-       a(href="#")= label
+//- //-       if (items)
+//- //-         ul.dropdown-list
+//- //-           //review these guys
+//- //-           each item in items
+//- //-             li.dropdown-list__item
+//- //-               a= item
+//- include /views/mixins.pug
+- var links = [
+-   {
+-     label: "О нас",
+-     link: "#",
+-     isList: false
+-   },
+-   {
+-     label: "Услуги",
+-     link: "",
+-     isList: true,
+-     items: [ 
+-       {
+-         label: "услуга 1",
+-         link: "#"
+-       },
+-       {
+-         label: "услуга 2",
+-         link: "#"
+-       },
+-       {
+-         label: "услуга 3",
+-         link: "#"
+-       }]
+-   },
+-   {
+-     label: "Вакансии",
+-     link: "#",
+-     isList: false
+-   },
+-   {
+-     label: "Новости",
+-     link: "#",
+-     isList: false
+-   },
+-   {
+-     label: "Соглашения",
+-     link: "",
+-     isList: true,
+-     items: [ 
+-       {
+-         label: "согл 1",
+-         link: "#"
+-       },
+-       {
+-         label: "согл 2",
+-         link: "#"
+-       },
+-       {
+-         label: "согл 3",
+-         link: "#"
+-       }]
+-   }
+- ]
+
+mixin links-list(links)
+  ul(class="links-list" class!=attributes.class)
+    each link in links
+      li.links-list__item
+        a(href=link.link).links-list__link= link.label
+
+mixin inline-links(links)
+  ul.inline-links
+    each link in links
+      if (link.isList)
+        li.inline-links__item
+          p.inline-links__link.link= link.label
+            span.inline-links__expand-icon expand_more
+            +links-list(link.items).inline-links__expandable-list
+      else
+        if (link.label === "О нас")
+          li.inline-links__item.inline-links__item_current
+            a(href=link.link).inline-links__link.link= link.label
+        else 
+          li.inline-links__item
+            a(href=link.link).inline-links__link.link= link.label
+
+
+
+
 
 header.header
   .container
     .header__body
       .header__logo
-          include ../logo/logo.pug
-      //could make this a block component but it'll be overcomplicated
-      ul.inline-list
-        +listItem("О нас", [], "selected")
-        +listItem( "Услуги",  ["Красота и здоровье","Клуб","Экскурсии","Концерты"], "closed")
-        +listItem("Вакансии")
-        +listItem("Новости")
-        +listItem("Соглашения", [1,2,3], "closed")
-      //поменять кнопки 
+        include ../logo/logo.pug
+        //- could make this a block component but it'll be overcomplicated
+      nav.header__navigation
+        +inline-links(links)
       .header__buttons
-        +button("Войти", "outlined")
-        +button("Зарегистрироваться", "filled")
+        .header__login
+          +button("Войти", false, "outlined")
+        .header__signup
+          +button("Зарегистрироваться")
+
+
+
 
 //- script. 
 //-   let list = document.querySelector(".dropdown-list_closed");

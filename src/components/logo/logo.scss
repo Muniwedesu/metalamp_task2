@@ -1,16 +1,16 @@
 @import "./vars.scss";
 .logo {
-	width: 140px;
-	display: grid;
-	grid-template-columns: 40px 1fr;
-	gap: 40px;
-	align-items: center;
-	&__image {
-		height: 40px;
-		width: 40px;
-	}
-	&__text{
-		width: 54px;
-		height: 14px;
-	}
+  width: 105px;
+  display: grid;
+  grid-template-columns: 40px 1fr;
+  gap: 12px;
+  align-items: center;
+  &__image {
+    height: 40px;
+    width: 40px;
+  }
+  &__text {
+    width: 54px;
+    height: 14px;
+  }
 }

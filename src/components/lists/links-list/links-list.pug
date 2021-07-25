@@ -1,0 +1,8 @@
+mixin linksList({label, links})
+  //- not sure if I will need to use this
+  div.links-list
+    h3.controls-label.links-list__label= label
+    ul.links-list__list
+      each item in links
+        li.links-list__item
+          a.links-list__item-text= item

@@ -4,13 +4,12 @@
   &__content {
     padding: 100px 0px;
     display: grid;
-    grid-template-columns: 2fr 1fr 1fr 1fr 2fr;
-    gap: 20px;
+    grid-template-columns: 260px 1fr 1fr 1fr 260px;
+    gap: 40px;
   }
-  // &__content > *{
-  //   // box-sizing: border-box;
-  //   // border: 1px dashed #9f9f9f;
-  // }
+  &__content > * {
+    background-color: rgba(31, 32, 65, 0.05);
+  }
 }
 .footer-bottom {
   margin-top: 2px; //or border of bg color
