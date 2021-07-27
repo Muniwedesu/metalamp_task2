@@ -79,7 +79,7 @@ mixin inline-links(links)
         li.inline-links__item
           p.inline-links__link.link= link.label
             span.inline-links__expand-icon expand_more
-            +links-list(link.items).inline-links__expandable-list
+          +links-list(link.items).inline-links__expandable-list
       else
         if (link.label === "О нас")
           li.inline-links__item.inline-links__item_current

@@ -1,24 +1,66 @@
-@media screen and (max-width: 600px) {
+@use "vars" as *;
+@media screen {
   .footer-top__content {
-    grid-template-columns: 260px repeat(1, 160px);
+    grid-template-columns: 1fr;
+    grid-template-areas:
+      "logo"
+      "navigation"
+      " about"
+      "support"
+      "sub";
+    gap: 20px 10px;
+    padding: 12.5% 0;
+    text-align: center;
+  }
+  .footer__logo > * {
+    margin-left: auto;
+    margin-right: auto;
+  }
+}
+@media screen and (min-width: 420px) {
+  .footer-top__content {
+    grid-template-columns: 1.625fr 1fr;
+    $gap: max(20px, (100% - 520px + 160px) / 4);
+    gap: 20px $gap;
+
+    grid-template-areas:
+      "logo navigation"
+      "sub about"
+      ". support";
+    & > .footer__text-block {
+      grid-area: 1 / 2 / 3 / 2;
+    }
+    text-align: left;
+  }
+  .footer__logo > * {
+    margin-left: 0;
   }
 }
 
-@media screen and (min-width: 600px) {
+@media screen and (min-width: $breakpoint-second) {
   .footer-top__content {
-    grid-template-columns: 260px repeat(3, 160px);
+    $gap: max(20px, (100% - 900px + 160px) / 4);
+    grid-template-columns: 1.625fr repeat(2, 1fr);
     grid-template-rows: repeat(2, auto);
+    grid-template-areas:
+      "logo navigation about"
+      "sub support .";
     margin: auto;
-  }
-  .footer__subscription {
-    grid-column: span 4;
-    align-content: center;
+    gap: 20px $gap;
+    padding: 100px 0px;
   }
 }
-@media screen and (min-width: 1160px) {
+@media screen and (min-width: $breakpoint-first) {
   .footer-top__content {
-    grid-template-columns: 260px repeat(3, 160px) 260px;
-    grid-template-rows: 372px;
+    //16% of 1000px (gaps are 40*4)
+    $col-sm: min(0.16 * (100% - 80px), 160px);
+    $col-bg: min(0.26 * (100% - 80px), 260px);
+    $gap: max(20px, (100% - 1000px) / 4);
+    grid-template-columns: 1.625fr repeat(3, 1fr) 1.625fr;
+    grid-template-rows: 172px;
+    grid-template-areas: "logo navigation about support sub";
+    gap: 20px $gap;
+    width: auto;
   }
   .footer__subscription {
     grid-column: span 1;
@@ -28,13 +70,7 @@
 .footer-top {
   background-color: #fff;
   &__content {
-    padding: 100px 0px;
     display: grid;
-    // gap: min(40px, max(0px, 100% - 1120px));
-    gap: 20px 40px;
-  }
-  &__content > * {
-    // background-color: rgba(31, 32, 65, 0.05);
   }
 }
 
@@ -43,10 +79,16 @@
   background-color: #fff;
   box-shadow: 0px 10px 20px rgba(31, 32, 65, 0.05);
   &__content {
-    height: 70px;
+    padding-top: 23px;
+    padding-bottom: 23px;
     display: flex;
     justify-content: space-between;
     align-items: center;
+    @media screen and (max-width: 419px) {
+      justify-content: center;
+      text-align: center;
+      flex-wrap: wrap;
+    }
   }
   &__icons {
     display: flex;
@@ -58,11 +100,27 @@
   }
 }
 .footer {
+  box-shadow: 0px 1px 0px rgba(31, 32, 65, 0.1);
   &__element-label {
     margin-bottom: 15px;
     margin-top: 4px;
   }
   &__logo-caption {
     margin-top: 16px;
+  }
+  &__logo {
+    grid-area: logo;
+  }
+  &__navigation-menu {
+    grid-area: navigation;
+  }
+  &__about-menu {
+    grid-area: about;
+  }
+  &__support-menu {
+    grid-area: support;
+  }
+  &__subscription {
+    grid-area: sub;
   }
 }
