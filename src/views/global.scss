@@ -25,9 +25,8 @@
 }
 body {
   margin: 0;
-  color: $dark-50;
   background-color: #f4f4f6;
-  @include body;
+  @include body($dark-50);
 }
 p {
   color: $dark-75;
@@ -70,7 +69,10 @@ li {
 }
 
 .container {
+  // margin: 0 max(20vw - 64px, 50vw - 580px);
   margin: auto;
+  //will be changed (or not). This will limit content width to 300px at 320px vw.
+  width: 93.75vw;
   max-width: 1160px;
 }
 
@@ -81,7 +83,7 @@ a,
   margin: 6px 0px;
   text-decoration: none;
   color: inherit;
-  color: $dark-50;
+  // color: $dark-50;
   white-space: nowrap;
   @if $display-grid!=0 {
     background-color: rgba(255, 0, 255, 0.05);
@@ -125,3 +127,6 @@ body > * {
     content: "location_city";
   }
 }
+
+@import "../components/header/header";
+@import "./index/index";
