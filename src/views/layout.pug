@@ -1,7 +1,13 @@
 doctype html 
-html
+html(lang="ru")
   head
     //connect fonts
+    link(href="https://fonts.googleapis.com/icon?family=Material+Icons"
+    rel="stylesheet")
+
   body
-    include ../components/header/header.pug
-    include ../components/footer/footer.pug
+    block header
+      include ../components/header/header.pug
+    block content
+    block footer 
+      include ../components/footer/footer.pug

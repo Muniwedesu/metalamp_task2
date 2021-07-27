@@ -1,0 +1,8 @@
+main {
+  @media screen and (min-width: 960px) {
+    padding-top: 70px;
+  }
+  padding-bottom: min((100vw - 280px) / 2, 385px);
+  padding-top: 30px;
+  background: center/cover no-repeat url("../assets/img/main-bg.png");
+}

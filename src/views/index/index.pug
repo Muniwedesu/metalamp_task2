@@ -1,7 +1,7 @@
-doctype html 
-html
-  head 
-  body 
-    p.
-      this is index
-    
+extends ../layout.pug
+
+block content
+  include /components/card/card.pug
+  main.page-content
+    .container
+      +searchCard()
