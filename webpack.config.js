@@ -34,14 +34,14 @@ module.exports = {
 				]
 			},
 			{
-				test: /\.(woff|woff2|eot|ttf|otf)$/i,
+				test: /\.(woff|woff2|eot|ttf|otf|svg)$/i,
 				type: "asset/resource",
 				generator: {
 					filename: "fonts/[hash][ext][query]"
 				}
 			},
 			{
-				test: /\.jpg$/i,
+				test: /\.(jpg|png)$/i,
 				type: "asset/resource",
 				generator: {
 					filename: "img/[hash][ext][query]"
