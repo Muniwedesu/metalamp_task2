@@ -33,7 +33,7 @@ mixin searchCard
       p.card__form-field
         +dropdown("guests", "", "Гости", "Сколько гостей")
       p.card__form-submit.card__form-submit_big-margin
-        +button("Подобрать номер", false, "with-arrow")
+        +button({label: "Подобрать номер", styles: ["with-arrow"]})
 
 //-mixin dropdown(id, type, label, placeholder, menuItems, state, clearable=true)
 //-mixin button(label, state, ...buttonStyles)
@@ -51,7 +51,7 @@ mixin detailsCard
         +dropdown("guests", "", "Гости", "Сколько гостей")
       +summary(summaryList, total)
       p.card__form-submit
-        +button("Забронировать", false, "with-arrow")
+        +button({label: "Забронировать", styles: ["with-arrow"]})
 
 
 mixin registrationCard
@@ -77,7 +77,7 @@ mixin registrationCard
         li.card__form-field
           +toggleGroup("", ["Получать спецпредложения"], ["receive"], addName = false)
       section.card__form-submit
-        +button("Перейти к оплате", false, "with-arrow")
+        +button({label: "Перейти к оплате", styles: ["with-arrow"]})
       +account(true)
 
 
@@ -92,7 +92,7 @@ mixin loginCard
         li.card__form-field
           +text("password", "text", null, "Пароль")
       p.card__form-submit
-        +button("Войти", false, "with-arrow")
+        +button({label: "Войти", styles: ["with-arrow"]})
       +account(false)
 
 
@@ -135,14 +135,12 @@ mixin roomCard
             p.summary__total_break
             p.summary__total_value 38 081Р
         .search-form__button
-          +button("Подобрать номер", "filled")
+          +button({label: "Подобрать номер"})
 
 mixin account(exists)
   section.card__account
-    if (exists)
-      p Уже есть аккаунт на Toxin?
-      +button("Войти", false, "outlined")(type="button")
-    else 
-      p Нет аккаунта на Toxin?
-      +button("Создать", false, "outlined")(type="button")
+    - let accountStatusText = exists ? "Уже есть аккаунт на Toxin?" : "Нет аккаунта на Toxin?"
+    - let buttonLabel = exists ? "Войти" : "Создать"
+    p= accountStatusText
+    +button({label: buttonLabel, styles: ["outlined"]})(type="button")
 

@@ -47,14 +47,14 @@
   .elements__element
     div(class="controls-label form-elements__buttons_top") buttons
     .form-elements__buttons
-      +button("CLICK ME", false)
-      +button("CLICK ME", true)
-      +button("CLICK ME", false ,"outlined")
-      +button("CLICK ME", true,"outlined")
-      +button("CLICK ME", false,"text")
-      +button("CLICK ME", true,"text")
+      +button({label: "CLICK ME"})
+      +button({label: "CLICK ME", isDisabled: true})
+      +button({label: "CLICK ME", styles: ["outlined"]})
+      +button({label: "CLICK ME", isDisabled: true, styles: ["outlined"]})
+      +button({label: "CLICK ME", styles: ["text"]})
+      +button({label: "CLICK ME", isDisabled: true,  styles: ["text"]})
     .form-elements__buttons_big
-      +button("перейти к оплате", false, "with-arrow")
+      +button({label: "перейти к оплате", styles: ["with-arrow"]})
   .elements__element
     .controls-label pagination
     +pagination()

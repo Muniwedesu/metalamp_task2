@@ -3,7 +3,8 @@ mixin pagination()
     //-ul?
     .pagination__buttons
       .pagination__element
-        +button("1")
+        //- well, do I really need this?
+        +button(new Button("1"))
       .pagination__element
         p.pagination__label 2
       .pagination__element
@@ -13,5 +14,5 @@ mixin pagination()
       .pagination__element
         p.pagination__label 15
       .pagination__element
-        +button("",false, "with-arrow", "green")
+        +button({styles: ["with-arrow", "green"]})
     p.pagination__caption 1 – 12 из 100+ вариантов аренды

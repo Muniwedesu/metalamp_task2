@@ -12,13 +12,13 @@ mixin dropdown(id, type, label, placeholder, menuItems, state, clearable=true)
           li.dropdown__menu__row
             p(class="label dropdown__menu__text")= item.name
             .dropdown__menu__controls
-              button(class="button dropdown__menu__button" disabled=item.value === 0) -
+              +button({label: "-", isDisabled: item.value === 0})(type="button" class="dropdown__menu__button")
               p(class="label dropdown__menu__text")= item.value
-              button(class="button dropdown__menu__button" ) +
+              +button({label: "+"})(type="button" class="dropdown__menu__button" )
         //- fix this
         if (clearable)
           li(class=`dropdown__menu__state-controls 
           ${clearable ? "" : "dropdown__menu__state-controls_hidden"}`)
             - let hidden = !menuItems.some(x => x.value);
-            +button("очистить", false, "text")(class = hidden ? 'dropdown__menu__clear-button_hidden' : null)
-            +button("применить", false,"text")
+            +button({label: "очистить", styles: ["text"]})(class = hidden ? 'dropdown__menu__clear-button_hidden' : null)
+            +button({label: "применить", styles: ["text"]})
