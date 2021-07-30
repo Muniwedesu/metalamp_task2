@@ -16,15 +16,15 @@ footer.footer
             Бронирование номеров в лучшем отеле 2019 года по версии ассоциации «Отельные взгляды»
         .footer__navigation-menu
           h3.controls-label.footer__element-label Навигация
-          +linksList(["О нас", "Новости", "Служба поддержки", "Услуги"])
+          +linksList({links: ["О нас", "Новости", "Служба поддержки", "Услуги"]})
           //- +linksList({label: "Навигация", links: ["О нас", "Новости", "Служба поддержки", "Услуги"]})
         .footer__about-menu
           h3.controls-label.footer__element-label О нас
-          +linksList(["О сервисе", "Наша команда", "Вакансии", "Инвесторы"])
+          +linksList({links: ["О сервисе", "Наша команда", "Вакансии", "Инвесторы"]})
           //- +linksList({label: "О нас", links: ["О сервисе", "Наша команда", "Вакансии", "Инвесторы"]})
         .footer__support-menu
           h3.controls-label.footer__element-label Служба поддержки
-          +linksList(["Соглашения", "Сообщества", "Связь с нами"])
+          +linksList({links: ["Соглашения", "Сообщества", "Связь с нами"]})
         form.footer__subscription
           h3.controls-label.footer__element-label Подписка
           p.
