@@ -70,7 +70,7 @@ li {
 
 .container {
   // margin: 0 max(20vw - 64px, 50vw - 580px);
-  margin: auto;
+  margin: 0 auto;
   //will be changed (or not). This will limit content width to 300px at 320px vw.
   width: 93.75vw;
   max-width: 1160px;
@@ -127,6 +127,12 @@ body > * {
     content: "location_city";
   }
 }
-
+.page-content {
+  background: #fff;
+  &_with-bg {
+    background: center/cover no-repeat url("../assets/img/main-bg.png");
+  }
+}
 @import "../components/header/header";
 @import "./index/index";
+@import "./details/details";

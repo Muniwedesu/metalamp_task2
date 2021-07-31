@@ -1,8 +1,33 @@
-main {
-  @media screen and (min-width: 960px) {
+@use "vars" as *;
+.page-content__search {
+  @media screen and (min-width: $breakpoint-first) {
     padding-top: 70px;
   }
   padding-bottom: min((100vw - 280px) / 2, 385px);
   padding-top: 30px;
-  background: center/cover no-repeat url("../assets/img/main-bg.png");
 }
+
+// @media screen and (min-width: $breakpoint-second) {
+//   .header__body {
+//     grid-template-areas:
+//       "logo nav"
+//       "buttons buttons";
+//     gap: 0 0px;
+//     grid-template-columns: 110px 1fr;
+//     grid-template-rows: 60px 50px;
+//     .inline-links {
+//       justify-content: center;
+//     }
+//   }
+// }
+// @media screen and (min-width: $breakpoint-first) {
+//   .header__body {
+//     grid-template-areas: "logo nav buttons";
+//     gap: 20px;
+//     grid-template-columns: 110px 2fr 303px;
+//     grid-template-rows: 70px;
+//     .inline-links {
+//       justify-content: flex-end;
+//     }
+//   }
+// }
