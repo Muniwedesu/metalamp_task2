@@ -2,6 +2,8 @@ extends ../layout.pug
 
 block content
   include /components/card/card.pug
-  main.page-content
+  main.page-content.page-content_with-bg
     .container
-      +searchCard()
+      .page-content__search
+        +searchCard()
+
