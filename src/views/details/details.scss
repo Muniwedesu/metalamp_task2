@@ -1,0 +1,16 @@
+@use "vars" as *;
+.page-content {
+  &__details {
+    background: rgba(255, 0, 0, 0.1);
+    height: 900px;
+  }
+  &__filters {
+    background: rgba(127, 255, 127, 0.1);
+  }
+  &__room-list {
+    background: rgba(0, 0, 255, 0.1);
+  }
+  &__pagination {
+    background: rgba(0, 255, 0, 0.1);
+  }
+}
