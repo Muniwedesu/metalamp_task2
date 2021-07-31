@@ -1,6 +1,7 @@
 
 //- //listItem("Label", "Items inside sublist as array", ...any additional mods)
 include ../inputs/button/button.pug
+include ../lists/links-list/links-list.pug
 //- //- mixin listItem(label, items, ...classes)
 //- //-   - var list_c = classes.map(x => `inline-list__item_${x}`)
 //- //-     li(class=["inline-list__item", ...list_c])
@@ -65,28 +66,6 @@ include ../inputs/button/button.pug
 -       }]
 -   }
 - ]
-
-mixin links-list(links)
-  ul(class="links-list" class!=attributes.class)
-    each link in links
-      li.links-list__item
-        a(href=link.link).links-list__link= link.label
-
-mixin inline-links(links)
-  ul.inline-links
-    each link in links
-      if (link.isList)
-        li.inline-links__item
-          p.inline-links__link.link= link.label
-            span.inline-links__expand-icon expand_more
-          +links-list(link.items).inline-links__expandable-list
-      else
-        if (link.label === "О нас")
-          li.inline-links__item.inline-links__item_current
-            a(href=link.link).inline-links__link.link= link.label
-        else 
-          li.inline-links__item
-            a(href=link.link).inline-links__link.link= link.label
 
 
 

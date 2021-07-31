@@ -1,6 +1,50 @@
+@use "vars" as *;
 .links-list {
   &__item:first-child > a {
     margin-top: 0;
     padding-top: 0;
+  }
+  &__item > a {
+    cursor: pointer;
+  }
+}
+
+.inline-links {
+  grid-area: nav;
+  display: flex;
+  flex-wrap: wrap;
+  &__link {
+  }
+  &__item {
+    cursor: pointer;
+    position: relative;
+    display: flex;
+    &:nth-last-child(n + 2) {
+      margin-right: 20px;
+    }
+    &_current {
+      font-weight: bold;
+      color: $dark-75;
+    }
+  }
+  &__expandable-list {
+    position: absolute;
+    display: none;
+    &_expanded {
+      display: block;
+    }
+  }
+  &__expand-icon {
+    font-family: "Material Icons";
+    font-size: 24px;
+    vertical-align: middle;
+    line-height: 17px;
+  }
+}
+.dropdown-list {
+  margin: 0;
+  position: absolute;
+  &__item {
+    text-align: left;
   }
 }

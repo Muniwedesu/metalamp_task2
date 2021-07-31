@@ -1,5 +1,15 @@
 //- mixin linksList({label, links})
-mixin linksList(links)
+
+mixin linksList({label, type = 0, styles = [], links = [], isLabelled, isExpandable})
+  //- type = 0 default
+  //-      = 1 inline 
+  //- 
+  //- lists in the footer won't be used here.
+  //- or maybe will... 
+  //- 
+  //- well, maybe I'll even need IDs 
+  //- 
+  //- style is inline or block (default)
   //- not sure if I will need to use this
   div.links-list
     //- h3.controls-label.links-list__label= label
@@ -7,3 +17,26 @@ mixin linksList(links)
       each item in links
         li.links-list__item
           a.links-list__item-text= item
+
+mixin links-list(links)
+  ul(class="links-list" class!=attributes.class)
+    each link in links
+      li.links-list__item
+        a(href=link.link).links-list__link= link.label
+
+mixin inline-links(links)
+  //- receives a list of objects
+  ul.inline-links
+    each link in links
+      if (link.isList)
+        li.inline-links__item
+          p.inline-links__link.link= link.label
+            span.inline-links__expand-icon expand_more
+          +links-list(link.items).inline-links__expandable-list
+      else
+        if (link.label === "О нас")
+          li.inline-links__item.inline-links__item_current
+            a(href=link.link).inline-links__link.link= link.label
+        else 
+          li.inline-links__item
+            a(href=link.link).inline-links__link.link= link.label
