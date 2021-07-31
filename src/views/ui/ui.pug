@@ -5,7 +5,7 @@ html
     rel="stylesheet")
   body
 include /views/mixins.pug
-include /views/variables.pug
+//- include /views/variables.pug
   .ui.ui_fill
     .ui__page-elements
       include /components/header/header.pug
@@ -36,15 +36,23 @@ include /views/variables.pug
         .elements__row
           .elements__column
             .elements__element.elements__element_narrow.expandable-checkbox
-              +expandableCheckbox("expandable checkbox list", 
-                expCheckboxItems,
-                [12,22,32,42,52,62])
-              +expandableCheckbox("expandable checkbox list", 
-                expCheckboxItems,
-                [13,23,33,43,53,63], false)
+              +checkboxGroup({
+                name: "expandable checkbox list", 
+                checkboxes: uiExpandableCheckboxes,
+                isNamed: true,
+                isExpandable: true,
+                isClosed: true
+              })
+              +checkboxGroup({
+                name: "expandable checkbox list", 
+                checkboxes: uiExpandableCheckboxes,
+                isNamed: true,
+                isExpandable: true,
+                isClosed: false
+              })
           .elements__wide-block
             .elements__element.elements__element_wide
-              +richCheckbox("rich checkbox buttons", descriptions, ["i", "o"], true)
+              +checkboxGroup({name: "rich checkbox buttons", checkboxes: uiRichCheckboxes, isNamed: true, isRich: true})
             .elements__element.elements__element_narrow.element-bullet-list
               +bulletList(bulletList)
         .elements__row

@@ -17,10 +17,13 @@
     +text("", "", "subscription text field", "Email")
 .elements__column
   .elements__element.elements__element_wide
-    +checkboxGroup("Checkbox Buttons", 
-      ["Можно курить", "Можно с питомцами", "Можно пригласить гостей (до 10 человек)"], 
-      ["smoking_allowed", "pets_allowed", "guests_allowed"], 
-      true)
+
+  //- mixin checkboxGroup({name, labels, ids, isNamed = false, isExpandable = false, isRich = false, isClosed = true})
+  +checkboxGroup({
+    name: "Checkbox Buttons", 
+    checkboxes: uiRegularCheckboxes,
+    isNamed: true
+  })
   .elements__element.elements__element_narrow
     +radioGroup("Radio Buttons", 
       ["Мужчина", "Женщина"],
