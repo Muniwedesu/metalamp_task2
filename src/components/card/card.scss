@@ -57,6 +57,9 @@
   }
 }
 .room-info {
+  &__number {
+    line-height: 1.5rem;
+  }
   &__no {
     font-size: 14px;
     line-height: 17px;
