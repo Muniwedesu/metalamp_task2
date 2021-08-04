@@ -1,0 +1,17 @@
+include ../inputs/inputs.pug
+
+
+mixin roomCard({id = "room"} = {id: "room"})
+  .room-card
+    .room-card__cover
+    form.room-card__form
+      .card__form-heading_compound.room-info
+        h1.room-info__number <span class="room-info__no">№&nbsp;</span>888<span class="room-info__type">люкс</span>
+        span.room-info__price 9 990Р <span class="room-info__per-day">в сутки</span>
+      ul.room-card__divider
+      ul.room-card__reviews
+        li
+          div *****
+        li
+          p <b>35</b> отзывов
+

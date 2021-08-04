@@ -1,0 +1,25 @@
+@use "vars" as *;
+
+.room-card {
+  width: 100%;
+  background: #fff;
+  &__cover {
+    max-width: 100%;
+    min-height: 151px;
+  }
+  &__form {
+    padding: 1.25rem;
+  }
+  &__divider {
+    margin-top: 10px;
+    margin-bottom: 8px;
+    height: 1px;
+    background-color: $dark-10;
+  }
+  &__reviews {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    height: 1.5rem;
+  }
+}
