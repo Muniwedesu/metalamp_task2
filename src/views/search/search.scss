@@ -1,0 +1,40 @@
+@use "vars" as *;
+.page-content {
+  &__room-search {
+    background: rgba(255, 0, 0, 0.1);
+    padding-top: 30px;
+    display: flex;
+
+    &-filters {
+      background: rgba(127, 255, 127, 0.1);
+      margin-right: 5%;
+      width: 23%;
+      max-width: 266px;
+      display: flex;
+      flex-direction: column;
+      flex-wrap: wrap;
+      & > *:nth-last-child(n + 2) {
+        margin-bottom: 20px;
+      }
+    }
+    &-results {
+      width: 72%;
+      // border: 1px solid blue;
+      //so its content won't fall out of the parent
+      height: 100%;
+    }
+  }
+
+  &__room-list {
+    // background: rgba(0, 0, 255, 0.1);
+    max-width: 835px;
+    height: 100%;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 12px;
+  }
+  &__pagination {
+    background: rgba(0, 255, 0, 0.1);
+    height: 60px;
+  }
+}
