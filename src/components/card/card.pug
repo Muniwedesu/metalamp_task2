@@ -1,6 +1,8 @@
 
 include ../inputs/inputs.pug
 include /components/lists/lists.pug
+include /components/compound-heading/compound-heading.pug
+
 - let summaryList = [
 - {
 -   key:" 9 990₽ х 4 суток",
@@ -40,8 +42,7 @@ mixin detailsCard({id = "details"} = {id: "details"})
   .card
     form.card__form
       .card__form-heading_compound.room-info
-        h1.room-info__number <span class="room-info__no">№&nbsp;</span>888<span class="room-info__type">люкс</span>
-        span.room-info__price 9 990Р <span class="room-info__per-day">в сутки</span>
+        23452//- +compound-heading()
       ul.card__form-elements
         li.card__form-field.card__form-field_separated
           +dropdown(id + "-arrival", {type: "text", label: "Прибытие", placeholder: "ДД.ММ.ГГГГ"})
@@ -95,46 +96,6 @@ mixin loginCard
       +account(false)
 
 
-
-//- mixin roomCard
-//-   .big-card
-//-     .search__content
-//-       .search-heading__result
-//-         //think of this class name
-//-         .search-heading__label 
-//-           p.search-heading__no.
-//-             <sub class="sub">№</sub>888 
-
-//-           p.search-heading__type люкс
-//-         .search-heading__price
-//-           p.search-heading__price-tag 9 990P
-//-           p.search-heading__daily в сутки
-
-//-       .search-form
-//-         .search-form__date
-//-           .search-form__arrival
-//-             +input("arrival", "date", "Прибытие")
-//-           .search-form__departure
-//-             +input("departure", "date", "Выезд")
-//-         .search-form__guests
-//-           +input("guests", "", "Гости", "3 гостя")
-//-         //will need to be unique probably
-//-         ul.summary
-//-           li.summary__item
-//-             p.summary__key 9 990Р х 4 суток 
-//-             p.summary__value 39 960P
-//-           li.summary__item 
-//-             p.summary__key Сбор за услуги: скидка O
-//-             p.summary__value 2179Р 0Р
-//-           li.summary__item 
-//-             p.summary__key Сбор за дополнительные услуги O
-//-             p.summary__value 300Р
-//-           li.summary__total
-//-             p.summary__total-key Итого
-//-             p.summary__total-break
-//-             p.summary__total-value 38 081Р
-//-         .search-form__button
-//-           +button({label: "Подобрать номер"})
 
 mixin account(exists)
   section.card__account

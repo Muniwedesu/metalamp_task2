@@ -1,0 +1,27 @@
+@use "vars" as *;
+
+.room-info {
+  display: flex;
+  justify-content: space-between;
+  &__number {
+    line-height: 1.5rem;
+  }
+  &__no {
+    font-size: 14px;
+    line-height: 17px;
+  }
+  &__type {
+    @include h3($purple, bold);
+  }
+  &__price {
+    font-size: 14px;
+    line-height: 18px;
+    font-weight: bold;
+    color: $dark-50;
+    // @include h3($dark-25);
+  }
+  &__per-day {
+    @include h3($dark-25, normal, none);
+    // font-size: 12px;
+  }
+}
