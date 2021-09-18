@@ -1,3 +1,5 @@
+@use "vars" as *;
+
 .checkbox-group {
   display: flex;
   flex-direction: column;
@@ -32,21 +34,24 @@
     }
   }
   &__row {
-    display: flex;
     margin-bottom: 10px;
     &:last-child {
       margin-bottom: 0;
     }
   }
+}
+.checkbox {
+  display: flex;
+
   &__input {
     position: relative;
-    width: 20px;
-    height: 20px;
+    width: 1.25rem;
+    height: 1.25rem;
     border: 1px solid $dark-50;
-    border-radius: 4px;
+    border-radius: 0.25rem;
     z-index: 1;
 
-    & + .checkbox-group__icon {
+    & + .checkbox__icon {
       position: absolute;
       visibility: hidden;
       padding-top: 4px;
@@ -56,7 +61,7 @@
 
     &:checked {
       border-color: $purple;
-      & + .checkbox-group__icon {
+      & + .checkbox__icon {
         visibility: visible;
       }
     }

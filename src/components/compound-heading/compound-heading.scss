@@ -7,15 +7,15 @@
     line-height: 1.5rem;
   }
   &__no {
-    font-size: 14px;
-    line-height: 17px;
+    font-size: 0.875rem;
+    line-height: 1.0625rem;
   }
   &__type {
     @include h3($purple, bold);
   }
   &__price {
-    font-size: 14px;
-    line-height: 18px;
+    font-size: 0.875rem;
+    line-height: 1.125rem;
     font-weight: bold;
     color: $dark-50;
     // @include h3($dark-25);

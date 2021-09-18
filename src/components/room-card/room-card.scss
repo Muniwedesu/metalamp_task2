@@ -1,18 +1,23 @@
 @use "vars" as *;
 
 .room-card {
-  width: 100%;
+  max-width: 16.875rem;
   background: #fff;
+  border-radius: 0.25rem;
+  box-shadow: 0px 10px 20px $dark-05;
   &__cover {
+    display: block;
+    box-sizing: border-box;
     max-width: 100%;
-    min-height: 151px;
+    // border: 1px solid black;
   }
   &__form {
+    // background-color: rgba(255, 0, 0, 0.5);
     padding: 1.25rem;
   }
   &__divider {
-    margin-top: 10px;
-    margin-bottom: 8px;
+    margin-top: 0.625rem;
+    margin-bottom: 0.5rem;
     height: 1px;
     background-color: $dark-10;
   }
@@ -21,5 +26,8 @@
     justify-content: space-between;
     align-items: flex-end;
     height: 1.5rem;
+  }
+  &__reviews-count {
+    color: $dark-50;
   }
 }

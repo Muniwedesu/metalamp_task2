@@ -1,6 +1,7 @@
 @import "./vars.scss";
 
 .pagination {
+  display: inline-block;
   &__buttons {
     display: flex;
   }

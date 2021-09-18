@@ -1,4 +1,4 @@
-@use "./vars.scss" as *;
+@use "vars" as *;
 //default styles are on top
 //more specific are imported at the eof
 .controls-label {
@@ -11,16 +11,7 @@
   text-transform: uppercase;
   padding-bottom: 5px;
 }
-.text-field {
-  width: 100%;
-  display: block;
-  box-sizing: border-box;
-  border: 1px solid $dark-25;
-  border-radius: 4px;
-  height: 44px;
-  padding: 0px;
-  padding: 13px 15px;
-}
+
 .rounded-rectangle {
   appearance: none;
   box-sizing: border-box;
@@ -51,7 +42,16 @@ input {
     opacity: 0.75;
   }
 }
-
+input[type="text"] {
+  width: 100%;
+  display: block;
+  box-sizing: border-box;
+  border: 1px solid $dark-25;
+  border-radius: 4px;
+  height: 44px;
+  padding: 0px;
+  padding: 13px 15px;
+}
 input:hover,
 input:focus {
   color: $dark;
@@ -71,11 +71,11 @@ fieldset {
   padding: 0;
   border: none;
 }
+@import "./checkbox/checkbox-group.scss";
 @import "./button/button.scss";
 @import "./text/text.scss";
 @import "./dropdown/dropdown.scss";
 @import "./radio/radio.scss";
-@import "./checkbox/checkbox.scss";
 @import "./toggle/toggle.scss";
 @import "./likes/likes.scss";
 @import "./rates/rates.scss";

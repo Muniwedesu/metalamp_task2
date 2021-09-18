@@ -1,127 +1,127 @@
-//used only in ui-kit
-.ui {
-  padding: 140px;
-  padding-bottom: 130px;
-  &_white-bg {
-    background-color: #fff;
-  }
-  &__form-elements {
-    display: block;
-  }
-  &__fields {
-    margin-bottom: 65px;
-  }
-  &_fill {
-    padding-left: 0;
-    padding-right: 0;
-  }
-  &__page-elements {
-    margin-bottom: 40px;
-  }
-}
+// //used only in ui-kit
+// .ui {
+//   padding: 140px;
+//   padding-bottom: 130px;
+//   &_white-bg {
+//     background-color: #fff;
+//   }
+//   &__form-elements {
+//     display: block;
+//   }
+//   &__fields {
+//     margin-bottom: 65px;
+//   }
+//   &_fill {
+//     padding-left: 0;
+//     padding-right: 0;
+//   }
+//   &__page-elements {
+//     margin-bottom: 40px;
+//   }
+// }
 
-@import "./cards/cards.scss";
-.form-elements {
-  display: grid;
-  padding: 140px;
-  grid-template-columns: 320px 268px 320px;
-  grid-template-rows: repeat(2, 1fr);
-  gap: 105px 126px;
+// @import "./cards/cards.scss";
+// .form-elements {
+//   display: grid;
+//   padding: 140px;
+//   grid-template-columns: 320px 268px 320px;
+//   grid-template-rows: repeat(2, 1fr);
+//   gap: 105px 126px;
 
-  &__controls > * {
-    margin-bottom: 40px;
-  }
-  &__likes {
-    display: grid;
-    grid-template-columns: repeat(2, 40px);
-    gap: 10px;
-  }
-  &__buttons {
-    display: grid;
-    grid-template-columns: repeat(2, 99px);
-    grid-template-rows: repeat(3, 44px);
-    gap: 30px 20px;
-    &_top {
-      margin-bottom: 11px;
-    }
-    &_big {
-      grid-column: span 2;
-      height: 44px;
-    }
-  }
-  &__range {
-    height: 53px;
-  }
-  &__column {
-    display: flex;
-    flex-direction: column;
-    & > * {
-      margin-bottom: 40px;
-    }
-  }
-  &__elements-label {
-    width: 100%;
-    grid-column: span 3;
-  }
-}
-.expanded-elements {
-  display: grid;
-  gap: 126px;
-  grid-template-columns: 320px 320px 320px;
-  &__dropdowns > * {
-    margin-bottom: 20px;
-    &:last-child {
-      margin-bottom: calc(20px + 180px);
-    }
-  }
-}
+//   &__controls > * {
+//     margin-bottom: 40px;
+//   }
+//   &__likes {
+//     display: grid;
+//     grid-template-columns: repeat(2, 40px);
+//     gap: 10px;
+//   }
+//   &__buttons {
+//     display: grid;
+//     grid-template-columns: repeat(2, 99px);
+//     grid-template-rows: repeat(3, 44px);
+//     gap: 30px 20px;
+//     &_top {
+//       margin-bottom: 11px;
+//     }
+//     &_big {
+//       grid-column: span 2;
+//       height: 44px;
+//     }
+//   }
+//   &__range {
+//     height: 53px;
+//   }
+//   &__column {
+//     display: flex;
+//     flex-direction: column;
+//     & > * {
+//       margin-bottom: 40px;
+//     }
+//   }
+//   &__elements-label {
+//     width: 100%;
+//     grid-column: span 3;
+//   }
+// }
+// .expanded-elements {
+//   display: grid;
+//   gap: 126px;
+//   grid-template-columns: 320px 320px 320px;
+//   &__dropdowns > * {
+//     margin-bottom: 20px;
+//     &:last-child {
+//       margin-bottom: calc(20px + 180px);
+//     }
+//   }
+// }
 
-.elements {
-  //change this to something else
-  width: 100%;
-  height: 100%;
-  // border: 1px dashed blue;
-  display: flex;
-  flex-wrap: wrap;
-  &__column {
-    display: flex;
-    flex-direction: column;
-    width: 320px;
-    &:nth-child(2) {
-      margin-left: 126px;
-      margin-right: 74px;
-    }
-    &_fill {
-      width: 100%;
-      margin-right: 0;
-    }
-  }
-  &__field:nth-last-child(n + 2) {
-    margin-bottom: 20px;
-  }
-  &__row {
-    width: 100%;
-    // border: 1px solid black;
-    display: flex;
-  }
-  &__element {
-    display: inline-block;
-    // border: 1px dotted green;
-    margin-bottom: 40px;
-    &_wide {
-      width: 320px;
-    }
-    &_narrow {
-      width: 266px;
-    }
-  }
-  &__wide-block {
-    margin-left: 126px;
-    display: flex;
-    width: auto;
-    // border: 1px solid red;
-  }
-}
+// .elements {
+//   //change this to something else
+//   width: 100%;
+//   height: 100%;
+//   // border: 1px dashed blue;
+//   display: flex;
+//   flex-wrap: wrap;
+//   &__column {
+//     display: flex;
+//     flex-direction: column;
+//     width: 320px;
+//     &:nth-child(2) {
+//       margin-left: 126px;
+//       margin-right: 74px;
+//     }
+//     &_fill {
+//       width: 100%;
+//       margin-right: 0;
+//     }
+//   }
+//   &__field:nth-last-child(n + 2) {
+//     margin-bottom: 20px;
+//   }
+//   &__row {
+//     width: 100%;
+//     // border: 1px solid black;
+//     display: flex;
+//   }
+//   &__element {
+//     display: inline-block;
+//     // border: 1px dotted green;
+//     margin-bottom: 40px;
+//     &_wide {
+//       width: 320px;
+//     }
+//     &_narrow {
+//       width: 266px;
+//     }
+//   }
+//   &__wide-block {
+//     margin-left: 126px;
+//     display: flex;
+//     width: auto;
+//     // border: 1px solid red;
+//   }
+// }
 
 @import "./fields/fields.scss";
 // //плохой костыль
@@ -129,3 +129,5 @@
 //   width: 100%;
 //   grid-column: span 2;
 // }
+@import "./pages/cards.scss";
+@import "./pages/forms.scss";

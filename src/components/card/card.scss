@@ -4,10 +4,9 @@
   box-sizing: border-box;
   //15px at 320px vw
   // padding: min(100%);
-  padding-top: 40px;
-  padding-bottom: 30px;
-  width: 100%;
-  max-width: 380px;
+  padding-top: 2.5rem;
+  padding-bottom: 1.875rem;
+  max-width: 23.75rem;
   border-radius: 4px;
   background-color: #fff;
   box-shadow: 0px 0px 25px rgba(0, 0, 0, 0.2);
@@ -15,7 +14,7 @@
     //15-30px for 320-380px
     padding: 0 max(15px, min(50% - 135px, 30px));
     & > *:nth-last-child(n + 2) {
-      margin-bottom: 20px;
+      margin-bottom: 1.25rem;
     }
   }
   &__form-heading_compound {
@@ -23,7 +22,7 @@
   }
   &__form-field {
     &:nth-last-child(n + 2) {
-      margin-bottom: 20px;
+      margin-bottom: 1.25rem;
     }
     &_separated {
       display: flex;
@@ -34,15 +33,15 @@
     }
   }
   &__form-submit {
-    height: 44px;
+    height: 2.75rem;
     &_big-margin {
-      margin-top: 30px;
+      margin-top: 1.875rem;
     }
   }
   &__account {
-    margin-top: 30px;
+    margin-top: 1.875rem;
     display: flex;
-    height: 44px;
+    height: 2.75rem;
     flex-wrap: wrap;
     align-items: center;
     & > *:first-child {
