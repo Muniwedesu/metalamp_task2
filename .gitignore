@@ -1,3 +1,6 @@
 node_modules/
 dist
 src/assets/img
+.eslintrc.json
+rename.py
+package-lock.json
