@@ -42,7 +42,7 @@ mixin detailsCard({id = "details"} = {id: "details"})
   .card
     form.card__form
       .card__form-heading_compound.room-info
-        23452//- +compound-heading()
+        +compound-heading()
       ul.card__form-elements
         li.card__form-field.card__form-field_separated
           +dropdown(id + "-arrival", {type: "text", label: "Прибытие", placeholder: "ДД.ММ.ГГГГ"})
