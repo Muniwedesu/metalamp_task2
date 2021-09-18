@@ -1,6 +1,9 @@
 include ../button/button.pug
 //- actually I need a dropdown for the date too
-mixin dropdown(id, {type, label, placeholder, menuItems, state, isClearable = true})
+mixin dropdown({type, label, placeholder, menuItems, initialState, isClearable = true})
+  - var id = attributes.id
+  - var classes = attributes.class
+  - var state = initialState
   .dropdown
     label(for=id).controls-label= label
     input(id=id, type="text",  

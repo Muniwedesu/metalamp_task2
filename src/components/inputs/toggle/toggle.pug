@@ -1,8 +1,12 @@
-mixin toggleGroup(name, labels, ids, addName = false)
+mixin toggleGroup({name, toggles})
   fieldset.toggle-group
     if (addName)
       legend.toggle-group__name= name
-    - for (let i = 0; i < labels.length; ++i)
+    each t in toggles
       .toggle-group__row
-        input(id=ids[i] name=ids[i], type="checkbox").toggle-group__input.rounded-rectangle
-        label(for=ids[i]).toggle-group__label= labels[i]
+        +toggle(t)
+
+mixin toggle({id, label, isToggled})
+  div.toggle
+    input(id=id name=id, type="checkbox", checked=isToggled).toggle__input.rounded-rectangle
+    label(for=id).toggle__label= label
