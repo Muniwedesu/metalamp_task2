@@ -1,0 +1,20 @@
+include /components/card/card.pug
+include /components/room-card/room-card.pug
+
+section.cards
+  section.cards__column
+    section.cards__block
+      +searchCard()
+    section.cards__block
+      +registrationCard()
+  section.cards__column
+    section.cards__block
+      +detailsCard()
+    section.cards__block
+      +loginCard()
+  section.cards__column
+    section.cards__block
+      div calendar
+    section.cards__block
+      +roomCard()
+      +roomCard()

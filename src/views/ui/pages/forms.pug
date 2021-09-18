@@ -1,0 +1,55 @@
+
+include /components/inputs/inputs.pug
+
+- var mockText = [
+-  {label: "text field", placeholder: "Email"},
+-  {label: "text field", placeholder: "this is pretty awesome"},
+-  {label: "masked text field", placeholder: "ДД.ММ.ГГГГ"},
+-  {label: "dropdown", placeholder: "Сколько гостей"},
+-  {type: "subscription", label: "subscription text field", placeholder: "Email"}]
+
+- var dropdowns = [
+- {type: "", label: "date dropdown", placeholder: "ДД.ММ.ГГГГ"},
+- {label: "date dropdown", placeholder: "19.08.2019"},
+- {label: "filter date dropdown", placeholder: "19 авг - 23 авг"}, 
+- {label: "dropdown", placeholder: "Сколько гостей"},  
+- {}  ]
+
+- var checkboxes = [
+- {id: "ex-0", label: "Можно курить", desc: ""},
+- {id: "ex-1", label: "Можно с питомцами", desc: ""},
+- {id: "ex-2", label: "Можно пригласить гостей (до 10 человек)", desc: ""}]
+
+- var radios = [
+- {id: "r-ex-0", label: "Мужчина"},
+- {id: "r-ex-1", label: "Женщина"}]
+
+- var toggles = [
+- {id: "t-ex-0", label: "Получать спецпредложения", isToggled: false},
+- {id: "t-ex-1", label: "Получать спецпредложения", isToggled: true},]
+
+section.form-elements
+  section.form-elements__column
+    section.form-elements__block
+      +text(mockText[0])#text-field
+      +text(mockText[1])#text-field-hover
+      +dropdown(dropdowns[3])#dropdown-example
+      +text(mockText[2])#text-field-masked
+      //id, type, label, placeholder, classes
+    section.form-elements__block_split
+      +dropdown(dropdowns[0])#date-left-example
+      +dropdown(dropdowns[1])#date-right-example
+    section.form-elements__block_narrow
+      +dropdown(dropdowns[2])#date-filter-example
+    section.form-elements__block_narrow
+      +text(mockText[4])
+  section.form-elements__column
+    +checkboxGroup({name: "Checkbox buttons", checkboxes: checkboxes, isNamed: true, isExpandable: false, isRich: false, isClosed: true})#checkbox-buttons-example
+    +radioGroup({name: "Radio buttons", named: true, key: "gender", radios})
+    +toggleGroup({name: "toggle", toggles: toggles})
+    div likes
+    div rates
+  section.form-elements__column
+    div range slider
+    div buttons
+    div pagination

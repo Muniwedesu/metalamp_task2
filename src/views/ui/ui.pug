@@ -4,60 +4,7 @@ html
     link(href="https://fonts.googleapis.com/icon?family=Material+Icons"
     rel="stylesheet")
   body
-include /views/mixins.pug
-//- include /views/variables.pug
-  .ui.ui_fill
-    .ui__page-elements
-      include /components/header/header.pug
-    .ui__page-elements
-      include /components/header/header.pug
-    .ui__page-elements
-      include /components/footer/footer.pug
 
-  .ui
-    include ./cards/cards.pug
-
-
-  .ui.ui_white-bg
-    .ui__form-elements
-      .ui__fields.elements
-        include ./fields/fields.pug
-      .ui__dropdowns.elements
-        .elements__row
-          .elements__column
-            .elements__element.elements__element_narrow.expanded-dropdown
-              +dropdown("","","Dropdown", "2 спальни, 2 кровати...")
-              +dropdown("","","Dropdown", "2 спальни, 2 кровати...", items, "expanded", false)
-          .elements__wide-block
-            .elements__element.elements__element_wide.dropdown_clearable
-              +dropdown("","","Dropdown", "2 спальни, 2 кровати...", guestsEmpty, "expanded", true)
-            .elements__element.elements__element_wide.dropdown_clearable
-              +dropdown("","","Dropdown", "2 спальни, 2 кровати...", guests, "expanded", true)
-        .elements__row
-          .elements__column
-            .elements__element.elements__element_narrow.expandable-checkbox
-              +checkboxGroup({
-                name: "expandable checkbox list", 
-                checkboxes: uiExpandableCheckboxes,
-                isNamed: true,
-                isExpandable: true,
-                isClosed: true
-              })
-              +checkboxGroup({
-                name: "expandable checkbox list", 
-                checkboxes: uiExpandableCheckboxes,
-                isNamed: true,
-                isExpandable: true,
-                isClosed: false
-              })
-          .elements__wide-block
-            .elements__element.elements__element_wide
-              +checkboxGroup({name: "rich checkbox buttons", checkboxes: uiRichCheckboxes, isNamed: true, isRich: true})
-            .elements__element.elements__element_narrow.element-bullet-list
-              +bulletList(bulletList)
-        .elements__row
-          .elements__column
-            .elements__element.elements__element_wide
-              +tagList(tagList)
-          .elements__wide-block.comment-block
-            +comment(commentData)
+main 
+  //- include ./pages/cards.pug
+  include ./pages/forms.pug
