@@ -25,72 +25,77 @@ include /components/compound-heading/compound-heading.pug
 -}
 //- mixin dropdown(id, {type, label, placeholder, menuItems, state, isClearable = true})
 mixin searchCard({id = "search"} = {id: "search"})
+  - var id = attributes.id
   .card
     form.card__form
       h1.card__form-heading Найдём номера под ваши пожелания
       ul.card__form-elements
         li.card__form-field.card__form-field_separated
-          +dropdown(id + "-arrival", {type: "text", label: "Прибытие", placeholder: "ДД.ММ.ГГГГ"})
-          +dropdown(id + "-departure", {type: "text", label: "Выезд", placeholder: "ДД.ММ.ГГГГ"})
+          +dropdown({label: "Прибытие", placeholder: "ДД.ММ.ГГГГ"})(id="arrival")
+          +dropdown({label: "Выезд", placeholder: "ДД.ММ.ГГГГ"})(id="departure")
       p.card__form-field
-        +dropdown(id + "-guests", {type: "text", label: "Гости", placeholder: "Сколько гостей"})
+        +dropdown({label: "Гости", placeholder: "Сколько гостей"})
       p.card__form-submit.card__form-submit_big-margin
         +button({label: "Подобрать номер", styles: ["with-arrow"]})
 
 //- mixin dropdown(id, {type, label, placeholder, menuItems, state, isClearable = true})
 mixin detailsCard({id = "details"} = {id: "details"})
+  - var id = attributes.id
   .card
     form.card__form
       .card__form-heading_compound.room-info
         +compound-heading()
       ul.card__form-elements
         li.card__form-field.card__form-field_separated
-          +dropdown(id + "-arrival", {type: "text", label: "Прибытие", placeholder: "ДД.ММ.ГГГГ"})
-          +dropdown(id + "-departure", {type: "text", label: "Выезд", placeholder: "ДД.ММ.ГГГГ"})
+          +dropdown({label: "Прибытие", placeholder: "ДД.ММ.ГГГГ"})(id="arrival")
+          +dropdown({label: "Выезд", placeholder: "ДД.ММ.ГГГГ"})(id="departure")
       p.card__form-field
-        +dropdown(id + "-guests", {type: "text", label: "Гости", placeholder: "Сколько гостей"})
+        +dropdown({label: "Гости", placeholder: "Сколько гостей"})(id="guests")
       +summary({items: summaryList, total: total})
       p.card__form-submit
         +button({label: "Забронировать", styles: ["with-arrow"]})
 
 
 mixin registrationCard({id = "registration"} = {id: "registration"})
+  - var id = attributes.id
   .card
     form.card__form
       h1.card__form-heading Регистрация аккаунта
       ul.card__form-elements
         li.card__form-field
-          +text("first-name", "text", null, "Имя")
+          +text({placeholder: "Имя"})(id="first-name")
         li.card__form-field
-          +text("last-name", "text", null, "Фамилия")
+          +text({placeholder: "Фамилия"})(id="last-name")
         li.card__form-field
-          +radioGroup(null, ["Мужчина", "Женщина"], ["male", "female"], "gender", named = false)
+          - var defaultRadios = [{label: "Мужчина", id: "male"}, {label: "Женщина", id: "female"}]
+          +radioGroup({radios: defaultRadios, key: "gender"})
       section.card__form-elements
         p.card__form-field
-          +dropdown(id + "-dateOfBirth", {type: "text", label: "Дата рождения", placeholder: "ДД.ММ.ГГГГ"})
+          +dropdown({label: "Дата рождения", placeholder: "ДД.ММ.ГГГГ"})(id= "dateOfBirth")
       fieldset.card__form-elements
         legend.controls-label Данные для входа в сервис
         li.card__form-field
-          +text("email", "text", null, "Email")
+          +text({placeholder: "Email"})(id="email")
         li.card__form-field
-          +text("password", "text", null, "Пароль")
+          +text({placeholder: "Пароль"})(id="password")
         li.card__form-field
-          +toggleGroup("", ["Получать спецпредложения"], ["receive"], addName = false)
+          - var defaultToggles = [{id: "receive-offers", label: "Получать спецпредложения" }]
+          +toggleGroup({toggles: defaultToggles})
       section.card__form-submit
         +button({label: "Перейти к оплате", styles: ["with-arrow"]})
       +account(true)
 
 
   //- id, type, label, placeholder, ...classes)
-mixin loginCard
+mixin loginCard()
   .card
     form.card__form
       h1.card__form-heading Войти
       ul.card__form-elements
         li.card__form-field
-          +text("email", "text", null, "Email")
+          +text({placeholder: "Email"})(id="email")
         li.card__form-field
-          +text("password", "text", null, "Пароль")
+          +text({placeholder: "Пароль"})(id="password")
       p.card__form-submit
         +button({label: "Войти", styles: ["with-arrow"]})
       +account(false)
