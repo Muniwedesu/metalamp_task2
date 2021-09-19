@@ -1,0 +1,5 @@
+mixin like({id, value = 0, isChecked = false})
+  //-put base element in a separate class/mixin
+  .like
+    input(id=id name=id, type="checkbox", checked=isChecked).like__input.rounded-rectangle
+    label(for=id).like__label= value

@@ -7,12 +7,12 @@
   &__name {
     position: relative;
     width: 100%;
-    margin-bottom: 8px;
-    padding-bottom: 8px;
+    margin-bottom: 0.5rem;
+    padding-bottom: 0.5rem;
     &_expandable {
       cursor: pointer;
-      margin-top: 8px;
-      padding-top: 8px;
+      margin-top: 0.5rem;
+      padding-top: 0.5rem;
     }
     &_expandable:after {
       position: absolute;
@@ -21,8 +21,8 @@
       font-weight: normal;
       content: "expand_more";
       right: 0px;
-      font-size: 24px;
-      width: 44px;
+      font-size: 1.5rem;
+      width: 2.75rem;
       text-align: center;
       transform: rotate(180deg);
     }
@@ -34,7 +34,7 @@
     }
   }
   &__row {
-    margin-bottom: 10px;
+    margin-bottom: 0.625rem;
     &:last-child {
       margin-bottom: 0;
     }
@@ -42,11 +42,13 @@
 }
 .checkbox {
   display: flex;
-
   &__input {
+    cursor: pointer;
     position: relative;
+    box-sizing: border-box;
     width: 1.25rem;
     height: 1.25rem;
+    flex-shrink: 0;
     border: 1px solid $dark-50;
     border-radius: 0.25rem;
     z-index: 1;
@@ -54,8 +56,8 @@
     & + .checkbox__icon {
       position: absolute;
       visibility: hidden;
-      padding-top: 4px;
-      padding-left: 5px;
+      padding-top: 0.25rem;
+      padding-left: 0.3125rem;
       z-index: 0;
     }
 
@@ -67,35 +69,32 @@
     }
   }
   &__rich {
-    width: 100%;
+    width: 100%; //useless prop
   }
   &__label {
     display: block;
-    max-width: 192px;
-    padding: 0 10px;
-    font-size: 14px;
-    line-height: 18px;
+    max-width: 12rem;
+    padding: 0 0.625rem;
+    font-size: 0.875rem;
+    line-height: 1.125rem;
     cursor: pointer;
     &_rich {
       max-width: 100%;
-      margin-bottom: 5px;
+      margin-top: 1px;
+      margin-bottom: 0.3125rem;
       font-weight: bold;
       color: $dark-75;
       text-transform: capitalize;
-      margin-top: 1px;
     }
   }
   &__description {
     display: block;
-    margin-top: 5px;
+    margin-top: 0.3125rem;
     max-width: 100%;
-    font-size: 12px;
-    line-height: 14px;
+    font-size: 0.75rem;
+    line-height: 0.875rem;
     text-transform: none;
     font-weight: normal;
     color: $dark-50;
-  }
-  &__icon {
-    position: absolute;
   }
 }

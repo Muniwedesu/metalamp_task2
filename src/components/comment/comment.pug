@@ -1,4 +1,4 @@
-include ../inputs/likes/likes.pug
+include ../inputs/like/like.pug
 
 mixin comment({author, date, likes, text})
   div.comment
@@ -10,5 +10,5 @@ mixin comment({author, date, likes, text})
 
     .comment__body
       .comment__likes
-        +likes("name", "id", 12, true)
+        +like("name", "id", 12, true)
       p.comment__text= text

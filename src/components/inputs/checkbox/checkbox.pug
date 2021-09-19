@@ -2,20 +2,20 @@
 //- rearrange params, name is definitely optional an is used only if it's a named group
 //- but anyways checkboxes won't appear w/o heading? 
 //- can make dynamic components mixins (input+label etc)
-mixin checkbox({label, desc, isRich = false})
+mixin checkbox({label, desc, isChecked})
   //- probably for rich checkboxes i can just check desc
   - var id = attributes.id
     div.checkbox
       //-need to have such name so it'll better represent element
-      input(id=id name=id, type="checkbox").checkbox__input
+      input(id=id name=id, type="checkbox" checked=isChecked).checkbox__input
       +checkboxSvg().checkbox__icon
-      if (!isRich)
-        label(for=id).checkbox__label= label
+      if (!desc)
+        label(for=id).checkbox__label= label || "def"
       else
         div.checkbox_rich
           //-fix this too
-          label(for=id).checkbox__label.checkbox__label_rich= checkbox.label
-            span.checkbox__description= desc
+          label(for=id).checkbox__label.checkbox__label_rich= label
+            span.checkbox__description= desc || "desc"
 
 
 mixin checkboxGroup({name, checkboxes, isNamed = false, isExpandable = false, isRich = false, isClosed = true})
@@ -32,9 +32,9 @@ mixin checkboxGroup({name, checkboxes, isNamed = false, isExpandable = false, is
       legend(class=classes)= name
       //- idk but width should be fixed. inline blocks should be ok 
     ul(class = ulClasses)
-      - for (let checkbox of checkboxes)
+      - for (let ch of checkboxes)
         li.checkbox-group__row
-          +checkbox({label: checkbox.label, desc: checkbox.desc, isRich: checkbox.isRich})(id=checkbox.id)
+          +checkbox({label: ch.label, desc: ch.desc, isChecked: ch.isChecked})(id=ch.id)
       //- - for (let i = 0; i < checkboxes.length; ++i)
       //-   li.checkbox-group__row
       //-     //-need to have such name so it'll better represent element

@@ -1,7 +1,7 @@
-.likes {
+.like {
   display: block;
   position: relative;
-  width: 40px;
+  width: 2.5rem;
   &__input {
     //this is a common part
     transition: 0.1s;
@@ -38,7 +38,7 @@
   }
   &__label {
     right: 0px;
-    top: 4px;
+    top: 0.25rem;
     text-align: left;
     width: 20px;
     margin: auto;

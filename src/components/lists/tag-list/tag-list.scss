@@ -1,36 +1,31 @@
 @use "./vars" as *;
-.tag-list {
-  &__item {
-    display: flex;
-    padding-top: 20px;
-    &:nth-last-child(n + 2) {
-      border-bottom: 2px solid $dark-10;
-      padding-bottom: 17px;
-    }
-  }
+.tag {
+  display: flex;
   &__icon {
-    width: 48px;
-    height: 48px;
-    font-size: 48px;
-    line-height: 48px;
-    color: black;
+    width: 3rem;
+    font-size: 3rem;
+    line-height: 3rem;
     &::before {
       background: $grad-purple;
+      color: transparent;
       background-clip: text;
       -webkit-background-clip: text;
-      color: transparent;
       -webkit-text-fill-color: transparent;
     }
   }
   &__text {
-    display: flex;
-    flex-direction: column;
+    margin-left: 0.625rem;
   }
   &__label {
     font-weight: bold;
     color: $dark-75;
     text-transform: capitalize;
   }
-  &__description {
+}
+.tag-list {
+  &__item {
+    padding-top: 1.25rem;
+    padding-bottom: 1.0625rem; //17px...
+    border-bottom: 1px solid $dark-10;
   }
 }

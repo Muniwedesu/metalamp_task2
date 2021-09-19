@@ -1,5 +1,7 @@
 
 include /components/inputs/inputs.pug
+include /components/lists/lists.pug
+include /components/comment/comment.pug
 
 - var mockText = [
 -  {label: "text field", placeholder: "Email"},
@@ -8,17 +10,46 @@ include /components/inputs/inputs.pug
 -  {label: "dropdown", placeholder: "Сколько гостей"},
 -  {type: "subscription", label: "subscription text field", placeholder: "Email"}]
 
+- var dropdownItems = [[
+- {name: "взрослые", value: "2"},
+- {name: "дети", value: "2"},
+- {name: "младенцы", value: "0"}],
+-[
+- {name: "взрослые", value: "0"},
+- {name: "дети", value: "0"},
+- {name: "младенцы", value: "0"}],
+-[
+- {name: "взрослые", value: "2"},
+- {name: "дети", value: "1"},
+- {name: "младенцы", value: "0"}],
+-]
+
 - var dropdowns = [
-- {type: "", label: "date dropdown", placeholder: "ДД.ММ.ГГГГ"},
+- {label: "date dropdown", placeholder: "ДД.ММ.ГГГГ"},
 - {label: "date dropdown", placeholder: "19.08.2019"},
 - {label: "filter date dropdown", placeholder: "19 авг - 23 авг"}, 
 - {label: "dropdown", placeholder: "Сколько гостей"},  
-- {}  ]
+- {label: "dropdown", placeholder: "2 спальни, 2 кровати..."}  ,
+- {label: "dropdown", placeholder: "2 спальни, 2 кровати...", menuItems: dropdownItems[0], initialState: "expanded"},
 
+- {label: "dropdown", placeholder: "Сколько гостей", menuItems: dropdownItems[1], initialState: "expanded", isClearable: true},  
+- {label: "dropdown", placeholder: "3 гостя", menuItems: dropdownItems[2], initialState: "expanded", isClearable: true},  ]
 - var checkboxes = [
-- {id: "ex-0", label: "Можно курить", desc: ""},
-- {id: "ex-1", label: "Можно с питомцами", desc: ""},
-- {id: "ex-2", label: "Можно пригласить гостей (до 10 человек)", desc: ""}]
+- {id: "ch-ex-0", label: "Можно курить"},
+- {id: "ch-ex-1", label: "Можно с питомцами"},
+- {id: "ch-ex-2", label: "Можно пригласить гостей (до 10 человек)"},]
+
+- var expCheckboxes = [
+- {id: "ch-ex-3", label: "Завтрак",             },
+- {id: "ch-ex-4", label: "Письменный стол",     isChecked:"true"},
+- {id: "ch-ex-5", label: "Стул для кормления",  isChecked:"true"},
+- {id: "ch-ex-6", label: "Кроватка",            isChecked:"true"},
+- {id: "ch-ex-7", label: "Телевизор",           },
+- {id: "ch-ex-8", label: "Шампунь",             }]
+
+- var richCheckboxes = [
+- {id: "rch-ex-0", label: "Широкий коридор", desc: "Ширина коридоров в номере не менее 91 см."},
+- {id: "rch-ex-1", label: "Помощник для инвалидов",     isChecked:"true", desc: "На 1 этаже вас встретит специалист  и проводит до номера."}]
 
 - var radios = [
 - {id: "r-ex-0", label: "Мужчина"},
@@ -26,7 +57,12 @@ include /components/inputs/inputs.pug
 
 - var toggles = [
 - {id: "t-ex-0", label: "Получать спецпредложения", isToggled: false},
-- {id: "t-ex-1", label: "Получать спецпредложения", isToggled: true},]
+- {id: "t-ex-1", label: "Получать спецпредложения", isToggled: true}]
+
+- var likes = [{id: "l-ex-0", value: 2}, {id: "l-ex-1", value: 12, isChecked: true}]
+- var tagItems = [
+- { icon: "comfort", label: "Комфорт", description: "Шумопоглощающие стены" },
+- { icon: "cosiness", label: "Удобство", description: "Окно в каждой из спален" },]
 
 section.form-elements
   section.form-elements__column
@@ -44,12 +80,48 @@ section.form-elements
     section.form-elements__block_narrow
       +text(mockText[4])
   section.form-elements__column
-    +checkboxGroup({name: "Checkbox buttons", checkboxes: checkboxes, isNamed: true, isExpandable: false, isRich: false, isClosed: true})#checkbox-buttons-example
-    +radioGroup({name: "Radio buttons", named: true, key: "gender", radios})
-    +toggleGroup({name: "toggle", toggles: toggles})
-    div likes
-    div rates
+    section.form-elements__block
+      +checkboxGroup({name: "Checkbox buttons", checkboxes: checkboxes, isNamed: true, isExpandable: false, isRich: false, isClosed: true})#checkbox-buttons-example
+    section.form-elements__block
+      +radioGroup({name: "Radio buttons", named: true, key: "gender", radios})
+    section.form-elements__block
+      +toggleGroup({name: "toggle", toggles: toggles})
+    section.form-elements__block_split
+      +like(likes[0])
+      +like(likes[1])
+    section.form-elements__block_split
+      div rate button
   section.form-elements__column
     div range slider
     div buttons
     div pagination
+
+section.form-elements
+  section.form-elements__column
+    section.form-elements__block
+      +dropdown(dropdowns[4])#dropdown-example-default
+      section.form-elements__dropdown
+        +dropdown(dropdowns[5])#dropdown-example-expanded
+    section.form-elements__block
+      +checkboxGroup({name: "expandable checkbox list", checkboxes: [{label: ""}], isNamed: true, isExpandable: true})
+      +checkboxGroup({name: "expandable checkbox list", checkboxes: expCheckboxes, isNamed: true, isExpandable: true, isClosed: false})
+
+  section.form-elements__column
+    section.form-elements__block
+      section.form-elements__dropdown_big
+        +dropdown(dropdowns[6])#clearable-dropdown-example
+      //- +checkboxGroup({name: "bullet list", checkboxes: expCheckboxes, isNamed: true, isExpandable: true, isClosed: false})
+    section.form-elements__block
+      +checkboxGroup({name: "rich checkbox buttons", checkboxes: richCheckboxes, isNamed: true})
+  section.form-elements__column
+    section.form-elements__block 
+      section.form-elements__dropdown_big
+        +dropdown(dropdowns[7])#clearable-dropdown-example-filled
+    section.form-elements__block
+      +bulletList({name: "bullet list", items: ["Нельзя с питомцами", "Без вечеринок и мероприятий", "Время прибытия – после 13:00, а выезд до 12:00"]})
+section.form-elements
+  section.form-elements__column
+    +tagList(tagItems)
+  section.form-elements__column_wide
+    //- mixin comment({author, date, likes, text})
+    +comment({author: {name: "Мурад сарафанов", icon: "comment-1.jpg"}, date: "5 дней назад", text: "Великолепный матрас на кровати в основной спальне! А пуфик вообще потрясающий. И стены, действительно, шумоподавляющие. Выкрикивал комплименты повару — никто не жаловался из соседей."})

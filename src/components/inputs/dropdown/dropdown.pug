@@ -1,17 +1,18 @@
 include ../button/button.pug
 //- actually I need a dropdown for the date too
-mixin dropdown({type, label, placeholder, menuItems, initialState, isClearable = true})
+mixin dropdown({type, label, placeholder, menuItems, initialState, isClearable = false})
   - var id = attributes.id
   - var classes = attributes.class
-  - var state = initialState
+  - var state = initialState //- 
   .dropdown
+    //- default
     label(for=id).controls-label= label
     input(id=id, type="text",  
     readonly="readonly", name=id, placeholder=placeholder,
     class=`text-field dropdown ${state ? 'dropdown_' + state : ""}` )
     //- if it has menu
     if (menuItems)
-      ul(class=`dropdown__menu ${state ? 'dropdown__menu_' + state: ""}`)
+      ul(class=`dropdown__menu ${state ? 'dropdown__menu_' + state : ""}`)
         each item in menuItems
           li.dropdown__menu__row
             p(class="label dropdown__menu__text")= item.name
