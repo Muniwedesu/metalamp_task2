@@ -40,4 +40,14 @@
       height: 14rem;
     }
   }
+  &__button {
+    height: 2.75rem;
+    &_split {
+      max-width: 13.625rem;
+      display: flex;
+      & > * + * {
+        margin-left: 1.25rem;
+      }
+    }
+  }
 }

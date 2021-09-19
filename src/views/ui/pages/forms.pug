@@ -2,6 +2,7 @@
 include /components/inputs/inputs.pug
 include /components/lists/lists.pug
 include /components/comment/comment.pug
+include /components/pagination/pagination.pug
 
 - var mockText = [
 -  {label: "text field", placeholder: "Email"},
@@ -79,6 +80,7 @@ section.form-elements
       +dropdown(dropdowns[2])#date-filter-example
     section.form-elements__block_narrow
       +text(mockText[4])
+
   section.form-elements__column
     section.form-elements__block
       +checkboxGroup({name: "Checkbox buttons", checkboxes: checkboxes, isNamed: true, isExpandable: false, isRich: false, isClosed: true})#checkbox-buttons-example
@@ -86,16 +88,41 @@ section.form-elements
       +radioGroup({name: "Radio buttons", named: true, key: "gender", radios})
     section.form-elements__block
       +toggleGroup({name: "toggle", toggles: toggles})
-    section.form-elements__block_split
-      +like(likes[0])
-      +like(likes[1])
+    section.form-elements__block
+      section.form-elements__label.controls-label likes
+      section.form-elements__block_split
+        +like(likes[0])
+        +like(likes[1])
+
     section.form-elements__block_split
       div rate button
-  section.form-elements__column
-    div range slider
-    div buttons
-    div pagination
 
+  section.form-elements__column
+    //- column 3
+    div range slider
+
+    section.form-elements__block
+      section.form-elements__label.controls-label button
+
+      section.form-elements__button.form-elements__button_split
+        +button({label: "click me"})#btn-ex-0
+        +button({label: "click me"})(disabled=true)#btn-ex-0-d
+      section.form-elements__button.form-elements__button_split
+        +button({label: "click me", styles: ["outlined"]})#btn-ex-1
+        +button({label: "click me", styles: ["outlined"]})(disabled="disabled")#btn-ex-1-d
+      section.form-elements__button.form-elements__button_split
+        +button({label: "click me", styles: ["text"]})#btn-ex-2
+        +button({label: "click me", styles: ["text"]})(disabled="disabled")#btn-ex-2-d
+      section.form-elements__button
+        +button({label: "click me", styles: ["green", "with-arrow"]})#btn-ex-3
+    section.form-elements__block
+      section.form-elements__label.controls-label pagination
+      +pagination()
+
+
+
+
+//- lists and other things
 section.form-elements
   section.form-elements__column
     section.form-elements__block
@@ -114,7 +141,7 @@ section.form-elements
     section.form-elements__block
       +checkboxGroup({name: "rich checkbox buttons", checkboxes: richCheckboxes, isNamed: true})
   section.form-elements__column
-    section.form-elements__block 
+    section.form-elements__block
       section.form-elements__dropdown_big
         +dropdown(dropdowns[7])#clearable-dropdown-example-filled
     section.form-elements__block

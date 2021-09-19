@@ -1,63 +1,63 @@
-.elements__column
-  .elements__element.elements__element_wide
-    .elements__field
-      +text("","","text field", "Email")
-    .elements__field
-      +text("", "", "text field", "This is pretty awesome")
-    .elements__field
-      +dropdown("", "", "dropdown", "Сколько гостей")
-    .elements__field
-      +text("", "", "masked text field", "ДД.ММ.ГГГГ")
-  .elements__element.elements__element_wide.date-dropdowns
-    +dropdown("","","date Dropdown","ДД.ММ.ГГГГ")
-    +dropdown("","","date Dropdown","19.08.2019")
-  .elements__element.elements__element_narrow
-    +dropdown("","","filter date dropdown","19 авг - 23 авг")
-  .elements__element.elements__element_narrow
-    +text("", "", "subscription text field", "Email")
-.elements__column
-  .elements__element.elements__element_wide
+//- .elements__column
+//-   .elements__element.elements__element_wide
+//-     .elements__field
+//-       +text("","","text field", "Email")
+//-     .elements__field
+//-       +text("", "", "text field", "This is pretty awesome")
+//-     .elements__field
+//-       +dropdown("", "", "dropdown", "Сколько гостей")
+//-     .elements__field
+//-       +text("", "", "masked text field", "ДД.ММ.ГГГГ")
+//-   .elements__element.elements__element_wide.date-dropdowns
+//-     +dropdown("","","date Dropdown","ДД.ММ.ГГГГ")
+//-     +dropdown("","","date Dropdown","19.08.2019")
+//-   .elements__element.elements__element_narrow
+//-     +dropdown("","","filter date dropdown","19 авг - 23 авг")
+//-   .elements__element.elements__element_narrow
+//-     +text("", "", "subscription text field", "Email")
+//- .elements__column
+//-   .elements__element.elements__element_wide
 
-  //- mixin checkboxGroup({name, labels, ids, isNamed = false, isExpandable = false, isRich = false, isClosed = true})
-  +checkboxGroup({
-    name: "Checkbox Buttons", 
-    checkboxes: uiRegularCheckboxes,
-    isNamed: true
-  })
-  .elements__element.elements__element_narrow
-    +radioGroup("Radio Buttons", 
-      ["Мужчина", "Женщина"],
-      ["male", "female"], 
-      "gender", 
-        true)
-  .elements__element.elements__element_narrow
-    +toggleGroup("Toggle", 
-      ["Получать спецпредложения", "Получать спецпредложения"],
-      ["receive-special", "not-receive-special"], 
-      true)
-  .elements__element.elements__element_narrow
-    .controls-label.form-elements__elements-label like button
-    +likes("like button", "like-1", 2)
-    +likes("like button", "like-12", 12, true)
-  .elements__element.elements__element_narrow
-    .controls-label rate button
-    +rates("rate button")
+//-   //- mixin checkboxGroup({name, labels, ids, isNamed = false, isExpandable = false, isRich = false, isClosed = true})
+//-   +checkboxGroup({
+//-     name: "Checkbox Buttons", 
+//-     checkboxes: uiRegularCheckboxes,
+//-     isNamed: true
+//-   })
+//-   .elements__element.elements__element_narrow
+//-     +radioGroup("Radio Buttons", 
+//-       ["Мужчина", "Женщина"],
+//-       ["male", "female"], 
+//-       "gender", 
+//-         true)
+//-   .elements__element.elements__element_narrow
+//-     +toggleGroup("Toggle", 
+//-       ["Получать спецпредложения", "Получать спецпредложения"],
+//-       ["receive-special", "not-receive-special"], 
+//-       true)
+//-   .elements__element.elements__element_narrow
+//-     .controls-label.form-elements__elements-label like button
+//-     +likes("like button", "like-1", 2)
+//-     +likes("like button", "like-12", 12, true)
+//-   .elements__element.elements__element_narrow
+//-     .controls-label rate button
+//-     +rates("rate button")
 
-.elements__column
-  .elements__element
-    .controls-label range slider
-    div slider
-  .elements__element
-    div(class="controls-label form-elements__buttons_top") buttons
-    .form-elements__buttons
-      +button({label: "CLICK ME"})
-      +button({label: "CLICK ME", isDisabled: true})
-      +button({label: "CLICK ME", styles: ["outlined"]})
-      +button({label: "CLICK ME", isDisabled: true, styles: ["outlined"]})
-      +button({label: "CLICK ME", styles: ["text"]})
-      +button({label: "CLICK ME", isDisabled: true,  styles: ["text"]})
-    .form-elements__buttons_big
-      +button({label: "перейти к оплате", styles: ["with-arrow"]})
-  .elements__element
-    .controls-label pagination
-    +pagination()
+//- .elements__column
+//-   .elements__element
+//-     .controls-label range slider
+//-     div slider
+//-   .elements__element
+//-     div(class="controls-label form-elements__buttons_top") buttons
+//-     .form-elements__buttons
+//-       +button({label: "CLICK ME"})
+//-       +button({label: "CLICK ME", isDisabled: true})
+//-       +button({label: "CLICK ME", styles: ["outlined"]})
+//-       +button({label: "CLICK ME", isDisabled: true, styles: ["outlined"]})
+//-       +button({label: "CLICK ME", styles: ["text"]})
+//-       +button({label: "CLICK ME", isDisabled: true,  styles: ["text"]})
+//-     .form-elements__buttons_big
+//-       +button({label: "перейти к оплате", styles: ["with-arrow"]})
+//-   .elements__element
+//-     .controls-label pagination
+//-     +pagination()

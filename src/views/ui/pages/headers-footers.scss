@@ -1,0 +1,5 @@
+.header-footer {
+  &__row + * {
+    margin-top: 2.5rem;
+  }
+}
