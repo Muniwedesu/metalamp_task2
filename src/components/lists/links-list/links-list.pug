@@ -28,7 +28,7 @@ mixin inline-links(links)
   //- receives a list of objects
   ul.inline-links
     each link in links
-      if (link.isList)
+      if (link.items)
         li.inline-links__item
           p.inline-links__link.link= link.label
             span.inline-links__expand-icon expand_more

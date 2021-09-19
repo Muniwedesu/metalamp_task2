@@ -1,7 +1,7 @@
 @use "sass:math";
 @use "./vars" as *;
-
-@media screen and (max-width: 630px) {
+// rip i'll need to rewrite this
+@media screen and (max-width: $breakpoint-second) {
   .header__body {
     grid-template-areas:
       "logo"

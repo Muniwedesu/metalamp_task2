@@ -6,7 +6,7 @@
   align-items: center;
   height: 100%;
   width: 100%;
-  border-radius: 22px;
+  border-radius: 1.375rem;
   background: $grad-purple;
   font: inherit;
   color: #fff;
@@ -35,7 +35,7 @@
     background: none;
     color: $purple;
     padding: 0;
-    height: 15px;
+    height: 0.9375rem;
     width: auto;
     &:disabled {
       color: $dark;
@@ -44,7 +44,6 @@
   }
   &_with-arrow {
     position: relative;
-    //maybe it should be in relative units
     &::after {
       font-family: "Material Icons";
       content: "arrow_forward";

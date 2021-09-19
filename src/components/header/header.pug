@@ -14,62 +14,21 @@ include ../lists/links-list/links-list.pug
 //- //-               a= item
 //- include /views/mixins.pug
 - var links = [
--   {
--     label: "О нас",
--     link: "#",
--     isList: false
--   },
--   {
--     label: "Услуги",
--     link: "",
--     isList: true,
--     items: [ 
--       {
--         label: "услуга 1",
--         link: "#"
--       },
--       {
--         label: "услуга 2",
--         link: "#"
--       },
--       {
--         label: "услуга 3",
--         link: "#"
--       }]
--   },
--   {
--     label: "Вакансии",
--     link: "#",
--     isList: false
--   },
--   {
--     label: "Новости",
--     link: "#",
--     isList: false
--   },
--   {
--     label: "Соглашения",
--     link: "",
--     isList: true,
--     items: [ 
--       {
--         label: "согл 1",
--         link: "#"
--       },
--       {
--         label: "согл 2",
--         link: "#"
--       },
--       {
--         label: "согл 3",
--         link: "#"
--       }]
--   }
-- ]
-
-
-
-
+-   {label: "О нас",  link: "#" },
+-   {label: "Услуги", link: "", items: 
+-     [ 
+-       {label: "услуга 1", link: "#" },
+-       {label: "услуга 2", link: "#" },
+-       {label: "услуга 3", link: "#"}
+-     ]},
+-   {label: "Вакансии", link: "#"},
+-   {label: "Новости",  link: "#"},
+-   {label: "Соглашения",link: "", items: 
+-     [ 
+-       {label: "согл 1", link: "#"},
+-       {label: "согл 2", link: "#"},
+-       {label: "согл 3", link: "#"}
+-     ]}]
 
 header.header
   .container

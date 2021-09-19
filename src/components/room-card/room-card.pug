@@ -1,7 +1,9 @@
 include ../inputs/inputs.pug
 
 
-mixin roomCard({id = "room", roomInfo = { number: "888", type: true, price: "8500", nReviews: "145", img: "room-0.jpg"} } = {id: "room"})
+mixin roomCard({roomInfo = { number: "888", type: true, price: "8500", nReviews: "145", img: "room-0.jpg"} } = {})
+  - if (!roomInfo) roomInfo =  {number: "888", type: true, price: "8500", nReviews: "145", img: "room-0.jpg"};
+  - var id = attributes.id || "room-888"
   .room-card
     img(src=require("rooms/"+ roomInfo.img)).room-card__cover
     form.room-card__form
