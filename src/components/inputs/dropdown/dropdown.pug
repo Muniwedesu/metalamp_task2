@@ -9,17 +9,17 @@ mixin dropdown({type, label, placeholder, menuItems, initialState, isClearable =
     label(for=id).controls-label= label
     input(id=id, type="text",  
     readonly="readonly", name=id, placeholder=placeholder,
-    class=`text-field dropdown ${state ? 'dropdown_' + state : ""}` )
+    class=`text-field dropdown__input ${state ? 'dropdown__input_' + state : ""}` )
     //- if it has menu
     if (menuItems)
       ul(class=`dropdown__menu ${state ? 'dropdown__menu_' + state : ""}`)
         each item in menuItems
-          li.dropdown__menu__row
-            p(class="label dropdown__menu__text")= item.name
-            .dropdown__menu__controls
-              +button({label: "-", isDisabled: item.value === 0})(type="button" class="dropdown__menu__button")
-              p(class="label dropdown__menu__text")= item.value
-              +button({label: "+"})(type="button" class="dropdown__menu__button" )
+          li.dropdown__row
+            p(class="label dropdown__text")= item.name
+            .dropdown__controls
+              +button({label: "-", isDisabled: item.value === 0})(type="button").dropdown__menu-button
+              p(class="label dropdown__text")= item.value
+              +button({label: "+"})(type="button").dropdown__menu-button
         //- fix this
         if (isClearable)
           li(class=`dropdown__menu__state-controls 

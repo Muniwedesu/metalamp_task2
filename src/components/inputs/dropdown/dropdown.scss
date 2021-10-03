@@ -4,7 +4,7 @@
   position: relative;
   cursor: pointer;
   width: 100%;
-  min-width: 12rem;
+  // min-width: 12rem;
   &__input {
     position: relative;
   }
@@ -33,6 +33,31 @@
     pointer-events: none;
   }
 
+  &__row {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 0.4375rem;
+    &:last-child {
+      margin-bottom: 0;
+    }
+  }
+  &__controls {
+    width: 92px;
+    display: flex;
+    justify-content: space-between;
+  }
+  &__menu-button {
+    background: #fff;
+    border: 1px solid $dark-25;
+    color: $dark-50;
+    height: 30px;
+    width: 30px;
+    padding: 0;
+  }
+  &__text {
+    color: $dark;
+    margin: 0;
+  }
   &__menu {
     box-sizing: border-box;
     display: none;
@@ -50,31 +75,6 @@
     z-index: 2;
     &_expanded {
       display: block;
-    }
-    &__row {
-      display: flex;
-      justify-content: space-between;
-      margin-bottom: 0.4375rem;
-      &:last-child {
-        margin-bottom: 0;
-      }
-    }
-    &__controls {
-      width: 92px;
-      display: flex;
-      justify-content: space-between;
-    }
-    &__button {
-      background: #fff;
-      border: 1px solid $dark-25;
-      color: $dark-50;
-      height: 30px;
-      width: 30px;
-      padding: 0;
-    }
-    &__text {
-      color: $dark;
-      margin: 0;
     }
     &__clear-button_hidden {
       visibility: hidden;
