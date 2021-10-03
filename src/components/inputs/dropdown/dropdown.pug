@@ -4,13 +4,19 @@ mixin dropdown({type, label, placeholder, menuItems, initialState, isClearable =
   - var id = attributes.id
   - var classes = attributes.class
   - var state = initialState //- 
+  //- 3 or 4 types of dropdowns are used:
+  //- for picking guests
+  //- same but clearable
+  //- date picker
+  //- date filter
   .dropdown
     //- default
     label(for=id).controls-label= label
     input(id=id, type="text",  
-    readonly="readonly", name=id, placeholder=placeholder,
+    readonly=true, name=id, placeholder=placeholder,
     class=`text-field dropdown__input ${state ? 'dropdown__input_' + state : ""}` )
-    //- if it has menu
+    //- "expanded" classes won't be used here I think?
+    //- if it has menu (for testing, it always should have)
     if (menuItems)
       ul(class=`dropdown__menu ${state ? 'dropdown__menu_' + state : ""}`)
         each item in menuItems
@@ -20,11 +26,15 @@ mixin dropdown({type, label, placeholder, menuItems, initialState, isClearable =
               +button({label: "-", isDisabled: item.value === 0})(type="button").dropdown__menu-button
               p(class="label dropdown__text")= item.value
               +button({label: "+"})(type="button").dropdown__menu-button
+
         //- fix this
-        if (isClearable)
-          li(class=`dropdown__menu__state-controls 
-          ${isClearable ? "" : "dropdown__menu__state-controls_hidden"}`)
-            //- if there are any items "clear" button will be visible
-            - let hidden = !menuItems.some(x => x.value);
-            +button({label: "очистить", styles: ["text"]})(class = hidden ? 'dropdown__menu__clear-button_hidden' : null)
-            +button({label: "применить", styles: ["text"]})
+        //- also this logic probably should be moved to js class 
+        +dropdownClearButtons(isClearable, menuItems)
+
+mixin dropdownClearButtons(isClearable, menuItems)
+  if (isClearable)
+    li(class=`dropdown__menu__state-controls ${isClearable ? "" : "dropdown__menu__state-controls_hidden"}`)
+      //- if there are any items "clear" button will be visible
+      - let hidden = !menuItems.some(x => x.value);
+      +button({label: "очистить", styles: ["text"]})(class = hidden ? 'dropdown__menu__clear-button_hidden' : null)
+      +button({label: "применить", styles: ["text"]})

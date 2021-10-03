@@ -5,10 +5,7 @@ class DropdownRow {
     this.$row = $(row);
     this.$valueText = this.$row.find(".dropdown__text").last();
     this.label = this.$row.find(".dropdown__text").first().text();
-    // console.log(this.$valueText);
-    // console.log(this.$valueText.text());
 
-    // console.log(this.$valueText);
     this.value = +this.$valueText.text();
     this.returnObject = {
       label: this.label,
@@ -18,28 +15,25 @@ class DropdownRow {
   Add() {
     this.value += 1;
     this.$valueText.text(this.value);
-    console.log(this.value);
-    this.returnObject.label = this.label;
-    this.returnObject.value = this.value;
-    return this.returnObject;
+    this.$row.trigger("valueChange", [this.label, this.value]);
   }
   Remove() {
     if (this.value > 0) {
       this.value -= 1;
       this.$valueText.text(this.value);
-      console.log(this.value);
     }
-    this.returnObject.label = this.label;
-    this.returnObject.value = this.value;
-    return this.returnObject;
+    this.$row.trigger("valueChange", [this.label, this.value]);
   }
   Clear() {}
   GetValues() {
     return this.returnObject;
   }
 }
+//try to create an event listener from all of the descendants
+//attach closing method on the window
+//
 
-export class Dropdown {
+export class DropdownMenu {
   constructor(dropdown) {
     // get our menu and dropdown input
     // create object
@@ -47,7 +41,9 @@ export class Dropdown {
     this.$dropdown = $(dropdown);
     this.$dropdownInput = this.$dropdown.children(".dropdown__input");
     this.$dropdownMenu = this.$dropdown.children(".dropdown__menu");
-
+    // console.log(this.$dropdownInput.prop("placeholder"));
+    this.defaultPlaceholder = this.$dropdownInput.prop("placeholder");
+    this.dropdownState = {};
     // this.$dropdownMenuRow = this.dropdown;
 
     // console.log(this.$dropdownMenu.children());
@@ -68,9 +64,14 @@ export class Dropdown {
       this.rows.push(new DropdownRow(row));
     }
 
-    console.log(this.rows);
+    // console.log(this.rows);
     //will be called in context of that object
-    this.$dropdown.click(this.onClick.bind(this));
+    // this.$dropdown.click(this.onClick.bind(this));
+    this.$dropdown.on("click", this.onClick.bind(this));
+    this.$dropdown.on("valueChange", this.updatePlaceholder.bind(this));
+    // this.$dropdown.on("blur", this.onBlur.bind(this));
+
+    // $(document).on("click", this.close.bind(this));
     //get list and input of this particular dropdown
     //or no?
     //vars to contain current state
@@ -79,15 +80,25 @@ export class Dropdown {
     ///this.dropdownInput =
     this.updatePlaceholder();
   }
+  onBlur(event) {
+    console.log(event);
+  }
   toggle() {
+    console.log("toggle dropdown");
     this.$dropdownInput.toggleClass("dropdown__input_expanded");
     this.$dropdownMenu.toggleClass("dropdown__menu_expanded");
   }
   onClick(event) {
+    // console.log("event:");
+    // console.log(event);
+    //I could add listener to the whole window
+    //and just check target here the same way.
+    //I'll just need to find a way of getting info from window event listener
     let $target = $(event.target);
-    console.log($target);
+    // console.log("target");
+    // console.log($target);
     if ($target.hasClass("dropdown__input")) {
-      console.log("dropdown toggle");
+      // console.log("dropdown toggle");
       this.toggle();
     } else if ($target.hasClass("dropdown__menu-button")) {
       //get index of the row somehow
@@ -101,30 +112,49 @@ export class Dropdown {
       } else {
         console.log(this.rows[$target.parent().parent().index()].Remove());
       }
+      this.updatePlaceholder();
     } else if ($target.parent().hasClass("dropdown__menu-button")) {
-      if ($target.text == "+") {
-      } else {
+      console.log("click on label:");
+      $target.parent().trigger("click");
+    }
+    //process events for "clear" and "apply" buttons
+  }
+  updatePlaceholder(event, label, value) {
+    //on("event") shold pass data here...
+    /*problems: 
+    - construct a new string depending on the state object
+    
+    
+    
+    */
+    this.dropdownState[label] = value;
+    //пройтись по всем свойствам
+    //записать в строку все, что не равны нулю
+    //??
+    //Запятые?
+    let valueText = "";
+    for (let label in this.dropdownState) {
+      if (this.dropdownState[label] > 0) {
+        valueText += `${label}: ${this.dropdownState[label]} `;
       }
     }
 
-    //if target is input toggle exp
-  }
-  updatePlaceholder(value) {
-    let placeholder = "";
-    let tmp = [];
-    this.rows.forEach((row) => {
-      let obj = row.GetValues();
-      placeholder += `${obj.value} ${obj.label}, `;
-      tmp.push(row.GetValues());
-    });
-    this.$dropdownInput.prop("placeholder", placeholder);
-    console.log(tmp);
+    // let tmp = [];
+    // this.rows.forEach((row) => {
+    //   let obj = row.GetValues();
+    //   if (obj.value > 0) valueText += `${obj.value} ${obj.label}, `;
+    //   tmp.push(row.GetValues());
+    // });
+    if (valueText.length > 0) {
+      this.$dropdownInput.prop("value", valueText);
+    } else this.$dropdownInput.prop("value", null);
+
+    // console.log(tmp);
   }
 }
 
 $(document).ready(() => {
-  console.log("ready");
   $(".dropdown").map(function () {
-    new Dropdown(this);
+    new DropdownMenu(this);
   });
 });

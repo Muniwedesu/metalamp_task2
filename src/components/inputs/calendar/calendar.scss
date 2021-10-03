@@ -1,0 +1,113 @@
+@use "vars" as *;
+.datepicker {
+  background-color: white;
+  max-width: 20rem;
+  border: 1px solid black;
+  padding: 1.25rem;
+  color: $dark-50;
+  // display: none;
+  &.active {
+    display: block;
+  }
+  &--nav {
+    display: flex;
+    justify-content: space-between;
+    //
+    margin-bottom: 1.875rem;
+    max-height: 1.5rem;
+    &-title {
+      font-size: 19px;
+      color: $dark;
+      line-height: 1.5rem;
+      display: flex;
+      font-weight: 700;
+    }
+    &-action/*[data-action="prev"]*/ {
+      font-family: "Material Icons";
+      font-size: 1.5rem;
+      color: $purple;
+    }
+    &-action:hover {
+      cursor: pointer;
+    }
+  }
+  &--days-names {
+    display: flex;
+    color: $purple;
+    font-weight: 700;
+  }
+  &--day-name {
+    width: 2.5rem;
+    height: 2.5rem;
+  }
+  &--cells {
+    display: flex;
+    flex-wrap: wrap;
+  }
+  &--days {
+    // padding: 1.875rem 1.25rem 1.25rem 1.25rem;
+    text-align: center;
+    line-height: 2.5rem;
+    max-width: 17.5rem;
+    margin-bottom: 1.25rem;
+  }
+  &--cell {
+    width: 2.5rem;
+    height: 2.5rem;
+  }
+  //selected single day is secondary-gradient
+  //selected range is primary-gradient, but with a twist...
+  //arrows, week days and apply/clear buttons are #BC9CFF ($purple)
+  //Font family: Montserrat
+  // Font style: Regular
+  // Font size: 12px
+  // Line height: 14.63px
+  // Line height: 100%
+  // Align: Center
+  // Vertical align: Center
+  //active - dark50
+  //dark25
+  //280x240
+  //320x370
+}
+
+.-other-month- {
+  color: $dark-25;
+}
+
+.-focus- {
+  background-color: $dark-05;
+}
+.-selected- {
+  border-radius: 50%;
+  background: $grad-green;
+  color: white;
+  font-weight: 700;
+}
+.-range-from-,
+.-range-to- {
+  position: relative;
+  border-radius: 50%;
+  background: $grad-purple;
+}
+.-range-from-::before {
+  position: absolute;
+  content: "";
+  width: 50%;
+  height: 100%;
+  right: 0%;
+  background: rgba(188, 156, 255, 0.25);
+  z-index: -1;
+}
+.-range-to-::before {
+  position: absolute;
+  content: "";
+  width: 50%;
+  height: 100%;
+  left: 0;
+  z-index: 0;
+  background: rgba(188, 156, 255, 0.25);
+}
+.-in-range- {
+  background: rgba(188, 156, 255, 0.25);
+}
