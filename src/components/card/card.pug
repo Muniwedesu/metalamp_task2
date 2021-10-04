@@ -23,6 +23,13 @@ include /components/compound-heading/compound-heading.pug
 -  key: "Итого", 
 -  value: "38 081Р"
 -}
+
+
+- var typesOfGuests = [
+- {name: "взрослые", value: "0"},
+- {name: "дети", value: "0"},
+- {name: "младенцы", value: "0"}];
+
 //- mixin dropdown(id, {type, label, placeholder, menuItems, state, isClearable = true})
 mixin searchCard({id = "search"} = {id: "search"})
   - var id = attributes.id
@@ -34,7 +41,7 @@ mixin searchCard({id = "search"} = {id: "search"})
           +dropdown({label: "Прибытие", placeholder: "ДД.ММ.ГГГГ"})(id="arrival")
           +dropdown({label: "Выезд", placeholder: "ДД.ММ.ГГГГ"})(id="departure")
       p.card__form-field
-        +dropdown({label: "Гости", placeholder: "Сколько гостей"})
+        +dropdown({label: "Гости", placeholder: "Сколько гостей", menuItems: typesOfGuests})
       p.card__form-submit.card__form-submit_big-margin
         +button({label: "Подобрать номер", styles: ["with-arrow"]})
 
@@ -50,7 +57,7 @@ mixin detailsCard({id = "details"} = {id: "details"})
           +dropdown({label: "Прибытие", placeholder: "ДД.ММ.ГГГГ"})(id="arrival")
           +dropdown({label: "Выезд", placeholder: "ДД.ММ.ГГГГ"})(id="departure")
       p.card__form-field
-        +dropdown({label: "Гости", placeholder: "Сколько гостей"})(id="guests")
+        +dropdown({label: "Гости", placeholder: "Сколько гостей", menuItems: typesOfGuests})(id="guests")
       +summary({items: summaryList, total: total})
       p.card__form-submit
         +button({label: "Забронировать", styles: ["with-arrow"]})
