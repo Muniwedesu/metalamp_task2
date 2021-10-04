@@ -1,2 +1,7 @@
+include /components/inputs/button/button.pug
+
 mixin calendar({} = {})
-  div(type="text")#calendar
+  div.calendar-input
+    input(type="text")#calendar
+    +button({label: "очистить", styles: ["text"]})
+    +button({label: "применить", styles: ["text"]})

@@ -1,13 +1,23 @@
 @use "vars" as *;
+.calendar-input {
+  max-width: 320px;
+  position: relative;
+}
 .datepicker {
   background-color: white;
   max-width: 20rem;
-  border: 1px solid black;
-  padding: 1.25rem;
+  box-sizing: border-box;
+  border: 1px solid $dark-25;
+  border-radius: 0.25rem;
+  padding: 1.25rem 1.1875rem;
   color: $dark-50;
+  box-shadow: 0px 10px 20px $dark-05;
+  //change this later
+  position: absolute;
   // display: none;
   &.active {
     display: block;
+    left: 0 !important;
   }
   &--nav {
     display: flex;
@@ -31,6 +41,9 @@
       cursor: pointer;
     }
   }
+  &--content {
+    width: auto;
+  }
   &--days-names {
     display: flex;
     color: $purple;
@@ -49,26 +62,20 @@
     text-align: center;
     line-height: 2.5rem;
     max-width: 17.5rem;
-    margin-bottom: 1.25rem;
   }
   &--cell {
     width: 2.5rem;
     height: 2.5rem;
+    box-sizing: border-box;
   }
-  //selected single day is secondary-gradient
-  //selected range is primary-gradient, but with a twist...
-  //arrows, week days and apply/clear buttons are #BC9CFF ($purple)
-  //Font family: Montserrat
-  // Font style: Regular
-  // Font size: 12px
-  // Line height: 14.63px
-  // Line height: 100%
-  // Align: Center
-  // Vertical align: Center
-  //active - dark50
-  //dark25
-  //280x240
-  //320x370
+  &--buttons {
+    margin-top: 20px;
+    height: 15px;
+    box-sizing: border-box;
+    // border: 1px dashed red;
+    display: flex;
+    justify-content: space-between;
+  }
 }
 
 .-other-month- {
@@ -89,6 +96,9 @@
   position: relative;
   border-radius: 50%;
   background: $grad-purple;
+  &.-focus- {
+    color: white;
+  }
 }
 .-range-from-::before {
   position: absolute;
@@ -96,8 +106,8 @@
   width: 50%;
   height: 100%;
   right: 0%;
-  background: rgba(188, 156, 255, 0.25);
-  z-index: -1;
+  opacity: 25%;
+  background: radial-gradient(circle 1.25rem at left, transparent 100%, $purple 100%);
 }
 .-range-to-::before {
   position: absolute;
@@ -105,8 +115,8 @@
   width: 50%;
   height: 100%;
   left: 0;
-  z-index: 0;
-  background: rgba(188, 156, 255, 0.25);
+  opacity: 25%;
+  background: radial-gradient(circle 1.25rem at right, transparent 100%, $purple 100%);
 }
 .-in-range- {
   background: rgba(188, 156, 255, 0.25);
