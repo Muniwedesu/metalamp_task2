@@ -2,8 +2,9 @@
 .calendar-input {
   max-width: 320px;
   position: relative;
+  cursor: pointer;
 }
-.datepicker {
+.air-datepicker {
   background-color: white;
   max-width: 20rem;
   box-sizing: border-box;
@@ -14,61 +15,62 @@
   box-shadow: 0px 10px 20px $dark-05;
   //change this later
   position: absolute;
+  z-index: 1;
   // display: none;
   &.active {
     display: block;
     left: 0 !important;
   }
-  &--nav {
+  &-nav {
     display: flex;
     justify-content: space-between;
     //
     margin-bottom: 1.875rem;
     max-height: 1.5rem;
-    &-title {
+    &--title {
       font-size: 19px;
       color: $dark;
       line-height: 1.5rem;
       display: flex;
       font-weight: 700;
     }
-    &-action/*[data-action="prev"]*/ {
+    &--action/*[data-action="prev"]*/ {
       font-family: "Material Icons";
       font-size: 1.5rem;
       color: $purple;
     }
-    &-action:hover {
+    &--action:hover {
       cursor: pointer;
     }
   }
   &--content {
     width: auto;
   }
-  &--days-names {
-    display: flex;
-    color: $purple;
-    font-weight: 700;
-  }
-  &--day-name {
-    width: 2.5rem;
-    height: 2.5rem;
-  }
-  &--cells {
-    display: flex;
-    flex-wrap: wrap;
-  }
-  &--days {
-    // padding: 1.875rem 1.25rem 1.25rem 1.25rem;
+  &-body {
     text-align: center;
     line-height: 2.5rem;
-    max-width: 17.5rem;
+    &--day-name {
+      width: 2.5rem;
+      height: 2.5rem;
+    }
+    &--day-names {
+      display: flex;
+      color: $purple;
+      font-weight: 700;
+    }
+    &--cells {
+      display: flex;
+      flex-wrap: wrap;
+      max-width: 17.5rem;
+    }
   }
-  &--cell {
+  &-cell {
     width: 2.5rem;
     height: 2.5rem;
     box-sizing: border-box;
+    cursor: pointer;
   }
-  &--buttons {
+  &-buttons {
     margin-top: 20px;
     height: 15px;
     box-sizing: border-box;

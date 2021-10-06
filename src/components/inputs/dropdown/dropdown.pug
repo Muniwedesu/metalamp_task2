@@ -1,4 +1,5 @@
 include ../button/button.pug
+include ../calendar/calendar.pug
 //- actually I need a dropdown for the date too
 mixin dropdown({type, label, placeholder, menuItems, initialState, isClearable = false})
   - var id = attributes.id
@@ -9,27 +10,32 @@ mixin dropdown({type, label, placeholder, menuItems, initialState, isClearable =
   //- same but clearable
   //- date picker
   //- date filter
-  .dropdown
+  div(tabindex="-1").dropdown
     //- default
     label(for=id).controls-label= label
-    input(id=id, type="text",  
-    readonly=true, name=id, placeholder=placeholder,
-    class=`text-field dropdown__input ${state ? 'dropdown__input_' + state : ""}` )
-    //- "expanded" classes won't be used here I think?
-    //- if it has menu (for testing, it always should have)
-    if (menuItems)
-      ul(class=`dropdown__menu ${state ? 'dropdown__menu_' + state : ""}`)
-        each item in menuItems
-          li.dropdown__row
-            p(class="label dropdown__text")= item.name
-            .dropdown__controls
-              +button({label: "-", isDisabled: item.value === 0})(type="button").dropdown__menu-button
-              p(class="label dropdown__text")= item.value
-              +button({label: "+"})(type="button").dropdown__menu-button
+      //- type: single || range
+    if (type && type.split("-")[0] === "date")
+      +calendar({type: type, placeholder: placeholder})(id=id).dropdown__date
+    else
+      input(id=id, type="text",  
+      readonly=true, name=id, placeholder=placeholder,
+      class=`text-field dropdown__input ${state ? 'dropdown__input_' + state : ""}` )
+      //- "expanded" classes won't be used here I think?
+      //- if it has menu (for testing, it always should have)
+      if (menuItems)
+        ul(tabindex="-1" class=`dropdown__menu ${state ? 'dropdown__menu_' + state : ""}`)
+          each item in menuItems
+            li().dropdown__row
+              p(class="label dropdown__text")= item.name
+              .dropdown__controls
+                +button({label: "-", isDisabled: item.value === 0})(type="button").dropdown__menu-button
+                p(class="label dropdown__text")= item.value
+                +button({label: "+"})(type="button").dropdown__menu-button
 
-        //- fix this
-        //- also this logic probably should be moved to js class 
-        +dropdownClearButtons(isClearable, menuItems)
+          //- fix this
+          //- also this logic probably should be moved to js class 
+          +dropdownClearButtons(isClearable, menuItems)
+
 
 mixin dropdownClearButtons(isClearable, menuItems)
   if (isClearable)

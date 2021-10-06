@@ -2,10 +2,10 @@
   display: flex;
   flex-direction: column;
   position: relative;
-  cursor: pointer;
   width: 100%;
   // min-width: 12rem;
   &__input {
+    cursor: pointer;
     position: relative;
   }
   &__icon {

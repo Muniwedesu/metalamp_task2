@@ -1,4 +1,6 @@
 import $ from "jquery";
+require("../calendar/calendar");
+
 // console.log($("dropdown"));
 class DropdownRow {
   constructor(row) {
@@ -69,7 +71,9 @@ export class DropdownMenu {
     // this.$dropdown.click(this.onClick.bind(this));
     this.$dropdown.on("click", this.onClick.bind(this));
     this.$dropdown.on("valueChange", this.updatePlaceholder.bind(this));
-    // this.$dropdown.on("blur", this.onBlur.bind(this));
+    //hide menu when clicked outside
+    this.$dropdown.on("focusout", this.onBlur.bind(this));
+    // this.$dropdown.on("focusin", this.toggle.bind(this));
 
     // $(document).on("click", this.close.bind(this));
     //get list and input of this particular dropdown
@@ -82,6 +86,17 @@ export class DropdownMenu {
   }
   onBlur(event) {
     console.log(event);
+    if (
+      event.relatedTarget &&
+      (event.relatedTarget.classList.contains("dropdown__menu") ||
+        event.relatedTarget.classList.contains("dropdown__menu-button") ||
+        event.relatedTarget.classList.contains("dropdown__input") ||
+        event.relatedTarget.classList.contains("dropdown"))
+    ) {
+      console.log("click inside list");
+    } else {
+      if (this.$dropdownInput.hasClass("dropdown__input_expanded")) this.toggle();
+    }
   }
   toggle() {
     console.log("toggle dropdown");
@@ -102,8 +117,6 @@ export class DropdownMenu {
       this.toggle();
     } else if ($target.hasClass("dropdown__menu-button")) {
       //get index of the row somehow
-      //fuck
-      //sorry i'm
       // console.log(this.rows[$target.parent().parent().index()].Add());
       if ($target.index() == 2) {
         console.log(this.rows[$target.parent().parent().index()].Add());
@@ -155,6 +168,7 @@ export class DropdownMenu {
 
 $(document).ready(() => {
   $(".dropdown").map(function () {
-    new DropdownMenu(this);
+    // console.log(this);
+    if (!$(this).children("div").hasClass("dropdown__date")) new DropdownMenu(this);
   });
 });
