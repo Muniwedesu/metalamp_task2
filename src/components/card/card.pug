@@ -31,22 +31,22 @@ include /components/compound-heading/compound-heading.pug
 - {name: "младенцы", value: "0"}];
 
 //- mixin dropdown(id, {type, label, placeholder, menuItems, state, isClearable = true})
-mixin searchCard({id = "search"} = {id: "search"})
+mixin cardSearch({id = "search"} = {id: "search"})
   - var id = attributes.id
   .card
     form.card__form
       h1.card__form-heading Найдём номера под ваши пожелания
       ul.card__form-elements
         li.card__form-field.card__form-field_separated
-          +dropdown({label: "Прибытие", placeholder: "ДД.ММ.ГГГГ"})(id="arrival")
-          +dropdown({label: "Выезд", placeholder: "ДД.ММ.ГГГГ"})(id="departure")
+          +dropdown({type: "date-single", label: "Прибытие", placeholder: "ДД.ММ.ГГГГ"})(id=id+"-arrival")
+          +dropdown({type: "date-single", label: "Выезд", placeholder: "ДД.ММ.ГГГГ"})(id=id+"-departure")
       p.card__form-field
         +dropdown({label: "Гости", placeholder: "Сколько гостей", menuItems: typesOfGuests})
       p.card__form-submit.card__form-submit_big-margin
         +button({label: "Подобрать номер", styles: ["with-arrow"]})
 
 //- mixin dropdown(id, {type, label, placeholder, menuItems, state, isClearable = true})
-mixin detailsCard({id = "details"} = {id: "details"})
+mixin cardDetails({id = "details"} = {id: "details"})
   - var id = attributes.id
   .card
     form.card__form
@@ -54,8 +54,8 @@ mixin detailsCard({id = "details"} = {id: "details"})
         +compound-heading()
       ul.card__form-elements
         li.card__form-field.card__form-field_separated
-          +dropdown({label: "Прибытие", placeholder: "ДД.ММ.ГГГГ"})(id="arrival")
-          +dropdown({label: "Выезд", placeholder: "ДД.ММ.ГГГГ"})(id="departure")
+          +dropdown({type: "date-single", label: "Прибытие", placeholder: "ДД.ММ.ГГГГ"})(id=id+"-arrival")
+          +dropdown({type: "date-single", label: "Выезд", placeholder: "ДД.ММ.ГГГГ"})(id=id+"-departure")
       p.card__form-field
         +dropdown({label: "Гости", placeholder: "Сколько гостей", menuItems: typesOfGuests})(id="guests")
       +summary({items: summaryList, total: total})
@@ -63,7 +63,7 @@ mixin detailsCard({id = "details"} = {id: "details"})
         +button({label: "Забронировать", styles: ["with-arrow"]})
 
 
-mixin registrationCard({id = "registration"} = {id: "registration"})
+mixin cardRegister({id = "registration"} = {id: "registration"})
   - var id = attributes.id
   .card
     form.card__form
@@ -78,7 +78,7 @@ mixin registrationCard({id = "registration"} = {id: "registration"})
           +radioGroup({radios: defaultRadios, key: "gender"})
       section.card__form-elements
         p.card__form-field
-          +dropdown({label: "Дата рождения", placeholder: "ДД.ММ.ГГГГ"})(id= "dateOfBirth")
+          +dropdown({type: "date-single", label: "Дата рождения", placeholder: "ДД.ММ.ГГГГ"})(id=id+"-dateOfBirth")
       fieldset.card__form-elements
         legend.controls-label Данные для входа в сервис
         li.card__form-field
@@ -94,7 +94,7 @@ mixin registrationCard({id = "registration"} = {id: "registration"})
 
 
   //- id, type, label, placeholder, ...classes)
-mixin loginCard()
+mixin cardLogin()
   .card
     form.card__form
       h1.card__form-heading Войти

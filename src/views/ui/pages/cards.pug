@@ -5,17 +5,17 @@ include /components/inputs/calendar/calendar.pug
 section.cards
   section.cards__column
     section.cards__block
-      +searchCard()#search-ex-0
+      +cardSearch()#search-ex-0
     section.cards__block
-      +registrationCard()#reg-ex-0
+      +cardRegister()#reg-ex-0
   section.cards__column
     section.cards__block
-      +detailsCard()#det-ex-0
+      +cardDetails()#det-ex-0
     section.cards__block
-      +loginCard()#log-ex-0
+      +cardLogin()#log-ex-0
   section.cards__column
-    section.cards__block
-      +calendar()
+    section.cards__block.cards__datepicker
+      +calendar({addInput: false})
     section.cards__block
       +roomCard()#room-ex-0
       +roomCard()#room-ex-1
