@@ -1,7 +1,10 @@
-mixin rates()
+mixin rates(value)
+  //- maybe make an input which will hold the value
   .rates
-    .rates__star
-    .rates__star
-    .rates__star
-    .rates__star
-    .rates__star
+    //- implement later ^
+    //- input(type="text" value=value).rates__input
+    div(data-value="1").rates__star.rates__star_selected star
+    div(data-value="2").rates__star star_border
+    div(data-value="3").rates__star star_border
+    div(data-value="4").rates__star star_border
+    div(data-value="5").rates__star star_border

@@ -14,7 +14,7 @@ mixin roomCard({roomInfo = { number: "888", type: true, price: "8500", nReviews:
       ul.room-card__divider
       ul.room-card__reviews
         li
-          div *****
+          +rates()
         li
           //- поменять цвет текста тут
           p.room-card__reviews-count #[strong #{roomInfo.nReviews}] Отзывов

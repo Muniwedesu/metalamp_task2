@@ -1,5 +1,6 @@
 include /components/card/card.pug
 include /components/room-card/room-card.pug
+include /components/inputs/calendar/calendar.pug
 
 section.cards
   section.cards__column
@@ -14,7 +15,7 @@ section.cards
       +loginCard()#log-ex-0
   section.cards__column
     section.cards__block
-      div calendar
+      +calendar()
     section.cards__block
       +roomCard()#room-ex-0
       +roomCard()#room-ex-1
