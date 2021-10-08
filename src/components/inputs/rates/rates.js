@@ -70,6 +70,6 @@ export class Rates {
 $(document).ready(() => {
   console.log($(".rates__star"));
   $(".rates").map(function () {
-    new Rates($(this));
+    // new Rates($(this));
   });
 });

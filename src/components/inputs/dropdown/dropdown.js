@@ -47,7 +47,9 @@ export class DropdownMenu {
     this.defaultPlaceholder = this.$dropdownInput.prop("placeholder");
     this.dropdownState = {};
     // this.$dropdownMenuRow = this.dropdown;
-
+    this.dropdownState["взрослые"] = 0;
+    this.dropdownState["дети"] = 0;
+    this.dropdownState["младенцы"] = 0;
     // console.log(this.$dropdownMenu.children());
     //construct a list of row object,
     // console.log(this.$dropdownMenu.children(".dropdown__row").first());
@@ -119,15 +121,17 @@ export class DropdownMenu {
       //get index of the row somehow
       // console.log(this.rows[$target.parent().parent().index()].Add());
       if ($target.index() == 2) {
-        console.log(this.rows[$target.parent().parent().index()].Add());
+        this.rows[$target.parent().parent().index()].Add();
+        // console.log(this.rows[$target.parent().parent().index()].Add());
         //updatePlaceholder(this.rows[$target.parent().parent().index()].Add());
         // $target.parent().children("p").text += 1;
       } else {
-        console.log(this.rows[$target.parent().parent().index()].Remove());
+        this.rows[$target.parent().parent().index()].Remove();
+        // console.log(this.rows[$target.parent().parent().index()].Remove());
       }
       this.updatePlaceholder();
     } else if ($target.parent().hasClass("dropdown__menu-button")) {
-      console.log("click on label:");
+      // console.log("click on label:");
       $target.parent().trigger("click");
     }
     //process events for "clear" and "apply" buttons
@@ -151,7 +155,10 @@ export class DropdownMenu {
         valueText += `${label}: ${this.dropdownState[label]} `;
       }
     }
-
+    this.$dropdown.trigger({
+      type: "valueUpdate",
+      value: this.dropdownState,
+    });
     // let tmp = [];
     // this.rows.forEach((row) => {
     //   let obj = row.GetValues();
@@ -169,6 +176,6 @@ export class DropdownMenu {
 $(document).ready(() => {
   $(".dropdown").map(function () {
     // console.log(this);
-    if (!$(this).children("div").hasClass("dropdown__date")) new DropdownMenu(this);
+    // if (!$(this).children("div").hasClass("dropdown__date")) new DropdownMenu(this);
   });
 });
