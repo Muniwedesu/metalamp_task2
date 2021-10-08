@@ -15,7 +15,7 @@ $grad-purple: linear-gradient(180deg, $purple 0%, $blue 100%);
 $grad-green: linear-gradient(180deg, $green 0%, $turquoise 100%);
 
 $breakpoint-first: 960px;
-$breakpoint-second: 630px;
+$breakpoint-second: 768px;
 
 @mixin h1($color: $dark, $weight: bold, $transform: none) {
   font-size: 1.5rem;

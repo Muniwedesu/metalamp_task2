@@ -8,13 +8,12 @@ html
 include /components/inputs/calendar/calendar.pug
 include /components/inputs/rates/rates.pug
 main
-  section.ui 
-    //- +rates
-    //- +calendar({addInput: false  })
-    section.ui 
-      include ./pages/headers-footers.pug
-    section.ui
-      include ./pages/cards.pug
+  //- +rates
+  //- +calendar({addInput: false  })
+  section.ui.ui_without-padding
+    include ./pages/headers-footers.pug
+  section.ui
+    include ./pages/cards.pug
 
-    section.ui.ui_with-bg
-      include ./pages/forms.pug
+  section.ui.ui_with-bg
+    include ./pages/forms.pug

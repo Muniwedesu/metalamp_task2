@@ -1,7 +1,7 @@
 include ../inputs/inputs.pug
 
 
-mixin roomCard({roomInfo = { number: "888", type: true, price: "8500", nReviews: "145", img: "room-0.jpg"} } = {})
+mixin cardRoom({roomInfo = { number: "888", type: true, price: "8500", nReviews: "145", img: "room-0.jpg"} } = {})
   - if (!roomInfo) roomInfo =  {number: "888", type: true, price: "8500", nReviews: "145", img: "room-0.jpg"};
   - var id = attributes.id || "room-888"
   .room-card

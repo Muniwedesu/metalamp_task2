@@ -6,6 +6,10 @@
     padding-top: 8.75rem;
     background-color: white;
   }
+
+  &_without-padding {
+    padding-left: 0;
+  }
 }
 
 // @import "./fields/fields.scss";

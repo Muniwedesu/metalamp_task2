@@ -55,7 +55,7 @@ block content
   -    id: "guests_allowed"
   -  }
   -]
-  include /components/room-card/room-card.pug
+  include /components/card-room/card-room.pug
   include /components/card/card.pug
   include /components/pagination/pagination.pug
   main.page-content
@@ -84,17 +84,17 @@ block content
         .page-content__room-search-results
           h2.page-content__results-heading Номера, которые мы для вас подобрали
           .page-content__room-list
-            +roomCard({id: "room-1",  roomInfo: {img: "room-0.jpg",  number: "840", type: false, price: "9900", nReviews: "65"}})
-            +roomCard({id: "room-2",  roomInfo: {img: "room-1.jpg",  number: "840", type: false, price: "9900", nReviews: "65"}})
-            +roomCard({id: "room-3",  roomInfo: {img: "room-2.jpg",  number: "980", type: false, price: "8500", nReviews: "35"}})
-            +roomCard({id: "room-4",  roomInfo: {img: "room-3.jpg",  number: "856", type: false, price: "7300", nReviews: "19"}})
-            +roomCard({id: "room-5",  roomInfo: {img: "room-4.jpg",  number: "740", type: false, price: "6000", nReviews: "44"}})
-            +roomCard({id: "room-6",  roomInfo: {img: "room-5.jpg",  number: "982", type: false, price: "5800", nReviews: "56"}})
-            +roomCard({id: "room-7",  roomInfo: {img: "room-6.jpg",  number: "678", type: false, price: "5500", nReviews: "45"}})
-            +roomCard({id: "room-8",  roomInfo: {img: "room-7.jpg",  number: "450", type: false, price: "5300", nReviews: "39"}})
-            +roomCard({id: "room-9",  roomInfo: {img: "room-8.jpg",  number: "350", type: false, price: "5000", nReviews: "77"}})
-            +roomCard({id: "room-10", roomInfo: {img: "room-9.jpg",  number: "666", type: false, price: "5000", nReviews: "25"}})
-            +roomCard({id: "room-10", roomInfo: {img: "room-10.jpg", number: "444", type: false, price: "5000", nReviews: "15"}})
-            +roomCard({id: "room-10", roomInfo: {img: "room-11.jpg", number: "352", type: false, price: "5000", nReviews: "55"}})
+            +cardRoom({id: "room-1",  roomInfo: {img: "room-0.jpg",  number: "840", type: false, price: "9900", nReviews: "65"}})
+            +cardRoom({id: "room-2",  roomInfo: {img: "room-1.jpg",  number: "840", type: false, price: "9900", nReviews: "65"}})
+            +cardRoom({id: "room-3",  roomInfo: {img: "room-2.jpg",  number: "980", type: false, price: "8500", nReviews: "35"}})
+            +cardRoom({id: "room-4",  roomInfo: {img: "room-3.jpg",  number: "856", type: false, price: "7300", nReviews: "19"}})
+            +cardRoom({id: "room-5",  roomInfo: {img: "room-4.jpg",  number: "740", type: false, price: "6000", nReviews: "44"}})
+            +cardRoom({id: "room-6",  roomInfo: {img: "room-5.jpg",  number: "982", type: false, price: "5800", nReviews: "56"}})
+            +cardRoom({id: "room-7",  roomInfo: {img: "room-6.jpg",  number: "678", type: false, price: "5500", nReviews: "45"}})
+            +cardRoom({id: "room-8",  roomInfo: {img: "room-7.jpg",  number: "450", type: false, price: "5300", nReviews: "39"}})
+            +cardRoom({id: "room-9",  roomInfo: {img: "room-8.jpg",  number: "350", type: false, price: "5000", nReviews: "77"}})
+            +cardRoom({id: "room-10", roomInfo: {img: "room-9.jpg",  number: "666", type: false, price: "5000", nReviews: "25"}})
+            +cardRoom({id: "room-10", roomInfo: {img: "room-10.jpg", number: "444", type: false, price: "5000", nReviews: "15"}})
+            +cardRoom({id: "room-10", roomInfo: {img: "room-11.jpg", number: "352", type: false, price: "5000", nReviews: "55"}})
           .page-content__pagination
             +pagination()
