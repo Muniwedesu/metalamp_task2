@@ -1,0 +1,12 @@
+mixin button({label, styles = []})
+  //- default is purple
+  //- styles: _outlined, _with-arrow, _green, _text
+  - var isDisabled = [true, "disabled"].includes(attributes.disabled)
+  - styles = styles.map(x => "button_" + x)
+    button(id = attributes.id,
+      class=["button"], 
+      class=styles, 
+      class!=attributes.class,
+      disabled!= isDisabled,
+      type!=attributes.type) 
+      span.controls-label.button__label= label

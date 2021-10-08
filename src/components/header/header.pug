@@ -1,18 +1,8 @@
 
 //- //listItem("Label", "Items inside sublist as array", ...any additional mods)
-include ../inputs/button/button.pug
+include ../button/button.pug
 include ../lists/links-list/links-list.pug
-//- //- mixin listItem(label, items, ...classes)
-//- //-   - var list_c = classes.map(x => `inline-list__item_${x}`)
-//- //-     li(class=["inline-list__item", ...list_c])
-//- //-       a(href="#")= label
-//- //-       if (items)
-//- //-         ul.dropdown-list
-//- //-           //review these guys
-//- //-           each item in items
-//- //-             li.dropdown-list__item
-//- //-               a= item
-//- include /views/mixins.pug
+
 - var links = [
 -   {label: "О нас",  link: "#" },
 -   {label: "Услуги", link: "", items: 
@@ -35,20 +25,13 @@ header.header
     .header__body
       .header__logo
         include ../logo/logo.pug
-        //- could make this a block component but it'll be overcomplicated
-      nav.header__navigation
-        +inline-links(links)
-      .header__buttons
-        .header__login
-          +button({label: "Войти", styles: ["outlined"]})
-        .header__signup
-          +button({label: "Зарегистрироваться"})
-
-
-
-
-//- script. 
-//-   let list = document.querySelector(".dropdown-list_closed");
-//-   list.addEventListener("click", (e)=>{
-//-     list.classList.toggle(".dropdown-list_closed");
-//-   })
+      div.header__menu
+        input(id="header-menu" type="checkbox" checked=false).header__navigation-trigger
+        label(for="header-menu").header__navigation-label menu
+        nav.header__navigation
+          +inline-links(links)
+          .header__buttons
+            .header__login
+              +button({label: "Войти", styles: ["outlined"]})
+            .header__signup
+              +button({label: "Зарегистрироваться"})

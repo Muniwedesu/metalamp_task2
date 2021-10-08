@@ -1,0 +1,125 @@
+@use "vars" as *;
+.calendar-input {
+  max-width: 320px;
+  position: relative;
+  cursor: pointer;
+}
+.air-datepicker {
+  background-color: white;
+  max-width: 20rem;
+  box-sizing: border-box;
+  border: 1px solid $dark-25;
+  border-radius: 0.25rem;
+  padding: 1.25rem 1.1875rem;
+  color: $dark-50;
+  box-shadow: 0px 10px 20px $dark-05;
+  //change this later
+  position: absolute;
+  z-index: 1;
+  // display: none;
+  &.active {
+    display: block;
+    left: 0 !important;
+  }
+  &-nav {
+    display: flex;
+    justify-content: space-between;
+    //
+    margin-bottom: 1.875rem;
+    max-height: 1.5rem;
+    &--title {
+      font-size: 19px;
+      color: $dark;
+      line-height: 1.5rem;
+      display: flex;
+      font-weight: 700;
+    }
+    &--action/*[data-action="prev"]*/ {
+      font-family: "Material Icons";
+      font-size: 1.5rem;
+      color: $purple;
+    }
+    &--action:hover {
+      cursor: pointer;
+    }
+  }
+  &--content {
+    width: auto;
+  }
+  &-body {
+    text-align: center;
+    line-height: 2.5rem;
+    &--day-name {
+      width: 2.5rem;
+      height: 2.5rem;
+    }
+    &--day-names {
+      display: flex;
+      color: $purple;
+      font-weight: 700;
+    }
+    &--cells {
+      display: flex;
+      flex-wrap: wrap;
+      max-width: 17.5rem;
+    }
+  }
+  &-cell {
+    width: 2.5rem;
+    height: 2.5rem;
+    box-sizing: border-box;
+    cursor: pointer;
+  }
+  &-buttons {
+    margin-top: 20px;
+    height: 15px;
+    box-sizing: border-box;
+    // border: 1px dashed red;
+    display: flex;
+    justify-content: space-between;
+  }
+}
+
+.-other-month- {
+  color: $dark-25;
+}
+
+.-focus- {
+  background-color: $dark-05;
+}
+.-selected- {
+  border-radius: 50%;
+  background: $grad-green;
+  color: white;
+  font-weight: 700;
+}
+.-range-from-,
+.-range-to- {
+  position: relative;
+  border-radius: 50%;
+  background: $grad-purple;
+  &.-focus- {
+    color: white;
+  }
+}
+.-range-from-::before {
+  position: absolute;
+  content: "";
+  width: 50%;
+  height: 100%;
+  right: 0%;
+  opacity: 25%;
+  background: radial-gradient(circle 1.25rem at left, transparent 100%, $purple 100%);
+}
+.-range-to-::before {
+  position: absolute;
+  content: "";
+  width: 50%;
+  height: 100%;
+  left: 0;
+  opacity: 25%;
+  background: radial-gradient(circle 1.25rem at right, transparent 100%, $purple 100%);
+}
+.-in-range- {
+  background: rgba(188, 156, 255, 0.25);
+}

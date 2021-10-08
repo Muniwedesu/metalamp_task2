@@ -1,1 +1,0 @@
-import "./compound-heading.scss";

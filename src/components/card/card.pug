@@ -1,9 +1,8 @@
+include ../lists/lists.pug
+include ../compound-heading/compound-heading.pug
+include ../inputs.pug
 
-include ../inputs/inputs.pug
-include /components/lists/lists.pug
-include /components/compound-heading/compound-heading.pug
-
-- let summaryList = [
+- var summaryList = [
 - {
 -   key:" 9 990₽ х 4 суток",
 -   value: "39 960₽",
@@ -19,7 +18,7 @@ include /components/compound-heading/compound-heading.pug
 -   value: "300₽",
 -   iconVisible: true
 - }]
-- let total = {
+- var total = {
 -  key: "Итого", 
 -  value: "38 081Р"
 -}
@@ -31,88 +30,76 @@ include /components/compound-heading/compound-heading.pug
 - {name: "младенцы", value: "0"}];
 
 //- mixin dropdown(id, {type, label, placeholder, menuItems, state, isClearable = true})
-mixin cardSearch({id = "search"} = {id: "search"})
-  - var id = attributes.id
-  .card
-    form.card__form
-      h1.card__form-heading Найдём номера под ваши пожелания
-      ul.card__form-elements
-        li.card__form-field.card__form-field_separated
-          +dropdown({type: "date-single", label: "Прибытие", placeholder: "ДД.ММ.ГГГГ"})(id=id+"-arrival")
-          +dropdown({type: "date-single", label: "Выезд", placeholder: "ДД.ММ.ГГГГ"})(id=id+"-departure")
-      p.card__form-field
-        +dropdown({label: "Гости", placeholder: "Сколько гостей", menuItems: typesOfGuests})
-      p.card__form-submit.card__form-submit_big-margin
-        +button({label: "Подобрать номер", styles: ["with-arrow"]})
-
-//- mixin dropdown(id, {type, label, placeholder, menuItems, state, isClearable = true})
-mixin cardDetails({id = "details"} = {id: "details"})
-  - var id = attributes.id
-  .card
-    form.card__form
-      .card__form-heading_compound.room-info
-        +compound-heading()
-      ul.card__form-elements
-        li.card__form-field.card__form-field_separated
-          +dropdown({type: "date-single", label: "Прибытие", placeholder: "ДД.ММ.ГГГГ"})(id=id+"-arrival")
-          +dropdown({type: "date-single", label: "Выезд", placeholder: "ДД.ММ.ГГГГ"})(id=id+"-departure")
-      p.card__form-field
-        +dropdown({label: "Гости", placeholder: "Сколько гостей", menuItems: typesOfGuests})(id="guests")
-      +summary({items: summaryList, total: total})
-      p.card__form-submit
-        +button({label: "Забронировать", styles: ["with-arrow"]})
 
 
-mixin cardRegister({id = "registration"} = {id: "registration"})
-  - var id = attributes.id
-  .card
-    form.card__form
-      h1.card__form-heading Регистрация аккаунта
-      ul.card__form-elements
-        li.card__form-field
-          +text({placeholder: "Имя"})(id="first-name")
-        li.card__form-field
-          +text({placeholder: "Фамилия"})(id="last-name")
-        li.card__form-field
-          - var defaultRadios = [{label: "Мужчина", id: "male"}, {label: "Женщина", id: "female"}]
-          +radioGroup({radios: defaultRadios, key: "gender"})
-      section.card__form-elements
-        p.card__form-field
-          +dropdown({type: "date-single", label: "Дата рождения", placeholder: "ДД.ММ.ГГГГ"})(id=id+"-dateOfBirth")
-      fieldset.card__form-elements
-        legend.controls-label Данные для входа в сервис
-        li.card__form-field
-          +text({placeholder: "Email"})(id="email")
-        li.card__form-field
-          +text({placeholder: "Пароль"})(id="password")
-        li.card__form-field
-          - var defaultToggles = [{id: "receive-offers", label: "Получать спецпредложения" }]
-          +toggleGroup({toggles: defaultToggles})
-      section.card__form-submit
-        +button({label: "Перейти к оплате", styles: ["with-arrow"]})
-      +account(true)
+//- //- mixin dropdown(id, {type, label, placeholder, menuItems, state, isClearable = true})
+//- mixin cardDetails({id = "details"} = {id: "details"})
+//-   - var id = attributes.id
+//-   .card
+//-     form.card__form
+//-       .card__form-heading_compound.room-info
+//-         +compound-heading()
+//-       ul.card__form-elements
+//-         li.card__form-field.card__form-field_separated
+//-           +dropdown({type: "date-single", label: "Прибытие", placeholder: "ДД.ММ.ГГГГ"})(id=id+"-arrival")
+//-           +dropdown({type: "date-single", label: "Выезд", placeholder: "ДД.ММ.ГГГГ"})(id=id+"-departure")
+//-       p.card__form-field
+//-         +dropdown({label: "Гости", placeholder: "Сколько гостей", menuItems: typesOfGuests})(id="guests")
+//-       +summary({items: summaryList, total: total})
+//-       p.card__form-submit
+//-         +button({label: "Забронировать", styles: ["with-arrow"]})
 
 
-  //- id, type, label, placeholder, ...classes)
-mixin cardLogin()
-  .card
-    form.card__form
-      h1.card__form-heading Войти
-      ul.card__form-elements
-        li.card__form-field
-          +text({placeholder: "Email"})(id="email")
-        li.card__form-field
-          +text({placeholder: "Пароль"})(id="password")
-      p.card__form-submit
-        +button({label: "Войти", styles: ["with-arrow"]})
-      +account(false)
+//- mixin cardRegister({id = "registration"} = {id: "registration"})
+//-   - var id = attributes.id
+//-   .card
+//-     form.card__form
+//-       h1.card__form-heading Регистрация аккаунта
+//-       ul.card__form-elements
+//-         li.card__form-field
+//-           +text({placeholder: "Имя"})(id="first-name")
+//-         li.card__form-field
+//-           +text({placeholder: "Фамилия"})(id="last-name")
+//-         li.card__form-field
+//-           - var defaultRadios = [{label: "Мужчина", id: "male"}, {label: "Женщина", id: "female"}]
+//-           +radioGroup({radios: defaultRadios, key: "gender"})
+//-       section.card__form-elements
+//-         p.card__form-field
+//-           +dropdown({type: "date-single", label: "Дата рождения", placeholder: "ДД.ММ.ГГГГ"})(id=id+"-dateOfBirth")
+//-       fieldset.card__form-elements
+//-         legend.controls-label Данные для входа в сервис
+//-         li.card__form-field
+//-           +text({placeholder: "Email"})(id="email")
+//-         li.card__form-field
+//-           +text({placeholder: "Пароль"})(id="password")
+//-         li.card__form-field
+//-           - var defaultToggles = [{id: "receive-offers", label: "Получать спецпредложения" }]
+//-           +toggleGroup({toggles: defaultToggles})
+//-       section.card__form-submit
+//-         +button({label: "Перейти к оплате", styles: ["with-arrow"]})
+//-       +account(true)
+
+
+//-   //- id, type, label, placeholder, ...classes)
+//- mixin cardLogin()
+//-   .card
+//-     form.card__form
+//-       h1.card__form-heading Войти
+//-       ul.card__form-elements
+//-         li.card__form-field
+//-           +text({placeholder: "Email"})(id="email")
+//-         li.card__form-field
+//-           +text({placeholder: "Пароль"})(id="password")
+//-       p.card__form-submit
+//-         +button({label: "Войти", styles: ["with-arrow"]})
+//-       +account(false)
 
 
 
-mixin account(exists)
-  section.card__account
-    - let accountStatusText = exists ? "Уже есть аккаунт на Toxin?" : "Нет аккаунта на Toxin?"
-    - let buttonLabel = exists ? "Войти" : "Создать"
-    p= accountStatusText
-    +button({label: buttonLabel, styles: ["outlined"]})(type="button")
+//- mixin account(exists)
+//-   section.card__account
+//-     - let accountStatusText = exists ? "Уже есть аккаунт на Toxin?" : "Нет аккаунта на Toxin?"
+//-     - let buttonLabel = exists ? "Войти" : "Создать"
+//-     p= accountStatusText
+//-     +button({label: buttonLabel, styles: ["outlined"]})(type="button")
 

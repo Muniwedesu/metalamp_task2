@@ -37,7 +37,7 @@
   }
 }
 
-@media screen and (min-width: $breakpoint-second) {
+@media screen and (min-width: $breakpoint-desktop) {
   .footer-top__content {
     $gap: max(20px, (100% - 900px + 160px) / 4);
     grid-template-columns: 1.625fr repeat(2, 1fr);
@@ -50,7 +50,7 @@
     padding: 100px 0px;
   }
 }
-@media screen and (min-width: $breakpoint-first) {
+@media screen and (min-width: $breakpoint-tablet) {
   .footer-top__content {
     //16% of 1000px (gaps are 40*4)
     $col-sm: min(0.16 * (100% - 80px), 160px);
