@@ -1,9 +1,9 @@
 const path = require("path");
 const webpack = require("webpack");
-
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const TerserPlugin = require("terser-webpack-plugin");
+const CssMinimizerPlugin = require("css-minimizer-webpack-plugin");
 
 const sassIncludes = ["src/views/"];
 const handler = (percentage, message, ...args) => {
@@ -18,6 +18,13 @@ module.exports = {
   },
   module: {
     rules: [
+      {
+        test: require.resolve("jquery"),
+        loader: "expose-loader",
+        options: {
+          exposes: ["$", "jQuery"],
+        },
+      },
       {
         test: /\.pug$/i,
         use: [
@@ -96,7 +103,7 @@ module.exports = {
   ],
   resolve: {
     alias: {
-      "jquery-ui": "jquery-ui/jquery-ui.js",
+      // "jquery-ui": "jquery-ui/jquery-ui.js",
       icons: path.resolve(__dirname, "src/assets/img/icons"),
       rooms: path.resolve(__dirname, "src/assets/img/rooms"),
       modules: path.join(__dirname, "node_modules"),
@@ -106,13 +113,14 @@ module.exports = {
   devServer: {
     //check development guide for static files
     contentBase: "./dist", //
-    compress: true,
+    compress: false,
   },
   optimization: {
     // runtimeChunk: true,
 
     minimize: true,
     minimizer: [
+      new CssMinimizerPlugin(),
       new TerserPlugin(), //{terserOptions : {//https://github.com/terser/terser#minify-options}}
     ],
   },
