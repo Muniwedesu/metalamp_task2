@@ -2,7 +2,7 @@ import { Calendar } from "../calendar/calendar";
 import { DropdownMenu } from "../dropdown/dropdown";
 
 //for each input field add an update event
-class Form {
+export class Form {
   constructor(form) {
     this.$form = $(form);
     this.inputs = this.$form.find(".dropdown");
