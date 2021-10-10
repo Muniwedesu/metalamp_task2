@@ -1,4 +1,4 @@
-import $ from "jquery";
+// import $ from "jquery/dist/min";
 require("../calendar/calendar");
 
 // console.log($("dropdown"));
@@ -72,6 +72,7 @@ export class DropdownMenu {
     //will be called in context of that object
     // this.$dropdown.click(this.onClick.bind(this));
     this.$dropdown.on("click", this.onClick.bind(this));
+
     this.$dropdown.on("valueChange", this.updatePlaceholder.bind(this));
     //hide menu when clicked outside
     this.$dropdown.on("focusout", this.onBlur.bind(this));
@@ -108,9 +109,7 @@ export class DropdownMenu {
   onClick(event) {
     // console.log("event:");
     // console.log(event);
-    //I could add listener to the whole window
-    //and just check target here the same way.
-    //I'll just need to find a way of getting info from window event listener
+
     let $target = $(event.target);
     // console.log("target");
     // console.log($target);
@@ -129,11 +128,12 @@ export class DropdownMenu {
         this.rows[$target.parent().parent().index()].Remove();
         // console.log(this.rows[$target.parent().parent().index()].Remove());
       }
-      this.updatePlaceholder();
+      // this.updatePlaceholder();
     } else if ($target.parent().hasClass("dropdown__menu-button")) {
       // console.log("click on label:");
       $target.parent().trigger("click");
     }
+
     //process events for "clear" and "apply" buttons
   }
   updatePlaceholder(event, label, value) {
@@ -155,9 +155,10 @@ export class DropdownMenu {
         valueText += `${label}: ${this.dropdownState[label]} `;
       }
     }
+    // console.log(this.dropdownState);
     this.$dropdown.trigger({
       type: "valueUpdate",
-      value: this.dropdownState,
+      value: { ...this.dropdownState },
     });
     // let tmp = [];
     // this.rows.forEach((row) => {

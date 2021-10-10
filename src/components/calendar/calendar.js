@@ -1,4 +1,4 @@
-require("jquery");
+// require("jquery");
 import AirDatepicker from "air-datepicker";
 
 export class Calendar {

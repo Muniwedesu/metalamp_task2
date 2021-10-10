@@ -1,10 +1,10 @@
-require("jquery");
+// require("jquery");
 export class Rates {
   constructor($rates) {
     //it has own container. how to determine which star was clicked?
-    console.log("created class from");
-    console.log($rates);
-    console.log($rates.children());
+    // console.log("created class from");
+    // console.log($rates);
+    // console.log($rates.children());
     // search for input, get the value, initialize the thing
     // don't forget to update value etc
     this.$rates = $rates;
