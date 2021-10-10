@@ -25,12 +25,15 @@
 }
 body {
   margin: 0;
-  background-color: #f4f4f6;
+  background-color: $white;
   @include body($dark-50);
 }
 p {
   color: $dark-75;
   margin: 0;
+}
+img {
+  max-width: 100%;
 }
 span,
 h1,
@@ -66,14 +69,6 @@ h3 {
 
 li {
   list-style: none;
-}
-
-.container {
-  // margin: 0 max(20vw - 64px, 50vw - 580px);
-  margin: 0 auto;
-  //will be changed (or not). This will limit content width to 300px at 320px vw.
-  width: 93.75vw;
-  max-width: 1160px;
 }
 
 a,
@@ -115,24 +110,7 @@ body > * {
     }
   }
 }
-.icon {
-  font-family: "Material Icons";
-  &__comfort::before {
-    content: "insert_emoticon";
-  }
-  &__cosiness::before {
-    content: "whatshot";
-  }
-  &__convenience::before {
-    content: "location_city";
-  }
-}
-.page-content {
-  background: #fff;
-  &_with-bg {
-    background: center/cover no-repeat url("../assets/img/main-bg.png");
-  }
-}
+
 // @import "./details/details";
 //inputs common
 @import "../components/inputs.scss";
@@ -153,11 +131,20 @@ body > * {
 @import "../components/footer/footer.scss";
 
 @import "../components/card-room/card-room.scss";
-@import "../components/card-search/card-search.scss";
 @import "../components/card-details/card-details.scss";
+@import "../components/card-search/card-search.scss";
 
 @import "../components/compound-heading/compound-heading";
 @import "../components/comment/comment.scss";
 
+@import "../components/bullet-list/bullet-list.scss";
+@import "../components/tag-list/tag-list.scss";
+//change these
+@import "../components/lists/summary-list/summary-list";
+@import "../components/lists/links-list/links-list";
+
+//pages
+@import "./layout.scss";
 @import "./index/index";
 @import "./search/search.scss";
+@import "./details/details";
