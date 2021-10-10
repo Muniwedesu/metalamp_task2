@@ -1,51 +1,63 @@
 @use "vars" as *;
-.page-content {
-  &__room-search {
-    @if ($display-grid!=0) {
-      background: rgba(255, 0, 0, 0.1);
-    }
-    padding-top: 30px;
-    padding-bottom: 70px;
+.search {
+  box-sizing: border-box;
+  padding-top: 30px;
+  display: flex;
+  flex-direction: column;
+  transform: all 1s;
+  &__filters {
+    min-width: 240px;
     display: flex;
-
-    &-filters {
-      @if ($display-grid!=0) {
-        background: rgba(127, 255, 127, 0.1);
-      }
-      margin-right: 5%;
-      width: 23%;
-      max-width: 266px;
-      display: flex;
-      flex-direction: column;
-      flex-wrap: wrap;
-      & > *:nth-last-child(n + 2) {
-        margin-bottom: 20px;
-      }
-    }
-    &-results {
-      width: 72%;
-      // border: 1px solid blue;
-      //content won't fall out of the parent
-      height: 100%;
+    flex-direction: column;
+    align-items: stretch;
+    margin-right: 5.1724%;
+    margin-left: 5.1724%;
+    // display: none;
+  }
+  @media screen and (min-width: 1024px) {
+    flex-direction: row;
+    &__filters {
+      margin-left: 0;
     }
   }
+  &__filter {
+    & + * {
+      margin-top: 30px;
+    }
+    &_separated {
+      & > * + * {
+        margin-top: 20px;
+      }
+    }
+  }
+  &__results {
+    width: 100%;
+    // display: flex;
+    // flex-direction: column;
+    // max-width: 834px;
+    // margin-left: auto;
+  }
+  &__results-heading {
+    margin-bottom: 1.25rem;
+  }
+  &__rooms {
+    display: grid;
+    gap: 20px 12px;
 
-  &__room-list {
-    padding-top: 20px;
-    // background: rgba(0, 0, 255, 0.1);
-    max-width: 835px;
-    height: 100%;
-    // display: grid;
-    display: flex;
-    // grid-template-columns: repeat(3, 1fr);
-    gap: 12px;
+    &_grid_large {
+      grid-template-columns: repeat(3, minmax(14.375rem, auto));
+    }
+    &_grid_medium {
+      grid-template-columns: repeat(2, minmax(14.375rem, auto));
+    }
+    &_grid_small {
+      justify-items: center;
+      grid-template-columns: repeat(1, minmax(14.375rem, auto));
+    }
   }
   &__pagination {
-    display: flex;
-    justify-content: center;
+    margin-left: auto;
+    margin-right: auto;
     margin-top: 40px;
-    @if ($display-grid!=0) {
-      background: rgba(0, 255, 0, 0.1);
-    }
   }
 }

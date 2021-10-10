@@ -1,8 +1,23 @@
 extends ../layout.pug
 
 //- mixin dropdown(id, {type, label, placeholder, menuItems, state, isClearable = true})
-include /components/inputs/dropdown/dropdown.pug
+
 block content
+
+
+  - var dropdownItems = [[
+  - {name: "взрослые", value: "2"},
+  - {name: "дети", value: "2"},
+  - {name: "младенцы", value: "0"}],
+  -[
+  - {name: "взрослые", value: "0"},
+  - {name: "дети", value: "0"},
+  - {name: "младенцы", value: "0"}],
+  -[
+  - {name: "взрослые", value: "2"},
+  - {name: "дети", value: "1"},
+  - {name: "младенцы", value: "0"}],
+  -]
   -  let uiRichCheckboxes = [
   -  {
   -  label: "широкий коридор", 
@@ -55,35 +70,45 @@ block content
   -    id: "guests_allowed"
   -  }
   -]
-  include /components/card-room/card-room.pug
-  include /components/card/card.pug
   include /components/pagination/pagination.pug
-  main.page-content
+  include /components/card-room/card-room.pug
+  include /components/dropdown/dropdown.pug
+  include /components/checkbox/checkbox.pug
+
+  include /components/card/card.pug
+
+
+  main.page.page_background_white
     .container
-      .page-content__room-search
-        .page-content__room-search-filters
-          include /views/variables.pug
-          +dropdown("date", {label: "Дата пребывания в отеле", placeholder: "19 авг - 23 авг"})
-          +dropdown("guests", {label: "Гости", placeholder: "19 авг - 23 авг"})
-          //- +range
-            checkboxGroup({name, checkboxes, isNamed = false, isExpandable = false, isRich = false, isClosed = true})
-          +checkboxGroup({name: "Правила дома", checkboxes: uiRegularCheckboxes, isNamed: true})
-          +checkboxGroup({
+      .search
+        form.search__filters
+          .search__filter.search__filter_separated
+            //- mixin dropdown({type, label, placeholder, menuItems, initialState, isClearable = false})
+            +dropdown({type: "date-range", label: "Дата пребывания в отеле", placeholder: "19 авг - 23 авг"})#date-range
+            +dropdown({label: "Гости", placeholder: "3 гостя, 1 младенец", menuItems: dropdownItems[1]})#guests
+            //- +range
+            //-checkboxGroup({name, checkboxes, isNamed = false, isExpandable = false, isRich = false, isClosed = true})
+          .search__filter
+            +checkboxGroup({name: "Правила дома", checkboxes: uiRegularCheckboxes, isNamed: true})
+          .search__filter
+            +checkboxGroup({
             name: "Доступность", 
             checkboxes: uiRichCheckboxes,
             isNamed: true,
             isRich: true,
             isClosed: false
             })
-          +dropdown("convenience", {label: "удобства номера", placeholder: "2 спальни, 2 кровати..."})
-          +checkboxGroup({name: "дополнительные удобства", isNamed: true, checkboxes: [], isExpandable: true, isClosed: true})
+          .search__filter
+            +dropdown("convenience", {label: "удобства номера", placeholder: "2 спальни, 2 кровати..."})
+          .search__filter
+            +checkboxGroup({name: "дополнительные удобства", isNamed: true, checkboxes: [], isExpandable: true, isClosed: true})
           //- p= uiRegularCheckboxes[0].label
           //- +checkboxGroup({})
           //- +checkboxGroup({})
           //- mixin roomCard({id = "room", roomInfo = { number: "888", type: true, price: "8500Р", nReviews: "145"} } = {id: "room"})
-        .page-content__room-search-results
-          h2.page-content__results-heading Номера, которые мы для вас подобрали
-          .page-content__room-list
+        .search__results
+          h2.search__results-heading Номера, которые мы для вас подобрали
+          .search__rooms
             +cardRoom({id: "room-1",  roomInfo: {img: "room-0.jpg",  number: "840", type: false, price: "9900", nReviews: "65"}})
             +cardRoom({id: "room-2",  roomInfo: {img: "room-1.jpg",  number: "840", type: false, price: "9900", nReviews: "65"}})
             +cardRoom({id: "room-3",  roomInfo: {img: "room-2.jpg",  number: "980", type: false, price: "8500", nReviews: "35"}})
@@ -95,6 +120,5 @@ block content
             +cardRoom({id: "room-9",  roomInfo: {img: "room-8.jpg",  number: "350", type: false, price: "5000", nReviews: "77"}})
             +cardRoom({id: "room-10", roomInfo: {img: "room-9.jpg",  number: "666", type: false, price: "5000", nReviews: "25"}})
             +cardRoom({id: "room-10", roomInfo: {img: "room-10.jpg", number: "444", type: false, price: "5000", nReviews: "15"}})
-            +cardRoom({id: "room-10", roomInfo: {img: "room-11.jpg", number: "352", type: false, price: "5000", nReviews: "55"}})
-          .page-content__pagination
-            +pagination()
+            //- +cardRoom({id: "room-10", roomInfo: {img: "room-11.jpg", number: "352", type: false, price: "5000", nReviews: "55"}})
+          +pagination().search__pagination
