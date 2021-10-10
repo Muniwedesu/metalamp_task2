@@ -1,126 +1,94 @@
 @use "vars" as *;
-@media screen {
-  .footer-top__content {
-    grid-template-columns: 1fr;
-    grid-template-areas:
-      "logo"
-      "navigation"
-      " about"
-      "support"
-      "sub";
-    gap: 20px 10px;
-    padding: 12.5% 0;
-    text-align: center;
-  }
-  .footer__logo > * {
-    margin-left: auto;
-    margin-right: auto;
-  }
-}
-@media screen and (min-width: 420px) {
-  .footer-top__content {
-    grid-template-columns: 1.625fr 1fr;
-    $gap: max(20px, (100% - 520px + 160px) / 4);
-    gap: 20px $gap;
 
-    grid-template-areas:
-      "logo navigation"
-      "sub about"
-      ". support";
-    & > .footer__text-block {
-      grid-area: 1 / 2 / 3 / 2;
-    }
-    text-align: left;
-  }
-  .footer__logo > * {
-    margin-left: 0;
-  }
-}
-
-@media screen and (min-width: $breakpoint-desktop) {
-  .footer-top__content {
-    $gap: max(20px, (100% - 900px + 160px) / 4);
-    grid-template-columns: 1.625fr repeat(2, 1fr);
-    grid-template-rows: repeat(2, auto);
-    grid-template-areas:
-      "logo navigation about"
-      "sub support .";
-    margin: auto;
-    gap: 20px $gap;
-    padding: 100px 0px;
-  }
-}
-@media screen and (min-width: $breakpoint-tablet) {
-  .footer-top__content {
-    //16% of 1000px (gaps are 40*4)
-    $col-sm: min(0.16 * (100% - 80px), 160px);
-    $col-bg: min(0.26 * (100% - 80px), 260px);
-    $gap: max(20px, (100% - 1000px) / 4);
-    grid-template-columns: 1.625fr repeat(3, 1fr) 1.625fr;
-    grid-template-rows: 172px;
-    grid-template-areas: "logo navigation about support sub";
-    gap: 20px $gap;
-    width: auto;
-  }
-  .footer__subscription {
-    grid-column: span 1;
-  }
-}
-
-.footer-top {
-  background-color: #fff;
-  &__content {
-    display: grid;
-  }
-}
-
-.footer-bottom {
-  margin-top: 2px; //or border of bg color
-  background-color: #fff;
-  box-shadow: 0px 10px 20px rgba(31, 32, 65, 0.05);
-  &__content {
-    padding-top: 23px;
-    padding-bottom: 23px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    @media screen and (max-width: 419px) {
-      justify-content: center;
-      text-align: center;
-      flex-wrap: wrap;
-    }
-  }
-  &__icons {
-    display: flex;
-    align-items: center;
-    & > * {
-      padding: 1px;
-      margin-left: 20px;
-    }
-  }
-}
 .footer {
-  box-shadow: 0px 1px 0px rgba(31, 32, 65, 0.1);
-  &__element-label {
-    margin-bottom: 15px;
-    margin-top: 4px;
+  background: white;
+  &__bottom {
+    border-top: 1px solid white;
+  }
+
+  &__menu {
+    display: none;
+  }
+  &__logo-icon {
+    margin-bottom: 20px;
   }
   &__logo-caption {
-    margin-top: 16px;
-  }
-  &__logo {
-    grid-area: logo;
-  }
-  &__navigation-menu {
-    grid-area: navigation;
-  }
-  &__about-menu {
-    grid-area: about;
-  }
-  &__support-menu {
-    grid-area: support;
+    display: none;
   }
   &__subscription {
-    grid-area: sub;
+    display: none;
+  }
+  &__content {
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: 100%;
+    text-align: center;
+    &_top {
+      height: 11.4375rem;
+      justify-content: flex-end;
+    }
+    // height: 70px;
+    &_bottom {
+      height: 11.4375rem;
+      justify-content: flex-start;
+      gap: 20px;
+    }
+  }
+  &__social-icons {
+    height: 1.375rem;
+    & > * {
+      display: inline-block;
+    }
+    & > * + * {
+      margin-left: 1.25rem;
+    }
+  }
+}
+@media screen and (min-width: $breakpoint-desktop) {
+  .footer {
+    &__menu {
+      max-width: 160px;
+      display: block;
+    }
+    &__logo {
+      max-width: 260px;
+    }
+    &__logo-caption {
+      display: block;
+    }
+    &__subscription {
+      display: block;
+      max-width: 260px;
+    }
+    &__bottom {
+      border: 1px solid $dark-25;
+    }
+    &__content {
+      text-align: left;
+      &_top {
+        padding-top: 100px;
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: flex-start;
+        height: 372px;
+      }
+      &_bottom {
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+        height: 70px;
+      }
+      // //16% of 1000px (gaps are 40*4)
+      // $col-sm: min(0.16 * (100% - 80px), 160px);
+      // $col-bg: min(0.26 * (100% - 80px), 260px);
+      // $gap: max(20px, (100% - 1000px) / 4);
+      // grid-template-columns: 1.625fr repeat(3, 1fr) 1.625fr;
+      // grid-template-rows: 172px;
+      // grid-template-areas: "logo navigation about support sub";
+      // gap: 20px $gap;
+      // width: auto;
+    }
   }
 }

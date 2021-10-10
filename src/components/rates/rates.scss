@@ -10,7 +10,8 @@
     font-size: 1.5rem;
     cursor: pointer;
     line-height: 1.5rem;
-    width: 1.5rem;
+    max-width: 1.5rem;
+    width: 20%;
   }
   &__star_hovered {
     transform: scale(1.15);

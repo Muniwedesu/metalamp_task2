@@ -1,7 +1,14 @@
-include ../inputs/inputs.pug
+include ../like/like.pug
 
-mixin comment({author, date, likes, text})
-  div.comment
+- var defaultComment = 
+-  { author: {name: "Мурад сарафанов", icon: "comment-1.jpg"}, 
+-    date: "5 дней назад", 
+-    text: "Великолепный матрас на кровати в основной спальне! А пуфик вообще потрясающий. И стены, действительно, шумоподавляющие. Выкрикивал комплименты повару — никто не жаловался из соседей."}
+- 
+-
+-
+mixin comment({author, date, likes, text} = defaultComment)
+  div.comment(class!=attributes.class)
     .comment__heading
       img(src=require("icons/" + author.icon)).comment__icon
       div
