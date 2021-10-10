@@ -1,0 +1,32 @@
+.container {
+  box-sizing: border-box;
+  // margin: 0 max(20vw - 64px, 50vw - 580px);
+  margin: 0 auto;
+  //will be changed (or not). This will limit content width to 300px at 320px vw.
+  width: 93%;
+  max-width: 1160px;
+  min-width: 320px;
+}
+
+.page {
+  box-sizing: border-box;
+  background: #fff;
+  border-bottom: 1px solid $dark-25;
+  // padding-bottom: min(10%, 70px);
+  padding-bottom: 70px;
+  &_with-bg {
+    background: center/cover no-repeat url("../assets/img/main-bg.jpg");
+  }
+}
+.icon {
+  font-family: "Material Icons";
+  &__comfort::before {
+    content: "insert_emoticon";
+  }
+  &__cosiness::before {
+    content: "whatshot";
+  }
+  &__convenience::before {
+    content: "location_city";
+  }
+}
