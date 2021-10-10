@@ -1,0 +1,67 @@
+.details {
+  &__photos {
+  }
+  &__content {
+    display: grid;
+    gap: 30px 6%;
+    margin-top: 70px;
+    &_grid_large {
+      grid-template-columns: minmax(260px, 280px) minmax(300px, 350px) minmax(320px, 380px);
+      grid-template-areas:
+        "tags impressions card"
+        "comments comments card"
+        "rules cancellation .";
+    }
+    &_grid_medium {
+      grid-template-columns: repeat(2, 1fr);
+      grid-template-areas:
+        "tags card"
+        "impressions card"
+        "comments comments"
+        "rules cancellation";
+    }
+    &_grid_small {
+      grid-template-columns: 1fr;
+      justify-items: center;
+      grid-template-areas:
+        "card"
+        "tags"
+        "impressions"
+        "comments"
+        "rules"
+        "cancellation";
+    }
+  }
+  &__about {
+  }
+  &__about-tags {
+    grid-area: tags;
+  }
+  &__about-impressions {
+    grid-area: impressions;
+  }
+  &__about-comments {
+    grid-area: comments;
+  }
+  &__comments-heading {
+    display: flex;
+    justify-content: space-between;
+  }
+  &__comments {
+    & > .details__comment + .details__comment {
+      margin-top: 22px;
+    }
+  }
+  &__rules {
+    grid-area: rules;
+  }
+  &__cancellation {
+    grid-area: cancellation;
+  }
+  &__card {
+    grid-area: card;
+  }
+  &__block-heading {
+    margin-bottom: 20px;
+  }
+}

@@ -1,6 +1,41 @@
-doctype html 
-html 
-  head 
-    link(href="./style.css" rel="stylesheet")
-  body 
-    p.color-red search
+extends ../layout.pug
+
+block content
+  include /components/tag-list/tag-list.pug
+  include /components/comment/comment.pug
+  include /components/bullet-list/bullet-list.pug
+  include /components/card-details/card-details.pug
+
+  div.page.page_background_white
+    div.container
+      div.details
+        div.details__photos.
+          later
+        div.details__content.details__content_grid_small
+          div.details__about-tags
+            div
+              h2.details__block-heading Сведения о номере 
+              +tagList()
+          div.details__about-impressions
+            div
+              h2.details__block-heading Впечатления
+              p диаграмма!!
+          div.details__about-comments
+            div
+              div.details__comments-heading
+                h2.details__block-heading Отзывы посетителей номера
+                span 2 отзыва
+              div.details__comments
+                +comment().details__comment
+                +comment().details__comment
+          div.details__rules
+            div
+              h2.details__block-heading Правила
+              +bulletList()
+          div.details__cancellation
+            div
+              h2.details__block-heading Отмена
+              p текст
+          div.details__card
+            div
+              +cardDetails()
