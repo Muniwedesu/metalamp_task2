@@ -1,11 +1,11 @@
 mixin summary({items, total})
-  ul.summary-list
+  ul.summary-list(class!=attributes.class)
     each item in items
-      li.summary-list__item
+      li.summary-list__item(class="summary-list__" + item.class)
         span.summary-list__key= item.key
         p.summary-list__icon
         p.summary-list__value= item.value
-  li.summary-list__total
-    h2.summary-list__total-key= total.key
-    p.summary-list__total-break &nbsp;
-    h2.summary-list__total-value= total.value
+    li.summary-list__total
+      h2.summary-list__total-key= total.key
+      p.summary-list__total-break &nbsp;
+      h2.summary-list__total-value= total.value

@@ -6,22 +6,25 @@ include ../inputs.pug
 - {
 -   key:" 9 990₽ х 4 суток",
 -   value: "39 960₽",
--   iconVisible: false
+-   iconVisible: false,
+-   class: "price",
 - },
 - {
 -   key: "Сбор за услуги: скидка 2 179₽",
 -   value: "0₽",
--   iconVisible: true
+-   iconVisible: true,
+-   class: "services",
 - },
 - {
 -   key: "Сбор за дополнительные услуги",
 -   value: "300₽",
--   iconVisible: true
-- }]
+-   iconVisible: true,
+-   class: "additional services"
+- }];
 - var total = {
 -  key: "Итого", 
--  value: "38 081Р"
--}
+-  value: "38 081Р",
+-};
 
 
 - var typesOfGuests = [
@@ -33,21 +36,7 @@ include ../inputs.pug
 
 
 //- //- mixin dropdown(id, {type, label, placeholder, menuItems, state, isClearable = true})
-//- mixin cardDetails({id = "details"} = {id: "details"})
-//-   - var id = attributes.id
-//-   .card
-//-     form.card__form
-//-       .card__form-heading_compound.room-info
-//-         +compound-heading()
-//-       ul.card__form-elements
-//-         li.card__form-field.card__form-field_separated
-//-           +dropdown({type: "date-single", label: "Прибытие", placeholder: "ДД.ММ.ГГГГ"})(id=id+"-arrival")
-//-           +dropdown({type: "date-single", label: "Выезд", placeholder: "ДД.ММ.ГГГГ"})(id=id+"-departure")
-//-       p.card__form-field
-//-         +dropdown({label: "Гости", placeholder: "Сколько гостей", menuItems: typesOfGuests})(id="guests")
-//-       +summary({items: summaryList, total: total})
-//-       p.card__form-submit
-//-         +button({label: "Забронировать", styles: ["with-arrow"]})
+
 
 
 //- mixin cardRegister({id = "registration"} = {id: "registration"})
