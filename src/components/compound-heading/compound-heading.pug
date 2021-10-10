@@ -1,8 +1,13 @@
 //- used in details-card & room-card
 
-mixin compound-heading()
-  //should it really be h1?
-  h1.room-info__number.
-    <span class="room-info__no">№&nbsp;</span>#{888}
-    <span class="room-info__type">люкс</span>
-  span.room-info__price 9 990Р <span class="room-info__per-day">в сутки</span>
+//-   //should it really be h1?
+//-   h2.room-info__number.
+//-     <span class="room-info__no">№&nbsp;</span>#{888}
+//-     <span class="room-info__type">люкс</span>
+//-   span.room-info__price 9 990Р <span class="room-info__per-day">в сутки</span>
+
+mixin compoundHeading(roomInfo = {})
+  .room-info(class!=attributes.class)
+    h1.room-info__number.
+      #[span.room-info__no №&nbsp;]#{roomInfo.number} #[span.room-info__type= roomInfo.type ? "люкс" : ""]
+    span.room-info__price #{roomInfo.price + "₽"} #[span.room-info__per-day в сутки]

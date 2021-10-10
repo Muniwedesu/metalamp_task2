@@ -1,8 +1,10 @@
 @use "vars" as *;
 
 .room-info {
+  // @include h1;
   display: flex;
   justify-content: space-between;
+  align-items: flex-end;
   &__number {
     line-height: 1.5rem;
   }
@@ -19,9 +21,11 @@
     font-weight: bold;
     color: $dark-50;
     // @include h3($dark-25);
+    text-align: right;
   }
   &__per-day {
     @include h3($dark-25, normal, none);
+    text-align: right;
     // font-size: 12px;
   }
 }

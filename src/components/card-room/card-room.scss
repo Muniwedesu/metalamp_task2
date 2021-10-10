@@ -1,6 +1,7 @@
 @use "vars" as *;
 
 .room-card {
+  // width: 100%;
   max-width: 16.875rem;
   background: #fff;
   border-radius: 0.25rem;
@@ -8,10 +9,10 @@
   &__cover {
     display: block;
     box-sizing: border-box;
-    max-width: 100%;
+    // max-width: 100%;
     // border: 1px solid black;
   }
-  &__form {
+  &__content {
     // background-color: rgba(255, 0, 0, 0.5);
     padding: 1.25rem;
   }
@@ -21,6 +22,9 @@
     height: 1px;
     background-color: $dark-10;
   }
+  &__rates {
+    width: 55%;
+  }
   &__reviews {
     display: flex;
     justify-content: space-between;
@@ -28,6 +32,7 @@
     height: 1.5rem;
   }
   &__reviews-count {
+    min-width: 5.25rem;
     color: $dark-50;
   }
 }
