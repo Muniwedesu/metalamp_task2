@@ -7,11 +7,17 @@ block content
   include /components/card-details/card-details.pug
 
   div.page.page_background_white
-    div.container
-      div.details
-        div.details__photos.
-          later
-        div.details__content.details__content_grid_small
+    div.details
+      div.details__photos
+        div.details__photo-wrap.details__photo-wrap_large
+          img(src=require("room/image.jpg")).details__photo
+        div.details__photo-wrap
+          img(src=require("room/image-1.jpg")).details__photo
+        div.details__photo-wrap
+          img(src=require("room/image-2.jpg")).details__photo
+
+      div.container
+        div.details__content
           div.details__about-tags
             div
               h2.details__block-heading Сведения о номере 
