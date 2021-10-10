@@ -1,0 +1,24 @@
+
+-var defaultTags = [
+- { icon: "comfort", label: "Комфорт", description: "Шумопоглощающие стены" },
+- { icon: "cosiness", label: "Уют", description: "Номер оснащен камином" },
+- { icon: "convenience", label: "Удобство", description: "Окно в каждой из спален" },
+- ]
+
+mixin tagList(items)
+  - if (!items) items = defaultTags
+  //- .icon__comfort
+  //-      __cosiness
+  //-      __convenience
+  //- item has label, icon and description
+  ul.tag-list
+    each item in items
+      li.tag-list__item
+        +tag(item)
+
+mixin tag({label, icon, description})
+  div.tag
+    div(class=`tag__icon icon icon__${icon}`)
+    div.tag__text
+      p.tag__label= label
+      p.tag__description= description

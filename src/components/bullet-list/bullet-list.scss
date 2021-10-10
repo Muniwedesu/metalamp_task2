@@ -1,0 +1,32 @@
+@use "./vars" as *;
+
+.bullet-list {
+  &__list {
+    padding-left: 20px;
+  }
+  &__label {
+    padding-bottom: 0.5rem;
+    margin-bottom: 0;
+  }
+  &__item {
+    position: relative;
+    margin-bottom: 10px;
+    &:last-child {
+      margin-bottom: 0;
+    }
+  }
+  &__item-marker {
+    position: absolute;
+    display: inline-block;
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    left: -20px;
+    top: 7px;
+    background-color: $dark-25;
+  }
+  &__item-text {
+    // border: 1px dotted red;
+    display: inline-block;
+  }
+}

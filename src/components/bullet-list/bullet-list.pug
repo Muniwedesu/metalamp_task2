@@ -1,0 +1,15 @@
+- var defaultBulletListItems = 
+- { name: "bullet list", 
+-   items: ["Нельзя с питомцами", "Без вечеринок и мероприятий", "Время прибытия – после 13:00, а выезд до 12:00"]
+- }
+
+mixin bulletList({name, items, addName = false} = defaultBulletListItems)
+  //- not sure if I will need to use this
+  div.bullet-list
+    if (addName)
+      h3.controls-label.bullet-list__label= name
+    ul.bullet-list__list
+      each item in items
+        li.bullet-list__item
+          .bullet-list__item-marker
+          span.bullet-list__item-text= item

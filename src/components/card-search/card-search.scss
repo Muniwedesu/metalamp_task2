@@ -1,1 +1,10 @@
 @use "../card/card";
+.card {
+  .form {
+    &__submit {
+      &_margin_big {
+        margin-top: 1.875rem;
+      }
+    }
+  }
+}

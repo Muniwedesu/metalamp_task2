@@ -1,0 +1,16 @@
+include ../card/card.pug
+
+mixin cardDetails({id = "details", roomInfo = {number: "888", type: true, price: "8500", nReviews: "145", img: "room-0.jpg"}} = {id: "details"})
+  - if (!roomInfo) roomInfo =  {number: "888", type: true, price: "8500", nReviews: "145", img: "room-0.jpg"};
+  - var id = attributes.id
+  .card
+    form.card__form.form
+      +compoundHeading(roomInfo).card__heading.form__heading
+      section.form__field.form__field_separated
+        +dropdown({type: "date-single", label: "Прибытие", placeholder: "ДД.ММ.ГГГГ"})(id=id+"-arrival")
+        +dropdown({type: "date-single", label: "Выезд", placeholder: "ДД.ММ.ГГГГ"})(id=id+"-departure")
+      div.form__field
+        +dropdown({label: "Гости", placeholder: "Сколько гостей", menuItems: typesOfGuests})(id="guests")
+      +summary({items: summaryList, total: total}).form__field
+      p.form__submit
+        +button({label: "Забронировать", styles: ["with-arrow"]})
