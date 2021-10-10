@@ -10,6 +10,9 @@ const GRID_SIZES = ["small", "medium", "large"].map((x) => {
 
 export class SearchPage {
   constructor() {
-    const grid = new Grid(GRID_CONTAINER, SEARCH_ROOMS_GRID_BREAKPOINTS, GRID_SIZES);
+    const grid = new Grid(GRID_CONTAINER, {
+      breakpoints: SEARCH_ROOMS_GRID_BREAKPOINTS,
+      sizes: GRID_SIZES,
+    });
   }
 }

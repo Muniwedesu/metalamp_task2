@@ -1,18 +1,19 @@
 import { wrapGrid } from "animate-css-grid";
 export class Grid {
-  constructor(grid, breakpoints, sizes) {
+  //yes it's not scalable
+  constructor(grid, { breakpoints, sizes, options }) {
     this.grid = grid;
     this.$grid = $(grid);
     this.breaks = breakpoints;
     this.sizes = sizes;
+    this.options = options;
     //calculated
     this.width = this.$grid.width();
     this.size = -1;
     $(window).on("resize", this.toggleGrid.bind(this));
-
     //this order for container not to run animation on load;
     this.toggleGrid();
-    wrapGrid(this.grid);
+    wrapGrid(this.grid, options);
   }
 
   determineSize() {
