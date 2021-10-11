@@ -1,4 +1,4 @@
-import { Card } from "../../components/card/card";
+import { DetailsForm } from "../../components/card-details/card-details";
 import { Grid } from "../utility";
 
 //modify these
@@ -29,11 +29,15 @@ export class DetailsPage {
       breakpoints: PHOTO_GRID_BREAKPOINTS,
       sizes: PHOTO_GRID_SIZES,
       options: {
-        stagger: 0,
-        duration: 500,
-        easing: "backInOut",
+        stagger: 100,
+        duration: 250,
+        easing: "easeIn",
       },
     });
+    //
+    this.form = $(".card__form")[0];
+    console.log(this.form);
+    this.$card = new DetailsForm({ form: this.form });
     //
     this.$photoGrid = $(PHOTO_GRID_CONTAINER);
     this.$photoGrid.on("click", this.onSelectPhoto.bind(this));
