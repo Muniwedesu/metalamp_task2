@@ -144,7 +144,9 @@ export class DropdownMenu {
     
     
     */
-    this.dropdownState[label] = value;
+    if (label) {
+      this.dropdownState[label] = value;
+    }
     //пройтись по всем свойствам
     //записать в строку все, что не равны нулю
     //??

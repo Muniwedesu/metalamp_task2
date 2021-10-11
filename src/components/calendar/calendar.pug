@@ -1,12 +1,12 @@
 mixin calendar({addInput = true, type="single", placeholder = "ДД.ММ.ГГГГ"} = {})
   div(class="calendar" class=attributes.class)
     - var id = attributes.id
-    if (!attributes.id)
-      - var id = "default"
+    if (!attributes.id || id == "undefined")
+      - id = "default"
     //- I could pass a parent's ID to this so it'll target dropdown input or whatever
     //- this is for input only
     if (addInput)
-      input(type="text" id=id data-type=type readonly=true placeholder=placeholder).calendar-input
+      input(type="text" id=id data-type=type name=id readonly=true placeholder=placeholder).calendar-input
       //- +button({label: "очистить", styles: ["text"]}).calendar-button
       //- +button({label: "применить", styles: ["text"]}).calendar-button
     else

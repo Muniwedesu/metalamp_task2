@@ -1,28 +1,30 @@
 // require("jquery");
 import AirDatepicker from "air-datepicker";
 
+var clearButton = {
+  tagName: "button",
+  className: "button button_text calendar-button",
+  content(dp) {
+    return "Очистить";
+  },
+  onClick(dp) {
+    dp.clear();
+  },
+};
+
+var applyButton = {
+  tagName: "button",
+  className: "button button_text calendar-button",
+  content: "Применить",
+  onClick(dp) {
+    dp.hide();
+  },
+};
+
 export class Calendar {
   constructor(dropdown) {
     //here should be passed each dropdown
     this.dropdown = $(dropdown).find(".dropdown__date");
-    var clearButton = {
-      tagName: "button",
-      className: "button button_text calendar-button",
-      content(dp) {
-        return "Очистить";
-      },
-      onClick(dp) {
-        return;
-      },
-    };
-    var applyButton = {
-      tagName: "button",
-      className: "button button_text calendar-button",
-      content: "Применить",
-      onClick(dp) {
-        return;
-      },
-    };
 
     let id = $(this.dropdown).contents("input").attr("id");
     //come up with better names
@@ -55,16 +57,17 @@ export class Calendar {
       // offset: -150,
       buttons: [clearButton, applyButton],
       ...type,
+      selectedDates: [],
       onSelect({ date, datepicker }) {
         // console.log(datepicker);
+        console.log((datepicker.$el.value = new Intl.DateTimeFormat("ru-RU").format(date)));
         $(datepicker.$el).trigger({ type: "valueUpdate", value: { date: date } });
       },
     });
-    // dp.hide();
+    this.dp.hide();
+    $(this.dp.$datepicker).css("top", "-10000px");
     //change this maybe
     $(".air-datepicker-button").children().addClass("controls-label button__label");
-    console.log($(this.dp.$datepicker).css({ left: "-10000px", top: "0px" }));
-    // this.$dp = $dp;
   }
 }
 

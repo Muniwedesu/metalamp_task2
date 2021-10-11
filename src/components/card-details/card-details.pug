@@ -7,8 +7,8 @@ mixin cardDetails({id = "details", roomInfo = {number: "888", type: true, price:
     form.card__form.form
       +compoundHeading(roomInfo).card__heading.form__heading
       section.form__field.form__field_separated
-        +dropdown({type: "date-single", label: "Прибытие", placeholder: "ДД.ММ.ГГГГ"})(id=id+"-arrival")
-        +dropdown({type: "date-single", label: "Выезд", placeholder: "ДД.ММ.ГГГГ"})(id=id+"-departure")
+        +dropdown({type: "date-single", label: "Прибытие", placeholder: "ДД.ММ.ГГГГ"})(id="arrival")
+        +dropdown({type: "date-single", label: "Выезд", placeholder: "ДД.ММ.ГГГГ"})(id="departure")
       div.form__field
         +dropdown({label: "Гости", placeholder: "Сколько гостей", menuItems: typesOfGuests})(id="guests")
       +summary({items: summaryList, total: total}).form__field
