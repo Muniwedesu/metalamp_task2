@@ -93,6 +93,9 @@
   color: white;
   font-weight: 700;
 }
+.-disabled- {
+  color: $dark-05;
+}
 .-range-from-,
 .-range-to- {
   position: relative;

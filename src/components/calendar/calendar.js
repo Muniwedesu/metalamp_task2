@@ -55,6 +55,10 @@ export class Calendar {
       // offset: -150,
       buttons: [clearButton, applyButton],
       ...type,
+      onSelect({ date, datepicker }) {
+        // console.log(datepicker);
+        $(datepicker.$el).trigger({ type: "valueUpdate", value: { date: date } });
+      },
     });
     // dp.hide();
     //change this maybe
