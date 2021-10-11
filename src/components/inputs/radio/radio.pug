@@ -1,8 +1,0 @@
-mixin radioGroup({name, named = false, key, radios })
-  fieldset.radio-group
-    if (named)
-      legend.radio-group__name= name
-    each r in radios
-      .radio-group__row
-        input(id=r.id name= key type="radio").radio-group__input
-        label(for=r.id).radio-group__label= r.label

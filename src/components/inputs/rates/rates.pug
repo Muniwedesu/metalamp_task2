@@ -1,8 +1,0 @@
-mixin rates({value = 1, maxValue = 5} = {})
-  //- maybe make an input which will hold the value
-  .rates
-    //- implement later ^
-    //- input(type="text" value=value).rates__input
-    //- add input for storing value or nah?
-    - for (let i = 0; i < maxValue; ++i)
-      div(tabindex="0" data-value=`${i + 1}` class=`${i + 1 === value ? "rates__star_selected": ""}`).rates__star= i+1 === value ? "star" : "star_border"
