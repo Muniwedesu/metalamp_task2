@@ -12,7 +12,7 @@ mixin dropdown({type, label, placeholder, menuItems, initialState, isClearable =
   //- date filter
   div(tabindex="-1").dropdown
     //- default
-    label(for=id).controls-label= label
+    label(for=id).controls-label.dropdown__label= label
       //- type: single || range
     if (type && type.split("-")[0] === "date")
       +calendar({type: type, placeholder: placeholder})(id=id).dropdown__date

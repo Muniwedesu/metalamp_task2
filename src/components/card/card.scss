@@ -11,7 +11,7 @@
   box-shadow: 0px 0px 25px rgba(0, 0, 0, 0.2);
   .form {
     //15-30px for 320-380px
-    padding: 0 max(15px, min(50% - 135px, 30px));
+    padding: 0 max(15px, min(50% - 145px, 30px));
     padding-top: 2.5rem;
     padding-bottom: 1.875rem;
     &__field {
@@ -27,20 +27,6 @@
     &__submit {
       margin-top: 1.5rem;
       height: 2.75rem;
-    }
-  }
-  &__account {
-    margin-top: 1.875rem;
-    display: flex;
-    height: 2.75rem;
-    flex-wrap: wrap;
-    align-items: center;
-    & > *:first-child {
-      flex-basis: 69%;
-    }
-    & > *:last-child {
-      flex-basis: 31%;
-      align-self: stretch;
     }
   }
 }
