@@ -1,0 +1,43 @@
+@use "../card/card" as *;
+@use "./vars" as *;
+
+.card {
+  &__account {
+    display: flex;
+    margin-top: 1.875rem;
+    align-items: center;
+    // flex-direction: column;
+    // justify-content: center;
+    justify-content: space-between;
+    &-prompt {
+    }
+    &-button {
+      height: 2.75rem;
+    }
+    // @media screen and (min-width: $breakpoint-mobile) {
+    //   flex-direction: row;
+    // }
+    // & > *:first-child {
+    //   flex-basis: 69%;
+    // }
+    // & > *:last-child {
+    //   flex-basis: 31%;
+    //   align-self: stretch;
+    // }
+  }
+  .form {
+    &__field-label {
+      margin-bottom: 5px;
+    }
+    &__fields-block {
+      margin-top: 1.25rem;
+      & > .form__field:first-of-type {
+        //- remove margin from first field
+        margin-top: 0;
+      }
+      & > .form__field + .form__field {
+        margin-top: 10px;
+      }
+    }
+  }
+}

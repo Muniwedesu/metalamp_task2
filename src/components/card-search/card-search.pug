@@ -6,9 +6,9 @@ mixin cardSearch({id = "search"} = {id: "search"})
     form.card__form.form
       h1.form__heading Найдём номера под ваши пожелания
       section.form__field.form__field_separated
-        +dropdown({type: "date-single", label: "Прибытие", placeholder: "ДД.ММ.ГГГГ"})(id=id+"-arrival")
-        +dropdown({type: "date-single", label: "Выезд", placeholder: "ДД.ММ.ГГГГ"})(id=id+"-departure")
+        +dropdown({type: "date-single", label: "Прибытие", placeholder: "ДД.ММ.ГГГГ"})(id="arrival")
+        +dropdown({type: "date-single", label: "Выезд", placeholder: "ДД.ММ.ГГГГ"})(id="departure")
       section.form__field
-        +dropdown({label: "Гости", placeholder: "Сколько гостей", menuItems: typesOfGuests})
+        +dropdown({label: "Гости", placeholder: "Сколько гостей", menuItems: typesOfGuests})(id = "guests")
       section.form__submit.form__submit_margin_big
         +button({label: "Подобрать номер", styles: ["with-arrow"]})

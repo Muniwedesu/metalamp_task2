@@ -1,10 +1,13 @@
 import { Form } from "../card/card";
+import { SearchForm } from "../card-search/card-search";
+
 const MS_TO_DAYS = 1 / (1000 * 3600 * 24);
-export class DetailsForm extends Form {
+export class DetailsForm extends SearchForm {
   constructor({ form, roomNumber, roomPrice, $summaryList }) {
+    super({ form: form });
     //get room number maybe?
     //get price per day
-    super({ form: form });
+    console.log("details-form ctor");
     this.pricePerDay = this.$form.find(".room-info__price").text().split("₽ ")[0];
     // console.log(this.pricePerDay);
     this.$summaryList = $(".summary-list");
@@ -22,43 +25,19 @@ export class DetailsForm extends Form {
     // console.log(this.$priceSummaryKeyContainer);
     this.$priceSummaryValue = this.$priceSummary.children(".summary-list__value");
     this.updateSummaryList();
+    console.log(this);
   }
   onValueUpdate(event) {
     if (event.value.date) {
-      // console.log("EVENT: dropdown valueUpdate");
-      if (event.target.id.split(/[\w]*-/).at(-1) === "arrival") {
-        // console.log("EVENT: arrival handler");
-
-        //fix time difference problems
-        // console.log(this.dateDropdowns[0].dp);
-        let date = event.value.date;
-        let tomorrow = new Date().setDate(date.getDate() + 1);
-        let departureDP = this.dateDropdowns[1].dp;
-        departureDP.update({ minDate: tomorrow });
-        // console.log(this.dateDropdowns[1].dp.selectedDates);
-        if ((departureDP.selectedDates[0] - date) * MS_TO_DAYS < 1) {
-          //clean this up
-          departureDP.clear();
-          $(departureDP.$datepicker).find(".-selected-").removeClass("-selected-");
-          departureDP.selectDate(tomorrow);
-        }
-        this.formData.arrivalDate = event.value.date;
-        // console.log(this.dateDropdowns[1].dp);
-      } else {
-        // console.log(this.formData.departureDate);
-        if (this.formData.departureDate !== event.value.date) {
-          this.formData.departureDate = event.value.date;
-          console.log("EVENT: departure handler");
-        }
-      }
+      this.handleStayingDateUpdate(event);
     } else {
       this.formData = Object.assign(this.formData, event.value);
     }
-
-    // console.log(this.formData);
     this.updateSummaryList();
   }
-
+  //-------------------------------------------------------------------------
+  //utility methods
+  //-------------------------------------------------------------------------
   updateSummaryList() {
     // console.log(this.formData.departureDate);
     let daySpan = 0;
@@ -69,9 +48,6 @@ export class DetailsForm extends Form {
     }
     this.setListValues(daySpan);
   }
-  //-------------------------------------------------------------------------
-  //utility methods
-  //-------------------------------------------------------------------------
   getDaySpan(start = this.formData.arrivalDate, end = this.formData.departureDate) {
     let startUTC = Date.UTC(start.getFullYear(), start.getMonth(), start.getDate());
     let endUTC = Date.UTC(end.getFullYear(), end.getMonth(), end.getDate());
@@ -96,19 +72,3 @@ export class DetailsForm extends Form {
     this.$summaryTotalValue.text(totalPrice);
   }
 }
-
-// let arrivalDate = Date.UTC(
-//   this.formData.arrivalDate.getFullYear(),
-//   this.formData.arrivalDate.getMonth(),
-//   this.formData.arrivalDate.getDate()
-// );
-// let departureDate = Date.UTC(
-//   this.formData.departureDate.getFullYear(),
-//   this.formData.departureDate.getMonth(),
-//   this.formData.departureDate.getDate()
-// );
-// console.log(
-//   `${departureDate * MS_TO_DAYS} - ${arrivalDate * MS_TO_DAYS} = ${
-//     (departureDate - arrivalDate) * MS_TO_DAYS
-//   }`
-// );

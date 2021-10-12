@@ -133,6 +133,7 @@ body > * {
 @import "../components/card-room/card-room.scss";
 @import "../components/card-details/card-details.scss";
 @import "../components/card-search/card-search.scss";
+@import "../components/card-account/card-account.scss";
 
 @import "../components/compound-heading/compound-heading";
 @import "../components/comment/comment.scss";
@@ -148,3 +149,4 @@ body > * {
 @import "./index/index";
 @import "./search/search.scss";
 @import "./details/details";
+@import "./account/account.scss";
