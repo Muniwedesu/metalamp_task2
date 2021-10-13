@@ -22,7 +22,7 @@ var applyButton = {
 };
 
 export class Calendar {
-  constructor(dropdown) {
+  constructor(dropdown, options = {}) {
     //here should be passed each dropdown
     this.dropdown = $(dropdown).find(".dropdown__date");
 
@@ -57,6 +57,7 @@ export class Calendar {
       // offset: -150,
       buttons: [clearButton, applyButton],
       ...type,
+      ...options,
       selectedDates: [],
       onSelect({ date, datepicker }) {
         // console.log(datepicker);

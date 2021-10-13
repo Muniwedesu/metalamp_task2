@@ -1,6 +1,7 @@
 import "./views/global.scss";
 
-import { AccountPage } from "./views/account/account";
+import { RegisterPage } from "./views/account/__register/__register";
+// import { LoginPage } from "./views/account/__login/__login";
 import { IndexPage } from "./views/index/index";
 import { DetailsPage } from "./views/details/details";
 import { SearchPage } from "./views/search/search";
@@ -24,7 +25,7 @@ window.addEventListener("keydown", function (e) {
     e.preventDefault();
   }
 });
-
+// console.log(pug.compile("./views/index/index.pug"));
 // require("./components/dropdown/dropdown.js");
 $(document).ready(() => {
   const path = window.location.pathname.split(/\.|\//)[1];
@@ -49,10 +50,16 @@ $(document).ready(() => {
       page = new IndexPage();
       break;
     }
-    case "account": {
+    case "register": {
       page = null;
       console.log("PATH: index");
-      page = new AccountPage();
+      page = new RegisterPage();
+      break;
+    }
+    case "login": {
+      page = null;
+      console.log("PATH: index");
+      // page = new LoginPage();
       break;
     }
   }
