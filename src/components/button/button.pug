@@ -1,8 +1,9 @@
-mixin button({label, styles = []})
+mixin button({label, styles = [], type = "button", link = "./"})
   //- default is purple
   //- styles: _outlined, _with-arrow, _green, _text
   - var isDisabled = [true, "disabled"].includes(attributes.disabled)
   - styles = styles.map(x => "button_" + x)
+  if (!type || type === "button")
     button(id = attributes.id,
       class=["button"], 
       class=styles, 
@@ -10,3 +11,11 @@ mixin button({label, styles = []})
       disabled!= isDisabled,
       type!=attributes.type) 
       span.controls-label.button__label= label
+  else
+    a(id = attributes.id,
+      class=["button"], 
+      class=styles, 
+      class!=attributes.class
+      href=link) 
+      span.controls-label.button__label= label
+

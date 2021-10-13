@@ -71,11 +71,8 @@ li {
   list-style: none;
 }
 
-a,
-.link {
-  display: block;
-  padding: 4px 0px;
-  margin: 6px 0px;
+a {
+  box-sizing: border-box;
   text-decoration: none;
   color: inherit;
   // color: $dark-50;
@@ -83,6 +80,12 @@ a,
   @if $display-grid!=0 {
     background-color: rgba(255, 0, 255, 0.05);
   }
+}
+.link {
+  @extend a;
+  display: block;
+  padding: 4px 0px;
+  margin: 6px 0px;
 }
 a:hover {
   text-decoration: line-through;
@@ -133,7 +136,7 @@ body > * {
 @import "../components/card-room/card-room.scss";
 @import "../components/card-details/card-details.scss";
 @import "../components/card-search/card-search.scss";
-@import "../components/card-account/card-account.scss";
+@import "../components/card-register/card-register.scss";
 
 @import "../components/compound-heading/compound-heading";
 @import "../components/comment/comment.scss";
