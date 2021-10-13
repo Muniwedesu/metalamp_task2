@@ -1,6 +1,6 @@
 import { Form } from "../card/card";
 
-export class AccountForm extends Form {
+export class RegisterForm extends Form {
   constructor({ form }) {
     super({ form });
   }

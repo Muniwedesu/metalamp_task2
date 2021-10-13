@@ -1,7 +1,10 @@
 include ../card/card.pug
-mixin cardAccount({id = "registration"} = {id: "registration"})
+include ../text/text.pug
+include ../radio/radio.pug
+include ../dropdown/dropdown.pug
+
+mixin cardRegister({id = "registration", linkToLogin = "./login.html"} = {id: "registration"})
   - var id = attributes.id
-  //- determine whether it's a registration or login card
   .card
     form.card__form.form
       h1.form__heading Регистрация аккаунта
@@ -26,13 +29,14 @@ mixin cardAccount({id = "registration"} = {id: "registration"})
           +toggleGroup({toggles: defaultToggles})
       section.form__submit
         +button({label: "Перейти к оплате", styles: ["with-arrow"]})
-      +account(true)
+      +account(true, linkToLogin)
 
-mixin account(exists)
+//- remove this
+mixin account(exists, link)
   section.card__account
     - let accountStatusText = exists ? "Уже есть аккаунт на Toxin?" : "Нет аккаунта на Toxin?"
     - let buttonLabel = exists ? "Войти" : "Создать"
     p.card__account-prompt= accountStatusText
     div.card__account-button
-      +button({label: buttonLabel, styles: ["outlined"]})(type="button")
+      +button({label: buttonLabel, styles: ["outlined"], type: "link", link: link})(type="button")
 

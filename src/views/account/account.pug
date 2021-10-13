@@ -2,9 +2,8 @@ extends ../layout.pug
 
 block content
   include /components/card/card.pug
-  include /components/card-account/card-account.pug
   main.page.page_with-bg
     .container
       .account
         .account__card
-          +cardAccount({id: "account"})
+          block card

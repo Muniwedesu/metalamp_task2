@@ -1,0 +1,20 @@
+mixin cardLogin({linkToRegister = "./register.html"})
+  .card
+    form.form
+      h1.form__heading Войти
+      div.form__field
+        +text({placeholder: "Email"})(id="email")
+      div.form__field
+        +text({placeholder: "Пароль"})(id="password")
+      div.form__submit
+        +button({label: "Войти", styles: ["with-arrow"]})
+      +account(false, linkToRegister)
+
+//- remove this
+mixin account(exists, link)
+  section.card__account
+    - let accountStatusText = exists ? "Уже есть аккаунт на Toxin?" : "Нет аккаунта на Toxin?"
+    - let buttonLabel = exists ? "Войти" : "Создать"
+    p.card__account-prompt= accountStatusText
+    div.card__account-button
+      +button({label: buttonLabel, styles: ["outlined"], type: "link", link: link})(type="button")
