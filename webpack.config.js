@@ -9,6 +9,14 @@ const sassIncludes = ["src/views/"];
 const handler = (percentage, message, ...args) => {
   console.info(percentage, message, ...args);
 };
+let pageNames = ["index", "search", "details", "ui"].map((p) => {
+  return { name: p, folder: p };
+});
+const pages = [
+  ...pageNames,
+  { name: "__login", folder: "account/__login", filename: "login" },
+  { name: "__register", folder: "account/__register", filename: "register" },
+];
 
 module.exports = {
   entry: "./src/app.js",
@@ -19,11 +27,9 @@ module.exports = {
   module: {
     rules: [
       {
-        test: require.resolve("jquery"),
-        loader: "expose-loader",
-        options: {
-          exposes: ["$", "jQuery"],
-        },
+        test: /\.js$/,
+        enforce: "pre",
+        use: ["source-map-loader"],
       },
       {
         test: /\.pug$/i,
@@ -55,10 +61,16 @@ module.exports = {
         generator: {
           filename: "fonts/[hash][ext][query]",
         },
+        include: [path.resolve(__dirname, "src/assets/fonts")],
       },
       {
-        test: /\.(jpg|png)$/i,
+        test: path.resolve(__dirname, "src/assets/favicon.svg"),
         type: "asset/resource",
+      },
+      {
+        test: /\.(jpg|png|svg)$/i,
+        type: "asset/resource",
+        include: [path.resolve(__dirname, "src/assets/img")],
         generator: {
           filename: "img/[hash][ext][query]",
         },
@@ -67,45 +79,32 @@ module.exports = {
   },
   plugins: [
     new webpack.ProvidePlugin({
-      $: "jquery",
-      jQuery: "jquery",
-      "window.jQuery": "jquery",
-    }),
-    new HtmlWebpackPlugin({
-      template: "src/views/index/index.pug",
-      minify: false,
-    }),
-    new HtmlWebpackPlugin({
-      filename: "account.html",
-      template: "src/views/account/account.pug",
-      minify: false,
-    }),
-    new HtmlWebpackPlugin({
-      filename: "details.html",
-      template: "src/views/details/details.pug",
-      minify: false,
-    }),
-    new HtmlWebpackPlugin({
-      filename: "search.html",
-      template: "src/views/search/search.pug",
-      minify: false,
-    }),
-    new HtmlWebpackPlugin({
-      filename: "ui.html",
-      template: "src/views/ui/ui.pug",
-      minify: false,
+      $: "jquery/dist/jquery.min",
+      jQuery: "jquery/dist/jquery.min",
+      "window.jQuery": "jquery/dist/jquery.min",
     }),
     new MiniCssExtractPlugin(),
     //OccurrenceOrderPlugin(), //is on by default
     //DedupePlugin(), //has been semoved in v2 or v3
     //UglifyJsPlugin({ //is now terser-webpack-plugin
     new webpack.ProgressPlugin(handler),
-  ],
+  ].concat(
+    pages.map(
+      (page) =>
+        new HtmlWebpackPlugin({
+          template: `src/views/${page.folder}/${page.name}.pug`,
+          minify: false,
+          filename: `${page.filename ? page.filename : page.name}.html`,
+        })
+    )
+  ),
   resolve: {
     alias: {
       // "jquery-ui": "jquery-ui/jquery-ui.js",
       icons: path.resolve(__dirname, "src/assets/img/icons"),
       rooms: path.resolve(__dirname, "src/assets/img/rooms"),
+      room: path.resolve(__dirname, "src/assets/img/room"),
+      assets: path.resolve(__dirname, "src/assets"),
       modules: path.join(__dirname, "node_modules"),
     },
   },
@@ -113,15 +112,17 @@ module.exports = {
   devServer: {
     //check development guide for static files
     contentBase: "./dist", //
-    compress: false,
+    compress: true,
   },
   optimization: {
     // runtimeChunk: true,
-
+    // splitChunks: {
+    //   chunks: "all",
+    // },
     minimize: true,
     minimizer: [
       new CssMinimizerPlugin(),
-      new TerserPlugin(), //{terserOptions : {//https://github.com/terser/terser#minify-options}}
+      // new TerserPlugin({ terserOptions: { mangle: true }, extractComments: false }), //{terserOptions : {//https://github.com/terser/terser#minify-options}}
     ],
   },
 };
