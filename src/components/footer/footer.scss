@@ -48,15 +48,18 @@
 }
 @media screen and (min-width: $breakpoint-desktop) {
   .footer {
-    &__menu {
-      max-width: 160px;
-      display: block;
-    }
     &__logo {
       max-width: 260px;
     }
     &__logo-caption {
       display: block;
+    }
+    &__menu {
+      max-width: 160px;
+      display: block;
+    }
+    &__menu-label {
+      margin-bottom: 1.25rem;
     }
     &__subscription {
       display: block;
@@ -80,15 +83,6 @@
         align-items: center;
         height: 70px;
       }
-      // //16% of 1000px (gaps are 40*4)
-      // $col-sm: min(0.16 * (100% - 80px), 160px);
-      // $col-bg: min(0.26 * (100% - 80px), 260px);
-      // $gap: max(20px, (100% - 1000px) / 4);
-      // grid-template-columns: 1.625fr repeat(3, 1fr) 1.625fr;
-      // grid-template-rows: 172px;
-      // grid-template-areas: "logo navigation about support sub";
-      // gap: 20px $gap;
-      // width: auto;
     }
   }
 }

@@ -1,23 +1,30 @@
 
 //- //listItem("Label", "Items inside sublist as array", ...any additional mods)
-include ../button/button.pug
-include ../lists/links-list/links-list.pug
+include /components/button/button.pug
+include /components/links-list/links-list.pug
 
 - var links = [
 -   {label: "О нас",  link: "#" },
 -   {label: "Услуги", link: "", items: 
 -     [ 
--       {label: "услуга 1", link: "#" },
--       {label: "услуга 2", link: "#" },
--       {label: "услуга 3", link: "#"}
+-       {label: "проживание в номере", link: "#" },
+-       {label: "питание", link: "#" },
+-       {label: "развлекательные и восстановительные услуги", link: "#"},
+-       {label: "обмен валюты", link: "#" },
+-       {label: "продажа сувенирной и печатной продукции", link: "#" },
 -     ]},
 -   {label: "Вакансии", link: "#"},
 -   {label: "Новости",  link: "#"},
--   {label: "Соглашения",link: "", items: 
+-   {label: "Соглашения",link: "#", items: 
 -     [ 
--       {label: "согл 1", link: "#"},
--       {label: "согл 2", link: "#"},
--       {label: "согл 3", link: "#"}
+-       {label: "Общие положения", link: "#"},
+-       {label: "Онлайн бронирование", link: "#"},
+-       {label: "Условия получения гарантии заезда", link: "#"},
+-       {label: "Онлайн бронирование", link: "#"},
+-       {label: "Условия предоставления услуг", link: "#"},
+-       {label: "Отмена бронирования", link: "#"},
+-       {label: "Контент Пользователя", link: "#"},
+-       {label: "Условия использования веб-ресурсов Оператора", link: "#"},
 -     ]}]
 
 header.header
@@ -29,7 +36,7 @@ header.header
         input(id="header-menu" type="checkbox" checked=true).header__navigation-trigger
         label(for="header-menu").header__navigation-label menu
         nav.header__navigation
-          +inline-links(links)
+          +linksList({type: "inline", items: links})
           .header__buttons
             .header__login
               +button({label: "Войти", styles: ["outlined"]})

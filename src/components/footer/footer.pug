@@ -5,7 +5,33 @@
 //-     each item in items
 //-       li
 //-         a(href="#")= item
-include ../lists/links-list/links-list.pug
+-var menus = [
+- {
+- heading: "Навигация", 
+- items: [
+-   {label: "О нас"}, 
+-   {label: "Новости"}, 
+-   {label: "Служба поддержки"}, 
+-   {label: "Услуги"}]
+- },
+- {
+- heading: "О нас", 
+- items: [
+-   {label: "О сервисе"}, 
+-   {label: "Наша команда"}, 
+-   {label: "Вакансии"}, 
+-   {label: "Инвесторы"}]
+- },
+- {
+-  heading: "Служба поддержки", 
+-  items: [
+-   {label: "Соглашения"}, 
+-   {label: "Сообщества"}, 
+-   {label: "Связь с нами"}]
+-  }
+- ]
+
+include /components/links-list/links-list.pug
 footer.footer
   .footer__top
     .container.footer__content.footer__content_top
@@ -14,19 +40,12 @@ footer.footer
           include ../logo/logo.pug
         p.footer__logo-caption. 
           Бронирование номеров в лучшем отеле 2019 года по версии ассоциации «Отельные взгляды»
-      .footer__menu
-        h3.controls-label.footer__element-label Навигация
-        +linksList({links: ["О нас", "Новости", "Служба поддержки", "Услуги"]})
-        //- +linksList({label: "Навигация", links: ["О нас", "Новости", "Служба поддержки", "Услуги"]})
-      .footer__menu
-        h3.controls-label.footer__element-label О нас
-        +linksList({links: ["О сервисе", "Наша команда", "Вакансии", "Инвесторы"]})
-        //- +linksList({label: "О нас", links: ["О сервисе", "Наша команда", "Вакансии", "Инвесторы"]})
-      .footer__menu
-        h3.controls-label.footer__element-label Служба поддержки
-        +linksList({links: ["Соглашения", "Сообщества", "Связь с нами"]})
+      each menu in menus
+        .footer__menu
+          h3.controls-label.footer__menu-label= menu.heading
+          +linksList({type: "vertical", items: menu.items})
       form.footer__subscription
-        h3.controls-label.footer__element-label Подписка
+        h3.controls-label.footer__menu-label Подписка
         p.
           Получайте специальные предложения и новости сервиса
         //- +text("email")
