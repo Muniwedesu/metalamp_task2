@@ -4,20 +4,16 @@ extends ../layout.pug
 
 block content
 
+  - var convenience = [
+  - {name: "спальни", value: "0"},
+  - {name: "кровати", value: "0"},
+  - {name: "ванные комнаты", value: "0"}]
 
-  - var dropdownItems = [[
-  - {name: "взрослые", value: "2"},
-  - {name: "дети", value: "2"},
-  - {name: "младенцы", value: "0"}],
-  -[
+  - var dropdownItems = [
   - {name: "взрослые", value: "0"},
   - {name: "дети", value: "0"},
-  - {name: "младенцы", value: "0"}],
-  -[
-  - {name: "взрослые", value: "2"},
-  - {name: "дети", value: "1"},
-  - {name: "младенцы", value: "0"}],
-  -]
+  - {name: "младенцы", value: "0"}]
+
   -  let uiRichCheckboxes = [
   -  {
   -  label: "широкий коридор", 
@@ -85,7 +81,7 @@ block content
           .search__filter.search__filter_separated
             //- mixin dropdown({type, label, placeholder, menuItems, initialState, isClearable = false})
             +dropdown({type: "date-range", label: "Дата пребывания в отеле", placeholder: "19 авг - 23 авг"})#date-range
-            +dropdown({label: "Гости", placeholder: "3 гостя, 1 младенец", menuItems: dropdownItems[1]})#guests
+            +dropdown({label: "Гости", placeholder: "Сколько гостей", menuItems: dropdownItems})#guests
             //- +range
             //-checkboxGroup({name, checkboxes, isNamed = false, isExpandable = false, isRich = false, isClosed = true})
           .search__filter
@@ -99,9 +95,9 @@ block content
             isClosed: false
             })
           .search__filter
-            +dropdown("convenience", {label: "удобства номера", placeholder: "2 спальни, 2 кровати..."})
+            +dropdown({label: "удобства номера", placeholder: "Выберите необходимые", menuItems: convenience})
           .search__filter
-            +checkboxGroup({name: "дополнительные удобства", isNamed: true, checkboxes: [], isExpandable: true, isClosed: true})
+            +checkboxGroup({name: "дополнительные удобства", isNamed: true, checkboxes: [], isExpandable: true, isClosed: true, checkboxes: uiExpandableCheckboxes})
           //- p= uiRegularCheckboxes[0].label
           //- +checkboxGroup({})
           //- +checkboxGroup({})

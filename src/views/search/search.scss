@@ -1,11 +1,13 @@
 @use "vars" as *;
 .search {
   box-sizing: border-box;
-  padding-top: 30px;
   display: flex;
   flex-direction: column;
   transform: all 1s;
+  padding-top: 30px;
   &__filters {
+    width: 100%;
+    max-width: 266px;
     min-width: 240px;
     display: flex;
     flex-direction: column;
@@ -14,7 +16,7 @@
     margin-left: 5.1724%;
     // display: none;
   }
-  @media screen and (min-width: 1024px) {
+  @media screen and (min-width: $breakpoint-desktop) {
     flex-direction: row;
     &__filters {
       margin-left: 0;
@@ -25,6 +27,8 @@
       margin-top: 30px;
     }
     &_separated {
+      @media screen and (min-width: $breakpoint-tablet) {
+      }
       & > * + * {
         margin-top: 20px;
       }
