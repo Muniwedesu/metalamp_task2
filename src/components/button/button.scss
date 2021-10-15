@@ -17,6 +17,9 @@
   &:disabled {
     opacity: 0.5;
   }
+  &:hover {
+    cursor: pointer;
+  }
   &__label {
     color: inherit;
     padding-bottom: 0;
