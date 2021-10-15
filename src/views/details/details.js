@@ -29,20 +29,20 @@ export class DetailsPage {
       breakpoints: PHOTO_GRID_BREAKPOINTS,
       sizes: PHOTO_GRID_SIZES,
       options: {
-        stagger: 100,
+        stagger: 0,
         duration: 250,
         easing: "easeIn",
       },
     });
     //
     this.form = $(".card__form")[0];
-    console.log(this.form);
+    // console.log(this.form);
     this.$card = new DetailsForm({ form: this.form });
     //
     this.$photoGrid = $(PHOTO_GRID_CONTAINER);
     this.$photoGrid.on("click", this.onSelectPhoto.bind(this));
     this.$gridWraps = $(".details__photo-wrap");
-    console.log(this.$gridWraps);
+    // console.log(this.$gridWraps);
     //receives card(s)
     //comments block
     //manages grid
@@ -56,3 +56,5 @@ export class DetailsPage {
     }
   }
 }
+
+const detailsPage = new DetailsPage();
