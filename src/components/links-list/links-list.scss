@@ -1,0 +1,71 @@
+@use "vars" as *;
+.links-list {
+  $inline-height: 0px;
+  &_inline {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    @media (min-width: $breakpoint-desktop) {
+      flex-direction: row;
+      flex-wrap: wrap;
+      justify-content: flex-end;
+    }
+  }
+  &__item {
+    &:first-child {
+      margin-top: 0;
+      padding-top: 0;
+    }
+    margin-top: 1.25rem;
+    &_inline {
+      margin-top: 0;
+      position: relative;
+      display: flex;
+      &:nth-last-child(n + 2) {
+        margin-right: 20px;
+      }
+    }
+    &_current {
+      font-weight: bold;
+      color: $dark-75;
+    }
+  }
+  &__link {
+    color: $dark-50;
+    padding: 0.5rem 0;
+    cursor: pointer;
+    // background-color: rgba(255, 0, 0, 0.1);
+  }
+  &__expand-icon {
+    font-family: "Material Icons";
+    font-size: 24px;
+    vertical-align: middle;
+    line-height: 17px;
+  }
+  &__expandable-list {
+    box-sizing: border-box;
+    position: absolute;
+    text-align: left;
+    min-width: 100%;
+    background-color: white;
+    top: 40px;
+    border-radius: 4px;
+    padding: 0.625rem 1.25rem;
+    display: none;
+    border: 1px solid rgba(31, 32, 65, 0.25);
+    box-shadow: 0px 10px 20px rgba(31, 32, 65, 0.25);
+    text-transform: capitalize;
+    &_expanded {
+      display: block;
+    }
+  }
+}
+
+.dropdown-list {
+  margin: 0;
+  position: absolute;
+  &__item {
+    text-align: left;
+  }
+}

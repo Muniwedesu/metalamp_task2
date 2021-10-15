@@ -1,0 +1,49 @@
+//- mixin linksList({label, links})
+
+
+
+mixin linksList({label, type = "vertical", styles = [], items = []})
+  //- type = 0 default
+  //-      = 1 inline 
+  //- 
+  //- 
+  //- style is inline or block (default)
+  //- not sure if I will need to use this
+  //- 1. check if it has label
+  //- 2. check its type
+  //- 3. come up with packing other links inside or whatever
+  -var inlineListClass=""
+  -var inlineItemClass=""
+  if (type === "inline")
+    -inlineListClass = "links-list_inline"
+    -inlineItemClass = "links-list__item_inline"
+  ul.links-list(class=inlineListClass)
+    each item in items
+      if (!item.items)
+        li.links-list__item(class=inlineItemClass)
+          a.links-list__link= item.label
+      else
+        li.links-list__item(class=inlineItemClass)
+          p.links-list__link(tabindex="-1")= item.label
+            span.links-list__expand-icon expand_more
+          +links-list(item.items).links-list__expandable-list
+
+mixin links-list(items)
+  //- implying this is not a block
+  ul(class!=attributes.class tabindex="-1")
+    each item in items
+      li.links-list__item
+        a(href=item.link).links-list__link= item.label
+
+mixin inline-links(links)
+  //- receives a list of objects
+  ul.inline-links
+    each link in links
+      if (link.items)
+      else
+        if (link.label === "О нас")
+          li.inline-links__item.inline-links__item_current
+            a(href=link.link).inline-links__link.link= link.label
+        else 
+          li.inline-links__item
+            a(href=link.link).inline-links__link.link= link.label
