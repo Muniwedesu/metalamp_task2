@@ -20,34 +20,22 @@ mixin checkbox({label, desc, isChecked})
 
 mixin checkboxGroup({name, checkboxes, isNamed = false, isExpandable = false, isRich = false, isClosed = true})
   - var id = attributes.id
-  fieldset.checkbox-group
-    - let ulClasses = ["checkbox-group__list"]
+  - var Expandable = ""
+  - var nameExpandable = ""
+  - var listExpandable = ""
+  - if (isExpandable) {
+  -   expandable = "checkbox-group_expandable";
+  -   nameExpandable = "checkbox-group__name_expandable";
+  -   listExpandable = "checkbox-group__list_expandable";
+  - }
+  fieldset.checkbox-group(class=expandable)
     if (isNamed)
-      - let classes = ["controls-label", "checkbox-group__name"]
-      if (isExpandable)
-        - classes.push("checkbox-group__name_expandable")
-        if (isClosed)
-          - classes.push("checkbox-group__name_closed")
-          - ulClasses.push("checkbox-group__list_closed")
-      legend(class=classes)= name
+      legend(class="controls-label checkbox-group__name" class=nameExpandable)= name
       //- idk but width should be fixed. inline blocks should be ok 
-    ul(class = ulClasses)
+    ul(class="checkbox-group__list" class=listExpandable)
       - for (let ch of checkboxes)
         li.checkbox-group__row
           +checkbox({label: ch.label, desc: ch.desc, isChecked: ch.isChecked})(id=ch.id)
-      //- - for (let i = 0; i < checkboxes.length; ++i)
-      //-   li.checkbox-group__row
-      //-     //-need to have such name so it'll better represent element
-      //-     input(id=checkboxes[i].id name=checkboxes[i].id, type="checkbox").checkbox-group__input
-      //-     +checkboxSvg().checkbox-group__icon
-      //-     if (!rich)
-      //-       label(for=checkboxes[i].id).checkbox-group__label= checkboxes[i].label
-      //-     else
-      //-       div.checkbox-group__rich
-      //-         //-fix this too
-      //-         label(for=checkboxes[i].id).checkbox-group__label.checkbox-group__label_rich= labels[i].label
-      //-           span.checkbox-group__description= checkboxes[i].desc
-
 
 //- mixin checkboxGroup({name, labels, ids, isNamed = false, isExpandable = false, isRich = false, isClosed = true})
 
@@ -59,39 +47,15 @@ mixin expandableCheckbox(params)
 mixin richCheckbox({name, labels, ids})
   //- +checkboxGroup({name: name, labels: labels, ids: ids, isNamed: true, isRich: true})
 
-mixin checkboxRich({name, labels, ids, isNamed = false})
-  //- +checkboxGroup({name: name, labels: labels, ids: ids, isNamed: isNamed, isRich: true})
-  //- fieldset.checkbox-group
-  //-   if (named)
-  //-     - let classes = ["controls-label checkbox-group__name"]
-  //-     - let ulClasses = ["checkbox-group__list"]
-  //-     if (expandable)
-  //-       - classes.append("checkbox-group__name_expandable")
-  //-       - ulClasses.append("checkbox-group__list_closed")
-  //-     //- else if (descriptions && descriptions.length > 0)
-  //-     //- - classes.append("checkbox-group__name_rich")
-  //-     legend(class=classes)= name
-  //-       //- idk but width should be fixed. inline blocks should be ok 
-  //-     ul(class=ulClasses)
-  //-       - for (let i = 0; i < labels.length; ++i)
-  //-         li.checkbox-group__row
-  //-           //-need to have such name so it'll better represent element
-  //-           input(id=ids[i] name=ids[i], type="checkbox").checkbox-group__input
-  //-           +checkboxSvg().checkbox-group__icon
-  //-           div.checkbox-group__rich
-  //-             //-fix this too
-  //-             label(for=ids[i]).checkbox-group__label.checkbox-group__label_rich= labels[i].label
-  //-               p.checkbox-group__description= labels[i].desc
-
-
 mixin checkboxSvg()
-  svg(class!=attributes.class width="10" height="11" viewBox="0 0 10 11" fill="none" xmlns="http://www.w3.org/2000/svg")
-    path(d="M1.46439 4.40768L5.70703 8.65032L4.29282 10.0645L0.0501771 5.82189L1.46439 4.40768Z" fill="url(#paint0_linear)")
-    path(d="M8.53546 2.99347L9.94967 4.40768L4.29282 10.0645L2.8786 8.65032L8.53546 2.99347Z" fill="url(#paint1_linear)")
+  svg(class!=attributes.class xmlns='http://www.w3.org/2000/svg', width='10', height='11', fill='none')
+    path(fill='url(#ch-0)', d='m1.46 4.4 4.25 4.25-1.42 1.41L.05 5.82l1.41-1.41Z')
+    path(fill='url(#ch-1)', d='m8.54 3 1.41 1.4-5.66 5.66-1.41-1.41 5.66-5.66Z')
     defs
-      linearGradient(id="paint0_linear" x1="7.82835" y1="2.28636" x2="2.1715" y2="7.94321" gradientUnits="userSpaceOnUse")
-        stop(stop-color="#BC9CFF")
-        stop(offset="1" stop-color="#8BA4F9")
-      linearGradient(id="paint1_linear" x1="7.82835" y1="2.28636" x2="2.1715" y2="7.94321" gradientUnits="userSpaceOnUse")
-        stop(stop-color="#BC9CFF")
-        stop(offset="1" stop-color="#8BA4F9")
+      linearGradient#ch-0(x1='7.83', x2='2.17', y1='2.29', y2='7.94', gradientunits='userSpaceOnUse')
+        stop(stop-color='#BC9CFF')
+        stop(offset='1', stop-color='#8BA4F9')
+      linearGradient#ch-1(x1='7.83', x2='2.17', y1='2.29', y2='7.94', gradientunits='userSpaceOnUse')
+        stop(stop-color='#BC9CFF')
+        stop(offset='1', stop-color='#8BA4F9')
+
