@@ -1,13 +1,16 @@
 // require("jquery");
 export class Rates {
-  constructor($rates) {
+  /**
+   * @param {HTMLElement} rates
+   */
+  constructor(rates) {
     //it has own container. how to determine which star was clicked?
     // console.log("created class from");
     // console.log($rates);
     // console.log($rates.children());
     // search for input, get the value, initialize the thing
     // don't forget to update value etc
-    this.$rates = $rates;
+    this.$rates = $(rates);
     this.$rates.on("click", this.onClick.bind(this));
     this.$rates.on("mouseover", this.onEnter.bind(this));
     this.$rates.on("mouseout", this.onLeave.bind(this));
@@ -18,14 +21,14 @@ export class Rates {
     this.$stars = this.$rates.children();
 
     this.maxValue = this.$rates.children().length;
-    console.log(this.$stars.closest(".rates__star_selected"));
+    // console.log(this.$stars.closest(".rates__star_selected"));
 
     this.initialValue = this.$stars.closest(".rates__star_selected").attr("data-value");
     //Maybe I don't need to store this
     this.previousValue = this.initialValue;
     this.currentValue = this.initialValue;
 
-    console.log("initial = " + this.initialValue);
+    // console.log("initial = " + this.initialValue);
   }
   onLeave(event) {
     let clickedStarIndex = $(event.target).attr("data-value");
@@ -67,9 +70,3 @@ export class Rates {
     }
   }
 }
-$(document).ready(() => {
-  console.log($(".rates__star"));
-  $(".rates").map(function () {
-    // new Rates($(this));
-  });
-});
