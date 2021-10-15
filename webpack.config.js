@@ -1,103 +1,32 @@
 const path = require("path");
 const webpack = require("webpack");
-const HtmlWebpackPlugin = require("html-webpack-plugin");
+const CssMinimizerPlugin = require("css-minimizer-webpack-plugin");
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const TerserPlugin = require("terser-webpack-plugin");
-const CssMinimizerPlugin = require("css-minimizer-webpack-plugin");
 
-const sassIncludes = ["src/views/"];
-const handler = (percentage, message, ...args) => {
-  console.info(percentage, message, ...args);
-};
-let pageNames = ["index", "search", "details", "ui"].map((p) => {
-  return { name: p, folder: p };
-});
-const pages = [
-  ...pageNames,
-  { name: "__login", folder: "account/__login", filename: "login" },
-  { name: "__register", folder: "account/__register", filename: "register" },
-];
+const { rulesList } = require("./rules-list.js");
+const { pages } = require("./pages");
+const { pluginList } = require("./plugin-list");
+console.log(pages);
+const entryPoints = pages.reduce((config, page) => {
+  console.log(page);
+  let file = page.filename ? page.filename : page.name;
+  config[file] = `./src/views/${page.folder}/${page.name}.js`;
+  return config;
+}, {});
+console.log("entries: ");
+console.log(entryPoints);
 
 module.exports = {
-  entry: "./src/app.js",
+  entry: { app: "./src/app.js", ...entryPoints },
   output: {
-    filename: "bundle.js",
+    filename: "[name].js",
     path: path.resolve(__dirname, "dist"),
   },
   module: {
-    rules: [
-      {
-        test: /\.js$/,
-        enforce: "pre",
-        use: ["source-map-loader"],
-      },
-      {
-        test: /\.pug$/i,
-        use: [
-          {
-            loader: "pug-loader",
-            options: { pretty: true, root: path.resolve(__dirname, "src") },
-          },
-        ],
-      },
-      {
-        test: /\.(sa|sc|c)ss$/i,
-        use: [
-          MiniCssExtractPlugin.loader,
-          "css-loader",
-          {
-            loader: "sass-loader",
-            options: {
-              sassOptions: {
-                includePaths: sassIncludes,
-              },
-            },
-          },
-        ],
-      },
-      {
-        test: /\.(woff|woff2|eot|ttf|otf|svg)$/i,
-        type: "asset/resource",
-        generator: {
-          filename: "fonts/[hash][ext][query]",
-        },
-        include: [path.resolve(__dirname, "src/assets/fonts")],
-      },
-      {
-        test: path.resolve(__dirname, "src/assets/favicon.svg"),
-        type: "asset/resource",
-      },
-      {
-        test: /\.(jpg|png|svg)$/i,
-        type: "asset/resource",
-        include: [path.resolve(__dirname, "src/assets/img")],
-        generator: {
-          filename: "img/[hash][ext][query]",
-        },
-      },
-    ],
+    rules: rulesList,
   },
-  plugins: [
-    new webpack.ProvidePlugin({
-      $: "jquery/dist/jquery.min",
-      jQuery: "jquery/dist/jquery.min",
-      "window.jQuery": "jquery/dist/jquery.min",
-    }),
-    new MiniCssExtractPlugin(),
-    //OccurrenceOrderPlugin(), //is on by default
-    //DedupePlugin(), //has been semoved in v2 or v3
-    //UglifyJsPlugin({ //is now terser-webpack-plugin
-    new webpack.ProgressPlugin(handler),
-  ].concat(
-    pages.map(
-      (page) =>
-        new HtmlWebpackPlugin({
-          template: `src/views/${page.folder}/${page.name}.pug`,
-          minify: false,
-          filename: `${page.filename ? page.filename : page.name}.html`,
-        })
-    )
-  ),
+  plugins: pluginList,
   resolve: {
     alias: {
       // "jquery-ui": "jquery-ui/jquery-ui.js",
@@ -116,9 +45,9 @@ module.exports = {
   },
   optimization: {
     // runtimeChunk: true,
-    // splitChunks: {
-    //   chunks: "all",
-    // },
+    splitChunks: {
+      chunks: "all",
+    },
     minimize: true,
     minimizer: [
       new CssMinimizerPlugin(),
