@@ -10,14 +10,14 @@
   &__input {
     cursor: pointer;
     position: relative;
+    &.dropdown__input_expanded {
+      border-bottom-left-radius: 0;
+      border-bottom-right-radius: 0;
+      border-color: $dark-50;
+    }
   }
   &__icon {
     box-sizing: border-box;
-  }
-  &_expanded {
-    border-bottom-left-radius: 0;
-    border-bottom-right-radius: 0;
-    border-color: $dark-50;
   }
   &:hover {
     cursor: pointer;
@@ -28,14 +28,17 @@
     content: "expand_more";
     font-size: 24px;
     padding: 10px;
-    padding-right: min(1.5625%, 10px);
+    // padding-right: min(1.5625%, 10px);
+    text-align: center;
     box-sizing: border-box;
     right: 0px;
     bottom: 0px;
     height: 44px;
     pointer-events: none;
   }
-
+  &_expanded::after {
+    transform: rotate(180deg);
+  }
   &__row {
     display: flex;
     justify-content: space-between;
