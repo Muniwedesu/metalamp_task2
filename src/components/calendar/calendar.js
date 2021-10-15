@@ -9,6 +9,9 @@ var clearButton = {
   },
   onClick(dp) {
     dp.clear();
+    console.log(dp.$el);
+    dp.$el.value = dp.$el.attributes["placeholder"].value;
+    console.log();
   },
 };
 
@@ -61,7 +64,7 @@ export class Calendar {
       selectedDates: [],
       onSelect({ date, datepicker }) {
         // console.log(datepicker);
-        console.log((datepicker.$el.value = new Intl.DateTimeFormat("ru-RU").format(date)));
+        // console.log((datepicker.$el.value = new Intl.DateTimeFormat("ru-RU").format(date)));
         $(datepicker.$el).trigger({ type: "valueUpdate", value: { date: date } });
       },
     });
