@@ -5,7 +5,7 @@ block content
   include /components/comment/comment.pug
   include /components/bullet-list/bullet-list.pug
   include /components/card-details/card-details.pug
-
+  include /components/doughnut/doughnut.pug
   div.page.page_background_white
     div.details
       div.details__photos
@@ -25,7 +25,7 @@ block content
           div.details__about-impressions
             div
               h2.details__block-heading Впечатления
-              p диаграмма!!
+              +doughnut()
           div.details__about-comments
             div
               div.details__comments-heading

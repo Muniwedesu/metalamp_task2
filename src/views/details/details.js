@@ -1,6 +1,6 @@
 import { DetailsForm } from "../../components/card-details/card-details";
 import { Grid } from "../utility";
-
+import { DoughnutChart } from "../../components/doughnut/doughnut";
 //modify these
 const DETAILS_CONTENT_GRID_BREAKPOINTS = { min: 647, max: 900 };
 const GRID_CONTAINER_TAG = "details__content";
@@ -46,6 +46,13 @@ export class DetailsPage {
     //receives card(s)
     //comments block
     //manages grid
+    const elem = $(".doughnut");
+    //come up with a better solution
+    new DoughnutChart(elem, {
+      title: "reviews",
+      labels: ["Великолепно", "Хорошо", "Удовлетворительно", "Разочарован"].reverse(),
+      values: [130, 65, 65, 0].reverse(),
+    });
   }
   onSelectPhoto(event) {
     if (event.target.tagName === "IMG") {
