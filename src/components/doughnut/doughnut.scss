@@ -1,0 +1,13 @@
+@import "./__legend/__legend";
+@import "./__tooltip/__tooltip";
+@import "./__title/__title";
+
+.doughnut {
+  display: flex;
+  &__chart-container {
+    width: 120px;
+    position: relative;
+  }
+  &__chart {
+  }
+}

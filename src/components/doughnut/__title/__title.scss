@@ -1,0 +1,21 @@
+@use "vars" as *;
+
+.doughnut {
+  &__title {
+    position: absolute;
+    // background-color: red;
+    pointer-events: none;
+    text-align: center;
+  }
+  &__title-value {
+    font-weight: 700;
+    color: $purple;
+    font-size: 24px;
+  }
+  &__title-text {
+    text-transform: uppercase;
+    font-weight: 700;
+    color: $purple;
+    font-size: 12px;
+  }
+}

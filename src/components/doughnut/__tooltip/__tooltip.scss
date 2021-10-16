@@ -1,0 +1,16 @@
+.doughnut {
+  &__tooltip {
+    background: rgba(0, 0, 0, 0.8);
+    position: absolute;
+    pointer-events: none;
+    border-radius: 4px;
+    transform: translate(-50%, 0);
+    transition: all 0.1s ease;
+    &-text {
+      white-space: nowrap;
+      font-size: 14px;
+      padding: 0.25rem 0.5rem;
+      color: white;
+    }
+  }
+}
