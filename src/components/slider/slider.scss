@@ -1,0 +1,16 @@
+@use "vars.scss" as *;
+.slider {
+}
+
+.noUi {
+  &-base {
+    position: relative;
+  }
+  &-handle {
+    width: 12px;
+    height: 12px;
+    border: 2px solid white;
+    background: $grad-green;
+    border-radius: 100%;
+  }
+}

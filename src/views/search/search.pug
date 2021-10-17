@@ -70,6 +70,7 @@ block content
   include /components/card-room/card-room.pug
   include /components/dropdown/dropdown.pug
   include /components/checkbox/checkbox.pug
+  include /components/slider/slider.pug
 
   include /components/card/card.pug
 
@@ -82,8 +83,9 @@ block content
             //- mixin dropdown({type, label, placeholder, menuItems, initialState, isClearable = false})
             +dropdown({type: "date-range", label: "Дата пребывания в отеле", placeholder: "19 авг - 23 авг"})#date-range
             +dropdown({label: "Гости", placeholder: "Сколько гостей", menuItems: dropdownItems})#guests
-            //- +range
             //-checkboxGroup({name, checkboxes, isNamed = false, isExpandable = false, isRich = false, isClosed = true})
+          .search__filter
+            +slider()
           .search__filter
             +checkboxGroup({name: "Правила дома", checkboxes: uiRegularCheckboxes, isNamed: true})
           .search__filter
