@@ -49,6 +49,7 @@ export class DropdownMenu {
       .toArray();
   }
   close() {
+    this.$dropdown.removeClass("dropdown_expanded");
     this.$dropdownInput.removeClass("dropdown__input_expanded");
     this.$dropdownMenu.removeClass("dropdown__menu_expanded");
   }
