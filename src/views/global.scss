@@ -1,5 +1,6 @@
 @use "vars.scss" as *;
 
+@import "../components/inputs.scss";
 @font-face {
   font-family: "Montserrat";
   src: url("../assets/fonts/Montserrat-Regular.eot");
@@ -115,23 +116,25 @@ body > * {
 }
 
 // @import "./details/details";
-//inputs common
-@import "../components/inputs.scss";
 
 @import "../components/button/button.scss";
 @import "../components/checkbox/checkbox-group.scss";
 @import "../components/text/text.scss";
-@import "../components/dropdown/dropdown.scss";
 @import "../components/radio/radio.scss";
 @import "../components/toggle/toggle.scss";
 @import "../components/like/like.scss";
 @import "../components/rates/rates.scss";
 @import "../components/calendar/calendar.scss";
 @import "../components/pagination/pagination.scss";
+@import "../components/dropdown/dropdown.scss";
+@import "../components/doughnut/doughnut.scss";
+@import "../components/slider/slider.scss";
+
+@import "../components/links-list/links-list";
 
 @import "../components/logo/logo";
 @import "../components/header/header";
-@import "../components/footer/footer.scss";
+@import "../components/footer/footer";
 
 @import "../components/card-room/card-room.scss";
 @import "../components/card-details/card-details.scss";
@@ -145,7 +148,6 @@ body > * {
 @import "../components/tag-list/tag-list.scss";
 //change these
 @import "../components/lists/summary-list/summary-list";
-@import "../components/lists/links-list/links-list";
 
 //pages
 @import "./layout.scss";

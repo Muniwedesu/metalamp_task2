@@ -1,2 +1,11 @@
 mixin slider() 
   div.slider
+    div.slider__tooltips
+      h3.controls-label.slider__label range slider
+      div
+        span.slider__tooltip.slider__tooltip_min 5000
+        span= " - "
+        span.slider__tooltip.slider__tooltip_max 10000
+    div.slider__container
+      div(id="range-slider")
+    div.slider__description Стоимость за сутки пребывания в номере
