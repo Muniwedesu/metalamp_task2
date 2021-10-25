@@ -5,6 +5,8 @@
   cursor: pointer;
 }
 .air-datepicker {
+  $cell-width: calc(100% / 7);
+  $cell-height: 2.5rem;
   background-color: white;
   max-width: 20rem;
   box-sizing: border-box;
@@ -13,9 +15,12 @@
   padding: 1.25rem 1.1875rem;
   color: $dark-50;
   box-shadow: 0px 10px 20px $dark-05;
-  //change this later
   position: absolute;
   z-index: 2;
+  //dunno how to make this better,
+  //90.625% is (320px - 30px (card padding)), i.e. 290px on min screen resolution
+  width: 90.625%;
+  max-width: 320px;
   // display: none;
   &.active {
     display: block;
@@ -50,8 +55,8 @@
     text-align: center;
     line-height: 2.5rem;
     &--day-name {
-      width: 2.5rem;
-      height: 2.5rem;
+      width: $cell-width;
+      height: $cell-height;
     }
     &--day-names {
       display: flex;
@@ -65,8 +70,8 @@
     }
   }
   &-cell {
-    width: 2.5rem;
-    height: 2.5rem;
+    width: $cell-width;
+    height: $cell-height;
     box-sizing: border-box;
     cursor: pointer;
   }
