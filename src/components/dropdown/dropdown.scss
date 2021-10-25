@@ -27,15 +27,16 @@
     font-family: "Material Icons";
     content: "expand_more";
     font-size: 24px;
-    padding: 10px;
+    // padding-right: 10px;
+    width: 2.75rem;
+    line-height: 2.75rem;
     // padding-right: min(1.5625%, 10px);
     text-align: center;
     box-sizing: border-box;
     right: 0px;
     bottom: 0px;
-    height: 44px;
     pointer-events: none;
-    transition: all 150ms ease-out;
+    // transition: all 150ms ease-out;
   }
   &_expanded::after {
     transform: rotate(180deg);
