@@ -34,7 +34,10 @@ header.header
         include ../logo/logo.pug
       div.header__menu
         input(id="header-menu" type="checkbox" checked=true).header__navigation-trigger
-        label(for="header-menu").header__navigation-label menu
+        label(for="header-menu").header__navigation-label
+          span
+          span
+          span
         nav.header__navigation
           +linksList({type: "inline", items: links})
           .header__buttons
