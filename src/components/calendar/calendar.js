@@ -1,7 +1,7 @@
 // require("jquery");
 import AirDatepicker from "air-datepicker";
 
-var clearButton = {
+const clearButton = {
   tagName: "button",
   className: "button button_text calendar-button",
   content(dp) {
@@ -15,7 +15,7 @@ var clearButton = {
   },
 };
 
-var applyButton = {
+const applyButton = {
   tagName: "button",
   className: "button button_text calendar-button",
   content: "Применить",
@@ -23,84 +23,80 @@ var applyButton = {
     dp.hide();
   },
 };
-
-export class Calendar {
-  constructor(dropdown, options = {}) {
-    //here should be passed each dropdown
-    this.dropdown = $(dropdown).find(".dropdown__date");
-
-    let id = $(this.dropdown).contents("input").attr("id");
-    //come up with better names
-    let typeValue = $(this.dropdown).contents("input").attr("data-type");
-    let type = {};
-    if (typeValue === "date-range") {
-      type = {
+function getAttributesForCalendarType(type = "date-single") {
+  switch (type) {
+    case "date-range":
+      return {
         multipleDates: 2,
         multipleDatesSeparator: " - ",
         dateFormat: "dd MMM",
         range: true,
       };
-    } else {
-      type = {
+    default:
+      return {
         dateFormat: "dd.MM.yyyy",
-        selectedDates: [new Date()],
+        // selectedDates: [new Date()],
       };
-    }
+  }
+}
+
+const defaultConfig = {
+  inline: false,
+  language: "en",
+  navTitles: { days: "MMMM yyyy", years: "MMMM yyyy", months: "MMMM yyyy" },
+  nextHtml: "arrow_forward",
+  prevHtml: "arrow_back",
+  clearButton: true,
+  view: "days",
+  minView: "days",
+  buttons: [clearButton, applyButton],
+};
+export class Calendar {
+  constructor(dropdown, options = {}) {
+    //here should be passed each dropdown
+    this.$dropdown = $(dropdown).find(".dropdown__date");
+
+    let id = $(this.$dropdown).contents("input").attr("id");
+    //come up with better names
+    let typeValue = $(this.$dropdown).contents("input").attr("data-type");
+    let type = getAttributesForCalendarType(typeValue);
     this.dp = new AirDatepicker(`#${id}`, {
-      // container: ".dropdown__date",
-      inline: false,
-      language: "en",
-      navTitles: { days: "MMMM yyyy", years: "MMMM yyyy", months: "MMMM yyyy" },
-      nextHtml: "arrow_forward",
-      prevHtml: "arrow_back",
-      clearButton: true,
-      view: "days",
-      minView: "days",
-      // position: "left bottom",
-      // offset: -150,
-      buttons: [clearButton, applyButton],
+      ...defaultConfig,
       ...type,
       ...options,
-      selectedDates: [],
       onSelect({ date, datepicker }) {
         // console.log(datepicker);
         // console.log((datepicker.$el.value = new Intl.DateTimeFormat("ru-RU").format(date)));
         $(datepicker.$el).trigger({ type: "valueUpdate", value: { date: date } });
       },
     });
+    // this.$dropdown.on("click", this.toggleDropdown.bind(this));
+    this.initializeDatepicker();
+  }
+  // toggleDropdown(event) {
+  //   //if it's visible - close it
+  //   //but how do I get its state if the click event fires after showing dp?
+  //   //if input is focused and calendar is shown?
+  //   // console.log(event);
+  //   console.log(document.activeElement.tagName === "INPUT");
+  //   console.log(this.dp.visible);
+  //   // if (this.dp.visible) this.dp.hide();
+  //   // else this.dp.show();
+  // }
+  initializeDatepicker() {
     this.dp.hide();
+    //this is for hiding calendar on first render (it appears at the bottom of the page otherwise)
     $(this.dp.$datepicker).css("top", "-10000px");
-    //change this maybe
     $(".air-datepicker-button").children().addClass("controls-label button__label");
   }
 }
+/*********************************************************************************************/
+/*********************************************************************************************/
+/*********************************************************************************************/
 
 $(document).ready(() => {
-  $(".dropdown__date").map(function () {
-    // console.log($(this));
-    // `<button class="button button_text air-datepicker-button" data-action="clear"> <span class="controls-label button__label">очистить</span></button>`;
-    //select span inside button, add to it controls-label button__label
-    //come up with a way of determining which type of selection is used
-    //i.e. range or single value, style it accordingly
-    // console.log($(".air-datepicker-buttons"));
-    // let $buttons = $(".air-datepicker-buttons");
-    //add two buttons here.
-    //how to
-    // $(".air-datepicker-button").remove();
-    // $(".calendar-button").addClass("air-datepicker-button");
-    // $buttons.append($(".calendar-button"));
-    // $($(".calendar-button")[0]).attr("data-action", "clear");
-    // $($(".calendar-button")[1]).attr("data-action", "apply");
-    // console.log($($(".button")[0]));
-    // console.log($($(".button")[1]));
-    // $(".calendar-input").append($(".datepickers-container"));
-    //on "apply" just close it?
-    //or will it be used only on filter?
-    // $(".datepicker--button").addClass("button button_text");
-    //need to disable style rules changing
-    // console.log($(datepicker));
-    // console.log($(".datepicker--button"));
-  });
+  //this code is just for rendering calendar on the UI-kit page
+  //I probably need to move it somewhere else.
   var clearButton = {
     tagName: "button",
     className: "button button_text calendar-button",
