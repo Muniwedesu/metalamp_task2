@@ -103,8 +103,8 @@
 -  }
 
 form.search__filters
-  label(for="filters-toggle").search__filters-toggle-label filter_alt
-    input(type="checkbox" id="filters-toggle").search__filters-toggle
+  input(type="checkbox" id="filters-toggle").search__filters-toggle
+  label(for="filters-toggle").search__filters-toggle-label filter_list
   .search__filters-container
     .search__filter.search__filter_separated
       +dropdown(searchFiltersDateRangeDropdown)#date-range

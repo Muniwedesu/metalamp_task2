@@ -25,10 +25,19 @@ export class FiltersMenu {
 
     this.$filtersToggle = this.$filters.find(".search__filters-toggle");
     this.$filtersContainer = this.$filters.find(".search__filters-container");
+    this.$filtersToggleLabel = this.$filters.find(".search__filters-toggle-label");
     this.$filtersToggle.on("change", this.toggleMenu.bind(this));
   }
   toggleMenu() {
     this.$filters.toggleClass("search__filters_open");
+    this.$filtersToggleLabel.toggleClass("search__filters-toggle-label_open");
     this.$filtersContainer.toggleClass("search__filters-container_visible");
+
+    setTimeout(this.changeLabel.bind(this), 200);
+  }
+  changeLabel() {
+    this.$filtersToggleLabel.text(
+      this.$filtersToggleLabel.text() === "filter_list" ? "filter_list_off" : "filter_list"
+    );
   }
 }
