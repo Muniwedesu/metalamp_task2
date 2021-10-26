@@ -38,6 +38,11 @@
       border-radius: 8px;
     }
   }
+  &__navigation-label:hover {
+    & > * {
+      background-color: $dark-50;
+    }
+  }
   &__navigation-label_open {
     & > *:nth-child(1) {
       background-color: $dark;
@@ -69,7 +74,7 @@
     padding: 1rem;
     background: white;
     width: 100%;
-    z-index: 1;
+    z-index: 2;
   }
 
   @media screen and (min-width: $breakpoint-desktop) {
