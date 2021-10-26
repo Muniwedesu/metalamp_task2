@@ -4,68 +4,6 @@ extends ../layout.pug
 
 block content
 
-  - var convenience = [
-  - {name: "спальни", value: "0"},
-  - {name: "кровати", value: "0"},
-  - {name: "ванные комнаты", value: "0"}]
-
-  - var dropdownItems = [
-  - {name: "взрослые", value: "0"},
-  - {name: "дети", value: "0"},
-  - {name: "младенцы", value: "0"}]
-
-  -  let uiRichCheckboxes = [
-  -  {
-  -  label: "широкий коридор", 
-  -  desc: "Ширина коридоров в номере не менее 91 см.",
-  -  id: "123"
-  -  },
-  -  {
-  -  label: "помощник для инвалидов", 
-  -  desc: "На 1 этаже вас встретит специалист  и проводит до номера.",
-  -  id: "456"
-  -  }]
-
-  - let uiExpandableCheckboxes = [
-  -   {
-  -     label: "Завтрак", 
-  -     id: "exp_1"
-  -    }, 
-  -    {
-  -     label: "Письменный стол", 
-  -     id: "exp_2"
-  -    }, 
-  -    {
-  -     label: "Стул для кормления", 
-  -     id: "exp_3"
-  -    }, 
-  -    {
-  -     label: "Кроватка", 
-  -     id: "exp_4"
-  -    }, 
-  -    {
-  -     label: "Телевизор", 
-  -     id: "exp_5"
-  -    }, 
-  -    {
-  -     label: "Шампунь", 
-  -     id: "exp_6"
-  -    }]
-
-  - let uiRegularCheckboxes = [
-  -  {
-  -    label: "Можно курить", 
-  -    id: "smoking_allowed"
-  -  },
-  -  {
-  -    label: "Можно с питомцами", 
-  -    id: "pets_allowed"
-  -  },
-  -  {
-  -    label: "Можно пригласить гостей (до 10 человек)", 
-  -    id: "guests_allowed"
-  -  }
-  -]
   include /components/pagination/pagination.pug
   include /components/card-room/card-room.pug
   include /components/dropdown/dropdown.pug
@@ -78,32 +16,7 @@ block content
   main.page.page_background_white
     .container
       .search
-        form.search__filters
-          .search__filter.search__filter_separated
-            //- mixin dropdown({type, label, placeholder, menuItems, initialState, isClearable = false})
-            +dropdown({type: "date-range", label: "Дата пребывания в отеле", placeholder: "19 авг - 23 авг"})#date-range
-            +dropdown({label: "Гости", placeholder: "Сколько гостей", menuItems: dropdownItems})#guests
-            //-checkboxGroup({name, checkboxes, isNamed = false, isExpandable = false, isRich = false, isClosed = true})
-          .search__filter
-            +slider()
-          .search__filter
-            +checkboxGroup({name: "Правила дома", checkboxes: uiRegularCheckboxes, isNamed: true})
-          .search__filter
-            +checkboxGroup({
-            name: "Доступность", 
-            checkboxes: uiRichCheckboxes,
-            isNamed: true,
-            isRich: true,
-            isClosed: false
-            })
-          .search__filter
-            +dropdown({label: "удобства номера", placeholder: "Выберите необходимые", menuItems: convenience})
-          .search__filter
-            +checkboxGroup({name: "дополнительные удобства", isNamed: true, checkboxes: [], isExpandable: true, isClosed: true, checkboxes: uiExpandableCheckboxes})
-          //- p= uiRegularCheckboxes[0].label
-          //- +checkboxGroup({})
-          //- +checkboxGroup({})
-          //- mixin roomCard({id = "room", roomInfo = { number: "888", type: true, price: "8500Р", nReviews: "145"} } = {id: "room"})
+        include ./__filters/__filters.pug
         .search__results
           h2.search__results-heading Номера, которые мы для вас подобрали
           .search__rooms

@@ -1,0 +1,121 @@
+
+- var convenience = [
+- {name: "спальни", value: "0"},
+- {name: "кровати", value: "0"},
+- {name: "ванные комнаты", value: "0"}]
+
+- var dropdownItems = [
+- {name: "взрослые", value: "0"},
+- {name: "дети", value: "0"},
+- {name: "младенцы", value: "0"}]
+
+-  let uiRichCheckboxes = [
+-  {
+-  label: "широкий коридор", 
+-  desc: "Ширина коридоров в номере не менее 91 см.",
+-  id: "123"
+-  },
+-  {
+-  label: "помощник для инвалидов", 
+-  desc: "На 1 этаже вас встретит специалист  и проводит до номера.",
+-  id: "456"
+-  }]
+
+- var uiExpandableCheckboxes = [
+-   {
+-     label: "Завтрак", 
+-     id: "exp_1"
+-    }, 
+-    {
+-     label: "Письменный стол", 
+-     id: "exp_2"
+-    }, 
+-    {
+-     label: "Стул для кормления", 
+-     id: "exp_3"
+-    }, 
+-    {
+-     label: "Кроватка", 
+-     id: "exp_4"
+-    }, 
+-    {
+-     label: "Телевизор", 
+-     id: "exp_5"
+-    }, 
+-    {
+-     label: "Шампунь", 
+-     id: "exp_6"
+-    }]
+
+- var uiRegularCheckboxes = [
+-  {
+-    label: "Можно курить", 
+-    id: "smoking_allowed"
+-  },
+-  {
+-    label: "Можно с питомцами", 
+-    id: "pets_allowed"
+-  },
+-  {
+-    label: "Можно пригласить гостей (до 10 человек)", 
+-    id: "guests_allowed"
+-  }
+-]
+
+-var searchFiltersDateRangeDropdown = {
+-  type: "date-range", 
+-  label: "Дата пребывания в отеле", 
+-  placeholder: "19 авг - 23 авг"
+-  };
+
+-var searchFiltersGuestsDropdown = {
+-  label: "Гости", 
+-  placeholder: "Сколько гостей", 
+-  menuItems: dropdownItems
+-  };
+
+-var searchFiltersExpandableCheckbox = {
+-  name: "дополнительные удобства", 
+-  isNamed: true, checkboxes: [], 
+-  isExpandable: true, 
+-  isClosed: true, 
+-  checkboxes: uiExpandableCheckboxes
+-  }
+
+- var richCheckboxes = {
+-   name: "Доступность", 
+-   checkboxes: uiRichCheckboxes,
+-   isNamed: true,
+-   isRich: true,
+-   isClosed: false
+-   }
+
+- var rulesCheckboxes = {
+-   name: "Правила дома", 
+-   checkboxes: uiRegularCheckboxes, 
+-   isNamed: true
+- }
+
+-var convenienceDropdown = {
+-  label: "удобства номера", 
+-  placeholder: "Выберите необходимые", 
+-  menuItems: convenience
+-  }
+
+form.search__filters
+  label(for="filters-toggle").search__filters-toggle-label filter_alt
+    input(type="checkbox" id="filters-toggle").search__filters-toggle
+  .search__filters-container
+    .search__filter.search__filter_separated
+      +dropdown(searchFiltersDateRangeDropdown)#date-range
+      +dropdown(searchFiltersGuestsDropdown)#guests
+    .search__filter
+      +slider()
+    .search__filter
+      +checkboxGroup(rulesCheckboxes)
+    .search__filter
+      +checkboxGroup(richCheckboxes)
+    .search__filter
+      +dropdown(convenienceDropdown)
+    .search__filter
+      +checkboxGroup(searchFiltersExpandableCheckbox)

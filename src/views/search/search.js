@@ -4,6 +4,7 @@ import { CheckboxGroup } from "../../components/checkbox/checkboxGroup";
 import { DropdownMenu } from "../../components/dropdown/dropdown";
 import { Grid } from "../utility";
 import { Slider } from "../../components/slider/slider";
+import { FiltersMenu } from "./__filters/__filters";
 
 const SEARCH_ROOMS_GRID_BREAKPOINTS = { min: 472, max: 714 };
 const GRID_CONTAINER_TAG = "search__rooms";
@@ -27,23 +28,12 @@ export class SearchPage {
       sizes: GRID_SIZES,
     });
 
-    this.calendar = new Calendar($(".dropdown__date").parents(".dropdown"));
-    this.dropdowns = $(".dropdown")
-      .contents(".dropdown__input")
-      .each((x, y) => {
-        new DropdownMenu($(y).parents(".dropdown"));
-      });
     this.roomCards = $(".room-card")
       .map((x, elem) => {
         new CardRoom({ card: elem });
       })
       .toArray();
-    this.$checkboxGroup = $(".checkbox-group_expandable");
-    this.checkboxGroup = new CheckboxGroup(this.$checkboxGroup);
-
-    this.$slider = document.querySelector(".slider");
-    console.log(this.$slider);
-    this.slider = new Slider(this.$slider);
+    this.filters = new FiltersMenu($(".search__filters"));
   }
 }
 const searchPage = new SearchPage();

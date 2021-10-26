@@ -5,41 +5,12 @@
   flex-direction: column;
   transform: all 1s;
   padding-top: 30px;
-  &__filters {
-    width: 100%;
-    max-width: 266px;
-    min-width: 240px;
-    display: flex;
-    flex-direction: column;
-    align-items: stretch;
-    margin-right: 5.1724%;
-    margin-left: 5.1724%;
-    // display: none;
-  }
+
   @media screen and (min-width: $breakpoint-desktop) {
     flex-direction: row;
-    &__filters {
-      margin-left: 0;
-    }
-  }
-  &__filter {
-    & + * {
-      margin-top: 30px;
-    }
-    &_separated {
-      @media screen and (min-width: $breakpoint-tablet) {
-      }
-      & > * + * {
-        margin-top: 20px;
-      }
-    }
   }
   &__results {
     width: 100%;
-    // display: flex;
-    // flex-direction: column;
-    // max-width: 834px;
-    // margin-left: auto;
   }
   &__results-heading {
     margin-bottom: 1.25rem;
@@ -65,3 +36,4 @@
     margin-top: 40px;
   }
 }
+@import "./__filters/__filters";
