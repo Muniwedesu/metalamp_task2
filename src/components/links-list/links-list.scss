@@ -1,18 +1,15 @@
 @use "vars" as *;
 .links-list {
   $inline-height: 0px;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
   &_inline {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    width: 100%;
-    @media (min-width: $breakpoint-desktop) {
-      flex-direction: row;
-      flex-wrap: wrap;
-      justify-content: flex-end;
-    }
+    flex-direction: row;
+    justify-content: flex-end;
   }
   &__item {
+    position: relative;
     &:first-child {
       margin-top: 0;
       padding-top: 0;

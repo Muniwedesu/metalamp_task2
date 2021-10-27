@@ -24,7 +24,7 @@ mixin linksList({label, type = "vertical", styles = [], items = []})
           a.links-list__link= item.label
       else
         li.links-list__item(class=inlineItemClass)
-          p.links-list__link(tabindex="-1")= item.label
+          span.links-list__link(tabindex="-1")= item.label
             span.links-list__expand-icon expand_more
           +links-list(item.items).links-list__expandable-list
 
