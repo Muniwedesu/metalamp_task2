@@ -6,20 +6,8 @@ export class HeaderMenu {
     this.$navigationTrigger = this.$headerMenu.find(".header__navigation-trigger");
     this.$navigationLabel = this.$headerMenu.find(".header__navigation-label");
 
-    if (window.innerWidth > 1024) {
-      this.$headerMenu.addClass("header__menu_open");
-    }
-    window.addEventListener("resize", () => {
-      if (event.target.innerWidth < 1024) {
-        // this.$headerMenu.removeClass("header__menu_open");
-        //set open class
-      } else {
-        // this.$headerMenu.addClass("header__menu_open");
-        //remove open class
-      }
-    });
     this.$navigationTrigger.on("change", this.toggleNavigationMenu.bind(this));
-
+    console.log(this.$navigationTrigger);
     this.$list = new LinksList({ list: this.$navigationBlock.find(".links-list") });
   }
 
