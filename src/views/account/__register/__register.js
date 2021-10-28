@@ -4,4 +4,3 @@ export class RegisterPage {
     this.registerForm = new RegisterForm({ form: $(".card__form")[0] });
   }
 }
-const registerPage = new RegisterPage();

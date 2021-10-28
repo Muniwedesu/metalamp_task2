@@ -1,4 +1,5 @@
-extends ../account.pug
-block card
-  include /components/card-login/card-login.pug
-  +cardLogin({id: "account", linkToRegister: "./register.html"})
+//- extends ../account.pug
+//- block card
+include /components/card/card.pug
+include /components/card-login/card-login.pug
++cardLogin({id: "account", linkToRegister: "./register.html"})
