@@ -4,11 +4,63 @@
   position: relative;
   width: 100%;
   // min-width: 12rem;
+  &:hover {
+    cursor: pointer;
+  }
+  $togglingDuration: 250ms;
+  $markerOffset: 4px;
+  &::after {
+    @keyframes closeDropdown {
+      from {
+        transform: translateY(0) rotate3d(1, 0, 0, 180deg);
+      }
+      25% {
+        transform: translateY(-$markerOffset) rotate3d(1, 0, 0, 0deg);
+      }
+      to {
+        transform: rotate3d(1, 0, 0, 0deg);
+      }
+    }
+    @keyframes openDropdown {
+      from {
+        transform: rotate3d(1, 0, 0, 0deg);
+      }
+      25% {
+        transform: translateY($markerOffset) rotate3d(1, 0, 0, 180deg);
+      }
+      to {
+        transform: translateY(0) rotate3d(1, 0, 0, 180deg);
+      }
+    }
+    position: absolute;
+    font-family: "Material Icons";
+    content: "expand_more";
+    font-size: 24px;
+    width: 2.75rem;
+    line-height: 2.75rem;
+    // padding-right: min(1.5625%, 10px);
+    text-align: center;
+    box-sizing: border-box;
+    right: 0px;
+    bottom: 0px;
+    pointer-events: none;
+    transform: rotate3d(1, 0, 0, 0deg);
+    // transition: all 500ms ease-out;
+    animation-duration: $togglingDuration;
+    animation-name: closeDropdown;
+  }
+  &_expanded::after {
+    transform: translateY(0) rotate3d(1, 0, 0, 180deg);
+    animation-name: openDropdown;
+    // transform:  translateY(-5px);
+  }
+
   &__label {
     margin-bottom: 5px;
   }
   &__input {
     cursor: pointer;
+    transition: 0.3s;
     position: relative;
     &.dropdown__input_expanded {
       border-bottom-left-radius: 0;
@@ -18,28 +70,6 @@
   }
   &__icon {
     box-sizing: border-box;
-  }
-  &:hover {
-    cursor: pointer;
-  }
-  &::after {
-    position: absolute;
-    font-family: "Material Icons";
-    content: "expand_more";
-    font-size: 24px;
-    // padding-right: 10px;
-    width: 2.75rem;
-    line-height: 2.75rem;
-    // padding-right: min(1.5625%, 10px);
-    text-align: center;
-    box-sizing: border-box;
-    right: 0px;
-    bottom: 0px;
-    pointer-events: none;
-    // transition: all 150ms ease-out;
-  }
-  &_expanded::after {
-    transform: rotate(180deg);
   }
   &__row {
     display: flex;
@@ -63,26 +93,30 @@
     padding: 0;
   }
   &__text {
+    align-self: center;
     color: $dark;
     margin: 0;
   }
   &__menu {
     box-sizing: border-box;
-    display: none;
+    // display: none;
     position: absolute;
     top: calc(100%);
     background: #fff;
     width: 100%;
-    border: 1px solid $dark-50;
-    border-top: 0;
     cursor: default;
-    padding: 7px;
-    padding-left: 15px;
+    z-index: 2;
+    height: 0;
+    overflow: hidden;
+    border: 1px solid transparent;
+    border-top: 0;
     border-bottom-left-radius: 4px;
     border-bottom-right-radius: 4px;
-    z-index: 2;
     &_expanded {
-      display: block;
+      padding: 7px;
+      padding-left: 15px;
+      // display: block;
+      height: auto;
     }
     &__clear-button_hidden {
       visibility: hidden;
