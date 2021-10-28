@@ -43,6 +43,7 @@
     }
   }
 }
+
 .checkbox {
   display: flex;
   &__input {
@@ -62,17 +63,20 @@
       padding-top: 0.25rem;
       padding-left: 0.3125rem;
       z-index: 0;
+      opacity: 0;
+      transform: scale(0 0);
+      transition: 0.2s;
+      transform-origin: top;
     }
 
     &:checked {
       border-color: $purple;
       & + .checkbox__icon {
+        opacity: 1;
+        transform: scale(1 1);
         visibility: visible;
       }
     }
-  }
-  &__rich {
-    width: 100%; //useless prop
   }
   &__label {
     display: block;
