@@ -1,7 +1,6 @@
 @use "vars" as *;
 .search {
   &__filters {
-    width: 100%;
     box-sizing: border-box;
     padding: 0;
 
@@ -23,17 +22,17 @@
     margin-left: 1rem;
     margin-bottom: 1rem;
 
-    transition: 0.5s, margin 0.3s, height 0.3s, width 0.3s, border-radius 0.4s, box-shadow 0.1s;
+    transition: 0.5s, margin 0.3s, height 0.25s, width 0.3s, border-radius 0.4s, box-shadow 0.1s;
     max-width: 386px;
 
     &_open {
       transition: 0.5s, margin 0.3s, height 0.3s, width 0.3s, border-radius 0.4s, box-shadow 0.3s,
         padding 0.2s;
       overflow-y: scroll;
-      padding: 5.1724%;
-      // padding-bottom: 30px;
-      border-radius: 4px;
       width: 100%;
+      padding: 5.1724%;
+
+      border-radius: 4px;
       height: 85vh;
       margin-left: 0;
       margin-bottom: 0;
@@ -101,16 +100,6 @@
     }
   }
 
-  // @media screen and (min-width: $breakpoint-tablet) {
-  //   &__filters {
-  //   }
-  //   &__filter {
-  //     & + * {
-  //     }
-  //     &_separated {
-  //     }
-  //   }
-  // }
   @media screen and (min-width: $breakpoint-desktop) {
     flex-direction: row;
     &__filters {
@@ -124,6 +113,7 @@
       position: relative;
       margin-left: 0;
       padding: 5.1724%;
+      padding-top: 0;
       transition: opacity 0s, border-radius 0s;
       &-toggle-label {
         border-color: transparent;

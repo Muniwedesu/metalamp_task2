@@ -1,9 +1,5 @@
-import { Calendar } from "../../components/calendar/calendar";
 import { CardRoom } from "../../components/card-room/card-room";
-import { CheckboxGroup } from "../../components/checkbox/checkboxGroup";
-import { DropdownMenu } from "../../components/dropdown/dropdown";
 import { Grid } from "../utility";
-import { Slider } from "../../components/slider/slider";
 import { FiltersMenu } from "./__filters/__filters";
 
 const SEARCH_ROOMS_GRID_BREAKPOINTS = { min: 472, max: 714 };
@@ -34,6 +30,12 @@ export class SearchPage {
       })
       .toArray();
     this.filters = new FiltersMenu($(".search__filters"));
+    this.$heading = $(".search__results-heading");
+    // this.$heading.on("")
+    //write initial position
+    //write end position
+    //use difference between the two, transform from diff to 0
+    //use mutation observer to check for changes
   }
 }
 const searchPage = new SearchPage();

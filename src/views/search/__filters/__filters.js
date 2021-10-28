@@ -16,11 +16,11 @@ export class FiltersMenu {
       .each((x, y) => {
         new DropdownMenu($(y).parents(".dropdown"));
       });
+
     this.$checkboxGroup = $(".checkbox-group_expandable");
     this.checkboxGroup = new CheckboxGroup(this.$checkboxGroup);
 
     this.$slider = document.querySelector(".slider");
-
     this.slider = new Slider(this.$slider);
 
     this.$filtersToggle = this.$filters.find(".search__filters-toggle");

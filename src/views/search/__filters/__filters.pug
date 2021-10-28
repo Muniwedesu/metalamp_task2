@@ -108,7 +108,7 @@ form.search__filters
   .search__filters-container
     .search__filter.search__filter_separated
       +dropdown(searchFiltersDateRangeDropdown)#date-range
-      +dropdown(searchFiltersGuestsDropdown)#guests
+      +dropdown(searchFiltersGuestsDropdown)#guestsFilter
     .search__filter
       +slider()
     .search__filter
@@ -116,6 +116,6 @@ form.search__filters
     .search__filter
       +checkboxGroup(richCheckboxes)
     .search__filter
-      +dropdown(convenienceDropdown)
+      +dropdown(convenienceDropdown)#convenienceFilter
     .search__filter
       +checkboxGroup(searchFiltersExpandableCheckbox)

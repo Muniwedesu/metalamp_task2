@@ -3,9 +3,10 @@
   box-sizing: border-box;
   display: flex;
   flex-direction: column;
-  transform: all 1s;
+  transition: all 1s;
   padding-top: 30px;
-
+  position: relative;
+  box-sizing: border-box;
   @media screen and (min-width: $breakpoint-desktop) {
     flex-direction: row;
   }
@@ -14,6 +15,10 @@
   }
   &__results-heading {
     margin-bottom: 1.25rem;
+    text-align: center;
+    @media screen and (min-width: $breakpoint-desktop) {
+      text-align: left;
+    }
   }
   &__rooms {
     display: grid;
