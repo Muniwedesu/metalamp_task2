@@ -8,4 +8,4 @@ some text
 
 ```> npm run start``` do this ^ and open the dev server on [http://localhost:8080](http://localhost:8080), which rebuilds everything on changes
 
-\(will run ```webpack  serve --open --mode=development```\)
+\(will run ```webpack  serve --mode=development```\)
