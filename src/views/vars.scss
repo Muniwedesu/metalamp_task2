@@ -52,6 +52,59 @@ $breakpoint-desktop: 1024px;
   color: $color;
   text-transform: $transform;
 }
+
+@mixin dropdownMarkerStyle($width: 2.75rem, $lineHeight: 2.75rem) {
+  position: absolute;
+  font-family: "Material Icons";
+  content: "expand_more";
+  font-size: 24px;
+  width: $width;
+  line-height: $lineHeight;
+  // padding-right: min(1.5625%, 10px);
+  text-align: center;
+  box-sizing: border-box;
+  right: 0px;
+  bottom: 0px;
+  pointer-events: none;
+  $togglingDuration: 250ms;
+  $markerOffset: 4px;
+
+  animation-duration: $togglingDuration;
+}
+@mixin dropdownMarkerCloseAnimation($togglingDuration: 250ms, $markerOffset: 4px) {
+  //set initial state
+  @keyframes closeDropdown {
+    from {
+      transform: translateY(0) rotate3d(1, 0, 0, 180deg);
+    }
+    25% {
+      transform: translateY(-$markerOffset) rotate3d(1, 0, 0, 0deg);
+    }
+    to {
+      transform: rotate3d(1, 0, 0, 0deg);
+    }
+  }
+  transform: rotateY(0deg);
+  animation-name: closeDropdown;
+}
+@mixin dropdownMarkerOpenAnimation($togglingDuration: 250ms, $markerOffset: 4px) {
+  //set initial state
+
+  @keyframes openDropdown {
+    from {
+      transform: rotate3d(1, 0, 0, 0deg);
+    }
+    25% {
+      transform: translateY($markerOffset) rotate3d(1, 0, 0, 180deg);
+    }
+    to {
+      transform: translateY(0) rotate3d(1, 0, 0, 180deg);
+    }
+  }
+  transform: translateY(0) rotate3d(1, 0, 0, 180deg);
+
+  animation-name: openDropdown;
+}
 // @mixin setFont($color, $size, $height, $weight, $up: 0) {
 //   font-size: $size;
 //   line-height: $height;

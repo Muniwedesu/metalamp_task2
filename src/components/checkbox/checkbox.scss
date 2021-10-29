@@ -13,18 +13,22 @@
       cursor: pointer;
     }
     &_expandable::after {
-      font-family: "Material Icons";
-      content: "expand_more";
-      position: absolute;
+      // font-family: "Material Icons";
+      // content: "expand_more";
+      // position: absolute;
+      // text-transform: none;
+      // font-weight: normal;
+      // right: 0px;
+      // font-size: 1.5rem;
+      // width: 2.75rem;
+      // text-align: center;
       text-transform: none;
-      font-weight: normal;
-      right: 0px;
-      font-size: 1.5rem;
-      width: 2.75rem;
-      text-align: center;
+
+      @include dropdownMarkerStyle($lineHeight: normal);
+      @include dropdownMarkerCloseAnimation();
     }
     &_expanded::after {
-      transform: rotate(180deg);
+      @include dropdownMarkerOpenAnimation();
     }
   }
   &__list {

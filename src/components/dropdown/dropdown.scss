@@ -1,3 +1,4 @@
+@use "vars" as *;
 .dropdown {
   display: flex;
   flex-direction: column;
@@ -7,52 +8,12 @@
   &:hover {
     cursor: pointer;
   }
-  $togglingDuration: 250ms;
-  $markerOffset: 4px;
   &::after {
-    @keyframes closeDropdown {
-      from {
-        transform: translateY(0) rotate3d(1, 0, 0, 180deg);
-      }
-      25% {
-        transform: translateY(-$markerOffset) rotate3d(1, 0, 0, 0deg);
-      }
-      to {
-        transform: rotate3d(1, 0, 0, 0deg);
-      }
-    }
-    @keyframes openDropdown {
-      from {
-        transform: rotate3d(1, 0, 0, 0deg);
-      }
-      25% {
-        transform: translateY($markerOffset) rotate3d(1, 0, 0, 180deg);
-      }
-      to {
-        transform: translateY(0) rotate3d(1, 0, 0, 180deg);
-      }
-    }
-    position: absolute;
-    font-family: "Material Icons";
-    content: "expand_more";
-    font-size: 24px;
-    width: 2.75rem;
-    line-height: 2.75rem;
-    // padding-right: min(1.5625%, 10px);
-    text-align: center;
-    box-sizing: border-box;
-    right: 0px;
-    bottom: 0px;
-    pointer-events: none;
-    transform: rotate3d(1, 0, 0, 0deg);
-    // transition: all 500ms ease-out;
-    animation-duration: $togglingDuration;
-    animation-name: closeDropdown;
+    @include dropdownMarkerStyle();
+    @include dropdownMarkerCloseAnimation();
   }
   &_expanded::after {
-    transform: translateY(0) rotate3d(1, 0, 0, 180deg);
-    animation-name: openDropdown;
-    // transform:  translateY(-5px);
+    @include dropdownMarkerOpenAnimation();
   }
 
   &__label {
