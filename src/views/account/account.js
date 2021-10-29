@@ -1,5 +1,5 @@
 //
-//
+import { RegisterPage } from "./__register/__register";
 // render card depending on what?
 const loginCard = require("./__login/__login.pug");
 const registrationCard = require("./__register/__register.pug");
@@ -14,15 +14,18 @@ export class Account {
 
     this.cardSizes = { login: {}, register: {} };
     this.cards = { login: loginCard(), register: registrationCard() };
+
     this.$cardContainer.html(this.cards.login);
     this.cardSizes.login.width = this.$cardContainer.children().width();
     this.cardSizes.login.height = this.$cardContainer.children().height();
+
     this.$cardContainer.html(this.cards.register);
     this.cardSizes.register.width = this.$cardContainer.children().width();
     this.cardSizes.register.height = this.$cardContainer.children().height();
+
     console.log(this.cardSizes);
     this.currentCard = "register";
-    this.$cardContainer.on("click", this.swapCards.bind(this));
+    // this.$cardContainer.on("click", this.swapCards.bind(this));
     this.$swapButton = $("a.button");
     console.log(this.$swapButton);
     this.$swapButton.on("click", this.swapCards.bind(this));
@@ -36,6 +39,7 @@ export class Account {
     if (this.currentCard === "login") {
       nextCard = "register";
       this.currentCard = "register";
+      new RegisterPage();
     } else {
       nextCard = "login";
       this.currentCard = "login";
@@ -53,10 +57,10 @@ export class Account {
       .add(
         {
           targets: this.$cardContainer[0],
-          height: "80px",
-          width: "80px",
-          borderRadius: "100%",
+          height: 80,
+          width: 80,
           duration: 200,
+          borderRadius: "100%",
         },
         "-=100"
       )
@@ -82,6 +86,20 @@ export class Account {
         targets: this.$cardContainer[0],
         width: this.cardSizes[nextCard].width,
         height: this.cardSizes[nextCard].height,
+      })
+      .finished.then(() => {
+        anime({
+          targets: (() => {
+            console.log(this.$cardContent.children("h1").text());
+            return this.$cardContainer.children().children()[0];
+          })(),
+          opacity: 1,
+          easing: "linear",
+          duration: 100,
+        });
+
+        this.$swapButton = $("a.button");
+        this.$swapButton.on("click", this.swapCards.bind(this));
       });
   }
 }

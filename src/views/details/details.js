@@ -1,6 +1,7 @@
 import { DetailsForm } from "../../components/card-details/card-details";
 import { Grid } from "../utility";
 import { DoughnutChart } from "../../components/doughnut/doughnut";
+
 //modify these
 const DETAILS_CONTENT_GRID_BREAKPOINTS = { min: 647, max: 900 };
 const GRID_CONTAINER_TAG = "details__content";
@@ -24,7 +25,7 @@ export class DetailsPage {
       breakpoints: DETAILS_CONTENT_GRID_BREAKPOINTS,
       sizes: GRID_SIZES,
     });
-    // .details__photos_grid_small
+    // photo-grid animations
     this.photos = new Grid(PHOTO_GRID_CONTAINER, {
       breakpoints: PHOTO_GRID_BREAKPOINTS,
       sizes: PHOTO_GRID_SIZES,

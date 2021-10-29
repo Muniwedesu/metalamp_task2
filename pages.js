@@ -1,4 +1,4 @@
-let pageNames = ["index", "search", "details", "ui"].map((p) => {
+let pageNames = ["index", "search", "details", "ui", "account"].map((p) => {
   return { name: p, folder: p };
 });
 exports.pages = [
