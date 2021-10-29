@@ -1,4 +1,3 @@
-import { animate } from "popmotion";
 import { HeaderMenu } from "./__menu/__menu";
 
 export class Header {

@@ -12,9 +12,9 @@ include /components/pagination/pagination.pug
 -  {type: "subscription", label: "subscription text field", placeholder: "Email"}]
 
 - var dropdownItems = [[
-- {name: "взрослые", value: "2"},
-- {name: "дети", value: "2"},
-- {name: "младенцы", value: "0"}],
+- {name: "спальни", value: "2"},
+- {name: "кровати", value: "2"},
+- {name: "ванные комнаты", value: "0"}],
 -[
 - {name: "взрослые", value: "0"},
 - {name: "дети", value: "0"},
@@ -148,10 +148,12 @@ section.form-elements
       section.form-elements__dropdown_big
         +dropdown(dropdowns[7])#clearable-dropdown-example-filled
     section.form-elements__block
-      +bulletList({name: "bullet list", items: ["Нельзя с питомцами", "Без вечеринок и мероприятий", "Время прибытия – после 13:00, а выезд до 12:00"]})
+      +bulletList()
 section.form-elements
   section.form-elements__column
     +tagList(tagItems)
   section.form-elements__column_wide
     //- mixin comment({author, date, likes, text})
-    +comment({author: {name: "Мурад сарафанов", icon: "comment-1.jpg"}, date: "5 дней назад", text: "Великолепный матрас на кровати в основной спальне! А пуфик вообще потрясающий. И стены, действительно, шумоподавляющие. Выкрикивал комплименты повару — никто не жаловался из соседей."})
+    +comment({author: {name: "Мурад сарафанов", icon: "comment-1.jpg"}, 
+    date: "5 дней назад", 
+    text: "Великолепный матрас на кровати в основной спальне! А пуфик вообще потрясающий. И стены, действительно, шумоподавляющие. Выкрикивал комплименты повару — никто не жаловался из соседей."})

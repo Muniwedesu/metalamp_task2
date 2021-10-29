@@ -1,18 +1,19 @@
-include /components/card/card.pug
+include /components/card-details/card-details.pug
+include /components/card-search/card-search.pug
 include /components/card-room/card-room.pug
-include /components/inputs/calendar/calendar.pug
+include /components/calendar/calendar.pug
 
 section.cards
   section.cards__column
     section.cards__block
-      +cardSearch()#search-ex-0
+      +cardSearch({})#search-ex-0
     section.cards__block
-      +cardRegister()#reg-ex-0
+      //- +cardRegister()#reg-ex-0
   section.cards__column
     section.cards__block
-      +cardDetails()#det-ex-0
+      +cardDetails({})#det-ex-0
     section.cards__block
-      +cardLogin()#log-ex-0
+      //- +cardLogin()#log-ex-0
   section.cards__column
     section.cards__block.cards__datepicker
       +calendar({addInput: false})

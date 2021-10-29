@@ -21,6 +21,7 @@
 	"homepage": "https://github.com/Muniwedesu/metalamp_task2#readme",
 	"devDependencies": {
 		"air-datepicker": "^3.0.0",
+		"animate-css-grid": "^1.4.3",
 		"animejs": "^3.2.1",
 		"chart.js": "^3.5.1",
 		"css-loader": "^6.0.0",
@@ -30,6 +31,7 @@
 		"jquery": "^3.6.0",
 		"jquery-ui": "^1.13.0",
 		"mini-css-extract-plugin": "^2.1.0",
+		"nouislider": "^15.5.0",
 		"pug": "^3.0.2",
 		"pug-loader": "^2.4.0",
 		"sass": "^1.35.2",

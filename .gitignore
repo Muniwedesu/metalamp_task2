@@ -1,6 +1,7 @@
 node_modules/
 dist
-src/assets/img
 .eslintrc.json
 rename.py
-package-lock.json
+./package-lock.json
+webpack.config copy.js
+update-imports.py
