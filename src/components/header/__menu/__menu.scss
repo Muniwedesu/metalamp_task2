@@ -44,11 +44,11 @@
     border-bottom-right-radius: 100%;
     // background: rgba(255, 0, 0, 0.1);
     transition: all $unfoldDuration, border-bottom-left-radius 0.2s, width 0.2s, box-shadow 0.01s,
-      height 0.25s;
-    background: #fff;
+      height 0.2s;
+    background: white;
     &_open {
       transition: all $unfoldDuration, border-bottom-left-radius 0.5s,
-        border-bottom-right-radius 0.4s, box-shadow 0.3s 0.3s;
+        border-bottom-right-radius 0.4s, box-shadow 0.3s 0.3s, height 0.2s;
       border-bottom-left-radius: 4px;
       border-bottom-right-radius: 4px;
       box-shadow: 0px 1rem 16px $dark-25;
@@ -59,7 +59,7 @@
   }
   &__navigation-trigger {
     &:focus {
-      outline: none;
+      // outline: none;
     }
   }
   &__navigation {
@@ -72,10 +72,18 @@
     display: flex;
     flex-direction: column;
     justify-content: space-between;
+    & > * + * {
+      margin-top: 1rem;
+    }
     &_visible {
-      height: 100%;
+      height: auto;
       opacity: 1;
       transition: all 0.3s 0.2s;
+    }
+    @media screen and (min-width: $breakpoint-desktop) {
+      & > * + * {
+        margin-top: auto;
+      }
     }
   }
   &__navigation-label {
@@ -106,15 +114,10 @@
       overflow: visible;
       width: 100%;
       padding: 0;
-      transition: all 0.3s, box-shadow 0s;
+      transition: box-shadow 0s;
+      border-radius: 0;
     }
-    // &__navigation-trigger:checked {
-    //   ~ .header__navigation {
-    //     // transition: 0s;
-    //     // transform: none;
-    //     // padding: 0;
-    //   }
-    // }
+
     &__navigation-trigger {
       display: none;
     }
@@ -122,7 +125,6 @@
       display: none;
     }
     &__navigation {
-      transition: opacity 0.3s;
       opacity: 1;
       flex-direction: row;
     }

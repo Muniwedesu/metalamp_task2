@@ -31,7 +31,9 @@ export class Header {
 }
 //it just creates itself, probably should be moved to an abstract page class?
 //but this is not allowed within BEM?
-$(".header").map(function () {
-  console.log(this);
-  new Header(this);
+window.addEventListener("load", () => {
+  $(".header").map(function () {
+    console.log(this);
+    new Header(this);
+  });
 });

@@ -25,8 +25,12 @@ export class LinksList {
       });
     });
     this.$el.on("focusout", (event) => {
+      console.log("list focusout");
       if (event.relatedTarget !== event.target.previousElementSibling)
         event.target.classList.remove("links-list__expandable-list_expanded");
     });
+  }
+  closeAllChildren() {
+    return;
   }
 }
