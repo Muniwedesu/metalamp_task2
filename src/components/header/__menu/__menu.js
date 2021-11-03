@@ -14,6 +14,13 @@ export class HeaderMenu {
     // or click ()
 
     //on window resize open the menu when it's needed and prevent it from closing?
+    // guess I have no other choice
+    this.checkIfDesktop(window.innerWidth);
+    window.addEventListener("resize", () => {
+      //$breakpoint-desktop
+      this.checkIfDesktop(window.innerWidth);
+    });
+
     //also do the other thing when it becomes smaller
     console.log(this.$navigationTrigger[0].checked);
     this.$navigationTrigger.on("change", this.toggleNavigationMenu.bind(this));
@@ -24,7 +31,10 @@ export class HeaderMenu {
     //
     //fix focusout event so it toggles
   }
-
+  checkIfDesktop(windowWidth) {
+    if (windowWidth > 1024) this.open({});
+    else this.close({});
+  }
   toggleNavigationMenu(event) {
     // console.log(event);
     // console.log(event.relatedTarget);
@@ -44,7 +54,10 @@ export class HeaderMenu {
       console.log(this.$navigationTrigger[0].checked);
       //do nothing
       if (this.isOpen) this.close(event);
-      else if (!this.isOpen) this.open(event);
+      else if (!this.isOpen) {
+        event.preventDefault();
+        this.open(event);
+      }
     }
   }
   close(event) {
@@ -52,16 +65,20 @@ export class HeaderMenu {
     if (event.type !== "change") console.log(event);
     // this.$navigationTrigger[0].checked = true;
     this.isOpen = false;
+    //this shouldn't be on by default
+    console.log("menu closed");
     this.$headerMenu.css("overflow", "hidden");
     this.$headerMenu.removeClass("header__menu_open");
     this.$navigationLabel.removeClass("header__navigation-label_open");
     this.$navigationBlock.removeClass("header__navigation_visible");
   }
   open(event) {
+    if (event) {
+      if (event.type !== "change") console.log(event);
+    }
+    //do something with this?
     console.log("opened");
-    event.preventDefault();
     this.$navigationTrigger[0].focus();
-    if (event.type !== "change") console.log(event);
     // this.$navigationTrigger[0].checked = false;
     this.isOpen = true;
     this.$headerMenu.addClass("header__menu_open");
@@ -70,5 +87,6 @@ export class HeaderMenu {
     setTimeout(() => {
       this.$headerMenu.css("overflow", "visible");
     }, 200);
+    //after animation finishes
   }
 }
