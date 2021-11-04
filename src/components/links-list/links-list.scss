@@ -3,7 +3,10 @@
   $inline-height: 0px;
   display: flex;
   flex-direction: column;
-  width: 100%;
+  margin: auto 2rem;
+  @media screen and (min-width: $breakpoint-desktop) {
+    margin: 0;
+  }
   &_inline {
     flex-direction: row;
     justify-content: flex-end;
@@ -29,7 +32,7 @@
   &__link {
     color: $dark-50;
     cursor: pointer;
-    display: inline-block;
+    display: block;
     width: 100%;
     padding: 0.625rem 0;
     white-space: normal;

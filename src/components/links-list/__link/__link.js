@@ -1,60 +1,33 @@
 import anime from "animejs";
-const circleSize = 8;
+const circleSize = 2;
+import { addCenterMarkers, createCircle, createWrapper } from "./__link-functions";
+
+function setWrapperWidth(wrapper, isDesktop) {
+  let translateX = isDesktop ? 120 : 105;
+  wrapper.style.width = `${translateX}%`;
+}
+
 function createObjectToAnimate(target) {
-  const circle = document.createElement("div");
-  circle.classList.add("animation__circle");
-  //it'll need to be created every time IG
-  //or I can just reposition it each time idk
-
-  //move all of this to css?
-  circle.style.width = `${circleSize}px`;
-  circle.style.height = `${circleSize}px`;
-  circle.style.position = "absolute";
-  circle.style.borderRadius = "100%";
-  circle.style.backgroundColor = "#000";
-  circle.style.opacity = 0;
-  // circle.style.transform = "translateX(-50%)";
-  // circle.style.left = "50%";
-  //just offset it by the cursor position
-  circle.style.left = 0;
-  circle.style.right = 0;
-  circle.style.marginRight = "auto";
-  circle.style.marginLeft = "auto";
-  circle.style.transform = "translateY(-50%)";
-  circle.style.top = "50%";
-  circle.style.willChange = "transform, opacity";
-
-  const animationWrapper = document.createElement("div");
-
-  animationWrapper.classList.add("animation");
-  animationWrapper.style.zIndex = "-1";
-  animationWrapper.style.overflow = "hidden";
-  animationWrapper.style.position = "absolute";
-  animationWrapper.style.top = 0;
-  animationWrapper.style.opacity = 1;
-  animationWrapper.willChange = "opacity";
-
-  let translateX = target.parentNode.classList.contains("links-list__item_inline") ? 120 : 105;
-  animationWrapper.style.width = `${translateX}%`;
+  const circle = createCircle();
+  // console.log(target);
+  const animationWrapper = createWrapper();
+  // animationWrapper.style.border = "1px solid black";
+  //120 : 105;
 
   //then center it somehow
   // console.log(animationWrapper.style.width);
-  animationWrapper.style.left = "50%";
-  animationWrapper.style.transform = `translateX(${-50}%)`;
-  animationWrapper.style.height = "100%";
-  animationWrapper.style.borderRadius = "2rem";
-
   animationWrapper.appendChild(circle);
 
   return animationWrapper;
 }
 
 function findObjectToAnimate(target) {
-  //
   const objectToAnimate = target.querySelector(".animation");
+  //do something with this (if it's even necessary)
   if (objectToAnimate) objectToAnimate.style.opacity = 1;
   return objectToAnimate;
 }
+function calculateCircleDimensions(target) {}
 
 export class Link {
   constructor(el) {
@@ -66,11 +39,8 @@ export class Link {
   createEnteringAnimation(animationObject, event) {
     //do something with cases when this animation is not completed but is called again
     //get wrapper dimensions
-    // console.log("received circle");
     const circle = animationObject.children[0];
-    // console.log(animationObject.children);
 
-    //add wrapper to the link node
     event.target.appendChild(animationObject);
 
     //this should happpen after DOM is ready
@@ -78,21 +48,36 @@ export class Link {
       height: animationObject.getBoundingClientRect().height,
       width: animationObject.getBoundingClientRect().width,
     };
-    //get circle, which is the only element inside wrapper
-    // console.log("parent dimensions");
-    // console.log(parentDimensions);
-    //calculate circle size
+
     console.log(event);
     console.log(event.layerY); //top position
     console.log(event.layerX); //bottom position
+    console.log(parentDimensions.width / event.target.getBoundingClientRect().width); //bottom position
+    console.log(
+      event.layerX * (parentDimensions.width / event.target.getBoundingClientRect().width)
+    ); //bottom position
 
     let c = parentDimensions.height;
-    let r = parentDimensions.width / 2;
+    let r = parentDimensions.width * 0.5;
+    console.log(`r = ${r}`);
+    //here
+    let scaledOffset =
+      event.layerX * (parentDimensions.width / event.target.getBoundingClientRect().width);
 
     let h = r - Math.sqrt(r * r - c * c * 0.25);
     if (!h) h = parentDimensions.height * 0.25;
 
-    let ratio = (parentDimensions.width + 2 * h) / circleSize;
+    r += Math.abs(scaledOffset - parentDimensions.width * 0.5);
+    console.log(`offset = ${event.layerX}`);
+    console.log(`scaled offset = ${scaledOffset}`);
+    console.log(`width = ${parentDimensions.width}`);
+    console.log(`r' = ${r}`);
+    let ratio = (2 * (r + h)) / circleSize;
+    //use relative units for margins
+
+    circle.style.top = `${event.layerY}px`;
+    circle.style.left = `${scaledOffset}px`;
+
     return anime
       .timeline({})
       .add({
@@ -108,9 +93,6 @@ export class Link {
           opacity: [0.15, 0.05],
           duration: 300,
           easing: "linear",
-          complete: () => {
-            // animationObject.style.backgroundColor = "rgba(0,0,0,0.03)";
-          },
         },
         "-=200"
       );
@@ -124,14 +106,6 @@ export class Link {
       opacity: [currentOpacity, 0],
       duration: 200,
       easing: "linear",
-      // background: "rgb(255,0,0)",
-      begin: () => {
-        //maybe not remove this?
-        // animationObject.classList.remove("animation");
-      },
-      complete: () => {
-        // animationObject.remove();
-      },
     });
   }
   animateEnter(event) {
@@ -142,8 +116,11 @@ export class Link {
       setTimeout(() => {
         const animationObject =
           findObjectToAnimate(event.target) || createObjectToAnimate(event.target);
-        // console.log(this.animation);
         //get a wrapper
+        setWrapperWidth(
+          animationObject,
+          event.target.parentNode.classList.contains("links-list__item_inline")
+        );
         this.animation = this.createEnteringAnimation(animationObject, event);
       }, 0);
     }
@@ -159,13 +136,9 @@ export class Link {
         console.log("condition");
         if (this.animation.completed || this.animation.children[0].completed) {
           // this.animation.pause();
-          // console.log("condition 1");
-          // console.log(this.animation);
-          // console.log("completed");
           this.createLeavingAnimation(animationObject);
         } else {
           this.animation.children[0].finished.then(() => {
-            // console.log("condition 2");
             this.animation.pause();
             //start this after previous animation was completed
             this.createLeavingAnimation(animationObject);
