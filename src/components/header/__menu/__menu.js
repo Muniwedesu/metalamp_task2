@@ -5,6 +5,7 @@ export class HeaderMenu {
     this.$navigationBlock = this.$headerMenu.find(".header__navigation");
     this.$navigationTrigger = this.$headerMenu.find(".header__navigation-trigger");
     this.$navigationLabel = this.$headerMenu.find(".header__navigation-label");
+    this.isDesktop = true;
     // so
     // it should open on focus/click
     // but...
@@ -15,10 +16,10 @@ export class HeaderMenu {
 
     //on window resize open the menu when it's needed and prevent it from closing?
     // guess I have no other choice
-    this.checkIfDesktop(window.innerWidth);
+    this.checkIfDesktop();
     window.addEventListener("resize", () => {
       //$breakpoint-desktop
-      this.checkIfDesktop(window.innerWidth);
+      this.checkIfDesktop();
     });
 
     //also do the other thing when it becomes smaller
@@ -32,8 +33,13 @@ export class HeaderMenu {
     //fix focusout event so it toggles
   }
   checkIfDesktop(windowWidth) {
-    if (windowWidth > 1024) this.open({});
-    else this.close({});
+    if (window.innerWidth > 1024) {
+      this.isDesktop = true;
+      this.open({});
+    } else {
+      this.isDesktop = false;
+      this.close({});
+    }
   }
   toggleNavigationMenu(event) {
     // console.log(event);
@@ -42,21 +48,24 @@ export class HeaderMenu {
     // nah
     // initial state is "checked"
     // therefore the menu should open when checkbox is unchecked
-    if (event.type === "focusout" && this.$headerMenu[0].contains(event.relatedTarget)) {
-      this.$navigationTrigger[0].focus();
-      event.preventDefault();
-      console.log("focus menu");
-    } else if (event.type === "focusout" && !event.relatedTarget) {
-      //close all expanded lists too
-      this.$list.closeAllChildren();
-      this.close(event);
-    } else {
-      console.log(this.$navigationTrigger[0].checked);
-      //do nothing
-      if (this.isOpen) this.close(event);
-      else if (!this.isOpen) {
+    //this should be available only if it's mobile view
+    if (!this.isDesktop) {
+      if (event.type === "focusout" && this.$headerMenu[0].contains(event.relatedTarget)) {
+        this.$navigationTrigger[0].focus();
         event.preventDefault();
-        this.open(event);
+        console.log("focus menu");
+      } else if (event.type === "focusout" && !event.relatedTarget) {
+        //close all expanded lists too
+        this.$list.closeAllChildren();
+        this.close(event);
+      } else {
+        console.log(this.$navigationTrigger[0].checked);
+        //do nothing
+        if (this.isOpen) this.close(event);
+        else if (!this.isOpen) {
+          event.preventDefault();
+          this.open(event);
+        }
       }
     }
   }
@@ -79,7 +88,7 @@ export class HeaderMenu {
     //do something with this?
     console.log("opened");
     this.$navigationTrigger[0].focus();
-    // this.$navigationTrigger[0].checked = false;
+
     this.isOpen = true;
     this.$headerMenu.addClass("header__menu_open");
     this.$navigationLabel.addClass("header__navigation-label_open");
@@ -87,6 +96,5 @@ export class HeaderMenu {
     setTimeout(() => {
       this.$headerMenu.css("overflow", "visible");
     }, 200);
-    //after animation finishes
   }
 }

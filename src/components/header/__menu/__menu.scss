@@ -72,6 +72,10 @@
     display: flex;
     flex-direction: column;
     justify-content: space-between;
+    margin-left: auto;
+    @media screen and (min-width: $breakpoint-desktop) {
+      justify-content: flex-end;
+    }
     & > * + * {
       margin-top: 1rem;
     }
@@ -116,6 +120,7 @@
       padding: 0;
       transition: box-shadow 0s;
       border-radius: 0;
+      position: relative;
     }
 
     &__navigation-trigger {

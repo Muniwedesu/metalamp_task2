@@ -39,6 +39,7 @@
 
   @media screen and (min-width: $breakpoint-desktop) {
     &__buttons {
+      margin-right: 0;
       margin-left: 1.25rem;
       flex-direction: row;
       height: 2.125rem;
