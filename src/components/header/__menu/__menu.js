@@ -32,11 +32,12 @@ export class HeaderMenu {
     //
     //fix focusout event so it toggles
   }
-  checkIfDesktop(windowWidth) {
-    if (window.innerWidth > 1024) {
+  checkIfDesktop() {
+    //come out with a better idea?
+    if (window.innerWidth >= 1024 && !this.isDesktop) {
       this.isDesktop = true;
       this.open({});
-    } else {
+    } else if (window.innerWidth < 1024 && this.isDesktop) {
       this.isDesktop = false;
       this.close({});
     }
