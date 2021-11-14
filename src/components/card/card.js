@@ -1,21 +1,30 @@
 import { Calendar } from "../calendar/calendar";
 import { DropdownMenu } from "../dropdown/dropdown";
-
+import { Button } from "../button/button";
 //for each input field add an update event
 //receives .card__form
 export class Form {
   constructor({ form }) {
-    console.log("base ctor");
+    // console.log("base ctor");
     //this class only creates dropdowns
     //and things which are common for each card
     // console.log(form);
-    this.$form = $(form);
-    this.dropdowns = this.$form.find(".dropdown");
+    this.parent = $(form);
+    this.card = this.parent[0];
+    // console.log("card");
+    // console.log(this.card);
+    // console.log("card");
+    this.form = this.card.children[0];
+    this.dropdowns = this.parent.find(".dropdown");
     // this.submitButton = this.$form.find(".");
     this.formData = {};
     this.dateDropdowns = [];
     this.dropdownMenus = [];
+    this.buttons = [...this.parent.find(".button").toArray()];
     //
+    this.buttons.forEach((button) => {
+      new Button(button);
+    });
 
     //for each check if it has dropdown__date or dropdown__input
     //if it has two date dropdowns, pass options for the second one?
@@ -23,7 +32,7 @@ export class Form {
     //actually it's probably better to create input classes on the actual card objects
     //because form fields are known only at that point//
 
-    let formFields = this.$form.find(".form__field").each((x, element) => {
+    let formFields = this.parent.find(".form__field").each((x, element) => {
       // there's
       // dates pair
       // one date
@@ -40,7 +49,7 @@ export class Form {
       } else if (dropdowns.length === 1) {
         if (dropdowns.children().hasClass("dropdown__date")) {
           this.dateDropdowns.push(new Calendar(dropdowns[0]));
-          console.log(dropdowns);
+          // console.log(dropdowns);
           // console.log("one date");
         } else if (dropdowns.children().hasClass("dropdown__menu")) {
           this.dropdownMenus.push(new DropdownMenu(dropdowns[0]));
@@ -50,14 +59,14 @@ export class Form {
         }
       }
     });
-    console.log(formFields);
+    // console.log(formFields);
 
     // this.form = form;??
     // this.inputs = inputs;
     // just pass input and value in the event
     //on event write data here or smth
     //also I should proccess form submission here probably
-    this.$form.on("valueUpdate", this.onValueUpdate.bind(this));
+    this.parent.on("valueUpdate", this.onValueUpdate.bind(this));
   }
   onValueUpdate(event) {
     //receives {guests : {adults: 0, children: 0, babies: 0}}
