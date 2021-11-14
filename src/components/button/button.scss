@@ -11,6 +11,7 @@
   font: inherit;
   color: #fff;
   padding: 0 1.25rem;
+  position: relative;
   &:enabled:hover {
     color: #000;
   }
@@ -18,9 +19,17 @@
     opacity: 0.5;
   }
   &:hover {
+    text-decoration: none;
+    color: white;
     cursor: pointer;
+    // background: $grad-purple;
+    background: $grad-purple;
+    background-origin: border-box;
+    background-clip: initial;
   }
   &__label {
+    position: relative;
+    z-index: 1;
     color: inherit;
     padding-bottom: 0;
   }
@@ -30,7 +39,7 @@
   &_outlined {
     color: $purple;
     border: 2px solid transparent;
-    background: linear-gradient(white, white), $grad-purple;
+    background: linear-gradient(transparent, transparent), $grad-purple;
     background-origin: border-box;
     background-clip: padding-box, border-box;
   }
