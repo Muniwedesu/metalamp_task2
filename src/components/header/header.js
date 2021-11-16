@@ -1,5 +1,5 @@
 import { HeaderMenu } from "./__menu/__menu";
-
+import { ButtonOutlined, ButtonFilled } from "../button/button";
 export class Header {
   constructor(header) {
     this.$header = $(header);
@@ -7,7 +7,8 @@ export class Header {
     this.$buttons = this.$header.find(".header__buttons");
     this.$loginButton = this.$buttons.children(".header__login");
     this.$signupButton = this.$buttons.children(".header__signup");
-
+    new ButtonOutlined(this.$loginButton.children()[0]);
+    new ButtonFilled(this.$signupButton.children()[0]);
     const $headerMenuContainer = this.$header.find(".header__menu");
     this.navigationMenu = new HeaderMenu($headerMenuContainer);
 

@@ -43,8 +43,6 @@ export class HeaderMenu {
     }
   }
   toggleNavigationMenu(event) {
-    // console.log(event);
-    // console.log(event.relatedTarget);
     // fire on focusout?
     // nah
     // initial state is "checked"
