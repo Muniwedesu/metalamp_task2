@@ -1,89 +1,159 @@
 const circleSize = 2;
-export function createWrapper() {
-  const animationWrapper = document.createElement("div");
-  animationWrapper.classList.add("animation");
-  animationWrapper.style.zIndex = "-1";
-  animationWrapper.style.boxSizing = "border-box";
-  animationWrapper.style.overflow = "hidden";
-  animationWrapper.style.position = "absolute";
-  animationWrapper.style.top = 0;
-  animationWrapper.style.opacity = 1;
-  animationWrapper.style.left = "50%";
-  animationWrapper.style.transform = `translateX(${-50}%)`;
-  animationWrapper.style.height = "100%";
-  animationWrapper.style.borderRadius = "2rem";
-  animationWrapper.willChange = "opacity";
-  // animationWrapper.style.border = "1px solid blue";
-  // animationWrapper.style.overflow = "visible";
-  return animationWrapper;
+import anime from "animejs";
+class Queue {
+  constructor() {
+    //queue implementation is faster only in Chrome and
+    //only when n >= 100000
+    //in this case there'll be no more than 3-5 els
+    this.container = [];
+  }
+  enqueue(item) {
+    return this.container.push(item);
+  }
+  dequeue() {
+    return this.container.shift();
+  }
 }
+class Circle {
+  constructor(parent, params) {
+    this.el = document.createElement("div");
+    this.parent = parent;
+    this.diameter = 2;
 
-export function setWrapperWidth(wrapper, isDesktop) {
-  let translateX = isDesktop ? 120 : 105;
-  wrapper.style.width = `${translateX}%`;
+    this.p = this.calculateCircleDimensions(params);
+    this.animationDuration = 400;
+    this.initialize();
+
+    anime
+      .timeline({
+        targets: this.el,
+        duration: this.animationDuration,
+      })
+      .add({
+        opacity: [0, 0.4],
+        easing: "easeOutSine",
+        duration: this.animationDuration * 0.5,
+      })
+      .add(
+        {
+          scale: [1, this.p.ratio],
+          easing: "easeOutSine",
+          backgroundColor: ["rgb(188,156,255)", "rgb(139,164,249)"],
+          duration: this.animationDuration,
+        },
+        "-=200"
+      )
+      .add(
+        {
+          opacity: [0.4, 0.15],
+          easing: "easeOutCubic",
+        },
+        "-=200"
+      );
+  }
+  remove() {
+    return anime({
+      targets: this.el,
+      opacity: 0,
+      duration: this.animationDuration,
+      easing: "easeInCubic",
+      complete: () => {
+        this.el.remove();
+      },
+    });
+  }
+  calculateCircleDimensions({ parentWidth, parentHeight, itemWidth, layerX, layerY }) {
+    let c = parentHeight;
+    let r = parentWidth * 0.5;
+
+    //4 is magic number used not to calculate circle radius so it will fill
+    // wrapper container in every position
+    let h = r - Math.sqrt(r * r - c * c * 0.25) + 4;
+    if (!h) h = c * 0.25;
+
+    let scaledOffset = layerX * (parentWidth / itemWidth);
+
+    r += Math.abs(scaledOffset - parentWidth * 0.5);
+    return {
+      ratio: (2 * (r + h)) / this.diameter,
+      leftOffset: scaledOffset,
+      topOffset: layerY,
+    };
+  }
+  initialize() {
+    //probably better move this to css
+    this.el.classList.add("animation__circle");
+
+    this.el.style.width = `${circleSize}px`;
+    this.el.style.height = `${circleSize}px`;
+
+    this.el.style.position = "absolute";
+    this.el.style.borderRadius = "100%";
+    this.el.style.backgroundColor = "#bc9cff";
+    this.el.style.opacity = 0;
+
+    this.el.style.left = 0;
+    this.el.style.zIndex = "-1";
+
+    this.el.style.transform = "translateX(-50%)";
+    this.el.style.transform += "translateY(-50%)";
+    this.el.style.willChange = "transform, opacity";
+    this.el.style.top = `${this.p.topOffset}px`;
+    this.el.style.left = `${this.p.leftOffset}px`;
+    this.parent.appendChild(this.el);
+  }
 }
-export function calculateCircleDimensions({
-  animationObject,
-  layerX,
-  itemWidth,
-  circleSize = 2,
-}) {
-  const parentDimensions = {
-    height: animationObject.getBoundingClientRect().height,
-    width: animationObject.getBoundingClientRect().width,
-  };
+export class AnimationWrapper {
+  constructor(parent) {
+    this.parent = parent;
+    this.create();
+    this.parent.appendChild(this.el);
+    // this.width = this.el.getBoundingClientRect().width;
+    // this.height = this.el.getBoundingClientRect().height;
+    console.log(this.width);
+    this.circles = new Queue();
+  }
+  addCircle({ layerX, itemWidth, layerY, isDesktop }) {
+    //
+    this.el.style.width = `${isDesktop ? 120 : 105}%`;
 
-  let c = parentDimensions.height;
-  let r = parentDimensions.width * 0.5;
-
-  //4 is magic number used not to calculate circle radius so it will fill
-  // wrapper container in every position
-  let h = r - Math.sqrt(r * r - c * c * 0.25) + 4;
-  if (!h) h = parentDimensions.height * 0.25;
-  console.log(`h = ${h}`);
-
-  let scaledOffset = layerX * (parentDimensions.width / itemWidth);
-
-  r += Math.abs(scaledOffset - parentDimensions.width * 0.5);
-  // console.log(`offset = ${layerX}`);
-  // console.log(`scaled offset = ${scaledOffset}`);
-  // console.log(`width = ${parentDimensions.width}`);
-  // console.log(`r' = ${r}`);
-
-  return {
-    ratio: (2 * (r + h)) / circleSize,
-    leftOffset: scaledOffset,
-  };
-}
-export function createCircle() {
-  const circle = document.createElement("div");
-  circle.classList.add("animation__circle");
-  //it'll need to be created every time IG
-  //or I can just reposition it each time idk
-
-  //move all of this to css?
-  circle.style.width = `${circleSize}px`;
-  circle.style.height = `${circleSize}px`;
-
-  circle.style.position = "absolute";
-  circle.style.borderRadius = "100%";
-  circle.style.backgroundColor = "#000";
-  circle.style.opacity = 0;
-  // circle.style.transform = "translateX(-50%)";
-  // circle.style.left = "50%";
-  //just offset it by the cursor position
-  // isn't it enough to just set left-top offsets?
-  //
-  circle.style.left = 0;
-  circle.style.zIndex = "-1";
-  // circle.style.right = 0;
-  // circle.style.top = "50%";
-  // circle.style.marginRight = "auto";
-  // circle.style.marginLeft = "auto";
-  circle.style.transform = "translateX(-50%)";
-  circle.style.transform += "translateY(-50%)";
-  circle.style.willChange = "transform, opacity";
-  return circle;
+    this.circles.enqueue(
+      new Circle(this.el, {
+        ...this.getDimensions(),
+        itemWidth: itemWidth,
+        layerX: layerX,
+        layerY: layerY,
+      })
+    );
+  }
+  removeCircle() {
+    // console.log("removing circle");
+    let circle = this.circles.dequeue();
+    circle.remove();
+  }
+  getDimensions() {
+    let dims = this.el.getBoundingClientRect();
+    return { parentWidth: dims.width, parentHeight: dims.height };
+  }
+  create() {
+    this.el = document.createElement("div");
+    this.initialize();
+  }
+  initialize() {
+    this.el.classList.add("animation");
+    this.el.style.zIndex = "-1";
+    this.el.style.boxSizing = "border-box";
+    this.el.style.overflow = "hidden";
+    this.el.style.position = "absolute";
+    this.el.style.top = 0;
+    this.el.style.opacity = 1;
+    this.el.style.left = "50%";
+    this.el.style.transform = `translateX(${-50}%)`;
+    this.el.style.height = "100%";
+    this.el.style.borderRadius = "2rem";
+    this.el.willChange = "opacity";
+    this.el.style.width = "100%";
+  }
 }
 
 export function addCenterMarkers(target) {
