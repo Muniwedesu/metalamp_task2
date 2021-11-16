@@ -58,7 +58,7 @@ export class Account {
   }
 
   swapCards(event) {
-    console.log("swap");
+    // console.log("swap");
     event.preventDefault();
     let currentCard = this.cardIndex.cardName();
     this.cardIndex.next();
@@ -70,17 +70,18 @@ export class Account {
         //this depends on circleDuration
         begin: () => {
           this.cards[currentCard].hideContent({
-            width: this.cards[nextCard].width,
-            height: this.cards[nextCard].height,
+            width: this.cards[currentCard].width,
+            height: this.cards[currentCard].height,
           });
         },
+        delay: this.duration * 0.25,
         duration: this.duration,
         easing: "easeOutCubic",
         width: this.cards[nextCard].width,
         height: this.cards[nextCard].height,
       })
       .add({
-        duration: this.circleDuration * 0.1,
+        duration: this.circleDuration * 0.06,
         complete: () => {
           this.cards[currentCard].hide();
           this.loadCard(nextCard);
