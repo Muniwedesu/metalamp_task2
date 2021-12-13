@@ -37,7 +37,7 @@ module.exports = {
       modules: path.join(__dirname, "node_modules"),
     },
   },
-  //devtool      : "inline-source-map",
+  devtool: "eval-source-map",
   devServer: {
     //check development guide for static files
     contentBase: "./dist", //

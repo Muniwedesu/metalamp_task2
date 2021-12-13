@@ -1,6 +1,6 @@
 import { Calendar } from "../calendar/calendar";
 import { DropdownMenu } from "../dropdown/dropdown";
-import { Button } from "../button/button";
+import { ButtonOutlined, ButtonFilled } from "../button/button";
 //for each input field add an update event
 //receives .card__form
 export class Form {
@@ -23,7 +23,8 @@ export class Form {
     this.buttons = [...this.parent.find(".button").toArray()];
     //
     this.buttons.forEach((button) => {
-      new Button(button);
+      if (button.classList.contains("button_outlined")) new ButtonOutlined(button);
+      else new ButtonFilled(button);
     });
 
     //for each check if it has dropdown__date or dropdown__input

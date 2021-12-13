@@ -14,6 +14,7 @@ export class CheckboxGroup {
       if (this.isOpen) this.close();
       else this.open();
     });
+    // this.checkboxGroup.getBoundingClientRect();
   }
   open() {
     this.isOpen = true;

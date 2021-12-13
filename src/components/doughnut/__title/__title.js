@@ -31,8 +31,8 @@ export const htmlTitle = {
     //(width - width) * 0.5
     //(height - height) * 0.5
     const { offsetWidth: width, offsetHeight: height } = title;
-    title.style.left = positionX + (canvasW - width) / 2 + "px";
-    title.style.top = positionY + (canvasH - height) / 2 + "px";
+    title.style.left = (canvasW - width) * 0.5 + "px";
+    title.style.top = (canvasH - height) * 0.5 + "px";
     //position title.
   },
 };

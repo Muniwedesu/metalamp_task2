@@ -12,6 +12,8 @@ export class Link {
   }
   animateEnter(event) {
     if (event.target.classList.contains("links-list__link")) {
+      // in firefox layerX sometimes returns wrong values
+      ///
       this.wrapper.addCircle({
         layerX: event.layerX,
         layerY: event.layerY,

@@ -5,7 +5,7 @@ include ../dropdown/dropdown.pug
 
 mixin cardRegister({id = "registration", linkToLogin = "./login.html"} = {id: "registration"})
   - var id = attributes.id
-  .card
+  .card#register-card
     form.card__form.form
       h1.form__heading Регистрация аккаунта
       fieldset.form__fields-block

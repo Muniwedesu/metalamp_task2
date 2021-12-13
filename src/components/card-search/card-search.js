@@ -4,7 +4,7 @@ const MS_TO_DAYS = 1 / (1000 * 3600 * 24);
 export class SearchForm extends Form {
   constructor({ form }) {
     super({ form: form });
-    console.log("search-form ctor");
+    // console.log("search-form ctor");
   }
   onValueUpdate(event) {
     if (event.value.date) {

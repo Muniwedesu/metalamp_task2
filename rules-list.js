@@ -13,7 +13,7 @@ exports.rulesList = [
     use: [
       {
         loader: "pug-loader",
-        options: { pretty: true, root: path.resolve(__dirname, "src") },
+        options: { pretty: false, root: path.resolve(__dirname, "src") },
       },
     ],
   },
