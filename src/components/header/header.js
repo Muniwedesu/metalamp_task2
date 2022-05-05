@@ -15,11 +15,11 @@ export class Header {
     //navigation wasn't meant to exist anyway?
 
     this.$loginButton.on("click", () => {
-      window.location.href = window.origin + "/login.html";
+      window.location.href = window.origin + "/account.html?action=login";
     });
 
     this.$signupButton.on("click", () => {
-      window.location.href = window.origin + "/register.html";
+      window.location.href = window.origin + "/account.html?action=register";
     });
 
     this.$logo = this.$header.find(".logo");
